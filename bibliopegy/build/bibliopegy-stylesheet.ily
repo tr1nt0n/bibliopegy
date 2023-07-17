@@ -14,7 +14,7 @@ afterGraceFraction = #(cons 15 16)
 \header {
     dedication = \markup \with-color "darksalmon" \column {\line \override #'(font-name . "Bodoni72 Book Italic") { \fontsize #7 { "Anthropodermic" \hspace #41 "Bibliopegy" } } \line { \fontsize #23 \with-color #white "."} }
     title = \markup \with-color "indianred" \override #'(font-name . "Source Han Serif SC Bold") \center-column { \line \fontsize #19 { α: 刍 狗 } \fontsize #23 \with-color #white "."}
-    subtitle = \markup \with-color "darkred" \fontsize #5 \center-column { \line { \override #'(font-name . "Bodoni72 Book Italic") { "for Viola solo, four Chamber Ensembles, and Electronics" } } \fontsize #0.01 \with-color #white "."}
+    subtitle = \markup \with-color "darkred" \fontsize #5 \center-column { \line { \override #'(font-name . "Bodoni72 Book Italic") { "for Viola Solo, four Chamber Ensembles, and Electronics" } } \fontsize #0.01 \with-color #white "."}
     composer = \markup \override #'(font-name . "Bodoni72") \fontsize #4 {"Trinton Hlynn (*2000)"}
 }
 
