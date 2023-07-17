@@ -6,6 +6,8 @@
 \usepackage{xltxtra,fontspec,xunicode}
 \usetikzlibrary{calc}
 \usepackage{xcolor}
+\usepackage{background}
+\usepackage{contour}
 
 \defaultfontfeatures{Scale=MatchLowercase}
 \setromanfont[Numbers=Uppercase]{Bodoni 72 Book}
@@ -14,6 +16,10 @@
 
 \begin{document}
     \begin{titlepage}
+    
+    \backgroundsetup{scale = 1.08, angle = 0, opacity = 0.2,
+contents = {\includegraphics[width = \paperwidth,
+height = \paperheight, keepaspectratio] {title_image.jpeg}}}
 
         \begin{tikzpicture}[remember picture, overlay]
             \draw[line width = 1.6pt]
@@ -33,48 +39,58 @@
 
         \rule{\textwidth}{1.6pt}\vspace*{-\baselineskip}\vspace*{2pt}
         \rule{\textwidth}{0.4pt}\\[\baselineskip]
+        \contourlength{0.14em}
+        \contour{white}{
         {
             \fontsize{2cm}{1em}\selectfont
-          \textit{Anthropodermic Bibliopegy}
+          {\textit{Anthropodermic Bibliopegy}
             \setmainfont{Source Han Serif SC}\selectfont
 		α:\hspace{2mm}刍\hspace{2mm}狗
         }
+        }}
         \rule{\textwidth}{0.4pt}\vspace*{-\baselineskip}\vspace{3.2pt}
         \rule{\textwidth}{1.6pt}\\[\baselineskip]
         
 
         \vspace*{1\baselineskip}
+        
+         \contourlength{0.06em}
 
         {
             \itshape
-            for
+            \huge
+            \contour{white}{for}
         }
         {
             \huge
-            Viola Solo,
+            \contour{white}{Viola Solo,}
         }
          {
             \itshape
-            four
+            \huge
+           \contour{white}{four}
         }
         {
             \huge
-            Chamber Ensembles,
+            \contour{white}{Chamber Ensembles,}
         }
         {
             \itshape
-            and
+            \huge
+           \contour{white}{and}
         }
         {
             \huge
-            Electronics
+            \contour{white}{Electronics}
         }
         
         \vspace*{15\baselineskip}
         
+        \contourlength{0.07em}
+        
         {
             \huge
-            T R I N T O N \hspace{2mm} H L Y N N
+            \contour{white}{T R I N T O N \hspace{2mm} H L Y N N}
             \par
         }
 
@@ -82,10 +98,11 @@
 
         {
             \huge
-            2023 - 2024
+            \contour{white}{2023 - 2024}
         }
 
         \vfill
+       
 
     \end{titlepage}
 \end{document}

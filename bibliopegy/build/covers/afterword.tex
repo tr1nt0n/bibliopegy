@@ -1,0 +1,55 @@
+\documentclass[12pt]{article}
+\usepackage{fontspec}
+\usepackage[utf8]{inputenc}
+\setmainfont{Bodoni 72 Book}
+\usepackage[paperwidth=17in,paperheight=11in,margin=1in,headheight=0.0in,footskip=0.5in,includehead,includefoot,portrait]{geometry}
+\usepackage[absolute]{textpos}
+\usepackage{xcolor}
+\usepackage{background}
+\usepackage{contour}
+\TPGrid[0.5in, 0.25in]{23}{24}
+\parindent=0pt
+\parskip=12pt
+\usepackage{nopageno}
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{amsmath}
+\usepackage{tikz}
+\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+            \node[shape=circle,draw,inner sep=1pt] (char) {#1};}}
+
+\begin{document}
+
+\backgroundsetup{scale = 1.075, angle = 0, opacity = 0.2,
+contents = {\includegraphics[width = \paperwidth,
+height = \paperheight, keepaspectratio] {afterword_image.jpeg}}}
+
+\vspace*{9\baselineskip}
+
+\contourlength{0.04em}
+
+\begingroup
+\begin{center}
+\fontsize{1.5cm}{1em} \selectfont{
+\contour{white}{AFTERWORD}
+}
+\end{center}
+\endgroup
+
+\vspace*{1\baselineskip}
+
+\contourlength{0.07em}
+
+\begingroup
+\begin{center}
+\fontsize{0.5cm}{1em} \selectfont{
+\contour{white}{
+\textit{``. . . We never came into being and we never go out of being. All of these comings and goings are just pulses in the pattern . . ."}} \\
+{\setmainfont{Source Han Serif SC}\selectfont
+\contour{white}{- 盤珪永琢}} \contour{white}{\textit{( English approximation )}}
+}
+\end{center}
+\endgroup
+
+
+\end{document}
