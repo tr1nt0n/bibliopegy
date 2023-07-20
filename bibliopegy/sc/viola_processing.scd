@@ -116,6 +116,77 @@ SynthDef.new(
 
 )
 
+// 二 processing
+
+(
+
+SynthDef.new(
+	\blocks,
+	{
+		arg outputBus, envelopeLength, superfluousBullshit;
+		var buffer, signal, envelope, out;
+
+		buffer = Buffer.readChannel(s, "/Users/trintonprater/scores/bibliopegy/bibliopegy/sc/二_sample.wav", channels:[0],);
+
+		signal = GrainBuf.ar(
+			numChannels: 2,
+			trigger: Dust.ar({ExpRand(10, 30)}!12),
+			dur: Logistic.ar(
+				chaosParam:3.72,
+				freq:10,
+			).range(0.5, 1),
+			sndbuf: b,
+			rate: Logistic.ar(
+				chaosParam:3.59,
+				freq: 10,
+			).range(0.02, 1.2),
+			pos: Logistic.ar(
+				chaosParam:3.57,
+			).range(0, 1),
+			interp: 2,
+		);
+
+		envelope = EnvGen.kr(
+			Env(
+				levels: [0, 1, 1, 0],
+				times: [0.1, IRand(1, 7), 0.1],
+				curve: 8,
+			),
+			doneAction: 2,
+			gate: Impulse.kr(superfluousBullshit),
+		);
+
+		out = Limiter.ar(
+			in: FreeVerb.ar(
+				in: signal,
+				mix: 0.8,
+				room:0.6,
+				damp:0.6,
+			),
+			level: 0.5,
+			dur: 0.01,
+		);
+
+		out = out * envelope;
+
+		Out.ar(outputBus, out);
+
+}).add;
+
+)
+
+
+(
+
+Synth(
+	\blocks, [
+		\outputBus,
+		superfluousBullshit:0.5,
+	],
+);
+
+)
+
 // 三 processing
 
 // allocate a buffer
