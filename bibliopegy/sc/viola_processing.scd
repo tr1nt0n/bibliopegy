@@ -4,7 +4,7 @@ ServerOptions.devices;
 s.options.inDevice("Built-in Microph");
 s.options.outDevice("Built-in Output");
 //s.boot;
-//s.meter;
+// s.meter;
 )
 
 // test
@@ -15,6 +15,105 @@ x = {
 	sig = SoundIn.ar(0!2);
 	sig = GrainIn.ar(1, Dust.ar(20), 0.08, sig);
 }.play
+)
+
+
+// 一 processing
+
+
+// synth
+
+
+(
+
+SynthDef.new(
+	\slashes,
+	{
+		arg hardwareInput, inputGain=1, outputBus, amp=0, sawFrequencyMultiplier=exprand(7, 13), modulationFrequencyMultiplier=exprand(7, 13), subEnvGate=exprand(2, 10);
+		var trackedSignal, frequency, envelope, subEnvelope, convolutionInput, convolutionKernel, synthSignal;
+
+		trackedSignal = SoundIn.ar(hardwareInput, inputGain);
+		frequency = Pitch.kr(in:trackedSignal, initFreq:433, minFreq: 220, execFreq: 1, clar:1);
+		frequency = GrainSin.ar(
+			numChannels: 2,
+			trigger: Dust.kr(0.5),
+			dur: 1,
+			freq: frequency,
+		);
+		frequency = Pitch.kr(in:frequency, initFreq:433, minFreq: 220, maxFreq: 1760, execFreq: 1, clar:1);
+
+		envelope = Amplitude.kr(trackedSignal, attackTime: 10, releaseTime: 20);
+
+		subEnvelope = EnvGen.kr(
+			Env(
+				levels: [0, 0.3, 0.001],
+				times: [1.5, 0.25, 0.3],
+				curve: 8,
+			),
+			gate: Impulse.kr(envelope * subEnvGate),
+			doneAction: 0,
+		);
+
+		convolutionInput = PMOsc.ar(
+			carfreq: SinOsc.ar(frequency),
+			modfreq: frequency * (modulationFrequencyMultiplier / 4),
+			pmindex: 0.4,
+			modphase: 1,
+			mul: 2.5
+		);
+
+		convolutionKernel = SyncSaw.ar(
+			syncFreq: frequency * modulationFrequencyMultiplier/8,
+			sawFreq: frequency * sawFrequencyMultiplier,
+		);
+
+		synthSignal = Convolution.ar(
+			in: convolutionInput,
+			kernel: convolutionKernel,
+			framesize: 1024,
+			mul: 1/9
+		);
+
+		synthSignal = synthSignal * subEnvelope;
+
+		synthSignal = synthSignal * envelope;
+
+		synthSignal = Limiter.ar(
+			in: FreeVerb.ar(
+				in: synthSignal,
+				mix: 1,
+				room:0.7,
+				damp:0,
+			),
+			level: 0.5,
+			dur: 0.01,
+		);
+
+		Out.ar(outputBus, synthSignal);
+	}
+).add;
+
+)
+
+// collection
+
+
+(
+
+5.collect({
+	arg n;
+	Synth(\slashes, [
+		\hardwareInput,
+		0,
+		\outputBus,
+		0,
+		amp: 0.3,
+		sawFrequencyMultiplier:exprand(7, 13),
+		modulationFrequencyMultiplier:exprand(7, 13),
+		subEnvGate:exprand(2, 10);
+	]);
+});
+
 )
 
 // 三 processing
@@ -142,6 +241,94 @@ Synth(\rec, [\ptrIn, ~ptrBus, \micIn, ~micBus, \buf, b], ~recGrp);
 
 ~g.set(\gate, 0);
 ~g.do({ arg n; n.set(\gate, 0) });
+
+// 四 processing
+
+// synth
+
+
+(
+SynthDef.new(
+	\slashes,
+	{
+		arg hardwareInput, inputGain=1, outputBus, amp=0, sawFrequencyMultiplier=exprand(7, 13), modulationFrequencyMultiplier=exprand(7, 13);
+		var trackedSignal, frequency, envelope, subEnvelope, convolutionInput, convolutionKernel, synthSignal;
+
+		trackedSignal = SoundIn.ar(hardwareInput, inputGain);
+		frequency = Pitch.kr(in:trackedSignal, initFreq:433, minFreq: 220, execFreq: 0.01, clar:1);
+		envelope = Amplitude.kr(trackedSignal);
+
+		subEnvelope = EnvGen.kr(
+			Env(
+				levels: [0, 0.3, 0],
+				times: [1, 0.1, 0.2],
+				curve: 7,
+			),
+			gate: Dust2.kr(3),
+			doneAction: 0,
+		);
+
+		convolutionInput = PMOsc.ar(
+			carfreq: SinOsc.ar(frequency),
+			modfreq: frequency * (modulationFrequencyMultiplier / 4),
+			pmindex: 0.4,
+			modphase: 1,
+			mul: 2.5
+		);
+
+		convolutionKernel = SyncSaw.ar(
+			syncFreq: Logistic.ar(
+				chaosParam: 3.58,
+				freq: (envelope * frequency) * (1 - frequency),
+				init: envelope / 10,
+			),
+			sawFreq: frequency * sawFrequencyMultiplier,
+		);
+
+		synthSignal = Convolution.ar(
+			in: convolutionInput,
+			kernel: convolutionKernel,
+			framesize: 1024,
+			mul: 1/9
+		);
+
+		synthSignal = synthSignal * subEnvelope;
+
+		synthSignal = synthSignal * envelope;
+
+		synthSignal = Limiter.ar(
+			in: synthSignal,
+			level: 0.5,
+			dur: 0.01,
+		);
+
+		Out.ar(outputBus, synthSignal);
+	}
+).add;
+
+)
+
+// collection
+
+
+(
+
+5.collect({
+	arg n;
+	Synth(\slashes, [
+		\hardwareInput,
+		0,
+		\outputBus,
+		0,
+		amp: 0.15,
+		sawFrequencyMultiplier:exprand(7, 13),
+		modulationFrequencyMultiplier:exprand(7, 13),
+	]);
+});
+
+)
+
+
 
 
 

@@ -13,6 +13,7 @@ from bibliopegy import library
 
 # score
 
+
 def bibliopegy_score(time_signatures):
     score = trinton.make_empty_score(
         instruments=[
@@ -45,6 +46,7 @@ def bibliopegy_score(time_signatures):
 
     return score
 
+
 # immutables
 
 all_voice_names = eval(
@@ -66,6 +68,7 @@ all_voice_names = eval(
 )
 
 # markup
+
 
 def boxed_markup(
     string,
@@ -90,6 +93,7 @@ def return_boxed_markup(string, font=None):
         boxed_string = rf"""\markup \override #'(font-name . "Bodoni72 Book") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \box \fontsize #1 \line {{ {string} }}"""
 
     return boxed_string
+
 
 def make_timestamp_markups(global_context):
     measures = abjad.select.group_by_measure(global_context)
@@ -123,6 +127,7 @@ def make_timestamp_markups(global_context):
             leaf,
             mm_rest,
         )
+
 
 all_instrument_names = [
     abjad.InstrumentName(
@@ -304,7 +309,9 @@ def write_short_instrument_names(score):
             attachment=markup,
         )
 
+
 # notation tools
+
 
 def change_lines(
     lines,
