@@ -321,7 +321,7 @@ Synth(\rec, [\ptrIn, ~ptrBus, \micIn, ~micBus, \buf, b], ~recGrp);
 
 (
 SynthDef.new(
-	\slashes,
+	\swarms,
 	{
 		arg hardwareInput, inputGain=1, outputBus, amp=0, sawFrequencyMultiplier=exprand(7, 13), modulationFrequencyMultiplier=exprand(7, 13);
 		var trackedSignal, frequency, envelope, subEnvelope, convolutionInput, convolutionKernel, synthSignal;
@@ -387,7 +387,7 @@ SynthDef.new(
 
 5.collect({
 	arg n;
-	Synth(\slashes, [
+	Synth(\swarms, [
 		\hardwareInput,
 		0,
 		\outputBus,
