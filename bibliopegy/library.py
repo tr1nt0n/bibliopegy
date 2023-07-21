@@ -119,6 +119,12 @@ def return_boxed_markup(string, font=None):
     return boxed_string
 
 
+def return_fractional_scratch_markup(fraction):
+    markup = rf"""\markup \with-color "darkred" {{ {{ \fraction {fraction} }} \hspace #0.5 {{ scratch }} }}"""
+
+    return markup
+
+
 def make_timestamp_markups(global_context):
     measures = abjad.select.group_by_measure(global_context)
     global_context_length = len(measures)
@@ -338,7 +344,7 @@ def write_timestamps(global_context, second_range, measure_range):
     second_range = range(second_range[0], second_range[-1] + 1)
     markup_list = []
     for second in second_range:
-        if second > 60:
+        if second > 59:
             second_stamp = second % 60
             minute_stamp = second / 60
             minute_stamp = math.floor(minute_stamp)
@@ -490,6 +496,23 @@ def change_lines(
 
     return change
 
+
+# pitch
+
+_bass_clarinet_multiphonics = {
+    1: (
+        8,
+        r"""\markup \override \with-color "seagreen" #'(size . .6) { \woodwind-diagram #'bass-clarinet #'((cc . (one two)) (lh . (thumb)) (rh . (two)))}""",
+    ),
+    2: (
+        6,
+        r"""\markup \override \with-color "seagreen" #'(size . .6) { \woodwind-diagram #'bass-clarinet #'((cc . (one two three four five six)) (lh . ()) (rh . (e)))}""",
+    ),
+    3: (
+        2.5,
+        r"""\markup \with-color "seagreen" \override #'(size . .6) { \woodwind-diagram #'bass-clarinet #'((cc . (two three four five)) (lh . (thumb)) (rh . ()))}""",
+    ),
+}
 
 # rhythm
 

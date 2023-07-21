@@ -11,13 +11,6 @@
 
 afterGraceFraction = #(cons 255 256)
 
-\header {
-    dedication = \markup \with-color "darksalmon" \column {\line \override #'(font-name . "Bodoni72 Book Italic") { \fontsize #7 { "Anthropodermic" \hspace #41 "Bibliopegy" } } \line { \fontsize #23 \with-color #white "."} }
-    title = \markup \with-color "indianred" \override #'(font-name . "Source Han Serif SC Bold") \center-column { \line \fontsize #19 { α: 刍 狗 } \fontsize #23 \with-color #white "."}
-    subtitle = \markup \with-color "darkred" \fontsize #5 \center-column { \line { \override #'(font-name . "Bodoni72 Book Italic") { "for Viola Solo, four Chamber Ensembles, and Electronics" } } \fontsize #0.01 \with-color #white "."}
-    composer = \markup \override #'(font-name . "Bodoni72") \fontsize #4 {"Trinton Hlynn (*2000)"}
-}
-
 \layout {
     \accidentalStyle neo-modern
     ragged-bottom = ##t
@@ -63,6 +56,7 @@ afterGraceFraction = #(cons 255 256)
         \override StaffGrouper.staffgroup-staff-spacing = #'((basic-distance . 0) (minimum distance . 5) (padding . 8) (stretchability . 28))
 
         \override AccidentalSuggestion.avoid-slur = #'ignore
+        % \override Accidental.X-extent = ##f
 
         \override BarLine.hair-thickness = 1
         \override BarLine.thick-thickness = #10
@@ -227,39 +221,4 @@ afterGraceFraction = #(cons 255 256)
     right-margin = 10\mm
     top-margin = 17\mm
 
-    oddHeaderMarkup = \markup ""
-    evenHeaderMarkup = \markup ""
-    oddFooterMarkup = \markup
-        \fill-line {
-            \concat {
-                \override #'(font-name . "Bodoni72 Book Italic")
-                "Anthropodermic Bibliopegy"
-                \override #'(font-name . "Source Han Serif SC")
-                " α: 刍狗"
-                \override #'(font-name . "Bodoni72 Book")
-                " - Trinton Hlynn"
-            }
-            \concat {
-                \fontsize #5
-                \override #'(font-name . "Bodoni72 Book Italic")
-                    \fromproperty #'page:page-number-string
-            }
-        }
-
-        evenFooterMarkup = \markup
-            \fill-line {
-                \concat {
-                    \fontsize #5
-                    \override #'(font-name . "Bodoni72 Book Italic")
-                        \fromproperty #'page:page-number-string
-                }
-                \concat {
-                    \override #'(font-name . "Bodoni72 Book Italic")
-                    "Anthropodermic Bibliopegy"
-                    \override #'(font-name . "Source Han Serif SC")
-                    " α: 刍狗"
-                    \override #'(font-name . "Bodoni72 Book")
-                    " - Trinton Hlynn"
-                }
-            }
 }

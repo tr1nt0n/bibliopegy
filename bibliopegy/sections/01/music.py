@@ -194,11 +194,27 @@ abjad.attach(abjad.Clef("altovarC"), abjad.select.leaf(score["viola voice"], 0))
 
 trinton.make_music(
     lambda _: trinton.select_target(_, (1,)),
-    library.change_lines(
-        lines=1, clef="percussion", selector=trinton.select_leaves_by_index([0])
+    trinton.change_lines(
+        lines=1,
+        clef="percussion",
+        selector=trinton.select_leaves_by_index([0]),
+        tag=None,
     ),
     voice=score["percussion 1 voice"],
 )
+
+for voice_name in ["flute voice", "bassflute voice"]:
+    trinton.make_music(
+        lambda _: trinton.select_target(_, (1,)),
+        trinton.change_lines(
+            lines=1,
+            clef="percussion",
+            selector=trinton.select_leaves_by_index([0]),
+            tag=None,
+        ),
+        voice=score[voice_name],
+    )
+
 
 # globals
 
@@ -246,7 +262,7 @@ trinton.render_file(
     build_path="/Users/trintonprater/scores/bibliopegy/bibliopegy/build",
     segment_name="01",
     includes=[
-        "/Users/trintonprater/scores/bibliopegy/bibliopegy/build/bibliopegy-stylesheet.ily",
+        "/Users/trintonprater/scores/bibliopegy/bibliopegy/build/section-stylesheet.ily",
         "/Users/trintonprater/abjad/abjad/scm/abjad.ily",
     ],
 )
