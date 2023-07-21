@@ -177,8 +177,6 @@ SynthDef.new(
 
 )
 
-// play when amplitude rises above 20db
-
 (
 
 Synth.new(
