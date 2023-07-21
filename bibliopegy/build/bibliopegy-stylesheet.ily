@@ -9,7 +9,7 @@
 \include "/Users/trintonprater/trinton/lilypond/trinton-markups.ily"
 \include "/Users/trintonprater/abjad-ext-microtones/abjadext/microtones/lilypond/ekmelos-ji-accidental-markups.ily"
 
-afterGraceFraction = #(cons 15 16)
+afterGraceFraction = #(cons 255 256)
 
 \header {
     dedication = \markup \with-color "darksalmon" \column {\line \override #'(font-name . "Bodoni72 Book Italic") { \fontsize #7 { "Anthropodermic" \hspace #41 "Bibliopegy" } } \line { \fontsize #23 \with-color #white "."} }
@@ -28,7 +28,6 @@ afterGraceFraction = #(cons 15 16)
         \numericTimeSignature
         \type Engraver_group
         \consists Axis_group_engraver
-        \consists Bar_number_engraver
         \consists Time_signature_engraver
 		\consists Mark_engraver
 		\consists Metronome_mark_engraver
@@ -36,13 +35,7 @@ afterGraceFraction = #(cons 15 16)
 		\consists Text_engraver
 		\consists Text_spanner_engraver
         \consists Measure_spanner_engraver
-        \override BarNumber.stencil = #(make-stencil-circler 0.1 0.75 ly:text-interface::print)
-        \override BarNumber.Y-extent = ##f
-        \override BarNumber.Y-offset = -8
-        \override BarNumber.extra-offset = #'(-0.5 . 0.5)
-        \override BarNumber.font-size = 4
-        \override BarNumber.padding = 4
-        \override BarNumber.font-name = "Bodoni72 Book Italic"
+        \override BarNumber.stencil = ##f
         \override MetronomeMark.stencil = ##f
 		\override TimeSignature.X-extent = #'(0 . -25)
         \override TimeSignature.Y-extent = #'(25 . 0)
@@ -63,7 +56,7 @@ afterGraceFraction = #(cons 15 16)
         \numericTimeSignature
         \accepts TimeSignatureContext
         \remove Bar_number_engraver
-        proportionalNotationDuration = #(ly:make-moment 1 30)
+        proportionalNotationDuration = #(ly:make-moment 1 60)
         pedalSustainStyle = #'bracket
 
         \override StaffGrouper.staff-staff-spacing = #'((basic-distance . 0) (minimum distance . 5) (padding . 8) (stretchability . 28))
@@ -73,7 +66,6 @@ afterGraceFraction = #(cons 15 16)
         % \override Accidental.X-extent = ##f
 
         \override BarLine.hair-thickness = 1
-        % \override BarLine.X-extent = #'(0 . 0)
         \override BarLine.thick-thickness = #10
         \override BarLine.glyph-name = "!"
         \override BarLine.transparent = ##t
@@ -176,12 +168,36 @@ afterGraceFraction = #(cons 15 16)
         \override DurationLine.breakable = ##t
 
         \override InstrumentName.self-alignment-X = #CENTER
-        % \RemoveAllEmptyStaves
+        \RemoveAllEmptyStaves
+    }
+
+    \context {
+        \Staff
+        \name UnmeteredStaff
+        \type Engraver_group
+
+        \override Accidental.X-extent = ##f
+
+        \override Dots.stencil = ##f
+
+        \override Flag.stencil = ##f
+
+        \override NoteHead.duration-log = 2
+
+        \override Rest.transparent = ##t
+
+        \override Stem.stencil = ##f
+
+        \override Tie.stencil = ##f
+
+        \RemoveAllEmptyStaves
+        \alias Staff
     }
 
     \context {
         \StaffGroup
         \name SquareBracketGroup
+        \accepts UnmeteredStaff
     }
 
     \context {

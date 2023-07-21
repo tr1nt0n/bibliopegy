@@ -3,6 +3,7 @@ import baca
 import evans
 import fractions
 import itertools
+import math
 import trinton
 import random
 import quicktions
@@ -40,6 +41,29 @@ def bibliopegy_score(time_signatures):
             3,
         ],
         inner_staff=["SquareBracketGroup"],
+        staff_types=[
+            "UnmeteredStaff",
+            "Staff",
+            [
+                "UnmeteredStaff",
+                "UnmeteredStaff",
+                "UnmeteredStaff",
+            ],
+            [
+                "UnmeteredStaff",
+                "UnmeteredStaff",
+            ],
+            [
+                "UnmeteredStaff",
+                "UnmeteredStaff",
+                "UnmeteredStaff",
+            ],
+            [
+                "UnmeteredStaff",
+                "UnmeteredStaff",
+                "UnmeteredStaff",
+            ],
+        ],
         time_signatures=time_signatures,
         filler=abjad.Skip,
     )
@@ -310,7 +334,141 @@ def write_short_instrument_names(score):
         )
 
 
+def write_timestamps(global_context, second_range, measure_range):
+    second_range = range(second_range[0], second_range[-1] + 1)
+    markup_list = []
+    for second in second_range:
+        if second > 60:
+            second_stamp = second % 60
+            minute_stamp = second / 60
+            minute_stamp = math.floor(minute_stamp)
+            string = f"{minute_stamp}\\'{second_stamp}\\\""
+            markup = abjad.Markup(
+                f"""\markup \override #'(font-name . "Bodoni72 Book Italic") \\fontsize #6 \center-column {{ \"{string}\"  }}"""
+            )
+            markup_list.append(markup)
+        else:
+            string = f'{second}\\"'
+            markup = abjad.Markup(
+                f"""\markup \override #'(font-name . "Bodoni72 Book Italic") \\fontsize #6 \center-column {{ \"{string}\"  }}"""
+            )
+            markup_list.append(markup)
+
+    trinton.make_music(
+        lambda _: trinton.select_target(_, measure_range),
+        trinton.linear_attachment_command(
+            attachments=markup_list,
+            selector=abjad.select.leaves,
+        ),
+        voice=global_context,
+    )
+
+
+movements = [
+    abjad.Markup(
+        r"""\markup \override #'(font-name . "Source Han Serif SC Bold") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { \center-column { \line{ I. 鬼火 } \line { ( 粦 ) } } }""",
+    ),
+    abjad.Markup(
+        r"""\markup \override #'(font-name . "Bodoni72 Book") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box \line { II. Perros de paja }""",
+    ),
+    abjad.Markup(
+        r"""\markup \override #'(font-name . "Bodoni72 Book") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { \center-column { \line { III. Five Dunes } \line { ( desiderata ) } } }""",
+    ),
+]
+
+movements = [abjad.bundle(movement, r"- \tweak padding #14") for movement in movements]
+
+
 # notation tools
+
+
+def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
+    def line(argument):
+        selections = selector(argument)
+        pties = abjad.select.logical_ties(selections, pitched=True, grace=False)
+
+        if sustained is True:
+
+            relevant_leaf = pties[-1][-1]
+
+            tie_pitch = relevant_leaf.written_pitch.get_name()
+            container = abjad.AfterGraceContainer(f"{tie_pitch}16")
+            abjad.attach(container, relevant_leaf)
+
+            with_grace = abjad.select.with_next_leaf(pties)
+
+            abjad.override(with_grace[-1]).NoteHead.transparent = True
+            abjad.attach(
+                abjad.LilyPondLiteral(
+                    r"\once \override NoteHead.no-ledgers = ##t", "before"
+                ),
+                with_grace[-1],
+            )
+            abjad.attach(
+                abjad.LilyPondLiteral(
+                    r"\once \override Accidental.stencil = ##f", "before"
+                ),
+                with_grace[-1],
+            )
+
+            if color is False:
+                abjad.glissando(
+                    with_grace,
+                    hide_middle_note_heads=True,
+                    allow_repeats=True,
+                    allow_ties=True,
+                )
+
+            else:
+                abjad.glissando(
+                    with_grace,
+                    abjad.Tweak(rf"- \tweak color #{color}"),
+                    hide_middle_note_heads=True,
+                    allow_repeats=True,
+                    allow_ties=True,
+                )
+
+        else:
+
+            for tie in pties:
+                tie_pitch = tie[-1].written_pitch.get_name()
+                container = abjad.AfterGraceContainer(f"{tie_pitch}16")
+                abjad.attach(container, tie[-1])
+
+                with_grace = abjad.select.with_next_leaf(tie)
+
+                abjad.override(with_grace[-1]).NoteHead.transparent = True
+                abjad.attach(
+                    abjad.LilyPondLiteral(
+                        r"\once \override NoteHead.no-ledgers = ##t", "before"
+                    ),
+                    with_grace[-1],
+                )
+                abjad.attach(
+                    abjad.LilyPondLiteral(
+                        r"\once \override Accidental.stencil = ##f", "before"
+                    ),
+                    with_grace[-1],
+                )
+
+                if color is False:
+                    abjad.glissando(
+                        with_grace,
+                        hide_middle_note_heads=True,
+                        allow_repeats=True,
+                        allow_ties=True,
+                    )
+
+                else:
+                    abjad.glissando(
+                        with_grace,
+                        abjad.Tweak(rf"- \tweak color #{color}"),
+                        hide_middle_note_heads=True,
+                        allow_repeats=True,
+                        allow_ties=True,
+                    )
+
+    return line
 
 
 def change_lines(
@@ -331,3 +489,62 @@ def change_lines(
             )
 
     return change
+
+
+# rhythm
+
+
+def aftergrace(notes_string="c'16", selector=trinton.pleaves()):
+    def grace(argument):
+        selections = selector(argument)
+
+        ties = abjad.select.logical_ties(selections)
+
+        containers = [abjad.AfterGraceContainer(notes_string) for _ in ties]
+
+        for container in containers:
+            literal = abjad.LilyPondLiteral(
+                r'\once \override Flag.stroke-style = #"grace"',
+            )
+
+            abjad.attach(literal, container[0])
+
+        for container, tie in zip(containers, ties):
+            abjad.attach(container, tie[-1])
+
+    return grace
+
+
+# tempi
+
+metronome_marks = {
+    "5/7": abjad.MetronomeMark.make_tempo_equation_markup(
+        (1, 8), quicktions.Fraction(857, 20)
+    ),
+    "7/8": abjad.MetronomeMark.make_tempo_equation_markup(
+        (1, 8), quicktions.Fraction(105, 2)
+    ),
+    "60": abjad.MetronomeMark.make_tempo_equation_markup((1, 8), 60),
+    "7/5": abjad.MetronomeMark.make_tempo_equation_markup((1, 8), 84),
+    "5/3": abjad.MetronomeMark.make_tempo_equation_markup((1, 8), 100),
+}
+
+
+def metronome_markups(met_string, parenthesis=False):
+    if parenthesis is False:
+        mark = abjad.LilyPondLiteral(
+            [
+                r"^ \markup {",
+                r"  \raise #9 \with-dimensions-from \null",
+                r"  \override #'(font-size . 5.5)",
+                r"  \concat {",
+                f"      {met_string.string[8:]}",
+                r"  }",
+                r"}",
+            ],
+            site="after",
+        )
+    else:
+        mark = f"\markup {{ \override #'(font-size . 5.5) \concat {{ ( {met_string.string[8:]} ) }} }}"
+
+    return mark
