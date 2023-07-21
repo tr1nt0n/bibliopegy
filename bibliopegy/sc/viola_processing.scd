@@ -171,8 +171,6 @@ SynthDef.new(
 			).range(1, 7),
 		);
 
-		out = out * -1;
-
 		Out.ar(outputBus, out);
 
 }).add;
