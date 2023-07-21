@@ -123,10 +123,12 @@ SynthDef.new(
 SynthDef.new(
 	\blocks,
 	{
-		arg outputBus, envelopeLength, superfluousBullshit;
-		var buffer, signal, envelope, out;
+		arg hardwareInput, outputBus;
+		var buffer, trackedSignal, signal, out;
 
-		buffer = Buffer.readChannel(s, "/Users/trintonprater/scores/bibliopegy/bibliopegy/sc/二_sample.wav", channels:[0],);
+		buffer = Buffer.readChannel(s, "/Users/trintonprater/scores/bibliopegy/bibliopegy/sc/二_sample.wav", channels:[0]);
+
+		trackedSignal = SoundIn.ar(hardwareInput);
 
 		signal = GrainBuf.ar(
 			numChannels: 2,
@@ -135,7 +137,7 @@ SynthDef.new(
 				chaosParam:3.72,
 				freq:10,
 			).range(0.5, 1),
-			sndbuf: b,
+			sndbuf: buffer,
 			rate: Logistic.ar(
 				chaosParam:3.59,
 				freq: 10,
@@ -146,28 +148,30 @@ SynthDef.new(
 			interp: 2,
 		);
 
-		envelope = EnvGen.kr(
-			Env(
-				levels: [0, 1, 1, 0],
-				times: [0.1, IRand(1, 7), 0.1],
-				curve: 8,
+		out = Compander.ar(
+			in: Limiter.ar(
+				in: FreeVerb.ar(
+					in: signal,
+					mix: 0.8,
+					room:0.6,
+					damp:0.6,
+
+				),
+				level: 0.5,
+				dur: 0.01,
 			),
-			doneAction: 2,
-			gate: Impulse.kr(superfluousBullshit),
+			control: trackedSignal,
+			thresh: 0.7,
+			slopeAbove: 1,
+			slopeBelow: 512,
+			clampTime: 0.001,
+			relaxTime: Logistic.ar(
+				chaosParam:3.8,
+				freq: 1,
+			).range(1, 7),
 		);
 
-		out = Limiter.ar(
-			in: FreeVerb.ar(
-				in: signal,
-				mix: 0.8,
-				room:0.6,
-				damp:0.6,
-			),
-			level: 0.5,
-			dur: 0.01,
-		);
-
-		out = out * envelope;
+		out = out * -1;
 
 		Out.ar(outputBus, out);
 
@@ -175,13 +179,14 @@ SynthDef.new(
 
 )
 
+// play when amplitude rises above 20db
 
 (
 
-Synth(
+Synth.new(
 	\blocks, [
+		\hardwareInput,
 		\outputBus,
-		superfluousBullshit:0.5,
 	],
 );
 
