@@ -83,6 +83,8 @@
                                       %! abjad.glissando(7)
                                     - \tweak color #darkred
                                       %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
                                     \glissando
                                     ~
                                       %! abjad.glissando(1)
@@ -118,6 +120,8 @@
                                     c'1
                                       %! abjad.glissando(7)
                                     - \tweak color #(css-color 'indianred)
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
                                     ~
@@ -341,6 +345,10 @@
                                     \clef "percussion"
                                     c'8
                                     \f
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak color #(css-color 'indianred)
                                     - \tweak padding #4
                                     - \abjad-dashed-line-with-hook
@@ -348,8 +356,6 @@
                                     \startTextSpan
                                     - \tweak stencil #constante-hairpin
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     ~
                                       %! abjad.glissando(1)
                                     \hide NoteHead
@@ -381,10 +387,12 @@
                                     \afterGrace
                                     c'16.
                                     \f
-                                    - \tweak stencil #constante-hairpin
-                                    \<
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak stencil #constante-hairpin
+                                    \<
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -453,6 +461,10 @@
                                     \clef "percussion"
                                     c'32
                                     \f
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak color #(css-color 'indianred)
                                     - \tweak padding #4
                                     - \abjad-dashed-line-with-hook
@@ -460,8 +472,6 @@
                                     \startTextSpan
                                     - \tweak stencil #constante-hairpin
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     ~
                                       %! abjad.glissando(1)
                                     \hide NoteHead
@@ -500,10 +510,12 @@
                                     \afterGrace
                                     c'16.
                                     \f
-                                    - \tweak stencil #constante-hairpin
-                                    \<
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak stencil #constante-hairpin
+                                    \<
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -540,10 +552,12 @@
                                     \afterGrace
                                     c'8
                                     \f
-                                    - \tweak stencil #constante-hairpin
-                                    \<
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak stencil #constante-hairpin
+                                    \<
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -570,10 +584,12 @@
                                     r16.
                                     c'32
                                     \f
-                                    - \tweak stencil #constante-hairpin
-                                    \<
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak stencil #constante-hairpin
+                                    \<
                                     ~
                                       %! abjad.glissando(1)
                                     \hide NoteHead
@@ -816,6 +832,10 @@
                                     \once \override NoteHead.stem-attachment = #'(0 . 0.75)
                                     \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                     c'''8
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak circled-tip ##t
                                     - \tweak stencil #abjad-flared-hairpin
                                     \<
@@ -825,8 +845,6 @@
                                     - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { { \fraction 1 6 } \hspace #0.5 { scratch } } \hspace #0.5 }
                                     - \tweak bound-details.right.padding 1
                                     \startTextSpanOne
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     ~
                                     \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                       %! abjad.glissando(1)
@@ -1027,6 +1045,10 @@
                                     \afterGrace
                                     dqs'8
                                     \fff
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak color #(css-color 'seagreen)
                                     - \tweak padding #7
                                     - \abjad-dashed-line-with-hook
@@ -1034,8 +1056,6 @@
                                     \startTextSpan
                                     - \tweak stencil #constante-hairpin
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1144,6 +1164,10 @@
                                     \afterGrace
                                     dqs'8
                                     \fff
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak color #(css-color 'seagreen)
                                     - \tweak padding #7
                                     - \abjad-dashed-line-with-hook
@@ -1151,8 +1175,6 @@
                                     \startTextSpan
                                     - \tweak stencil #constante-hairpin
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1228,6 +1250,10 @@
                                     \afterGrace
                                     c'8
                                     \fff
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak color #darkmagenta
                                     - \tweak padding #7
                                     - \abjad-dashed-line-with-up-hook
@@ -1236,8 +1262,6 @@
                                     \startTextSpan
                                     - \tweak stencil #constante-hairpin
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1295,11 +1319,13 @@
                                     \mf
                                     \afterGrace
                                     d'16
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak circled-tip ##t
                                     - \tweak stencil #abjad-flared-hairpin
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1325,11 +1351,13 @@
                                     }
                                     \afterGrace
                                     b16
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak circled-tip ##t
                                     - \tweak stencil #abjad-flared-hairpin
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1355,11 +1383,13 @@
                                     }
                                     \afterGrace
                                     d'16
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak circled-tip ##t
                                     - \tweak stencil #abjad-flared-hairpin
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1384,11 +1414,13 @@
                                         \ff
                                     }
                                     b8
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak circled-tip ##t
                                     - \tweak stencil #abjad-flared-hairpin
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     ~
                                       %! abjad.glissando(1)
                                     \hide NoteHead
@@ -1432,10 +1464,12 @@
                                         \afterGrace
                                         d'16.
                                         \mp
-                                        - \tweak stencil #constante-hairpin
-                                        \<
+                                          %! abjad.glissando(7)
+                                        - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1509,6 +1543,10 @@
                                     \afterGrace
                                     c'8
                                     \fff
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak color #darkmagenta
                                     - \tweak padding #7
                                     - \abjad-dashed-line-with-up-hook
@@ -1517,8 +1555,6 @@
                                     \startTextSpan
                                     - \tweak stencil #constante-hairpin
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t

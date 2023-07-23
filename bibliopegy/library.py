@@ -372,7 +372,7 @@ def write_timestamps(global_context, second_range, measure_range):
 
 movements = [
     abjad.Markup(
-        r"""\markup \override #'(font-name . "Source Han Serif SC Bold") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { \center-column { \line{ I. 鬼火 } \line { ( 粦 ) } } }""",
+        r"""\markup \override #'(font-name . "Source Han Serif SC Bold") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { \center-column { \line { I. 鬼火 } \line { ( 粦 ) } } }""",
     ),
     abjad.Markup(
         r"""\markup \override #'(font-name . "Bodoni72 Book") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box \line { II. Perros de paja }""",
@@ -423,6 +423,7 @@ def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
                     hide_middle_note_heads=True,
                     allow_repeats=True,
                     allow_ties=True,
+                    zero_padding=True
                 )
 
             else:
@@ -432,6 +433,7 @@ def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
                     hide_middle_note_heads=True,
                     allow_repeats=True,
                     allow_ties=True,
+                    zero_padding=True,
                 )
 
         else:
@@ -463,6 +465,7 @@ def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
                         hide_middle_note_heads=True,
                         allow_repeats=True,
                         allow_ties=True,
+                        zero_padding=True,
                     )
 
                 else:
@@ -472,6 +475,7 @@ def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
                         hide_middle_note_heads=True,
                         allow_repeats=True,
                         allow_ties=True,
+                        zero_padding=True
                     )
 
     return line

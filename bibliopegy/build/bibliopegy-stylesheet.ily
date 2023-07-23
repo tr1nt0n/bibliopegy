@@ -183,6 +183,8 @@ afterGraceFraction = #(cons 255 256)
 
         \override Flag.stencil = ##f
 
+        \override GraceMusic.X-extent = ##f
+
         \override NoteHead.duration-log = 2
 
         \override Rest.transparent = ##t

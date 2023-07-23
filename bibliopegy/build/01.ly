@@ -6,7 +6,7 @@
             \time 3/16
             s1 * 3/16
             - \tweak padding #14
-            ^ \markup \override #'(font-name . "Source Han Serif SC Bold") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { \center-column { \line{ I. 鬼火 } \line { ( 粦 ) } } }
+            ^ \markup \override #'(font-name . "Source Han Serif SC Bold") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { \center-column { \line { I. 鬼火 } \line { ( 粦 ) } } }
             \stopMeasureSpanner
             \time 1/8
             s1 * 1/8
@@ -65,6 +65,8 @@
                             b1.
                               %! abjad.glissando(7)
                             - \tweak color #darkred
+                              %! abjad.glissando(7)
+                            - \abjad-zero-padding-glissando
                               %! abjad.glissando(7)
                             \glissando
                             ~
@@ -716,9 +718,11 @@
                                     r16
                                     eqs16
                                     \p
-                                    \<
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    \<
                                     ~
                                       %! abjad.glissando(1)
                                     \hide NoteHead
@@ -1265,9 +1269,11 @@
                                      #0.5
                                     d,8
                                     \p
-                                    \<
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    \<
                                     ~
                                       %! abjad.glissando(1)
                                     \hide NoteHead
@@ -1594,6 +1600,10 @@
                                     \textSpannerDown
                                     d,8
                                     \p
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
                                     - \tweak color #darkmagenta
                                     - \tweak padding #8.5
                                     - \abjad-dashed-line-with-up-hook
@@ -1601,8 +1611,6 @@
                                     - \tweak bound-details.right.padding -1
                                     \startTextSpan
                                     \<
-                                      %! abjad.glissando(7)
-                                    \glissando
                                     ~
                                     \boxed-markup "Marimba" 1
                                       %! abjad.glissando(1)
