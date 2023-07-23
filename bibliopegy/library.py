@@ -423,7 +423,7 @@ def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
                     hide_middle_note_heads=True,
                     allow_repeats=True,
                     allow_ties=True,
-                    zero_padding=True
+                    zero_padding=True,
                 )
 
             else:
@@ -475,7 +475,7 @@ def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
                         hide_middle_note_heads=True,
                         allow_repeats=True,
                         allow_ties=True,
-                        zero_padding=True
+                        zero_padding=True,
                     )
 
     return line
@@ -551,7 +551,7 @@ metronome_marks = {
     "7/8": abjad.MetronomeMark.make_tempo_equation_markup(
         (1, 8), quicktions.Fraction(105, 2)
     ),
-    "60": abjad.MetronomeMark.make_tempo_equation_markup((1, 8), 60),
+    "1/1": abjad.MetronomeMark.make_tempo_equation_markup((1, 8), 60),
     "7/5": abjad.MetronomeMark.make_tempo_equation_markup((1, 8), 84),
     "5/3": abjad.MetronomeMark.make_tempo_equation_markup((1, 8), 100),
 }
