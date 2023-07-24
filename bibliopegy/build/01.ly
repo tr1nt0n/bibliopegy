@@ -2,7 +2,7 @@
     <<
         \context TimeSignatureContext = "Global Context"
         {
-            \tweak text "37\"" \startMeasureSpanner
+            \tweak text "0\" - 37\"" \startMeasureSpanner
             \time 3/16
             s1 * 3/16
             - \tweak padding #14

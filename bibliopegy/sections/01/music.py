@@ -232,7 +232,7 @@ trinton.make_music(
         attachments=[
             library.movements[0],
             abjad.LilyPondLiteral(
-                r'\tweak text "37\"" \startMeasureSpanner',
+                r'\tweak text "0\" - 37\"" \startMeasureSpanner',
                 "absolute_before",
             ),
             abjad.LilyPondLiteral(r"\stopMeasureSpanner", "after"),
