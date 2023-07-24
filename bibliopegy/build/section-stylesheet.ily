@@ -109,6 +109,7 @@ afterGraceFraction = #(cons 255 256)
         }
 
         \override TextScript.font-name = "Bodoni72 Book Italic"
+        \override TextScript.whiteout-style = #'outline
         \override TextScript.whiteout = 1
 
         \override TextSpanner.font-name = "Bodoni72 Book Italic"

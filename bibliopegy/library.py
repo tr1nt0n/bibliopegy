@@ -521,6 +521,79 @@ _bass_clarinet_multiphonics = {
 # rhythm
 
 
+def dune_ii(voices, measures, rotation=0, dynamics=["ff"]):
+
+    talea_seed = eval("""[[4, 2, 2,], [2, 3, 2], [4, 3, 2], [2, 2, 2]]""")
+    counts_seed = eval("""[[0, 1], [2, 1], [0, 2], [-1, 2]]""")
+
+    talea = trinton.rotated_sequence(talea_seed, rotation)
+    talea = abjad.sequence.flatten(talea)
+
+    counts = trinton.rotated_sequence(counts_seed, rotation + talea[1] * -1)
+    counts = abjad.sequence.flatten(counts)
+
+    for voice in voices:
+        participant_number = voices.index(voice)
+
+        if participant_number % 2 == 0:
+            ratio = "13/2"
+
+        else:
+            ratio = "7/1"
+
+        if voice.name == "bassflute voice":
+            fundamental = "ef'"
+
+        else:
+            fundamental = "ef"
+
+        rest_leaves = [_ for _ in range(0, len(voices))]
+
+        rest_leaves.pop(participant_number)
+
+        dynamic_list = [
+            (abjad.StartHairpin("o<|"), trinton.make_custom_dynamic(_))
+            for _ in dynamics
+        ]
+
+        line_spanner_list = []
+
+        for pair in dynamic_list:
+            line_spanner_list.append(pair[0])
+            line_spanner_list.append(pair[-1])
+
+        trinton.make_music(
+            lambda _: trinton.select_target(_, measures),
+            evans.RhythmHandler(
+                evans.talea(talea, 32, extra_counts=counts, treat_tuplets=False),
+            ),
+            trinton.force_rest(
+                selector=trinton.patterned_tie_index_selector(rest_leaves, len(voices))
+            ),
+            trinton.treat_tuplets(),
+            evans.PitchHandler([fundamental]),
+            evans.PitchHandler([ratio], as_ratios=True),
+            trinton.force_accidentals_command(
+                selector=trinton.logical_ties(first=True, pitched=True, grace=False),
+            ),
+            library.duration_line(),
+            trinton.linear_attachment_command(
+                attachments=cycle(line_spanner_list),
+                selector=trinton.logical_ties(first=True, pitched=True),
+            ),
+            voice=voice,
+        )
+
+        if voice.name == "bassflute voice":
+            trinton.make_music(
+                lambda _: trinton.select_target(_, measures),
+                trinton.ottava_command(
+                    selector=trinton.select_leaves_by_index([0, -1], pitched=True)
+                ),
+                voice=voice,
+            )
+
+
 def aftergrace(notes_string="c'16", selector=trinton.pleaves()):
     def grace(argument):
         selections = selector(argument)

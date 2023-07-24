@@ -14,6 +14,32 @@ score = library.bibliopegy_score([(1, 8) for _ in range(1, 20)])
 
 # music commands
 
+# dune ii music commands
+
+library.dune_ii(
+    voices=[
+        score["cello 1 voice"],
+        score["flute voice"],
+        score["violin voice"],
+        score["bassflute voice"],
+        score["cello 2 voice"],
+    ],
+    measures=(10, 15),
+    rotation=2,
+    dynamics=["p +", "mf", "f"],
+)
+
+# flute music commands
+
+for voice_name in ["flute voice", "bassflute voice"]:
+    trinton.make_music(
+        lambda _: trinton.select_target(_, (11, 12)),
+        library.change_lines(
+            lines=5,
+        ),
+        voice=score[voice_name],
+    )
+
 # tape music commands
 
 trinton.make_music(
