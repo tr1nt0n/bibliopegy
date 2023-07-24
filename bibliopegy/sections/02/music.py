@@ -253,7 +253,7 @@ trinton.make_music(
                 1,
                 0.5,
                 1,
-                right_padding=-1,
+                right_padding=-6,
             ),
             abjad.StartHairpin("o<|"),
             abjad.Dynamic("ff"),
@@ -373,7 +373,7 @@ for measure in [1, 11]:
         trinton.linear_attachment_command(
             attachments=[
                 evans.make_fancy_gliss(
-                    7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, right_padding=-2
+                    7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, 7, right_padding=-6
                 ),
                 abjad.Dynamic("fff"),
                 abjad.StartHairpin("--"),

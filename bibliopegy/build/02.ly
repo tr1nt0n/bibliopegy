@@ -812,7 +812,7 @@
                                           (166 0 166.5 1 167 0)
                                           (167 0 167.5 -1 168 0)
                                      )
-                                     #-1
+                                     #-6
                                     \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                     \once \override NoteHead.no-ledgers = ##t
                                     \once \override NoteHead.stem-attachment = #'(0 . 0.75)
@@ -1226,7 +1226,7 @@
                                           (26 0 26.5 7 27 0)
                                           (27 0 27.5 -7 28 0)
                                      )
-                                     #-2
+                                     #-6
                                     \override Staff.BarLine.bar-extent = #'(-0.01 . 0.01)
                                     \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { percussion i }
                                     \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { perc. i }
@@ -1521,7 +1521,7 @@
                                           (26 0 26.5 7 27 0)
                                           (27 0 27.5 -7 28 0)
                                      )
-                                     #-2
+                                     #-6
                                     \override Staff.BarLine.bar-extent = #'(-0.01 . 0.01)
                                     \textSpannerDown
                                     \boxed-markup "Timpani on Cymbal" 1

@@ -1993,7 +1993,7 @@
                                           (28 0 28.5 5 29 0)
                                           (29 0 29.5 -5 30 0)
                                      )
-                                     #-2
+                                     #-6
                                     \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { violoncello iii }
                                     \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vc. iii }
                                     \clef "bass"
@@ -2080,7 +2080,7 @@
                                           (42 0 42.5 7 43 0)
                                           (43 0 43.5 -7 44 0)
                                      )
-                                     #-2
+                                     #-6
                                     d,8
                                     \ff
                                       %! abjad.glissando(7)
@@ -2220,7 +2220,7 @@
                                           (102 0 102.5 0.5 103 0)
                                           (103 0 103.5 -0.5 104 0)
                                      )
-                                     #-2
+                                     #-6
                                     d,8
                                     \mf
                                       %! abjad.glissando(7)
@@ -2321,7 +2321,7 @@
                                           (54 0 54.5 3 55 0)
                                           (55 0 55.5 -3 56 0)
                                      )
-                                     #-2
+                                     #-6
                                     d,32
                                     \p
                                       %! abjad.glissando(7)
@@ -2394,7 +2394,7 @@
                                           (22 0 22.5 5 23 0)
                                           (23 0 23.5 -5 24 0)
                                      )
-                                     #-2
+                                     #-6
                                     d,16
                                     \mp
                                       %! abjad.glissando(7)

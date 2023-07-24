@@ -130,6 +130,7 @@ trinton.make_music(
                 0.5,
                 1,
                 0.5,
+                right_padding=-6,
             ),
             abjad.Dynamic("p"),
             abjad.StartHairpin("<"),

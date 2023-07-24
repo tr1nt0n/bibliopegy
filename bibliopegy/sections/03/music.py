@@ -192,7 +192,7 @@ trinton.make_music(
     voice=score["bassclarinet voice"],
 )
 
-# cello 3 voice
+# cello 3 music commands
 
 trinton.make_music(
     lambda _: trinton.select_target(_, (1, 19)),
@@ -289,7 +289,7 @@ trinton.make_music(
     trinton.linear_attachment_command(
         attachments=[
             evans.make_fancy_gliss(
-                0, 0, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 2, 2, 3, 3, 4, 5, right_padding=-2
+                0, 0, 0.5, 0.5, 0.5, 0.5, 1, 1, 1, 2, 2, 3, 3, 4, 5, right_padding=-6
             ),
             evans.make_fancy_gliss(
                 6,
@@ -314,7 +314,7 @@ trinton.make_music(
                 7,
                 6,
                 7,
-                right_padding=-2,
+                right_padding=-6,
             ),
             evans.make_fancy_gliss(
                 0.5,
@@ -369,7 +369,7 @@ trinton.make_music(
                 0.5,
                 0.5,
                 0.5,
-                right_padding=-2,
+                right_padding=-6,
             ),
             evans.make_fancy_gliss(
                 7,
@@ -400,10 +400,10 @@ trinton.make_music(
                 2,
                 3,
                 3,
-                right_padding=-2,
+                right_padding=-6,
             ),
             evans.make_fancy_gliss(
-                0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1, 2, 3, 4, 5, right_padding=-2
+                0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1, 2, 3, 4, 5, right_padding=-6
             ),
         ],
         selector=trinton.select_logical_ties_by_index(
