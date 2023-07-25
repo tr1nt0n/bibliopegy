@@ -209,7 +209,7 @@ for voice_name in ["flute voice", "bassflute voice"]:
         lambda _: trinton.select_target(_, (1,)),
         trinton.change_lines(
             lines=1,
-            clef="percussion",
+            clef="varpercussion",
             selector=trinton.select_leaves_by_index([0]),
             tag=None,
         ),

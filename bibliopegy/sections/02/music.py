@@ -87,7 +87,7 @@ trinton.make_music(
         )
     ),
     library.duration_line(),
-    trinton.change_lines(lines=1, clef="percussion", tag=None),
+    trinton.change_lines(lines=1, clef="varpercussion", tag=None),
     trinton.attachment_command(
         attachments=[
             abjad.Dynamic("f"),
@@ -124,7 +124,7 @@ trinton.make_music(
         )
     ),
     library.duration_line(),
-    trinton.change_lines(lines=1, clef="percussion", tag=None),
+    trinton.change_lines(lines=1, clef="varpercussion", tag=None),
     trinton.attachment_command(
         attachments=[
             abjad.Dynamic("f"),

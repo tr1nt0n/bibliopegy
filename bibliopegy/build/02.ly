@@ -328,7 +328,7 @@
                                     \stopStaff \startStaff
                                     \staff-line-count 1
                                     \override Staff.BarLine.bar-extent = #'(-0.01 . 0.01)
-                                    \clef "percussion"
+                                    \clef "varpercussion"
                                     c'8
                                     \f
                                       %! abjad.glissando(7)
@@ -444,7 +444,7 @@
                                     r16.
                                     \staff-line-count 1
                                     \override Staff.BarLine.bar-extent = #'(-0.01 . 0.01)
-                                    \clef "percussion"
+                                    \clef "varpercussion"
                                     c'32
                                     \f
                                       %! abjad.glissando(7)
