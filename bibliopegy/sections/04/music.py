@@ -12,6 +12,8 @@ from bibliopegy import ts
 
 score = library.bibliopegy_score([(1, 8) for _ in range(1, 22)])
 
+library.set_all_time_signatures(score=score)
+
 # music commands
 
 # tape music commands

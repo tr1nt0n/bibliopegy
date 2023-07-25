@@ -125,40 +125,6 @@ def return_fractional_scratch_markup(fraction):
     return markup
 
 
-def make_timestamp_markups(global_context):
-    measures = abjad.select.group_by_measure(global_context)
-    global_context_length = len(measures)
-    measure_range = range(1, global_context_length + 1)
-
-    for measure, number in zip(measures, measure_range):
-        leaf = abjad.select.leaf(measure, 0)
-        mm_rest = abjad.MultimeasureRest(1, multiplier=(1, 4))
-
-        indicators = abjad.get.indicators(leaf)
-
-        abjad.attach(
-            abjad.Markup(
-                f"""\markup \override #'(font-name . "Bodoni72 Book") \\fontsize #3 \center-column {{ \"{number}\\\"\" }}""",
-            ),
-            mm_rest,
-        )
-
-        abjad.attach(
-            abjad.LilyPondLiteral(
-                r"\once \override MultiMeasureRest.transparent = ##t", "opening"
-            ),
-            mm_rest,
-        )
-
-        for indicator in indicators:
-            abjad.attach(indicator, mm_rest)
-
-        abjad.mutate.replace(
-            leaf,
-            mm_rest,
-        )
-
-
 all_instrument_names = [
     abjad.InstrumentName(
         context="Staff",
@@ -388,6 +354,13 @@ movements = [abjad.bundle(movement, r"- \tweak padding #14") for movement in mov
 # notation tools
 
 
+def set_all_time_signatures(score):
+    for voice_name in all_voice_names:
+        abjad.attach(
+            abjad.TimeSignature((1, 8)), abjad.select.leaf(score[voice_name], 0)
+        )
+
+
 def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
     def line(argument):
         selections = selector(argument)
@@ -594,6 +567,73 @@ def dune_ii(voices, measures, rotation=0, dynamics=["ff"]):
             )
 
 
+def trombone_alpha(voices, measures, rotation=0, dynamics=["ff"]):
+
+    talea_seed = eval("""[[3, 2, 5,], [4, 3, 4,], [2, 5, 2,], [2, 3, 4,]]""")
+    counts_seed = eval("""[[0, 4], [-2, 1], [0, 5], [-3, 2]]""")
+
+    for voice in voices:
+        participant_number = voices.index(voice)
+
+        if voice.name == "tenortrombone voice":
+            ratio = "160/81"
+
+        elif voice.name == "basstrombone voice":
+            ratio = "13/8"
+            rotation = rotation + 1
+
+        talea = trinton.rotated_sequence(talea_seed, rotation)
+        talea = abjad.sequence.flatten(talea)
+
+        counts = trinton.rotated_sequence(counts_seed, rotation + talea[1] * -1)
+        counts = abjad.sequence.flatten(counts)
+
+        rest_leaves = [_ for _ in range(0, len(voices))]
+
+        rest_leaves.pop(participant_number)
+
+        dynamic_list = [
+            (abjad.StartHairpin("o<|"), trinton.make_custom_dynamic(_))
+            for _ in dynamics
+        ]
+
+        line_spanner_list = []
+
+        for pair in dynamic_list:
+            line_spanner_list.append(pair[0])
+            line_spanner_list.append(pair[-1])
+
+        trinton.make_music(
+            lambda _: trinton.select_target(_, measures),
+            evans.RhythmHandler(
+                evans.talea(talea, 32, extra_counts=counts, treat_tuplets=False),
+            ),
+            trinton.force_rest(
+                selector=trinton.patterned_tie_index_selector(rest_leaves, len(voices))
+            ),
+            trinton.treat_tuplets(),
+            evans.PitchHandler(["d,"]),
+            evans.PitchHandler([ratio], as_ratios=True),
+            trinton.force_accidentals_command(
+                selector=trinton.logical_ties(first=True, pitched=True, grace=False),
+            ),
+            library.duration_line(),
+            trinton.linear_attachment_command(
+                attachments=cycle(line_spanner_list),
+                selector=trinton.logical_ties(first=True, pitched=True),
+            ),
+            trinton.hooked_spanner_command(
+                string=r"""\markup \with-color "darksalmon" { "with vinyl covers" }""",
+                selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+                padding=5.5,
+                right_padding=0,
+                full_string=True,
+                tweaks=[r"- \tweak color #(css-color 'darksalmon)"],
+            ),
+            voice=voice,
+        )
+
+
 def aftergrace(notes_string="c'16", selector=trinton.pleaves()):
     def grace(argument):
         selections = selector(argument)
@@ -648,3 +688,50 @@ def metronome_markups(met_string, parenthesis=False):
         mark = f"\markup {{ \override #'(font-size . 5.5) \concat {{ ( {met_string.string[8:]} ) }} }}"
 
     return mark
+
+
+# time signatures
+
+
+def write_simultaneous_time_signatures(voice, signature_pairs, measure_range):
+    time_signatures = [abjad.TimeSignature(_) for _ in signature_pairs]
+    new_skips = [abjad.Skip((1, 1), multiplier=_) for _ in signature_pairs]
+    old_skips = trinton.select_target(voice, measure_range)
+
+    new_skips_duration = abjad.get.duration(new_skips)
+    old_skips_duration = abjad.get.duration(old_skips)
+
+    if new_skips_duration != old_skips_duration:
+        raise Exception(
+            "Duration of time signatures in 8th notes must be equal to duration of selection in seconds."
+        )
+
+    for new_skip, time_signature in zip(new_skips, time_signatures):
+        abjad.attach(
+            abjad.LilyPondLiteral(
+                r"\once \override Staff.BarLine.transparent = ##f", "before"
+            ),
+            new_skip,
+        )
+
+        abjad.attach(
+            abjad.LilyPondLiteral(
+                r"\once \override Staff.BarLine.transparent = ##f", "after"
+            ),
+            new_skip,
+        )
+
+        abjad.attach(
+            abjad.LilyPondLiteral(
+                r"\once \override Staff.TimeSignature.transparent = ##f", "before"
+            ),
+            new_skip,
+        )
+
+        abjad.attach(time_signature, new_skip)
+
+    abjad.mutate.replace(old_skips, new_skips)
+
+    new_range = trinton.select_target(voice, measure_range)
+    reset_skip = abjad.select.with_next_leaf(new_range)[-1]
+    abjad.attach(abjad.TimeSignature((1, 8)), reset_skip)

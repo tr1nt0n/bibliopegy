@@ -16,12 +16,11 @@
     <<
         \context TimeSignatureContext = "Global Context"
         {
-            \tweak text "0\" - 37\"" \startMeasureSpanner
-            \time 3/16
-            s1 * 3/16
+            \time 1/8
+            s1 * 1/8
+            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "0\" - 37\""  }
             - \tweak padding #14
             ^ \markup \override #'(font-name . "Source Han Serif SC Bold") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { \center-column { \line { I. 鬼火 } \line { ( 粦 ) } } }
-            \stopMeasureSpanner
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "38\""  }
@@ -76,6 +75,7 @@
                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { tape }
                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic"){ tp. }
                             \clef "percussion"
+                            \time 1/8
                             b1.
                               %! abjad.glissando(7)
                             - \tweak color #darkred
@@ -93,7 +93,7 @@
                               %! abjad.glissando(1)
                             \override NoteHead.no-ledgers = ##t
                             \afterGrace
-                            b8.
+                            b8
                             {
                                 \once \override Accidental.stencil = ##f
                                 \once \override NoteHead.no-ledgers = ##t
@@ -119,14 +119,17 @@
                         {
                               %! +SCORE
                             \once \override Staff.BarLine.transparent = ##f
+                            \staff-line-count 1
+                            \override Staff.BarLine.bar-extent = #'(-0.01 . 0.01)
                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { viola }
                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vla. }
                               %! +SCORE
                             \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                            \clef "altovarC"
+                            \clef "varpercussion"
                               %! +SCORE
                             \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 3/16
+                            \time 1/8
+                            R1 * 1/8
                               %! +SCORE
                             \stopStaff \startStaff
                               %! +SCORE
@@ -261,7 +264,8 @@
                                     \clef "varpercussion"
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                       %! +SCORE
@@ -392,7 +396,8 @@
                                     \clef "varpercussion"
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                       %! +SCORE
@@ -520,7 +525,8 @@
                                     \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                       %! +SCORE
@@ -654,7 +660,8 @@
                                     \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                       %! +SCORE
@@ -787,7 +794,8 @@
                                     \clef "percussion"
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                       %! +SCORE
@@ -921,7 +929,8 @@
                                     \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                       %! +SCORE
@@ -1049,7 +1058,8 @@
                                     \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                       %! +SCORE
@@ -1178,7 +1188,8 @@
                                     \clef "bass"
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                       %! +SCORE
@@ -1348,9 +1359,11 @@
                                     \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { t. tbn. }
                                       %! +SCORE
                                     \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                    \clef "bass"
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                       %! +SCORE
@@ -1479,7 +1492,8 @@
                                     \clef "bass"
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                       %! +SCORE
@@ -1608,7 +1622,8 @@
                                     \clef "bass"
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 3/16
+                                    \time 1/8
+                                    R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
                                     \textSpannerDown

@@ -54,6 +54,7 @@
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
+                            \time 1/8
                             R1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
@@ -164,6 +165,7 @@
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
+                            \time 1/8
                             R1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
@@ -278,6 +280,7 @@
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 1/8
                                     R1 * 1/8
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
@@ -438,6 +441,7 @@
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 1/8
                                     R1 * 1/8
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
@@ -638,6 +642,7 @@
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 1/8
                                     R1 * 1/8
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
@@ -1028,6 +1033,7 @@
                                 {
                                     \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { bass clarinet }
                                     \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic"){ b. cl. }
+                                    \time 1/8
                                     \afterGrace
                                     dqs'8
                                     \fff
@@ -1233,6 +1239,7 @@
                                     \textSpannerDown
                                     \boxed-markup "Timpani on Cymbal" 1
                                     \clef "percussion"
+                                    \time 1/8
                                     \afterGrace
                                     c'8
                                     \fff
@@ -1589,6 +1596,7 @@
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 1/8
                                     R1 * 1/8
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
@@ -1699,6 +1707,7 @@
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 1/8
                                     R1 * 1/8
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
@@ -1809,6 +1818,7 @@
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 1/8
                                     R1 * 1/8
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
@@ -1925,6 +1935,7 @@
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 1/8
                                     R1 * 1/8
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
@@ -2035,6 +2046,7 @@
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 1/8
                                     R1 * 1/8
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
@@ -2145,6 +2157,7 @@
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 1/8
                                     R1 * 1/8
                                       %! +SCORE
                                 %%% \stopStaff \startStaff

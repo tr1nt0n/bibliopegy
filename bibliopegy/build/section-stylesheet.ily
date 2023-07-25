@@ -12,6 +12,7 @@
 afterGraceFraction = #(cons 255 256)
 
 \layout {
+    \enablePolymeter
     \accidentalStyle neo-modern
     ragged-bottom = ##t
     ragged-last = ##t
@@ -35,13 +36,6 @@ afterGraceFraction = #(cons 255 256)
         \override VerticalAxisGroup.staff-staff-spacing = #'((basic-distance . 14) (minimum-distance . 14) (padding . 10) (stretchability . 0))
         \override TimeSignature.break-visibility = #end-of-line-invisible
         \override TimeSignature.transparent = ##t
-        % \override TimeSignature.font-size = 10
-		% \override TimeSignature.font-name = "Bodoni72 Book"
-        % \override TimeSignature.X-offset = -2.5
-        % \override TimeSignature.Y-offset = 3
-        % \override TimeSignature.whiteout-style = #'outline
-        % \override TimeSignature.whiteout = 1
-        % \override TimeSignature.layer = 4
     }
 
     \context {
@@ -57,12 +51,6 @@ afterGraceFraction = #(cons 255 256)
 
         \override AccidentalSuggestion.avoid-slur = #'ignore
         % \override Accidental.X-extent = ##f
-
-        \override BarLine.hair-thickness = 1
-        \override BarLine.thick-thickness = #10
-        \override BarLine.glyph-name = "!"
-        \override BarLine.transparent = ##t
-        \override BarLine.X-extent = #'(0 . 0)
 
         autoBeaming = ##f
         \override Beam.breakable = ##t
@@ -116,6 +104,10 @@ afterGraceFraction = #(cons 255 256)
         % \override TextSpanner.whiteout-style = #'outline
         \override TextSpanner.whiteout = 1
 
+        \override Tie.stencil = #flare-tie
+        \override Tie.height-limit = 6
+        \override Tie.thickness = 1.5
+
         \override TrillSpanner.bound-details.right.padding = #-5
 
         \shape #'((0 . 0) (0.5 . 0) (1 . 0) (2 . 0)) LaissezVibrerTie
@@ -153,10 +145,20 @@ afterGraceFraction = #(cons 255 256)
     \context {
         \Staff
         fontSize = #-0.25
-        \remove Time_signature_engraver
         \consists Duration_line_engraver
 
-        \override TimeSignature.stencil = ##f
+        \override BarLine.hair-thickness = 2
+        \override BarLine.thick-thickness = #10
+        \override BarLine.transparent = ##t
+        \override BarLine.X-extent = #'(0 . 0)
+
+        \override TimeSignature.font-size = 6
+        \override TimeSignature.font-name = "Bodoni72 Book"
+        \override TimeSignature.whiteout-style = #'outline
+        \override TimeSignature.whiteout = 1
+        \override TimeSignature.layer = 4
+        \override TimeSignature.break-visibility = #end-of-line-invisible
+        \override TimeSignature.transparent = ##t
 
         \override DurationLine.style = #'line
         \override DurationLine.thickness = #3
@@ -164,7 +166,7 @@ afterGraceFraction = #(cons 255 256)
         \override DurationLine.breakable = ##t
 
         \override InstrumentName.self-alignment-X = #CENTER
-        \RemoveAllEmptyStaves
+        % \RemoveAllEmptyStaves
     }
 
     \context {
@@ -174,6 +176,10 @@ afterGraceFraction = #(cons 255 256)
 
         \override Accidental.X-extent = ##f
 
+        \override BarLine.hair-thickness = 1
+        \override BarLine.thick-thickness = #10
+        \override BarLine.glyph-name = "!"
+
         \override Dots.stencil = ##f
 
         \override Flag.stencil = ##f
@@ -182,11 +188,15 @@ afterGraceFraction = #(cons 255 256)
 
         \override NoteHead.duration-log = 2
 
+        \override MultiMeasureRestNumber.stencil = ##f
+
         \override Rest.transparent = ##t
 
         \override Stem.stencil = ##f
 
         \override Tie.stencil = ##f
+
+        \override TimeSignature.stencil = ##f
 
         \override TupletBracket.stencil = ##f
         \override TupletNumber.stencil = ##f

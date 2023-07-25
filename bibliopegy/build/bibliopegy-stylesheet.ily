@@ -11,14 +11,8 @@
 
 afterGraceFraction = #(cons 255 256)
 
-\header {
-    dedication = \markup \with-color "darksalmon" \column {\line \override #'(font-name . "Bodoni72 Book Italic") { \fontsize #7 { "Anthropodermic" \hspace #41 "Bibliopegy" } } \line { \fontsize #23 \with-color #white "."} }
-    title = \markup \with-color "indianred" \override #'(font-name . "Source Han Serif SC Bold") \center-column { \line \fontsize #19 { α: 刍 狗 } \fontsize #23 \with-color #white "."}
-    subtitle = \markup \with-color "darkred" \fontsize #5 \center-column { \line { \override #'(font-name . "Bodoni72 Book Italic") { "for Viola Solo, four Chamber Ensembles, and Electronics" } } \fontsize #0.01 \with-color #white "."}
-    composer = \markup \override #'(font-name . "Bodoni72") \fontsize #4 {"Trinton Hlynn (*2000)"}
-}
-
 \layout {
+    \enablePolymeter
     \accidentalStyle neo-modern
     ragged-bottom = ##t
     ragged-last = ##t
@@ -63,12 +57,7 @@ afterGraceFraction = #(cons 255 256)
         \override StaffGrouper.staffgroup-staff-spacing = #'((basic-distance . 0) (minimum distance . 5) (padding . 8) (stretchability . 28))
 
         \override AccidentalSuggestion.avoid-slur = #'ignore
-
-        \override BarLine.hair-thickness = 1
-        \override BarLine.thick-thickness = #10
-        \override BarLine.glyph-name = "!"
-        \override BarLine.transparent = ##t
-        \override BarLine.X-extent = #'(0 . 0)
+        % \override Accidental.X-extent = ##f
 
         autoBeaming = ##f
         \override Beam.breakable = ##t
@@ -122,6 +111,10 @@ afterGraceFraction = #(cons 255 256)
         % \override TextSpanner.whiteout-style = #'outline
         \override TextSpanner.whiteout = 1
 
+        \override Tie.stencil = #flare-tie
+        \override Tie.height-limit = 6
+        \override Tie.thickness = 1.5
+
         \override TrillSpanner.bound-details.right.padding = #-5
 
         \shape #'((0 . 0) (0.5 . 0) (1 . 0) (2 . 0)) LaissezVibrerTie
@@ -159,10 +152,20 @@ afterGraceFraction = #(cons 255 256)
     \context {
         \Staff
         fontSize = #-0.25
-        \remove Time_signature_engraver
         \consists Duration_line_engraver
 
-        \override TimeSignature.stencil = ##f
+        \override BarLine.hair-thickness = 3
+        \override BarLine.thick-thickness = #10
+        \override BarLine.transparent = ##t
+        \override BarLine.X-extent = #'(0 . 0)
+
+        \override TimeSignature.font-size = 6
+        \override TimeSignature.font-name = "Bodoni72 Book"
+        \override TimeSignature.whiteout-style = #'outline
+        \override TimeSignature.whiteout = 1
+        \override TimeSignature.layer = 4
+        \override TimeSignature.break-visibility = #end-of-line-invisible
+        \override TimeSignature.transparent = ##t
 
         \override DurationLine.style = #'line
         \override DurationLine.thickness = #3
@@ -180,6 +183,10 @@ afterGraceFraction = #(cons 255 256)
 
         \override Accidental.X-extent = ##f
 
+        \override BarLine.hair-thickness = 1
+        \override BarLine.thick-thickness = #10
+        \override BarLine.glyph-name = "!"
+
         \override Dots.stencil = ##f
 
         \override Flag.stencil = ##f
@@ -188,11 +195,15 @@ afterGraceFraction = #(cons 255 256)
 
         \override NoteHead.duration-log = 2
 
+        \override MultiMeasureRestNumber.stencil = ##f
+
         \override Rest.transparent = ##t
 
         \override Stem.stencil = ##f
 
         \override Tie.stencil = ##f
+
+        \override TimeSignature.stencil = ##f
 
         \override TupletBracket.stencil = ##f
         \override TupletNumber.stencil = ##f

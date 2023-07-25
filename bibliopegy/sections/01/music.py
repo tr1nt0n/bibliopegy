@@ -12,7 +12,7 @@ from bibliopegy import ts
 
 score = library.bibliopegy_score(
     [
-        (3, 16),
+        (1, 8),
         (1, 8),
         (1, 8),
         (1, 8),
@@ -27,6 +27,8 @@ score = library.bibliopegy_score(
         (1, 8),
     ]
 )
+
+library.set_all_time_signatures(score=score)
 
 # music commands
 
@@ -185,13 +187,23 @@ trinton.make_music(
 # initial cleffing
 
 for voice_name in [
+    "tenortrombone voice",
     "basstrombone voice",
     "cello 3 voice",
     "percussion 2 voice",
 ]:
     abjad.attach(abjad.Clef("bass"), abjad.select.leaf(score[voice_name], 0))
 
-abjad.attach(abjad.Clef("altovarC"), abjad.select.leaf(score["viola voice"], 0))
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1,)),
+    trinton.change_lines(
+        lines=1,
+        clef="varpercussion",
+        selector=trinton.select_leaves_by_index([0]),
+        tag=None,
+    ),
+    voice=score["viola voice"],
+)
 
 trinton.make_music(
     lambda _: trinton.select_target(_, (1,)),
@@ -232,14 +244,17 @@ trinton.make_music(
     trinton.attachment_command(
         attachments=[
             library.movements[0],
-            abjad.LilyPondLiteral(
-                r'\tweak text "0\" - 37\"" \startMeasureSpanner',
-                "absolute_before",
-            ),
-            abjad.LilyPondLiteral(r"\stopMeasureSpanner", "after"),
         ],
         selector=trinton.select_leaves_by_index([0]),
         direction=abjad.UP,
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Markup(
+                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "0\" - 37\""  }"""
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
     ),
     voice=score["Global Context"],
 )
