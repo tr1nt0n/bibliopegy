@@ -41,28 +41,94 @@ trinton.make_music(
 library.write_simultaneous_time_signatures(
     score=score,
     voice_name="viola voice",
-    signature_pairs=[(2, 8), (3, 16), (1, 16)],
+    signature_pairs=[(4, 16), (6, 32), (1, 16)],
     measure_range=(4, 7),
 )
 
 library.make_metric_music(
     evans.RhythmHandler(evans.tuplet([(3, 2)])),
-    evans.RewriteMeterCommand(boundary_depth=-2),
     library.change_lines(lines=1, clef="varpercussion"),
-    rmakers.beam,
+    abjad.beam,
     library.duration_line(viola=True),
     trinton.attachment_command(
         attachments=[
-            library.metronome_markups(library._metronome_marks["1/1"]),
+            library.metronome_markups(library._metronome_marks["1/1"], height=12),
         ],
         selector=trinton.select_leaves_by_index([0]),
         direction=abjad.UP,
     ),
+    trinton.linear_attachment_command(
+        attachments=[
+            trinton.make_custom_dynamic("s mp"),
+            abjad.StartHairpin("<"),
+            abjad.Dynamic("f"),
+            abjad.Dynamic("mf"),
+            abjad.StartHairpin("<|"),
+            abjad.Dynamic("f"),
+        ],
+        selector=trinton.select_leaves_by_index([0, 0, 1, 2, 2, 3]),
+    ),
+    library.boxed_markup(string="Styrofoam", site="opening"),
     trinton.notehead_bracket_command(),
     score=score,
     voice_name="viola voice",
     second_range=(4, 7),
     measure_number_range=(1,),
+)
+
+library.make_metric_music(
+    evans.RhythmHandler(
+        evans.talea(
+            [
+                3,
+            ],
+            32,
+        )
+    ),
+    evans.PitchHandler([[2, -1]]),
+    abjad.beam,
+    library.duration_line(selector=trinton.select_leaves_by_index([-1]), viola=True),
+    trinton.attachment_command(
+        attachments=[abjad.Glissando(zero_padding=True)],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    library.change_lines(lines=4, clef="varpercussion"),
+    library.boxed_markup(string="Viola", site="opening"),
+    trinton.linear_attachment_command(
+        attachments=[abjad.Dynamic("p"), abjad.StartHairpin("--"), abjad.StopHairpin()],
+        selector=trinton.select_leaves_by_index([0, 0, -1]),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "indianred" \center-column { \line { legno molto pont. } \line { crine dietro pont. } }""",
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+        padding=13.5,
+        right_padding=0,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'indianred)"],
+        command="One",
+    ),
+    trinton.spanner_command(
+        strings=library.return_fraction_string_list([(1, 1), (0, 1), (1, 1)]),
+        selector=trinton.select_logical_ties_by_index(
+            [
+                0,
+                1,
+                1,
+                2,
+            ],
+            first=True,
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=8.5,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+        command="Two",
+    ),
+    score=score,
+    voice_name="viola voice",
+    second_range=(4, 7),
+    measure_number_range=(2,),
 )
 
 # trombone music commands

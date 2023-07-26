@@ -91,7 +91,14 @@ all_voice_names = eval(
     ]"""
 )
 
-# markup
+# markups
+
+
+def return_fraction_string_list(tups):
+    return [
+        rf"""\markup \with-color "darkred" \concat {{ \upright \fraction {tup[0]} {tup[-1]} \hspace #0.5 }}"""
+        for tup in tups
+    ]
 
 
 def boxed_markup(
@@ -377,8 +384,16 @@ def duration_line(
 
             relevant_leaf = pties[-1][-1]
 
-            tie_pitch = relevant_leaf.written_pitch.get_name()
-            container = (abjad.AfterGraceContainer(f"{tie_pitch}16"),)
+            if isinstance(relevant_leaf, abjad.Chord):
+                tie_pitches = relevant_leaf.written_pitches
+                pitch_string = " "
+                for pitch in tie_pitches:
+                    pitch_string += pitch.get_name()
+                    pitch_string += " "
+                container = (abjad.AfterGraceContainer(f"<{pitch_string}>16"),)
+            else:
+                tie_pitch = relevant_leaf.written_pitch.get_name()
+                container = (abjad.AfterGraceContainer(f"{tie_pitch}16"),)
 
             abjad.attach(container, relevant_leaf)
 
@@ -435,8 +450,18 @@ def duration_line(
         else:
 
             for tie in pties:
-                tie_pitch = tie[-1].written_pitch.get_name()
-                container = abjad.AfterGraceContainer(f"{tie_pitch}16")
+                relevant_leaf = tie[-1]
+                if isinstance(relevant_leaf, abjad.Chord):
+                    tie_pitches = relevant_leaf.written_pitches
+                    pitch_string = " "
+                    for pitch in tie_pitches:
+                        pitch_string += pitch.get_name()
+                        pitch_string += " "
+                    container = abjad.AfterGraceContainer(f"<{pitch_string}>16")
+                else:
+                    tie_pitch = relevant_leaf.written_pitch.get_name()
+                    container = abjad.AfterGraceContainer(f"{tie_pitch}16")
+
                 abjad.attach(container, tie[-1])
 
                 with_grace = abjad.select.with_next_leaf(tie)
@@ -761,7 +786,7 @@ _metronome_marks = {
 
 def metronome_markups(
     met_string,
-    height=7.5,
+    height=8,
     parenthesis=False,
 ):
     if parenthesis is False:

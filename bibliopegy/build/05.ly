@@ -252,17 +252,19 @@
                                     \times 4/5
                                     {
                                         \staff-line-count 1
+                                        \boxed-markup "Styrofoam" 1
                                         \clef "varpercussion"
                                         \afterGrace
                                         c'8.
-                                          %! rmakers.beam()
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "s mp"))
                                         [
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        \<
                                         ^ \markup {
-                                          \raise #7.5 \with-dimensions-from \null
+                                          \raise #12 \with-dimensions-from \null
                                           \override #'(font-size . 4)
                                           \concat {
                                               \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -291,15 +293,18 @@
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
                                             c'16
+                                            \f
                                         }
                                         \afterGrace
                                         c'8
-                                          %! rmakers.beam()
+                                        \mf
                                         ]
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #abjad-flared-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override Flag.stroke-style = #"grace"
@@ -323,22 +328,83 @@
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
                                             c'16
+                                            \f
                                         }
                                     }
-                                    R1 * 3/16
+                                    \staff-line-count 4
+                                    \boxed-markup "Viola" 1
+                                    \clef "varpercussion"
+                                    <b d'>16.
+                                    \p
+                                    [
+                                    - \abjad-zero-padding-glissando
+                                    \glissando
+                                    - \tweak color #(css-color 'indianred)
+                                    - \tweak padding #13.5
+                                    - \abjad-dashed-line-with-hook
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "indianred" \center-column { \line { legno molto pont. } \line { crine dietro pont. } } \hspace #0.5 }
+                                    \startTextSpanOne
+                                    - \tweak color #darkred
+                                    - \tweak padding #8.5
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 1 1 \hspace #0.5 } \hspace #0.5 }
+                                    \startTextSpanTwo
+                                    - \tweak stencil #constante-hairpin
+                                    \<
+                                    \afterGrace
+                                    <b d'>16.
+                                    \stopTextSpanTwo
+                                    ]
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    - \tweak color #darkred
+                                    - \tweak padding #8.5
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 1 \hspace #0.5 } \hspace #0.5 }
+                                    - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 1 \hspace #0.5 }
+                                    \startTextSpanTwo
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override Flag.stroke-style = #"grace"
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.X-extent = #'(0 . 0)
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        <b d'>16
+                                        \!
+                                        \stopTextSpanOne
+                                        \stopTextSpanTwo
+                                    }
                                     R1 * 1/16
                                 }
                                 \context Voice = "viola voice time signatures"
                                 {
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 2/8
+                                    \time 4/16
                                     \voiceTwo
                                     s1 * 1/4
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 3/16
+                                    \time 6/32
                                     s1 * 3/16
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f

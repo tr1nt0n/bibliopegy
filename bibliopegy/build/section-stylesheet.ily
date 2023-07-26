@@ -57,7 +57,7 @@ afterGraceFraction = #(cons 255 256)
         % \override Beam.damping = 99
         % \override Beam.concaveness = #10000
         % \override Beam.beam-thickness = #0.75
-        \override Beam.length-fraction = 1.5
+        \override Beam.length-fraction = 1.25
 
         \override BendAfter.thickness = #3
 
