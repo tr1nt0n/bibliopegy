@@ -43,13 +43,6 @@ afterGraceFraction = #(cons 255 256)
         \override VerticalAxisGroup.staff-staff-spacing = #'((basic-distance . 14) (minimum-distance . 14) (padding . 10) (stretchability . 0))
         \override TimeSignature.break-visibility = #end-of-line-invisible
         \override TimeSignature.transparent = ##t
-        % \override TimeSignature.font-size = 10
-		% \override TimeSignature.font-name = "Bodoni72 Book"
-        % \override TimeSignature.X-offset = -2.5
-        % \override TimeSignature.Y-offset = 3
-        % \override TimeSignature.whiteout-style = #'outline
-        % \override TimeSignature.whiteout = 1
-        % \override TimeSignature.layer = 4
     }
 
     \context {
@@ -95,6 +88,8 @@ afterGraceFraction = #(cons 255 256)
         \override MeasureSpanner.font-size = 7
         \override MeasureSpanner.font-name = "Bodoni72 Book Italic"
         \override MeasureSpanner.padding = -5
+
+        \override MultiMeasureRest.X-extent = ##f
 
         \override Staff.thickness = #0.5
 
@@ -161,23 +156,23 @@ afterGraceFraction = #(cons 255 256)
         fontSize = #-0.25
         \consists Duration_line_engraver
 
-        \override BarLine.hair-thickness = 3
+        \override BarLine.hair-thickness = 2
         \override BarLine.thick-thickness = #10
         \override BarLine.transparent = ##t
         \override BarLine.X-extent = #'(0 . 0)
 
-        \override TimeSignature.font-size = 6
+        \override DurationLine.style = #'line
+        \override DurationLine.thickness = #3
+        \override DurationLine.to-barline = ##f
+        \override DurationLine.breakable = ##t
+
+        \override TimeSignature.font-size = 4.5
         \override TimeSignature.font-name = "Bodoni72 Book"
         \override TimeSignature.whiteout-style = #'outline
         \override TimeSignature.whiteout = 1
         \override TimeSignature.layer = 4
         \override TimeSignature.break-visibility = #end-of-line-invisible
         \override TimeSignature.transparent = ##t
-
-        \override DurationLine.style = #'line
-        \override DurationLine.thickness = #3
-        \override DurationLine.to-barline = ##f
-        \override DurationLine.breakable = ##t
 
         \override InstrumentName.self-alignment-X = #CENTER
         \RemoveAllEmptyStaves

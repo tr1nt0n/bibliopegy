@@ -10,25 +10,7 @@ from bibliopegy import ts
 
 # score
 
-score = library.bibliopegy_score(
-    [
-        (1, 8),
-        (1, 8),
-        (1, 8),
-        (1, 8),
-        (1, 8),
-        (1, 8),
-        (1, 8),
-        (1, 8),
-        (1, 8),
-        (1, 8),
-        (1, 8),
-        (1, 8),
-        (1, 8),
-    ]
-)
-
-library.set_all_time_signatures(score=score)
+score = library.bibliopegy_score([(1, 8) for _ in range(1, 14)])
 
 # music commands
 
@@ -230,6 +212,8 @@ for voice_name in ["flute voice", "bassflute voice"]:
 
 
 # globals
+
+library.set_all_time_signatures(score=score)
 
 library.write_instrument_names(score=score)
 

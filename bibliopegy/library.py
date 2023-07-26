@@ -354,14 +354,21 @@ movements = [abjad.bundle(movement, r"- \tweak padding #14") for movement in mov
 # notation tools
 
 
-def set_all_time_signatures(score):
-    for voice_name in all_voice_names:
+def set_all_time_signatures(score, exclude_viola=False):
+    if exclude_viola is True:
+        voice_names = [_ for _ in all_voice_names if _ != "viola voice"]
+
+    else:
+        voice_names = all_voice_names
+    for voice_name in voice_names:
         abjad.attach(
             abjad.TimeSignature((1, 8)), abjad.select.leaf(score[voice_name], 0)
         )
 
 
-def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
+def duration_line(
+    selector=trinton.pleaves(), color=False, sustained=False, viola=False
+):
     def line(argument):
         selections = selector(argument)
         pties = abjad.select.logical_ties(selections, pitched=True, grace=False)
@@ -371,7 +378,8 @@ def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
             relevant_leaf = pties[-1][-1]
 
             tie_pitch = relevant_leaf.written_pitch.get_name()
-            container = abjad.AfterGraceContainer(f"{tie_pitch}16")
+            container = (abjad.AfterGraceContainer(f"{tie_pitch}16"),)
+
             abjad.attach(container, relevant_leaf)
 
             with_grace = abjad.select.with_next_leaf(pties)
@@ -389,6 +397,21 @@ def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
                 ),
                 with_grace[-1],
             )
+
+            if viola is True:
+                abjad.attach(
+                    abjad.LilyPondLiteral(
+                        r'\once \override Flag.stroke-style = #"grace"', "before"
+                    ),
+                    with_grace[-1],
+                )
+
+                abjad.attach(
+                    abjad.LilyPondLiteral(
+                        r"\once \override NoteHead.X-extent = #'(0 . 0)", "opening"
+                    ),
+                    with_grace[-1],
+                )
 
             if color is False:
                 abjad.glissando(
@@ -432,6 +455,21 @@ def duration_line(selector=trinton.pleaves(), color=False, sustained=False):
                     with_grace[-1],
                 )
 
+                if viola is True:
+                    abjad.attach(
+                        abjad.LilyPondLiteral(
+                            r'\once \override Flag.stroke-style = #"grace"', "before"
+                        ),
+                        with_grace[-1],
+                    )
+
+                    abjad.attach(
+                        abjad.LilyPondLiteral(
+                            r"\once \override NoteHead.X-extent = #'(0 . 0)", "opening"
+                        ),
+                        with_grace[-1],
+                    )
+
                 if color is False:
                     abjad.glissando(
                         with_grace,
@@ -472,6 +510,57 @@ def change_lines(
             )
 
     return change
+
+
+def blank_measure_by_hand(score, voice_names, measures, clef_whitespace=False):
+    for voice_name in voice_names:
+        for measure in measures:
+            trinton.make_music(
+                lambda _: trinton.select_target(_, (measure,)),
+                trinton.attachment_command(
+                    attachments=[
+                        abjad.LilyPondLiteral(
+                            r"\stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff",
+                            "before",
+                        ),
+                        abjad.LilyPondLiteral(
+                            r"\once \override MultiMeasureRest.transparent = ##t",
+                            "before",
+                        ),
+                        abjad.LilyPondLiteral(
+                            r"\once \override Rest.transparent = ##t",
+                            "before",
+                        ),
+                        abjad.LilyPondLiteral(
+                            r"\once \override Staff.BarLine.transparent = ##f",
+                            "absolute_before",
+                        ),
+                        abjad.LilyPondLiteral(
+                            r"""\once \override Staff.BarLine.glyph-name = "!" """,
+                            "absolute_after",
+                        ),
+                        abjad.LilyPondLiteral(
+                            r"""\once \override Staff.BarLine.hair-thickness = 1 """,
+                            "absolute_after",
+                        ),
+                        abjad.LilyPondLiteral(r"\stopStaff \startStaff", "after"),
+                    ],
+                    selector=trinton.select_leaves_by_index([0]),
+                    tag=abjad.Tag("+SCORE"),
+                ),
+                voice=score[voice_name],
+            )
+
+            if clef_whitespace is True:
+                clef_whitespace = abjad.LilyPondLiteral(
+                    r"\once \override Staff.Clef.X-extent = ##f \once \override Staff.Clef.extra-offset = #'(-2.25 . 0)",
+                    "before",
+                )
+                selection = trinton.select_target(score[voice_name], (measure,))
+                relevant_leaf = selection[0]
+                next_leaf = abjad.select.with_next_leaf(relevant_leaf)[-1]
+                if abjad.get.has_indicator(next_leaf, abjad.Clef):
+                    abjad.attach(clef_whitespace, next_leaf)
 
 
 # pitch
@@ -657,7 +746,7 @@ def aftergrace(notes_string="c'16", selector=trinton.pleaves()):
 
 # tempi
 
-metronome_marks = {
+_metronome_marks = {
     "5/7": abjad.MetronomeMark.make_tempo_equation_markup(
         (1, 8), quicktions.Fraction(857, 20)
     ),
@@ -670,13 +759,17 @@ metronome_marks = {
 }
 
 
-def metronome_markups(met_string, parenthesis=False):
+def metronome_markups(
+    met_string,
+    height=7.5,
+    parenthesis=False,
+):
     if parenthesis is False:
         mark = abjad.LilyPondLiteral(
             [
                 r"^ \markup {",
-                r"  \raise #9 \with-dimensions-from \null",
-                r"  \override #'(font-size . 5.5)",
+                rf"  \raise #{height} \with-dimensions-from \null",
+                r"  \override #'(font-size . 4)",
                 r"  \concat {",
                 f"      {met_string.string[8:]}",
                 r"  }",
@@ -685,18 +778,31 @@ def metronome_markups(met_string, parenthesis=False):
             site="after",
         )
     else:
-        mark = f"\markup {{ \override #'(font-size . 5.5) \concat {{ ( {met_string.string[8:]} ) }} }}"
+        mark = abjad.LilyPondLiteral(
+            [
+                r"^ \markup {",
+                rf"  \raise #{height} \with-dimensions-from \null",
+                r"  \override #'(font-size . 4)",
+                r"  \concat {",
+                f"      ( {met_string.string[8:]} )",
+                r"  }",
+                r"}",
+            ],
+            site="after",
+        )
 
     return mark
 
 
-# time signatures
+# polymeter functions
 
 
-def write_simultaneous_time_signatures(voice, signature_pairs, measure_range):
+def write_simultaneous_time_signatures(
+    score, voice_name, signature_pairs, measure_range
+):
     time_signatures = [abjad.TimeSignature(_) for _ in signature_pairs]
     new_skips = [abjad.Skip((1, 1), multiplier=_) for _ in signature_pairs]
-    old_skips = trinton.select_target(voice, measure_range)
+    old_skips = trinton.select_target(score[voice_name], measure_range)
 
     new_skips_duration = abjad.get.duration(new_skips)
     old_skips_duration = abjad.get.duration(old_skips)
@@ -706,7 +812,26 @@ def write_simultaneous_time_signatures(voice, signature_pairs, measure_range):
             "Duration of time signatures in 8th notes must be equal to duration of selection in seconds."
         )
 
+    handler = evans.IntermittentVoiceHandler(
+        rhythm_handler=evans.RhythmHandler(evans.talea([-1000], 4)),
+        voice_name=f"{voice_name} time signatures",
+    )
+
+    handler(old_skips)
+
+    time_signature_skips = trinton.select_target(
+        score[f"{voice_name} time signatures"], measure_range
+    )
+    old_skips = trinton.select_target(score[f"{voice_name} temp"], measure_range)
+
+    temp_voice_rests = []
+
     for new_skip, time_signature in zip(new_skips, time_signatures):
+        temp_voice_rest = abjad.MultimeasureRest(
+            (1, 1), multiplier=abjad.get.duration(new_skip)
+        )
+        temp_voice_rests.append(temp_voice_rest)
+
         abjad.attach(
             abjad.LilyPondLiteral(
                 r"\once \override Staff.BarLine.transparent = ##f", "before"
@@ -730,8 +855,142 @@ def write_simultaneous_time_signatures(voice, signature_pairs, measure_range):
 
         abjad.attach(time_signature, new_skip)
 
-    abjad.mutate.replace(old_skips, new_skips)
+    abjad.attach(abjad.LilyPondLiteral(r"\voiceTwo", site="opening"), new_skips[0])
 
-    new_range = trinton.select_target(voice, measure_range)
-    reset_skip = abjad.select.with_next_leaf(new_range)[-1]
+    abjad.mutate.replace(time_signature_skips, new_skips)
+    abjad.mutate.replace(old_skips, temp_voice_rests)
+
+    new_range = (measure_range[0], measure_range[-1] + 1)
+    new_measure_selection = trinton.select_target(score[voice_name], new_range)
+    reset_skip = new_measure_selection[-1]
     abjad.attach(abjad.TimeSignature((1, 8)), reset_skip)
+
+
+def select_metered_measures(
+    score,
+    voice_name,
+    second_range=(1,),
+    measure_number_range=(1,),
+    return_time_signatures=False,
+):
+    if len(measure_number_range) == 1:
+        measure_indices = [_ - 1 for _ in measure_number_range]
+    else:
+        revised_range = range(measure_number_range[0] - 1, measure_number_range[1])
+        measure_indices = [_ for _ in revised_range]
+
+    if len(second_range) == 1:
+        second_indices = [_ - 1 for _ in second_range]
+    else:
+        revised_range = range(second_range[0] - 1, second_range[1])
+        second_indices = [_ for _ in revised_range]
+
+    parentage = abjad.get.parentage(score[voice_name])
+    outer_context = parentage.components[-1]
+    global_context = outer_context["Global Context"]
+    seconds = abjad.select.group_by_measure(global_context)
+
+    target_seconds = []
+
+    for i in second_indices:
+        target_seconds.extend(seconds[i])
+
+    target_timespans = [abjad.get.timespan(_) for _ in target_seconds]
+
+    start_offset = target_timespans[0].offsets[0]
+    stop_offset = target_timespans[-1].offsets[-1]
+    relevant_timespan = abjad.Timespan(start_offset, stop_offset)
+
+    time_signatures_in_second_range = []
+
+    for component in score[f"{voice_name} time signatures"][:]:
+        span = abjad.get.timespan(component)
+        if span.intersects_timespan(relevant_timespan) is True:
+            time_signatures_in_second_range.append(component)
+
+    target_measures = []
+
+    for i in measure_indices:
+        target_measures.append(time_signatures_in_second_range[i])
+
+    target_timespans = [abjad.get.timespan(_) for _ in target_measures]
+
+    start_offset = target_timespans[0].offsets[0]
+    stop_offset = target_timespans[-1].offsets[-1]
+    relevant_timespan = abjad.Timespan(start_offset, stop_offset)
+
+    out = []
+
+    for component in score[f"{voice_name} temp"][:]:
+        span = abjad.get.timespan(component)
+        if span.intersects_timespan(relevant_timespan) is True:
+            before_grace = abjad.get.before_grace_container(component)
+            after_grace = abjad.get.after_grace_container(component)
+            if before_grace is not None:
+                out.append(before_grace)
+            out.append(component)
+            if after_grace is not None:
+                out.append(after_grace)
+
+    if return_time_signatures is True:
+        return [abjad.get.indicator(_, abjad.TimeSignature) for _ in target_measures]
+    else:
+        return out
+
+
+def make_metric_music(
+    *args,
+    score,
+    voice_name,
+    second_range=(1,),
+    measure_number_range=(1,),
+    preprocessor=None,
+):
+    target = select_metered_measures(
+        score=score,
+        voice_name=voice_name,
+        second_range=second_range,
+        measure_number_range=measure_number_range,
+    )
+    indicators = [_ for _ in abjad.get.indicators(abjad.select.leaf(target, 0))]
+    selections = None
+    signature_instances = select_metered_measures(
+        score=score,
+        voice_name=voice_name,
+        second_range=second_range,
+        measure_number_range=measure_number_range,
+        return_time_signatures=True,
+    )
+    for arg in args:
+        target = select_metered_measures(
+            score=score,
+            voice_name=voice_name,
+            second_range=second_range,
+            measure_number_range=measure_number_range,
+        )
+        if isinstance(arg, evans.RhythmHandler):
+            if preprocessor is not None:
+                durations = [abjad.Duration(_.pair) for _ in signature_instances]
+                divisions = preprocessor(durations)
+            else:
+                divisions = signature_instances
+            nested_music = arg(divisions)
+            container = abjad.Container(nested_music)
+
+            for indicator in indicators:
+                abjad.detach(indicator, abjad.select.leaf(target, 0))
+                abjad.attach(indicator, abjad.select.leaf(container, 0))
+
+            selections = abjad.mutate.eject_contents(container)
+            abjad.mutate.replace(target, selections)
+
+        elif isinstance(arg, evans.RewriteMeterCommand):
+            target_copy = abjad.mutate.copy(target[:])
+            metered_staff = rmakers.wrap_in_time_signature_staff(
+                target_copy, signature_instances
+            )
+            arg(metered_staff)
+            selections = abjad.mutate.eject_contents(metered_staff)
+            abjad.mutate.replace(target, selections)
+        else:
+            arg(target)

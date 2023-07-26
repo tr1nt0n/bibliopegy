@@ -82,6 +82,8 @@ afterGraceFraction = #(cons 255 256)
         \override MeasureSpanner.font-name = "Bodoni72 Book Italic"
         \override MeasureSpanner.padding = -5
 
+        \override MultiMeasureRest.X-extent = ##f
+
         \override Staff.thickness = #0.5
 
         \override Stem.stemlet-length = 1
@@ -152,7 +154,12 @@ afterGraceFraction = #(cons 255 256)
         \override BarLine.transparent = ##t
         \override BarLine.X-extent = #'(0 . 0)
 
-        \override TimeSignature.font-size = 6
+        \override DurationLine.style = #'line
+        \override DurationLine.thickness = #3
+        \override DurationLine.to-barline = ##f
+        \override DurationLine.breakable = ##t
+
+        \override TimeSignature.font-size = 4.5
         \override TimeSignature.font-name = "Bodoni72 Book"
         \override TimeSignature.whiteout-style = #'outline
         \override TimeSignature.whiteout = 1
@@ -160,13 +167,8 @@ afterGraceFraction = #(cons 255 256)
         \override TimeSignature.break-visibility = #end-of-line-invisible
         \override TimeSignature.transparent = ##t
 
-        \override DurationLine.style = #'line
-        \override DurationLine.thickness = #3
-        \override DurationLine.to-barline = ##f
-        \override DurationLine.breakable = ##t
-
         \override InstrumentName.self-alignment-X = #CENTER
-        % \RemoveAllEmptyStaves
+        \RemoveAllEmptyStaves
     }
 
     \context {

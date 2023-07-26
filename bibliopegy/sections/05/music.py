@@ -12,8 +12,6 @@ from bibliopegy import ts
 
 score = library.bibliopegy_score([(1, 8) for _ in range(1, 13)])
 
-library.set_all_time_signatures(score=score)
-
 # music commands
 
 # tape music commands
@@ -41,15 +39,31 @@ trinton.make_music(
 # viola music commands
 
 library.write_simultaneous_time_signatures(
-    voice=score["viola voice"], signature_pairs=[(5, 16), (3, 16)], measure_range=(4, 7)
+    score=score,
+    voice_name="viola voice",
+    signature_pairs=[(2, 8), (3, 16), (1, 16)],
+    measure_range=(4, 7),
 )
-#
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (4, 7)),
-#     evans.RhythmHandler(rmakers.note),
-#     voice=score["viola voice"],
-#     preprocessor=trinton.fuse_sixteenths_preprocessor((5, 3)),
-# )
+
+library.make_metric_music(
+    evans.RhythmHandler(evans.tuplet([(3, 2)])),
+    evans.RewriteMeterCommand(boundary_depth=-2),
+    library.change_lines(lines=1, clef="varpercussion"),
+    rmakers.beam,
+    library.duration_line(viola=True),
+    trinton.attachment_command(
+        attachments=[
+            library.metronome_markups(library._metronome_marks["1/1"]),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
+    trinton.notehead_bracket_command(),
+    score=score,
+    voice_name="viola voice",
+    second_range=(4, 7),
+    measure_number_range=(1,),
+)
 
 # trombone music commands
 
@@ -72,6 +86,8 @@ for voice_name in ["tenortrombone voice", "basstrombone voice"]:
 
 # globals
 
+library.set_all_time_signatures(score=score)
+
 library.write_instrument_names(score=score)
 
 library.write_short_instrument_names(score=score)
@@ -84,11 +100,17 @@ library.write_timestamps(
 
 # cutaway
 
-# trinton.whiteout_empty_staves(
-#     score=score,
-#     cutaway="blank",
-#     voice_names=[_ for _ in library.all_voice_names if _ != "viola voice"]
-# )
+trinton.whiteout_empty_staves(
+    score=score,
+    cutaway="blank",
+    voice_names=[_ for _ in library.all_voice_names if _ != "viola voice"],
+)
+
+library.blank_measure_by_hand(
+    score=score,
+    voice_names=["viola voice"],
+    measures=[1, 2, 3, 8, 9, 10, 11, 12],
+)
 
 # parts
 
