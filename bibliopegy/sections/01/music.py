@@ -169,7 +169,6 @@ trinton.make_music(
 # initial cleffing
 
 for voice_name in [
-    "tenortrombone voice",
     "basstrombone voice",
     "cello 3 voice",
     "percussion 2 voice",

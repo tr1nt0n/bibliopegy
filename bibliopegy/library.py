@@ -91,6 +91,10 @@ all_voice_names = eval(
     ]"""
 )
 
+upbow = abjad.bundle(abjad.Articulation("upbow"), r'- \tweak color #"darkmagenta"')
+
+downbow = abjad.bundle(abjad.Articulation("downbow"), r'- \tweak color #"darkmagenta"')
+
 # markups
 
 
@@ -357,6 +361,15 @@ movements = [
 
 movements = [abjad.bundle(movement, r"- \tweak padding #14") for movement in movements]
 
+_viola_processing_markups = {
+    "3 on": abjad.Markup(
+        r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 on" }""",
+    ),
+    "3 off": abjad.Markup(
+        r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }""",
+    ),
+}
+
 
 # notation tools
 
@@ -374,11 +387,21 @@ def set_all_time_signatures(score, exclude_viola=False):
 
 
 def duration_line(
-    selector=trinton.pleaves(), color=False, sustained=False, viola=False
+    selector=trinton.pleaves(),
+    color=False,
+    sustained=False,
+    viola=False,
+    on_beat_graces=False,
 ):
     def line(argument):
         selections = selector(argument)
-        pties = abjad.select.logical_ties(selections, pitched=True, grace=False)
+        if on_beat_graces is True:
+            pties = abjad.select.logical_ties(
+                selections,
+                pitched=True,
+            )
+        else:
+            pties = abjad.select.logical_ties(selections, pitched=True, grace=False)
 
         if sustained is True:
 
@@ -390,10 +413,10 @@ def duration_line(
                 for pitch in tie_pitches:
                     pitch_string += pitch.get_name()
                     pitch_string += " "
-                container = (abjad.AfterGraceContainer(f"<{pitch_string}>16"),)
+                container = abjad.AfterGraceContainer(f"<{pitch_string}>16")
             else:
                 tie_pitch = relevant_leaf.written_pitch.get_name()
-                container = (abjad.AfterGraceContainer(f"{tie_pitch}16"),)
+                container = abjad.AfterGraceContainer(f"{tie_pitch}16")
 
             abjad.attach(container, relevant_leaf)
 
@@ -515,6 +538,86 @@ def duration_line(
                     )
 
     return line
+
+
+def color_onbeat_graces(
+    selector=trinton.pleaves(),
+):
+    def color(argument):
+        selections = selector(argument)
+        for leaf in selections:
+            abjad.label.color_leaves(leaf, "#darkred")
+
+    return color
+
+
+def clean_onbeat_graces(voices, measures):
+    _cello_number_to_pitch = {
+        "1": "b''",
+        "2": "g''",
+        "3": "e''",
+    }
+
+    for voice in voices:
+        cello_number = voice.name[6:7]
+        trinton.make_music(
+            lambda _: trinton.select_target(_, measures),
+            evans.PitchHandler([_cello_number_to_pitch[cello_number]]),
+            trinton.transparent_noteheads(
+                selector=trinton.select_leaves_by_index([0], pitched=True)
+            ),
+            trinton.attachment_command(
+                attachments=[
+                    abjad.LilyPondLiteral(r"\revert Staff.Stem.stencil", "opening"),
+                ],
+                selector=trinton.select_leaves_by_index([1], pitched=True),
+            ),
+            library.color_onbeat_graces(),
+            library.duration_line(sustained=True, on_beat_graces=True),
+            trinton.attachment_command(
+                attachments=[
+                    abjad.LilyPondLiteral(
+                        r"\override Staff.Stem.stencil = ##f", "before"
+                    ),
+                ],
+                selector=trinton.select_leaves_by_index([-1], pitched=True),
+            ),
+            voice=voice,
+        )
+
+
+def cello_trills(
+    initial_width,
+    y_scale,
+    speed_factor,
+    thickness=3,
+    selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+):
+    def trills(argument):
+        if speed_factor > 0.9:
+            raise Exception("Speed factor must be a float value under 1.")
+        selections = selector(argument)
+
+        it = iter(selections)
+        tups = [*zip(it, it)]
+
+        start_trill = abjad.bundle(
+            abjad.LilyPondLiteral(r"\slow-fast-trill", site="after"),
+            r"- \tweak color #(css-color 'goldenrod)",
+            rf"- \tweak details.squiggle-Y-scale {y_scale}",
+            rf"- \tweak details.squiggle-initial-width {initial_width}",
+            rf"- \tweak details.squiggle-speed-factor {speed_factor}",
+            rf"- \tweak thickness {thickness}",
+        )
+
+        stop_trill = abjad.StopTrillSpan()
+
+        for tup in tups:
+            abjad.attach(start_trill, tup[0])
+
+            abjad.attach(stop_trill, tup[-1])
+
+    return trills
 
 
 def change_lines(
@@ -690,10 +793,10 @@ def trombone_alpha(voices, measures, rotation=0, dynamics=["ff"]):
         participant_number = voices.index(voice)
 
         if voice.name == "tenortrombone voice":
-            ratio = "160/81"
+            ratio = "3/1"
 
         elif voice.name == "basstrombone voice":
-            ratio = "13/8"
+            ratio = "160/81"
             rotation = rotation + 1
 
         talea = trinton.rotated_sequence(talea_seed, rotation)
@@ -746,6 +849,47 @@ def trombone_alpha(voices, measures, rotation=0, dynamics=["ff"]):
             ),
             voice=voice,
         )
+
+
+def cello_graces(selector=trinton.pleaves(), rotation=0, counter_offset=0):
+    def graces(argument):
+        selections = selector(argument)
+        parentage = abjad.get.parentage(abjad.select.leaf(selections, 0))
+        voice_name = parentage.logical_voice()["voice"]
+        voice_name = voice_name[7:-1]
+        pties = abjad.select.logical_ties(selections, pitched=True, grace=False)
+        counter = 1
+
+        talea_seed = eval("""[[1, 2, 1,], [2, 1, 4,], [1, 1, 2],]""")
+        talea = trinton.rotated_sequence(talea_seed, rotation)
+        talea = abjad.sequence.flatten(talea)
+
+        for tie in pties:
+            grace_name = f"{voice_name} graces {counter}"
+            tie_duration = abjad.get.duration(tie)
+            talea_counter = counter - 1
+            grace_durations = trinton.rotated_sequence(
+                talea, talea_counter + counter_offset
+            )
+
+            nested_music = rmakers.talea([tie_duration], grace_durations, 32)
+            nested_music_logical_ties = abjad.select.logical_ties(nested_music)
+            leaf_denominator = len(nested_music_logical_ties) + 1
+            leaf_duration = tie_duration / leaf_denominator
+            talea_container = abjad.Container(nested_music)
+            contents = abjad.mutate.eject_contents(talea_container)
+
+            container = trinton.on_beat_grace_container(
+                contents=contents,
+                anchor_voice_selection=tie,
+                leaf_duration=leaf_duration,
+                do_not_slur=True,
+                name=grace_name,
+            )
+
+            counter += 1
+
+    return graces
 
 
 def aftergrace(notes_string="c'16", selector=trinton.pleaves()):

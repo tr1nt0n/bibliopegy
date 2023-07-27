@@ -1,4 +1,4 @@
-\version "2.23.14"
+\version "2.23.81"
 \language english
 #(set-default-paper-size "11x17landscape")
 #(set-global-staff-size 12)
@@ -109,8 +109,6 @@ afterGraceFraction = #(cons 255 256)
         \override Tie.stencil = #flare-tie
         \override Tie.height-limit = 6
         \override Tie.thickness = 1.5
-
-        \override TrillSpanner.bound-details.right.padding = #-5
 
         \shape #'((0 . 0) (0.5 . 0) (1 . 0) (2 . 0)) LaissezVibrerTie
         \override LaissezVibrerTie.X-extent = ##f

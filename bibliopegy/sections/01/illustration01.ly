@@ -1359,7 +1359,6 @@
                                     \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { t. tbn. }
                                       %! +SCORE
                                     \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                                    \clef "bass"
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
