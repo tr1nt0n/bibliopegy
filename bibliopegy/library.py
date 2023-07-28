@@ -851,26 +851,26 @@ def trombone_alpha(voices, measures, rotation=0, dynamics=["ff"]):
         )
 
 
-def cello_graces(selector=trinton.pleaves(), rotation=0, counter_offset=0):
+def cello_graces(selector=trinton.pleaves(), rotation=0, counter=1, counter_offset=0):
     def graces(argument):
         selections = selector(argument)
         parentage = abjad.get.parentage(abjad.select.leaf(selections, 0))
         voice_name = parentage.logical_voice()["voice"]
         voice_name = voice_name[7:-1]
         pties = abjad.select.logical_ties(selections, pitched=True, grace=False)
-        counter = 1
 
-        talea_seed = eval("""[[1, 2, 1,], [2, 1, 4,], [1, 1, 2],]""")
+        talea_seed = eval("""[[1, 2, 1,], [2, 1, 4,], [1, 1, 2]]""")
         talea = trinton.rotated_sequence(talea_seed, rotation)
         talea = abjad.sequence.flatten(talea)
 
+        name_count = counter
+
         for tie in pties:
-            grace_name = f"{voice_name} graces {counter}"
+            grace_name = f"{voice_name} graces {name_count}"
             tie_duration = abjad.get.duration(tie)
-            talea_counter = counter - 1
-            grace_durations = trinton.rotated_sequence(
-                talea, talea_counter + counter_offset
-            )
+            talea_counter = name_count - 1
+            offset = talea_counter + counter_offset
+            grace_durations = trinton.rotated_sequence(talea, offset % 9)
 
             nested_music = rmakers.talea([tie_duration], grace_durations, 32)
             nested_music_logical_ties = abjad.select.logical_ties(nested_music)
@@ -887,7 +887,7 @@ def cello_graces(selector=trinton.pleaves(), rotation=0, counter_offset=0):
                 name=grace_name,
             )
 
-            counter += 1
+            name_count += 1
 
     return graces
 

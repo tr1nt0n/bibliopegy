@@ -57,7 +57,9 @@ afterGraceFraction = #(cons 255 256)
         \override StaffGrouper.staffgroup-staff-spacing = #'((basic-distance . 0) (minimum distance . 5) (padding . 8) (stretchability . 28))
 
         \override AccidentalSuggestion.avoid-slur = #'ignore
-        % \override Accidental.X-extent = ##f
+        \override Accidental.layer = 2
+        \override Accidental.whiteout-style = #'outline
+        \override Accidental.whiteout = 1
 
         autoBeaming = ##f
         \override Beam.breakable = ##t
@@ -111,7 +113,7 @@ afterGraceFraction = #(cons 255 256)
 
         \override TextSpanner.font-name = "Bodoni72 Book Italic"
         % \override TextSpanner.whiteout-style = #'outline
-        \override TextSpanner.whiteout = 1
+        \override TextSpanner.whiteout = 0.1
 
         \override Tie.stencil = #flare-tie
         \override Tie.height-limit = 6
