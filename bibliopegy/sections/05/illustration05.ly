@@ -2678,6 +2678,7 @@
                                                 \abjad-color-music #'darkred
                                                 \afterGrace
                                                 e''32 * 11/9
+                                                )
                                                 \stopTextSpan
                                                 ]
                                                 {
@@ -2695,7 +2696,6 @@
                                                     \undo \hide NoteHead
                                                     e''16
                                                         _ #(make-dynamic-script (markup #:whiteout #:italic "pp +"))
-                                                    )
                                                     \stopTrillSpan
                                                 }
                                             }

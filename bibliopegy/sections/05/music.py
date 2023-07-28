@@ -1049,7 +1049,7 @@ trinton.make_music(
     ),
     trinton.linear_attachment_command(
         attachments=[abjad.StartSlur(), abjad.StopSlur()],
-        selector=trinton.select_leaves_by_index([0, -1]),
+        selector=trinton.select_leaves_by_index([0, -2]),
     ),
     trinton.spanner_command(
         strings=library.return_fraction_string_list(
