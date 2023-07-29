@@ -422,12 +422,12 @@ trinton.make_music(
         attachments=[abjad.StopHairpin()], selector=trinton.select_leaves_by_index([-1])
     ),
     trinton.hooked_spanner_command(
-        string=r"""\markup \with-color "darkmagenta" { "( senza vib. )" }""",
+        string=r"""\markup \with-color #(css-color 'goldenrod) { "( senza vib. )" }""",
         selector=trinton.select_logical_ties_by_index([12, -1], first=True),
         padding=4,
         right_padding=0,
         full_string=True,
-        tweaks=[r"- \tweak color #darkmagenta"],
+        tweaks=[r"- \tweak color #(css-color 'goldenrod)"],
     ),
     voice=score["cello 3 voice"],
 )

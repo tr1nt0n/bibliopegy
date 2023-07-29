@@ -2443,10 +2443,10 @@
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
-                                    - \tweak color #darkmagenta
+                                    - \tweak color #(css-color 'goldenrod)
                                     - \tweak padding #4
                                     - \abjad-dashed-line-with-hook
-                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkmagenta" { "( senza vib. )" } \hspace #0.5 }
+                                    - \tweak bound-details.left.text \markup \concat { \with-color #(css-color 'goldenrod) { "( senza vib. )" } \hspace #0.5 }
                                     \startTextSpan
                                     - \tweak stencil #constante-hairpin
                                     \<

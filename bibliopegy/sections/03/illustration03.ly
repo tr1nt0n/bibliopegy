@@ -1,9 +1,9 @@
   %! abjad.LilyPondFile._get_format_pieces()
-\version "2.23.14"
+\version "2.23.81"
   %! abjad.LilyPondFile._get_format_pieces()
 \language "english"
   %! abjad.LilyPondFile._get_format_pieces()
-\version "2.23.14"
+\version "2.23.81"
   %! abjad.LilyPondFile._get_format_pieces()
 \language "english"
 \include "/Users/trintonprater/scores/bibliopegy/bibliopegy/build/section-stylesheet.ily"
@@ -2457,10 +2457,10 @@
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
-                                    - \tweak color #darkmagenta
+                                    - \tweak color #(css-color 'goldenrod)
                                     - \tweak padding #4
                                     - \abjad-dashed-line-with-hook
-                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkmagenta" { "( senza vib. )" } \hspace #0.5 }
+                                    - \tweak bound-details.left.text \markup \concat { \with-color #(css-color 'goldenrod) { "( senza vib. )" } \hspace #0.5 }
                                     \startTextSpan
                                     - \tweak stencil #constante-hairpin
                                     \<
