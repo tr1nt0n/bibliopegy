@@ -39,7 +39,7 @@ trinton.make_music(
     preprocessor=trinton.fuse_preprocessor((9,)),
 )
 
-# flute music
+# flute music commands
 
 trinton.make_music(
     lambda _: trinton.select_target(_, (4, 9)),
@@ -50,36 +50,99 @@ trinton.make_music(
                 -3,
                 5,
                 -1,
-                4,
+                1,
+                2,
+                1,
                 -1,
                 2,
             ],
             32,
         ),
     ),
-    library.duration_line(),
-    trinton.change_lines(lines=1, clef="varpercussion", tag=None),
+    library.duration_line(
+        selector=trinton.logical_ties(
+            pitched=True,
+            exclude=[
+                2,
+                3,
+                4,
+            ],
+        )
+    ),
     trinton.linear_attachment_command(
         attachments=[
             abjad.Dynamic("ff"),
             abjad.Dynamic("mp"),
             abjad.Dynamic("mf"),
             abjad.Dynamic("f"),
+            abjad.Dynamic("ff"),
         ],
-        selector=trinton.logical_ties(first=True, grace=False, pitched=True),
+        selector=trinton.select_logical_ties_by_index(
+            [0, 1, 2, -1], first=True, grace=False, pitched=True
+        ),
     ),
     trinton.attachment_command(
         attachments=[abjad.StartHairpin("--")],
-        selector=trinton.logical_ties(first=True, grace=False, pitched=True),
+        selector=trinton.select_logical_ties_by_index(
+            [0, 1, 2, -1], first=True, grace=False, pitched=True
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.StopHairpin()],
+        selector=trinton.select_logical_ties_by_index(
+            [1, 3, 6, -1], first=True, pitched=True
+        ),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Articulation(">"),
+            abjad.Articulation("staccato"),
+            abjad.Articulation("staccato"),
+            abjad.Articulation("staccato"),
+            abjad.Articulation("marcato"),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [
+                2,
+                2,
+                3,
+                4,
+                4,
+            ],
+            first=True,
+            pitched=True,
+            grace=False,
+        ),
     ),
     trinton.attachment_command(
         attachments=[
-            abjad.StopHairpin(),
+            abjad.LilyPondLiteral(
+                r"\once \override TextScript.whiteout = ##f", "before"
+            ),
+            abjad.Markup(r"""\markup \with-color #darkred { "p" } """),
         ],
-        selector=trinton.pleaves(
-            grace=True,
+        selector=trinton.select_logical_ties_by_index(
+            [
+                2,
+                3,
+            ],
+            first=True,
+            pitched=True,
+            grace=False,
         ),
     ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override TextScript.whiteout = ##f", "before"
+            ),
+            abjad.Markup(r"""\markup \with-color #darkred { "θp" } """),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [4], first=True, pitched=True, grace=False
+        ),
+    ),
+    trinton.change_lines(lines=1, clef="varpercussion", tag=None),
     voice=score["flute voice"],
 )
 
@@ -107,12 +170,107 @@ trinton.make_music(
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (6, 9)),
+    lambda _: trinton.select_target(_, (6, 7)),
     evans.RhythmHandler(
         evans.talea(
             [
                 -2,
-                6,
+                1,
+                1,
+                3,
+                1,
+            ],
+            32,
+        ),
+    ),
+    library.duration_line(
+        selector=trinton.select_logical_ties_by_index(
+            [
+                2,
+            ],
+            pitched=True,
+        )
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Articulation("staccato"),
+        ],
+        selector=trinton.logical_ties(first=True, pitched=True, exclude=[2]),
+        direction=abjad.UP,
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Dynamic("mp"),
+            abjad.StartHairpin("--"),
+            abjad.StopHairpin(),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 0, -1], first=True, pitched=True
+        ),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Articulation("marcato"),
+            abjad.Articulation(">"),
+            abjad.Articulation("tenuto"),
+            abjad.Articulation(">"),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 3, 3, 4], first=True, pitched=True
+        ),
+        direction=abjad.UP,
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override TextScript.whiteout = ##f", "before"
+            ),
+            abjad.Markup(r"""\markup \with-color #darkred { "p" } """),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [1, 3, -1],
+            first=True,
+            pitched=True,
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override TextScript.whiteout = ##f", "before"
+            ),
+            abjad.Markup(r"""\markup \with-color #darkred { "θp" } """),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [
+                0,
+            ],
+            first=True,
+            pitched=True,
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override TextScript.whiteout = ##f", "before"
+            ),
+            abjad.Markup(r"""\markup \with-color #darkred { "θ" } """),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [
+                2,
+            ],
+            first=True,
+            pitched=True,
+        ),
+    ),
+    voice=score["bassflute voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (8, 9)),
+    evans.RhythmHandler(
+        evans.talea(
+            [
                 -1,
                 3,
                 -1,
@@ -126,9 +284,6 @@ trinton.make_music(
     library.duration_line(),
     trinton.linear_attachment_command(
         attachments=[
-            abjad.Dynamic("mp"),
-            abjad.StartHairpin("--"),
-            abjad.StopHairpin(),
             abjad.Dynamic("mf"),
             abjad.StartHairpin("--"),
             abjad.StopHairpin(),
@@ -140,7 +295,19 @@ trinton.make_music(
             abjad.StopHairpin(),
         ],
         selector=trinton.select_logical_ties_by_index(
-            [0, 0, 1, 2, 2, 3, 4, 4, 5, 6, 6, -1], first=True, pitched=True
+            [
+                0,
+                0,
+                1,
+                2,
+                2,
+                3,
+                4,
+                4,
+                5,
+            ],
+            first=True,
+            pitched=True,
         ),
     ),
     voice=score["bassflute voice"],
@@ -152,7 +319,7 @@ for voice_name in ["flute voice", "bassflute voice"]:
         trinton.hooked_spanner_command(
             string=r"""\markup \with-color "indianred" \center-column { \line { covering the entire } \line { mouthpiece with the lips } }""",
             selector=trinton.select_leaves_by_index([0, -1], pitched=True),
-            padding=4,
+            padding=5.5,
             right_padding=0,
             full_string=True,
             tweaks=[r"- \tweak color #(css-color 'indianred)"],

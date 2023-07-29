@@ -226,7 +226,7 @@
                                       %! abjad.glissando(7)
                                     \glissando
                                     - \tweak color #(css-color 'indianred)
-                                    - \tweak padding #4
+                                    - \tweak padding #5.5
                                     - \abjad-dashed-line-with-hook
                                     - \tweak bound-details.left.text \markup \concat { \with-color "indianred" \center-column { \line { covering the entire } \line { mouthpiece with the lips } } \hspace #0.5 }
                                     \startTextSpan
@@ -294,40 +294,24 @@
                                         \!
                                     }
                                     r32
-                                    c'16.
+                                    \once \override TextScript.whiteout = ##f
+                                    c'32
+                                    - \accent
+                                    - \staccato
                                     \mf
-                                      %! abjad.glissando(7)
-                                    - \abjad-zero-padding-glissando
-                                      %! abjad.glissando(7)
-                                    \glissando
+                                    - \markup \with-color #darkred { "p" } 
                                     - \tweak stencil #constante-hairpin
                                     \<
-                                    ~
-                                      %! abjad.glissando(1)
-                                    \hide NoteHead
-                                      %! abjad.glissando(1)
-                                    \override Accidental.stencil = ##f
-                                      %! abjad.glissando(1)
-                                    \override NoteColumn.glissando-skip = ##t
-                                      %! abjad.glissando(1)
-                                    \override NoteHead.no-ledgers = ##t
-                                    \afterGrace
+                                    \once \override TextScript.whiteout = ##f
+                                    c'16
+                                    - \staccato
+                                    - \markup \with-color #darkred { "p" } 
+                                    \once \override TextScript.whiteout = ##f
                                     c'32
-                                    {
-                                        \once \override Accidental.stencil = ##f
-                                        \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.transparent = ##t
-                                          %! abjad.glissando(6)
-                                        \revert Accidental.stencil
-                                          %! abjad.glissando(6)
-                                        \revert NoteColumn.glissando-skip
-                                          %! abjad.glissando(6)
-                                        \revert NoteHead.no-ledgers
-                                          %! abjad.glissando(6)
-                                        \undo \hide NoteHead
-                                        c'16
-                                        \!
-                                    }
+                                    - \marcato
+                                    - \staccato
+                                    \!
+                                    - \markup \with-color #darkred { "θp" } 
                                     r32
                                     \afterGrace
                                     c'16
@@ -394,7 +378,7 @@
                                       %! abjad.glissando(7)
                                     \glissando
                                     - \tweak color #(css-color 'indianred)
-                                    - \tweak padding #4
+                                    - \tweak padding #5.5
                                     - \abjad-dashed-line-with-hook
                                     - \tweak bound-details.left.text \markup \concat { \with-color "indianred" \center-column { \line { covering the entire } \line { mouthpiece with the lips } } \hspace #0.5 }
                                     \startTextSpan
@@ -432,29 +416,39 @@
                                     }
                                     r16
                                     r16
-                                    c'16
+                                    \once \override TextScript.whiteout = ##f
+                                    c'32
                                     \mp
+                                    ^ \marcato
+                                    ^ \staccato
+                                    - \markup \with-color #darkred { "θp" } 
+                                    - \tweak stencil #constante-hairpin
+                                    \<
+                                    \once \override TextScript.whiteout = ##f
+                                    c'32
+                                    ^ \staccato
+                                    - \markup \with-color #darkred { "p" } 
+                                    \once \override TextScript.whiteout = ##f
+                                    \afterGrace
+                                    c'16.
+                                    - \markup \with-color #darkred { "θ" } 
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
-                                    - \tweak stencil #constante-hairpin
-                                    \<
-                                    ~
-                                      %! abjad.glissando(1)
-                                    \hide NoteHead
-                                      %! abjad.glissando(1)
-                                    \override Accidental.stencil = ##f
-                                      %! abjad.glissando(1)
-                                    \override NoteColumn.glissando-skip = ##t
-                                      %! abjad.glissando(1)
-                                    \override NoteHead.no-ledgers = ##t
-                                    \afterGrace
-                                    c'8
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
+                                        \once \override TextScript.whiteout = ##f
                                         \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
                                           %! abjad.glissando(6)
                                         \revert Accidental.stencil
                                           %! abjad.glissando(6)
@@ -464,8 +458,17 @@
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
                                         c'16
-                                        \!
+                                        ^ \accent
+                                        ^ \staccato
+                                        ^ \tenuto
+                                        - \markup \with-color #darkred { "p" } 
                                     }
+                                    \once \override TextScript.whiteout = ##f
+                                    c'32
+                                    \!
+                                    ^ \accent
+                                    ^ \staccato
+                                    - \markup \with-color #darkred { "p" } 
                                     r32
                                     \afterGrace
                                     c'16.
