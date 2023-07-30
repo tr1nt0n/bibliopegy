@@ -1,9 +1,9 @@
   %! abjad.LilyPondFile._get_format_pieces()
-\version "2.23.14"
+\version "2.23.81"
   %! abjad.LilyPondFile._get_format_pieces()
 \language "english"
   %! abjad.LilyPondFile._get_format_pieces()
-\version "2.23.14"
+\version "2.23.81"
   %! abjad.LilyPondFile._get_format_pieces()
 \language "english"
 \include "/Users/trintonprater/scores/bibliopegy/bibliopegy/build/section-stylesheet.ily"
@@ -1311,7 +1311,7 @@
                                         - \marcato
                                         \f
                                         \laissezVibrer
-                                        \boxed-markup "Anvils with Pipe" 1
+                                        \boxed-markup "Anvils with pipe" 1
                                         d'32
                                         - \staccato
                                         \sp

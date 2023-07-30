@@ -442,7 +442,7 @@ trinton.make_music(
     ),
     library.change_lines(lines=2, clef="percussion"),
     library.boxed_markup(
-        string="Anvils with Pipe",
+        string="Anvils with pipe",
     ),
     trinton.attachment_command(
         attachments=[

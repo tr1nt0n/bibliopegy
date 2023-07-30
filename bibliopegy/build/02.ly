@@ -1297,7 +1297,7 @@
                                         - \marcato
                                         \f
                                         \laissezVibrer
-                                        \boxed-markup "Anvils with Pipe" 1
+                                        \boxed-markup "Anvils with pipe" 1
                                         d'32
                                         - \staccato
                                         \sp
