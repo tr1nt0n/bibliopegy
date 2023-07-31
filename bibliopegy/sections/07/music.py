@@ -7,6 +7,7 @@ from abjadext import rmakers
 from abjadext import microtones
 from bibliopegy import library
 from bibliopegy import ts
+from bibliopegy import pitch
 
 # score
 
@@ -101,8 +102,13 @@ trinton.make_music(
 trinton.make_music(
     lambda _: trinton.select_target(_, (1, 2)),
     evans.RhythmHandler(evans.talea([6, -100], 32)),
+    evans.PitchHandler(["ef"]),
+    evans.PitchHandler(["31/8"], as_ratios=True),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True)
+    ),
     library.duration_line(),
-    trinton.change_lines(lines=1, clef="varpercussion"),
+    library.change_lines(lines=5, clef="treble"),
     trinton.linear_attachment_command(
         attachments=[
             abjad.Dynamic("fff"),
@@ -111,14 +117,6 @@ trinton.make_music(
         ],
         selector=trinton.select_leaves_by_index([0, 0, -1], pitched=True),
     ),
-    trinton.hooked_spanner_command(
-        string=r"""\markup \with-color "indianred" \center-column { \line { covering the entire } \line { mouthpiece with the lips } }""",
-        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
-        padding=4,
-        right_padding=0,
-        full_string=True,
-        tweaks=[r"- \tweak color #(css-color 'indianred)"],
-    ),
     voice=score["flute voice"],
 )
 
@@ -126,6 +124,7 @@ trinton.make_music(
     lambda _: trinton.select_target(_, (6, 15)),
     evans.RhythmHandler(evans.talea([2, 3, 2, 5, 1], 32, extra_counts=[-4])),
     trinton.force_rest(selector=trinton.patterned_tie_index_selector([0], 2)),
+    trinton.change_lines(lines=1, clef="varpercussion"),
     library.duration_line(),
     trinton.linear_attachment_command(
         attachments=itertools.cycle(
@@ -336,8 +335,10 @@ trinton.make_music(
 trinton.make_music(
     lambda _: trinton.select_target(_, (1, 2)),
     evans.RhythmHandler(evans.talea([100], 32)),
+    evans.PitchHandler(["ef"]),
+    evans.PitchHandler(["29/4"], as_ratios=True),
     library.duration_line(),
-    trinton.change_lines(lines=1, clef="varpercussion"),
+    library.change_lines(lines=5, clef="treble"),
     trinton.linear_attachment_command(
         attachments=[
             abjad.Dynamic("fff"),
@@ -346,14 +347,6 @@ trinton.make_music(
         ],
         selector=trinton.select_leaves_by_index([0, 0, -1], pitched=True),
     ),
-    trinton.hooked_spanner_command(
-        string=r"""\markup \with-color "indianred" \center-column { \line { covering the entire } \line { mouthpiece with the lips } }""",
-        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
-        padding=4,
-        right_padding=0,
-        full_string=True,
-        tweaks=[r"- \tweak color #(css-color 'indianred)"],
-    ),
     voice=score["bassflute voice"],
 )
 
@@ -361,6 +354,7 @@ trinton.make_music(
     lambda _: trinton.select_target(_, (6, 15)),
     evans.RhythmHandler(evans.talea([3, 2, 5, 1, 2], 32, extra_counts=[4])),
     trinton.force_rest(selector=trinton.patterned_tie_index_selector([0], 2)),
+    library.change_lines(lines=1, clef="varpercussion"),
     library.duration_line(),
     trinton.linear_attachment_command(
         attachments=itertools.cycle(
@@ -629,60 +623,84 @@ trinton.make_music(
             32,
         ),
     ),
-    evans.PitchHandler([24]),
-    library.duration_line(sustained=True),
-    trinton.change_notehead_command(notehead="highest"),
+    evans.PitchHandler(trinton.rotated_sequence(pitch.violin_gamma_pitches, 15)),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True)
+    ),
+    trinton.transparent_noteheads(selector=trinton.logical_ties(all_except_first=True)),
+    library.duration_line(
+        selector=trinton.logical_ties(
+            exclude=[
+                1,
+                -1,
+            ],
+            first=True,
+            grace=False,
+        )
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.BendAfter(-3),
+            abjad.BendAfter(2),
+        ],
+        selector=trinton.select_logical_ties_by_index([1, -1], first=True, grace=False),
+    ),
+    trinton.ottava_command(octave=2, selector=trinton.select_leaves_by_index([0, -1])),
     trinton.linear_attachment_command(
         attachments=[
             evans.make_fancy_gliss(
-                1,
-                1,
-                1,
-                1,
-                1,
                 5,
+                4,
                 5,
-                5,
-                5,
-                5,
-                5,
-                5,
-                5,
-                5,
-                5,
-                5,
-                5,
-                0.5,
-                0.5,
-                1,
                 2,
                 3,
                 2,
+                3,
+                5,
+                5,
+                5,
+                4,
                 1,
+                2,
+                5,
+                1,
+                5,
+                5,
                 2,
                 3,
-                2,
-                1,
-                0.5,
-                5,
-                0.5,
-                5,
-                0.5,
-                0.5,
-                0.5,
-                5,
-                1,
-                2,
-                3,
-                right_padding=-6,
+                right_padding=-2,
             ),
+            evans.make_fancy_gliss(0, 2, 0, right_padding=-2),
+        ],
+        selector=trinton.select_logical_ties_by_index([0, 2], first=True, grace=False),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation(">")],
+        selector=trinton.select_logical_ties_by_index([0, 1], first=True, grace=False),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
             abjad.Dynamic("fff"),
             abjad.StartHairpin(">"),
             abjad.Dynamic("mp"),
             abjad.StartHairpin("<"),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [
+                0,
+                1,
+                2,
+                3,
+            ],
+            first=True,
+            grace=False,
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[
             abjad.Dynamic("f"),
         ],
-        selector=trinton.select_logical_ties_by_index([0, 0, 1, 2, 3, -1], first=True),
+        selector=trinton.select_leaves_by_index([-1]),
     ),
     trinton.spanner_command(
         strings=[
@@ -697,9 +715,10 @@ trinton.make_music(
                 3,
             ],
             first=True,
+            grace=False,
         ),
         style="solid-line-with-arrow",
-        padding=8.5,
+        padding=9.5,
         full_string=True,
         right_padding=-1,
         tweaks=[r"""- \tweak color #darkred"""],
@@ -710,17 +729,16 @@ trinton.make_music(
             r"""\markup { }""",
             r"""\markup \with-color "darkred" { scratch }""",
         ],
-        selector=trinton.select_logical_ties_by_index(
-            [3, -1],
-            first=True,
+        selector=trinton.select_leaves_by_index(
+            [-3, -1],
         ),
         style="solid-line-with-arrow",
-        padding=8.5,
+        padding=9.5,
         full_string=True,
-        right_padding=-3,
         tweaks=[r"""- \tweak color #darkred"""],
     ),
     voice=score["violin voice"],
+    preprocessor=trinton.fuse_preprocessor((6,)),
 )
 
 trinton.make_music(
@@ -748,9 +766,14 @@ trinton.make_music(
         ),
     ),
     trinton.force_rest(selector=trinton.patterned_tie_index_selector([3, 6, 11], 14)),
-    evans.PitchHandler([24]),
+    evans.PitchHandler(trinton.rotated_sequence(pitch.violin_gamma_pitches, 18)),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True)
+    ),
     library.duration_line(),
-    trinton.change_notehead_command(notehead="highest"),
+    trinton.ottava_command(
+        octave=2, selector=trinton.select_leaves_by_index([0, -1], pitched=True)
+    ),
     trinton.attachment_command(
         attachments=[
             evans.make_fancy_gliss(3, 0.5, 3, 2, right_padding=-6),
@@ -766,14 +789,14 @@ trinton.make_music(
         attachments=itertools.cycle([abjad.StartSlur(), abjad.StopSlur()]),
         selector=trinton.select_logical_ties_by_index(
             [0, 5, 6, 9, 10, 17, 18, 27, 28, 31, 32, 39, 40, -1],
-            first=True,
             pitched=True,
+            first=True,
         ),
     ),
     trinton.hooked_spanner_command(
         string=r"""\markup \with-color "indianred" { "tast. poss." }""",
         selector=trinton.select_leaves_by_index([0, -1], pitched=True),
-        padding=12.5,
+        padding=13,
         right_padding=0,
         full_string=True,
         tweaks=[r"- \tweak color #(css-color 'indianred)"],
@@ -784,7 +807,7 @@ trinton.make_music(
         selector=trinton.select_logical_ties_by_index(
             [0, -1], first=True, pitched=True
         ),
-        padding=10.5,
+        padding=11,
         right_padding=0,
         full_string=True,
         tweaks=[r"""- \tweak color #darkred"""],
@@ -799,7 +822,7 @@ trinton.make_music(
             [0, -2], first=True, pitched=True
         ),
         style="solid-line-with-arrow",
-        padding=8.5,
+        padding=9,
         full_string=True,
         right_padding=-1,
         tweaks=[r"""- \tweak color #darkred"""],
@@ -926,7 +949,7 @@ trinton.make_music(
     evans.PitchHandler([-1, 2, 2, -1, -1, 2]),
     trinton.transparent_noteheads(selector=trinton.logical_ties(all_except_first=True)),
     library.duration_line(selector=trinton.patterned_tie_index_selector([0, 5], 7)),
-    trinton.change_lines(lines=2, clef="percussion"),
+    library.change_lines(lines=2, clef="percussion"),
     library.boxed_markup(string="Anvils with pipe", site="opening"),
     trinton.attachment_command(
         attachments=[abjad.LaissezVibrer()],

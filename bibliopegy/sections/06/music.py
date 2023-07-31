@@ -7,6 +7,7 @@ from abjadext import rmakers
 from abjadext import microtones
 from bibliopegy import library
 from bibliopegy import ts
+from bibliopegy import pitch
 
 # score
 
@@ -337,9 +338,14 @@ trinton.make_music(
             32,
         ),
     ),
-    evans.PitchHandler([24]),
+    evans.PitchHandler(trinton.rotated_sequence(pitch.violin_gamma_pitches, 18)),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True)
+    ),
     library.duration_line(),
-    trinton.change_notehead_command(notehead="highest"),
+    trinton.ottava_command(
+        octave=2, selector=trinton.select_leaves_by_index([0, -1], pitched=True)
+    ),
     trinton.linear_attachment_command(
         attachments=[
             evans.make_fancy_gliss(
@@ -400,7 +406,7 @@ trinton.make_music(
     trinton.hooked_spanner_command(
         string=library.return_fractional_scratch_markup("3 4"),
         selector=trinton.select_logical_ties_by_index([0, -1], first=True),
-        padding=8.5,
+        padding=9,
         full_string=True,
         right_padding=0,
         tweaks=[r"""- \tweak color #darkred"""],
@@ -425,9 +431,14 @@ trinton.make_music(
             32,
         ),
     ),
-    evans.PitchHandler([24]),
+    evans.PitchHandler(trinton.rotated_sequence(pitch.violin_gamma_pitches, 19)),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True)
+    ),
     library.duration_line(),
-    trinton.change_notehead_command(notehead="highest"),
+    trinton.ottava_command(
+        octave=2, selector=trinton.select_leaves_by_index([0, -1], pitched=True)
+    ),
     trinton.linear_attachment_command(
         attachments=[
             evans.make_fancy_gliss(
@@ -524,7 +535,7 @@ trinton.make_music(
         ],
         selector=trinton.select_logical_ties_by_index([0, 1], first=True, pitched=True),
         style="solid-line-with-arrow",
-        padding=8.5,
+        padding=9,
         full_string=True,
         right_padding=-10,
         tweaks=[r"""- \tweak color #darkred"""],
@@ -536,7 +547,7 @@ trinton.make_music(
         ],
         selector=trinton.select_logical_ties_by_index([2, 3], first=True, pitched=True),
         style="solid-line-with-arrow",
-        padding=8.5,
+        padding=9,
         full_string=True,
         right_padding=-3,
         tweaks=[r"""- \tweak color #darkred"""],

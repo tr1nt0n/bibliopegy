@@ -7,6 +7,7 @@ from abjadext import rmakers
 from abjadext import microtones
 from bibliopegy import library
 from bibliopegy import ts
+from bibliopegy import pitch
 
 # score
 
@@ -298,9 +299,14 @@ for voice_name in ["flute voice", "bassflute voice"]:
 trinton.make_music(
     lambda _: trinton.select_target(_, (2, 7)),
     evans.RhythmHandler(evans.talea([12, -6, 5, -1], 32)),
-    evans.PitchHandler([24]),
-    trinton.change_notehead_command(notehead="highest"),
+    evans.PitchHandler(trinton.rotated_sequence(pitch.violin_gamma_pitches, 9)),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True)
+    ),
     library.duration_line(),
+    trinton.ottava_command(
+        octave=2, selector=trinton.select_leaves_by_index([0, -1], pitched=True)
+    ),
     trinton.linear_attachment_command(
         attachments=[
             evans.make_fancy_gliss(
@@ -431,9 +437,14 @@ trinton.make_music(
 trinton.make_music(
     lambda _: trinton.select_target(_, (8, 14)),
     evans.RhythmHandler(evans.talea([-3, 11, -4, 8, -100], 32)),
-    evans.PitchHandler([24]),
-    trinton.change_notehead_command(notehead="highest"),
+    evans.PitchHandler(trinton.rotated_sequence(pitch.violin_gamma_pitches, 11)),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True)
+    ),
     library.duration_line(),
+    trinton.ottava_command(
+        octave=2, selector=trinton.select_leaves_by_index([0, -1], pitched=True)
+    ),
     trinton.attachment_command(
         attachments=[
             evans.make_fancy_gliss(
@@ -525,9 +536,14 @@ trinton.make_music(
 trinton.make_music(
     lambda _: trinton.select_target(_, (16, 20)),
     evans.RhythmHandler(evans.talea([-2, 1, 1, 1, 5, -3, 100], 32)),
-    evans.PitchHandler([24]),
-    trinton.change_notehead_command(notehead="highest"),
+    evans.PitchHandler(trinton.rotated_sequence(pitch.violin_gamma_pitches, 13)),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True)
+    ),
     library.duration_line(),
+    trinton.ottava_command(
+        octave=2, selector=trinton.select_leaves_by_index([0, -1], pitched=True)
+    ),
     trinton.attachment_command(
         attachments=[
             evans.make_fancy_gliss(

@@ -7,6 +7,7 @@ from abjadext import rmakers
 from abjadext import microtones
 from bibliopegy import library
 from bibliopegy import ts
+from bibliopegy import pitch
 
 # score
 

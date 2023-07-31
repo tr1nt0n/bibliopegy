@@ -670,28 +670,24 @@
                                           (87 0 87.5 -5 88 0)
                                      )
                                      #-6
-                                    \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
+                                    \ottava 2
                                     \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { violin }
                                     \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vln. }
-                                    \once \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                    \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                     \time 1/8
-                                    c'''8
+                                    af''''!8
                                     \ff
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
                                     - \tweak color #darkred
-                                    - \tweak padding #8.5
+                                    - \tweak padding #9
                                     - \abjad-dashed-line-with-hook
                                     - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { { \fraction 3 4 } \hspace #0.5 { scratch } } \hspace #0.5 }
                                     \startTextSpan
                                     - \tweak stencil #constante-hairpin
                                     \<
                                     ~
-                                    \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                       %! abjad.glissando(1)
                                     \hide NoteHead
                                       %! abjad.glissando(1)
@@ -700,37 +696,18 @@
                                     \override NoteColumn.glissando-skip = ##t
                                       %! abjad.glissando(1)
                                     \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                    \once \override Staff.AccidentalPlacement.right-padding = #0.6
-                                    c'''8
+                                    af''''8
                                     ~
-                                    \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
-                                    \once \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                    \once \override Staff.AccidentalPlacement.right-padding = #0.6
-                                    c'''8
+                                    af''''8
                                     ~
-                                    \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
-                                    \once \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                    \once \override Staff.AccidentalPlacement.right-padding = #0.6
-                                    c'''8
+                                    af''''8
                                     ~
-                                    \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
-                                    \once \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                    \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                     \afterGrace
-                                    c'''16
+                                    af''''16
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                         \once \override NoteHead.transparent = ##t
-                                        \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                        \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                           %! abjad.glissando(6)
                                         \revert Accidental.stencil
                                           %! abjad.glissando(6)
@@ -739,8 +716,9 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        c'''16
+                                        af''''16
                                         \!
+                                        \ottava 0
                                     }
                                     r16
                                     \stopTextSpan
@@ -797,18 +775,15 @@
                                           (47 0 47.5 -0.5 48 0)
                                      )
                                      #-6
-                                    \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
-                                    \once \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                    \once \override Staff.AccidentalPlacement.right-padding = #0.6
-                                    c'''16
+                                    \ottava 2
+                                    af''''!16
                                     \mp
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
                                     - \tweak color #darkred
-                                    - \tweak padding #8.5
+                                    - \tweak padding #9
                                     - \abjad-solid-line-with-arrow
                                     - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { scratch } \hspace #0.5 }
                                     - \tweak bound-details.right.text \markup \with-color "darkred" { { \fraction 3 4 } \hspace #0.5 { scratch } }
@@ -817,7 +792,6 @@
                                     - \tweak stencil #constante-hairpin
                                     \<
                                     ~
-                                    \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                       %! abjad.glissando(1)
                                     \hide NoteHead
                                       %! abjad.glissando(1)
@@ -826,19 +800,12 @@
                                     \override NoteColumn.glissando-skip = ##t
                                       %! abjad.glissando(1)
                                     \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                    \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                     \afterGrace
-                                    c'''8
+                                    af''''8
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                         \once \override NoteHead.transparent = ##t
-                                        \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                        \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                           %! abjad.glissando(6)
                                         \revert Accidental.stencil
                                           %! abjad.glissando(6)
@@ -847,7 +814,7 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        c'''16
+                                        af''''16
                                         \!
                                         \stopTextSpan
                                     }
@@ -882,19 +849,17 @@
                                           (25 0 25.5 -1 26 0)
                                      )
                                      #-6
-                                    \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
-                                    \once \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                    \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                     \afterGrace
-                                    c'''16.
+                                    \tweak Accidental.stencil #ly:text-interface::print
+                                    \tweak Accidental.text \three-eighths-sharp-markup
+                                    g''''!16.
                                     \mf
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
                                     - \tweak color #darkred
-                                    - \tweak padding #8.5
+                                    - \tweak padding #9
                                     - \abjad-solid-line-with-arrow
                                     - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { scratch } \hspace #0.5 }
                                     - \tweak bound-details.right.text \markup \with-color "darkred" { { \fraction 2 3 } \hspace #0.5 { scratch } }
@@ -905,7 +870,6 @@
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                         \once \override NoteHead.transparent = ##t
                                           %! abjad.glissando(1)
                                         \hide NoteHead
@@ -915,9 +879,6 @@
                                         \override NoteColumn.glissando-skip = ##t
                                           %! abjad.glissando(1)
                                         \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                        \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                           %! abjad.glissando(6)
                                         \revert Accidental.stencil
                                           %! abjad.glissando(6)
@@ -926,7 +887,7 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        c'''16
+                                        g''''16
                                         \!
                                         \stopTextSpan
                                     }
@@ -941,13 +902,9 @@
                                           (5 0 5.5 -5 6 0)
                                      )
                                      #-6
-                                    \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                     \once \override Staff.TextScript.whiteout = ##f
-                                    \once \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                    \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                     \afterGrace
-                                    c'''32
+                                    gqs''''!32
                                     \f
                                     ^ \markup \with-color "darkred" { { \fraction 3 4 } \hspace #0.5 { scratch } }
                                       %! abjad.glissando(7)
@@ -959,7 +916,6 @@
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                         \once \override NoteHead.transparent = ##t
                                           %! abjad.glissando(1)
                                         \hide NoteHead
@@ -969,9 +925,6 @@
                                         \override NoteColumn.glissando-skip = ##t
                                           %! abjad.glissando(1)
                                         \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                        \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                           %! abjad.glissando(6)
                                         \revert Accidental.stencil
                                           %! abjad.glissando(6)
@@ -980,7 +933,7 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        c'''16
+                                        gqs''''16
                                         \!
                                     }
                                     r32
@@ -994,13 +947,9 @@
                                           (5 0 5.5 -5.5 6 0)
                                      )
                                      #-6
-                                    \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                     \once \override Staff.TextScript.whiteout = ##f
-                                    \once \override NoteHead.no-ledgers = ##t
-                                    \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                    \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                     \afterGrace
-                                    c'''32
+                                    af''''!32
                                     \ff
                                     ^ \markup \with-color "darkred" { { \fraction 1 2 } \hspace #0.5 { scratch } }
                                       %! abjad.glissando(7)
@@ -1012,7 +961,6 @@
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.stencil = #(lambda (grob) (let ((dur (ly:grob-property grob 'duration-log))) (if (= dur 0) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bb)) (if (= dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0bc)) (if (> dur 1) (grob-interpret-markup grob (markup #:ekmelos-char #xe0be)))))))
                                         \once \override NoteHead.transparent = ##t
                                           %! abjad.glissando(1)
                                         \hide NoteHead
@@ -1022,9 +970,6 @@
                                         \override NoteColumn.glissando-skip = ##t
                                           %! abjad.glissando(1)
                                         \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.no-ledgers = ##t
-                                        \once \override NoteHead.stem-attachment = #'(0 . 0.75)
-                                        \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                           %! abjad.glissando(6)
                                         \revert Accidental.stencil
                                           %! abjad.glissando(6)
@@ -1033,8 +978,9 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        c'''16
+                                        af''''16
                                         \!
+                                        \ottava 0
                                     }
                                 }
                             }
