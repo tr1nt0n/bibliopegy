@@ -824,7 +824,6 @@ trinton.make_music(
         selector=trinton.select_logical_ties_by_index(
             [
                 1,
-                2,
                 3,
                 -1,
             ]
@@ -845,6 +844,7 @@ trinton.make_music(
         selector=trinton.select_logical_ties_by_index(
             [
                 0,
+                2,
             ]
         ),
     ),
@@ -1386,28 +1386,127 @@ trinton.make_music(
     lambda _: trinton.select_target(_, (1, 35)),
     evans.RhythmHandler(
         evans.talea(
-            [12, 6, 9, 15, 1000],
+            [12, 5, 5, 5, 15, 1000],
             32,
         ),
     ),
-    evans.PitchHandler(["d,"]),
-    library.duration_line(
+    trinton.pitch_with_selector_command(
+        pitch_list=["d,"],
+        selector=trinton.logical_ties(
+            exclude=[
+                2,
+            ]
+        ),
+    ),
+    trinton.pitch_with_selector_command(
+        pitch_list=["dqf,"],
         selector=trinton.select_logical_ties_by_index(
             [
-                0,
+                2,
+            ]
+        ),
+    ),
+    library.duration_line(),
+    trinton.attachment_command(
+        attachments=[
+            library.upbow,
+            abjad.Articulation("tenuto"),
+            abjad.Articulation("espressivo"),
+            evans.make_fancy_gliss(
+                0.5,
+                1,
+                1.2,
+                1.5,
+                1.7,
+                2,
+                2.2,
+                2.5,
+                2.7,
                 3,
+                3.2,
+                3.5,
+                3.7,
                 4,
+                3.7,
+                3.5,
+                3.2,
+                3,
+                2.7,
+                2.5,
+                2.2,
+                2,
+                1.7,
+                1.5,
+                1.2,
+                1,
+                0.5,
+                right_padding=-6,
+            ),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [
+                2,
             ],
             first=True,
             grace=False,
         ),
     ),
-    library.duration_line(
-        sustained=True,
+    trinton.attachment_command(
+        attachments=[
+            library.downbow,
+            abjad.Articulation(">"),
+            evans.make_fancy_gliss(
+                5,
+                6,
+                5,
+                0.5,
+                0.5,
+                1,
+                0.5,
+                0.5,
+                5,
+                3,
+                5,
+                3,
+                7,
+                0.5,
+                0.5,
+                1,
+                1.5,
+                2,
+                2.5,
+                3,
+                3.2,
+                3.5,
+                3.7,
+                4,
+                4.2,
+                4.5,
+                4.7,
+                5,
+                6,
+                7,
+                right_padding=-6,
+            ),
+        ],
         selector=trinton.select_logical_ties_by_index(
             [
                 1,
-                2,
+            ],
+            first=True,
+            grace=False,
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Articulation("tenuto"),
+            evans.make_fancy_gliss(
+                1, 5, 1, 1, 5, 1, 1, 5, 1, 5, 1, 1, right_padding=-6
+            ),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [
+                3,
             ],
             first=True,
             grace=False,
@@ -1415,10 +1514,21 @@ trinton.make_music(
     ),
     trinton.linear_attachment_command(
         attachments=[
-            trinton.make_custom_dynamic("spp"),
-            abjad.StartHairpin("<"),
+            trinton.make_custom_dynamic("sffz p"),
+            abjad.StartHairpin("<|"),
+            abjad.Dynamic("fff"),
+            trinton.make_custom_dynamic("s mp"),
             abjad.Dynamic("mf"),
-            abjad.StartHairpin(">"),
+            abjad.StartHairpin("--"),
+            abjad.StopHairpin(),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [2, 2, 3, 4, 6, 6, 7], first=True
+        ),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            trinton.make_custom_dynamic("spp"),
             abjad.Dynamic("p"),
             abjad.StartHairpin("<"),
             abjad.Dynamic("f"),
@@ -1426,12 +1536,9 @@ trinton.make_music(
         selector=trinton.select_logical_ties_by_index(
             [
                 0,
-                1,
-                2,
-                2,
-                3,
-                3,
                 4,
+                4,
+                5,
             ],
             first=True,
             grace=False,
@@ -1447,50 +1554,6 @@ trinton.make_music(
     ),
     trinton.linear_attachment_command(
         attachments=[
-            evans.make_fancy_gliss(
-                5,
-                4.5,
-                4,
-                3.5,
-                3,
-                2.5,
-                2,
-                1.5,
-                1,
-                0.7,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                0.5,
-                1,
-                1,
-                1,
-                1,
-                2,
-                2,
-                2,
-                3,
-                3,
-                3,
-                4,
-                4,
-                4,
-                5,
-                5,
-                right_padding=-6,
-            ),
             evans.make_fancy_gliss(
                 0.1,
                 0.1,
@@ -1558,13 +1621,60 @@ trinton.make_music(
         ],
         selector=trinton.select_logical_ties_by_index(
             [
-                1,
-                3,
-                4,
+                -2,
+                -1,
             ],
             first=True,
             grace=False,
         ),
+    ),
+    trinton.spanner_command(
+        strings=[
+            "\\skin-default-notehead-markup",
+            "\\skin-diamond-notehead-markup",
+        ],
+        selector=trinton.select_logical_ties_by_index([2, 3], first=True),
+        style="solid-line-with-arrow",
+        padding=7,
+        full_string=True,
+        command="One",
+        right_padding=-1,
+        tweaks=[r"""- \tweak color #(css-color 'darksalmon)"""],
+    ),
+    trinton.spanner_command(
+        strings=[
+            r"""\markup \with-color "indianred" { norm. }""",
+            r"""\markup \with-color "indianred" { pont. }""",
+        ],
+        selector=trinton.select_logical_ties_by_index([2, 3], first=True),
+        style="solid-line-with-arrow",
+        padding=5,
+        full_string=True,
+        command="Two",
+        right_padding=-2,
+        tweaks=[r"""- \tweak color #(css-color 'indianred)"""],
+    ),
+    trinton.spanner_command(
+        strings=[
+            "\\skin-default-notehead-markup",
+            "\\skin-half-diamond-notehead-markup",
+        ],
+        selector=trinton.select_logical_ties_by_index([6, 7], first=True),
+        style="solid-line-with-arrow",
+        padding=6,
+        full_string=True,
+        command="One",
+        right_padding=-1,
+        tweaks=[r"""- \tweak color #(css-color 'darksalmon)"""],
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "indianred" { "molto tast." }""",
+        selector=trinton.select_logical_ties_by_index([6, 7], first=True),
+        padding=4,
+        full_string=True,
+        command="Two",
+        right_padding=0,
+        tweaks=[r"""- \tweak color #(css-color 'indianred)"""],
     ),
     voice=score["cello 3 voice"],
 )

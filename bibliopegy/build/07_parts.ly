@@ -4205,7 +4205,7 @@
                                         \undo \hide NoteHead
                                         eqs16
                                     }
-                                    eqs16.
+                                    e16.
                                     - \espressivo
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
@@ -4221,7 +4221,7 @@
                                       %! abjad.glissando(1)
                                     \override NoteHead.no-ledgers = ##t
                                     \afterGrace
-                                    eqs32
+                                    e32
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -4234,7 +4234,7 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        eqs16
+                                        e16
                                     }
                                     eqs16.
                                     - \espressivo
@@ -7009,93 +7009,90 @@
                                        #'(
                                           (0 0 0.5 5 1 0)
                                           (1 0 1.5 -5 2 0)
-                                          (2 0 2.5 4.5 3 0)
-                                          (3 0 3.5 -4.5 4 0)
-                                          (4 0 4.5 4 5 0)
-                                          (5 0 5.5 -4 6 0)
-                                          (6 0 6.5 3.5 7 0)
-                                          (7 0 7.5 -3.5 8 0)
-                                          (8 0 8.5 3 9 0)
-                                          (9 0 9.5 -3 10 0)
-                                          (10 0 10.5 2.5 11 0)
-                                          (11 0 11.5 -2.5 12 0)
-                                          (12 0 12.5 2 13 0)
-                                          (13 0 13.5 -2 14 0)
-                                          (14 0 14.5 1.5 15 0)
-                                          (15 0 15.5 -1.5 16 0)
-                                          (16 0 16.5 1 17 0)
-                                          (17 0 17.5 -1 18 0)
-                                          (18 0 18.5 0.7 19 0)
-                                          (19 0 19.5 -0.7 20 0)
-                                          (20 0 20.5 0.5 21 0)
-                                          (21 0 21.5 -0.5 22 0)
-                                          (22 0 22.5 0.5 23 0)
-                                          (23 0 23.5 -0.5 24 0)
-                                          (24 0 24.5 0.5 25 0)
-                                          (25 0 25.5 -0.5 26 0)
+                                          (2 0 2.5 6 3 0)
+                                          (3 0 3.5 -6 4 0)
+                                          (4 0 4.5 5 5 0)
+                                          (5 0 5.5 -5 6 0)
+                                          (6 0 6.5 0.5 7 0)
+                                          (7 0 7.5 -0.5 8 0)
+                                          (8 0 8.5 0.5 9 0)
+                                          (9 0 9.5 -0.5 10 0)
+                                          (10 0 10.5 1 11 0)
+                                          (11 0 11.5 -1 12 0)
+                                          (12 0 12.5 0.5 13 0)
+                                          (13 0 13.5 -0.5 14 0)
+                                          (14 0 14.5 0.5 15 0)
+                                          (15 0 15.5 -0.5 16 0)
+                                          (16 0 16.5 5 17 0)
+                                          (17 0 17.5 -5 18 0)
+                                          (18 0 18.5 3 19 0)
+                                          (19 0 19.5 -3 20 0)
+                                          (20 0 20.5 5 21 0)
+                                          (21 0 21.5 -5 22 0)
+                                          (22 0 22.5 3 23 0)
+                                          (23 0 23.5 -3 24 0)
+                                          (24 0 24.5 7 25 0)
+                                          (25 0 25.5 -7 26 0)
                                           (26 0 26.5 0.5 27 0)
                                           (27 0 27.5 -0.5 28 0)
                                           (28 0 28.5 0.5 29 0)
                                           (29 0 29.5 -0.5 30 0)
-                                          (30 0 30.5 0.5 31 0)
-                                          (31 0 31.5 -0.5 32 0)
-                                          (32 0 32.5 0.5 33 0)
-                                          (33 0 33.5 -0.5 34 0)
-                                          (34 0 34.5 0.5 35 0)
-                                          (35 0 35.5 -0.5 36 0)
-                                          (36 0 36.5 0.5 37 0)
-                                          (37 0 37.5 -0.5 38 0)
-                                          (38 0 38.5 0.5 39 0)
-                                          (39 0 39.5 -0.5 40 0)
-                                          (40 0 40.5 0.5 41 0)
-                                          (41 0 41.5 -0.5 42 0)
-                                          (42 0 42.5 0.5 43 0)
-                                          (43 0 43.5 -0.5 44 0)
-                                          (44 0 44.5 0.5 45 0)
-                                          (45 0 45.5 -0.5 46 0)
-                                          (46 0 46.5 0.5 47 0)
-                                          (47 0 47.5 -0.5 48 0)
-                                          (48 0 48.5 0.5 49 0)
-                                          (49 0 49.5 -0.5 50 0)
-                                          (50 0 50.5 0.5 51 0)
-                                          (51 0 51.5 -0.5 52 0)
-                                          (52 0 52.5 1 53 0)
-                                          (53 0 53.5 -1 54 0)
-                                          (54 0 54.5 1 55 0)
-                                          (55 0 55.5 -1 56 0)
-                                          (56 0 56.5 1 57 0)
-                                          (57 0 57.5 -1 58 0)
-                                          (58 0 58.5 1 59 0)
-                                          (59 0 59.5 -1 60 0)
-                                          (60 0 60.5 2 61 0)
-                                          (61 0 61.5 -2 62 0)
-                                          (62 0 62.5 2 63 0)
-                                          (63 0 63.5 -2 64 0)
-                                          (64 0 64.5 2 65 0)
-                                          (65 0 65.5 -2 66 0)
-                                          (66 0 66.5 3 67 0)
-                                          (67 0 67.5 -3 68 0)
-                                          (68 0 68.5 3 69 0)
-                                          (69 0 69.5 -3 70 0)
-                                          (70 0 70.5 3 71 0)
-                                          (71 0 71.5 -3 72 0)
-                                          (72 0 72.5 4 73 0)
-                                          (73 0 73.5 -4 74 0)
-                                          (74 0 74.5 4 75 0)
-                                          (75 0 75.5 -4 76 0)
-                                          (76 0 76.5 4 77 0)
-                                          (77 0 77.5 -4 78 0)
-                                          (78 0 78.5 5 79 0)
-                                          (79 0 79.5 -5 80 0)
-                                          (80 0 80.5 5 81 0)
-                                          (81 0 81.5 -5 82 0)
+                                          (30 0 30.5 1 31 0)
+                                          (31 0 31.5 -1 32 0)
+                                          (32 0 32.5 1.5 33 0)
+                                          (33 0 33.5 -1.5 34 0)
+                                          (34 0 34.5 2 35 0)
+                                          (35 0 35.5 -2 36 0)
+                                          (36 0 36.5 2.5 37 0)
+                                          (37 0 37.5 -2.5 38 0)
+                                          (38 0 38.5 3 39 0)
+                                          (39 0 39.5 -3 40 0)
+                                          (40 0 40.5 3.2 41 0)
+                                          (41 0 41.5 -3.2 42 0)
+                                          (42 0 42.5 3.5 43 0)
+                                          (43 0 43.5 -3.5 44 0)
+                                          (44 0 44.5 3.7 45 0)
+                                          (45 0 45.5 -3.7 46 0)
+                                          (46 0 46.5 4 47 0)
+                                          (47 0 47.5 -4 48 0)
+                                          (48 0 48.5 4.2 49 0)
+                                          (49 0 49.5 -4.2 50 0)
+                                          (50 0 50.5 4.5 51 0)
+                                          (51 0 51.5 -4.5 52 0)
+                                          (52 0 52.5 4.7 53 0)
+                                          (53 0 53.5 -4.7 54 0)
+                                          (54 0 54.5 5 55 0)
+                                          (55 0 55.5 -5 56 0)
+                                          (56 0 56.5 6 57 0)
+                                          (57 0 57.5 -6 58 0)
+                                          (58 0 58.5 7 59 0)
+                                          (59 0 59.5 -7 60 0)
                                      )
                                      #-6
                                     d,8
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "sffz p"))
+                                    - \accent
+                                    - \tweak color #"darkmagenta"
+                                    - \downbow
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak color #(css-color 'darksalmon)
+                                    - \tweak padding #7
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \skin-default-notehead-markup \hspace #0.5 }
+                                    - \tweak bound-details.right.text \skin-diamond-notehead-markup
+                                    - \tweak bound-details.right.padding 1
+                                    \startTextSpanOne
+                                    - \tweak color #(css-color 'indianred)
+                                    - \tweak padding #5
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "indianred" { norm. } \hspace #0.5 }
+                                    - \tweak bound-details.right.text \markup \with-color "indianred" { pont. }
+                                    - \tweak bound-details.right.padding 2
+                                    \startTextSpanTwo
+                                    - \tweak stencil #abjad-flared-hairpin
                                     \<
                                     ~
                                       %! abjad.glissando(1)
@@ -7106,13 +7103,176 @@
                                     \override NoteColumn.glissando-skip = ##t
                                       %! abjad.glissando(1)
                                     \override NoteHead.no-ledgers = ##t
+                                    \afterGrace
+                                    d,32
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        d,16
+                                        \fff
+                                        \stopTextSpanOne
+                                        \stopTextSpanTwo
+                                    }
+                                    \fancy-gliss
+                                       #'(
+                                          (0 0 0.5 0.5 1 0)
+                                          (1 0 1.5 -0.5 2 0)
+                                          (2 0 2.5 1 3 0)
+                                          (3 0 3.5 -1 4 0)
+                                          (4 0 4.5 1.2 5 0)
+                                          (5 0 5.5 -1.2 6 0)
+                                          (6 0 6.5 1.5 7 0)
+                                          (7 0 7.5 -1.5 8 0)
+                                          (8 0 8.5 1.7 9 0)
+                                          (9 0 9.5 -1.7 10 0)
+                                          (10 0 10.5 2 11 0)
+                                          (11 0 11.5 -2 12 0)
+                                          (12 0 12.5 2.2 13 0)
+                                          (13 0 13.5 -2.2 14 0)
+                                          (14 0 14.5 2.5 15 0)
+                                          (15 0 15.5 -2.5 16 0)
+                                          (16 0 16.5 2.7 17 0)
+                                          (17 0 17.5 -2.7 18 0)
+                                          (18 0 18.5 3 19 0)
+                                          (19 0 19.5 -3 20 0)
+                                          (20 0 20.5 3.2 21 0)
+                                          (21 0 21.5 -3.2 22 0)
+                                          (22 0 22.5 3.5 23 0)
+                                          (23 0 23.5 -3.5 24 0)
+                                          (24 0 24.5 3.7 25 0)
+                                          (25 0 25.5 -3.7 26 0)
+                                          (26 0 26.5 4 27 0)
+                                          (27 0 27.5 -4 28 0)
+                                          (28 0 28.5 3.7 29 0)
+                                          (29 0 29.5 -3.7 30 0)
+                                          (30 0 30.5 3.5 31 0)
+                                          (31 0 31.5 -3.5 32 0)
+                                          (32 0 32.5 3.2 33 0)
+                                          (33 0 33.5 -3.2 34 0)
+                                          (34 0 34.5 3 35 0)
+                                          (35 0 35.5 -3 36 0)
+                                          (36 0 36.5 2.7 37 0)
+                                          (37 0 37.5 -2.7 38 0)
+                                          (38 0 38.5 2.5 39 0)
+                                          (39 0 39.5 -2.5 40 0)
+                                          (40 0 40.5 2.2 41 0)
+                                          (41 0 41.5 -2.2 42 0)
+                                          (42 0 42.5 2 43 0)
+                                          (43 0 43.5 -2 44 0)
+                                          (44 0 44.5 1.7 45 0)
+                                          (45 0 45.5 -1.7 46 0)
+                                          (46 0 46.5 1.5 47 0)
+                                          (47 0 47.5 -1.5 48 0)
+                                          (48 0 48.5 1.2 49 0)
+                                          (49 0 49.5 -1.2 50 0)
+                                          (50 0 50.5 1 51 0)
+                                          (51 0 51.5 -1 52 0)
+                                          (52 0 52.5 0.5 53 0)
+                                          (53 0 53.5 -0.5 54 0)
+                                     )
+                                     #-6
+                                    dqf,16.
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "s mp"))
+                                    - \espressivo
+                                    - \tenuto
+                                    - \tweak color #"darkmagenta"
+                                    - \upbow
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    ~
+                                      %! abjad.glissando(1)
+                                    \hide NoteHead
+                                      %! abjad.glissando(1)
+                                    \override Accidental.stencil = ##f
+                                      %! abjad.glissando(1)
+                                    \override NoteColumn.glissando-skip = ##t
+                                      %! abjad.glissando(1)
+                                    \override NoteHead.no-ledgers = ##t
+                                    \afterGrace
+                                    dqf,16
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        dqf,16
+                                    }
+                                    \fancy-gliss
+                                       #'(
+                                          (0 0 0.5 1 1 0)
+                                          (1 0 1.5 -1 2 0)
+                                          (2 0 2.5 5 3 0)
+                                          (3 0 3.5 -5 4 0)
+                                          (4 0 4.5 1 5 0)
+                                          (5 0 5.5 -1 6 0)
+                                          (6 0 6.5 1 7 0)
+                                          (7 0 7.5 -1 8 0)
+                                          (8 0 8.5 5 9 0)
+                                          (9 0 9.5 -5 10 0)
+                                          (10 0 10.5 1 11 0)
+                                          (11 0 11.5 -1 12 0)
+                                          (12 0 12.5 1 13 0)
+                                          (13 0 13.5 -1 14 0)
+                                          (14 0 14.5 5 15 0)
+                                          (15 0 15.5 -5 16 0)
+                                          (16 0 16.5 1 17 0)
+                                          (17 0 17.5 -1 18 0)
+                                          (18 0 18.5 5 19 0)
+                                          (19 0 19.5 -5 20 0)
+                                          (20 0 20.5 1 21 0)
+                                          (21 0 21.5 -1 22 0)
+                                          (22 0 22.5 1 23 0)
+                                          (23 0 23.5 -1 24 0)
+                                     )
+                                     #-6
                                     d,16
-                                    d,16
+                                    - \tenuto
                                     \mf
-                                    \>
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    - \tweak color #(css-color 'darksalmon)
+                                    - \tweak padding #6
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \skin-default-notehead-markup \hspace #0.5 }
+                                    - \tweak bound-details.right.text \skin-half-diamond-notehead-markup
+                                    - \tweak bound-details.right.padding 1
+                                    \startTextSpanOne
+                                    - \tweak color #(css-color 'indianred)
+                                    - \tweak padding #4
+                                    - \abjad-dashed-line-with-hook
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "indianred" { "molto tast." } \hspace #0.5 }
+                                    \startTextSpanTwo
+                                    - \tweak stencil #constante-hairpin
+                                    \<
                                     ~
-                                    d,8
-                                    ~
+                                      %! abjad.glissando(1)
+                                    \hide NoteHead
+                                      %! abjad.glissando(1)
+                                    \override Accidental.stencil = ##f
+                                      %! abjad.glissando(1)
+                                    \override NoteColumn.glissando-skip = ##t
+                                      %! abjad.glissando(1)
+                                    \override NoteHead.no-ledgers = ##t
                                     \afterGrace
                                     d,16.
                                     {
@@ -7128,6 +7288,9 @@
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
                                         d,16
+                                        \!
+                                        \stopTextSpanOne
+                                        \stopTextSpanTwo
                                     }
                                     \fancy-gliss
                                        #'(

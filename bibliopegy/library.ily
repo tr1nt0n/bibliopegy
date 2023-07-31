@@ -74,3 +74,13 @@ boxed-markup = #(
    (grob-interpret-markup grob
           (markup #:override '(baseline-skip . 2.5) #:number
                   (#:line ((#:fontsize 1 #:column ("X" "X")))))))
+
+safe-green = #(rgb-color 49/110 77/110 63/110)
+
+skin-diamond-notehead-markup = \markup \with-color "darksalmon" \musicglyph "noteheads.s0harmonic"
+skin-default-notehead-markup = \markup \with-color "darksalmon" \musicglyph "noteheads.s1"
+skin-half-diamond-notehead-markup = \markup \with-color "darksalmon" {
+  \fontsize #5
+  \override #'(font-name . "ekmelos")
+  \char ##xe0fc
+}

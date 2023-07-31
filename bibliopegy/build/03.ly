@@ -405,9 +405,9 @@
                                         \clef "treble"
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup \concat { \one-septimal-comma-down \hspace #0.125 \abjad-flat  }
-                                        df'''!16.
-                                        ^ \markup \center-align { \concat { -31 } }
+                                        \tweak Accidental.text \markup { \one-twenty-three-limit-comma-up  }
+                                        a''!16.
+                                        ^ \markup \center-align { \concat { +28 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
@@ -435,7 +435,7 @@
                                             \revert NoteHead.no-ledgers
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
-                                            df'''16
+                                            a''16
                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                         }
                                         r16
@@ -453,9 +453,9 @@
                                     {
                                         r16
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup \concat { \one-septimal-comma-down \hspace #0.125 \abjad-flat  }
-                                        df'''!16.
-                                        ^ \markup \center-align { \concat { -31 } }
+                                        \tweak Accidental.text \markup { \one-twenty-three-limit-comma-up  }
+                                        a''!16.
+                                        ^ \markup \center-align { \concat { +28 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
@@ -477,8 +477,8 @@
                                         \override NoteHead.no-ledgers = ##t
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup \concat { \one-septimal-comma-down \hspace #0.125 \abjad-flat  }
-                                        df'''32
+                                        \tweak Accidental.text \markup { \one-twenty-three-limit-comma-up  }
+                                        a''32
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -491,7 +491,7 @@
                                             \revert NoteHead.no-ledgers
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
-                                            df'''16
+                                            a''16
                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "mf"))
                                         }
                                         r16
@@ -504,9 +504,9 @@
                                         r16.
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup \concat { \one-septimal-comma-down \hspace #0.125 \abjad-flat  }
-                                        df'''!32
-                                        ^ \markup \center-align { \concat { -31 } }
+                                        \tweak Accidental.text \markup { \one-twenty-three-limit-comma-up  }
+                                        a''!32
+                                        ^ \markup \center-align { \concat { +28 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
@@ -534,7 +534,7 @@
                                             \revert NoteHead.no-ledgers
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
-                                            df'''16
+                                            a''16
                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "f"))
                                         }
                                     }
@@ -691,8 +691,8 @@
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \markup \concat { \one-septimal-comma-down \hspace #0.125 \abjad-flat  }
-                                    df''''!16
-                                    ^ \markup \center-align { \concat { -31 } }
+                                    af'''!16
+                                    ^ \markup \center-align { \concat { -29 } }
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
@@ -720,7 +720,7 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        df''''16
+                                        af'''16
                                             _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                     }
                                     r16
@@ -739,9 +739,9 @@
                                         r16
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup \concat { \one-septimal-comma-down \hspace #0.125 \abjad-flat  }
-                                        df''''!16
-                                        ^ \markup \center-align { \concat { -31 } }
+                                        \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                        af'''!16
+                                        ^ \markup \center-align { \concat { A-49 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
@@ -769,7 +769,7 @@
                                             \revert NoteHead.no-ledgers
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
-                                            df''''16
+                                            af'''16
                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "mf"))
                                             \ottava 0
                                         }
@@ -928,9 +928,9 @@
                                         r16.
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                        c'''!16
-                                        ^ \markup \center-align { \concat { B+41 } }
+                                        \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                        af''!16
+                                        ^ \markup \center-align { \concat { A-49 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
@@ -958,7 +958,7 @@
                                             \revert NoteHead.no-ledgers
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
-                                            c'''16
+                                            af''16
                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                         }
                                     }
@@ -985,9 +985,9 @@
                                         r32
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                        c'''!16
-                                        ^ \markup \center-align { \concat { B+41 } }
+                                        \tweak Accidental.text \markup { \one-twenty-three-limit-comma-up  }
+                                        a''!16
+                                        ^ \markup \center-align { \concat { +28 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
@@ -1015,7 +1015,7 @@
                                             \revert NoteHead.no-ledgers
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
-                                            c'''16
+                                            a''16
                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "mf"))
                                         }
                                         r16
@@ -1542,9 +1542,9 @@
                                       %! +SCORE
                                     \stopStaff \startStaff
                                     \tweak Accidental.stencil #ly:text-interface::print
-                                    \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                    c'''!8
-                                    ^ \markup \center-align { \concat { B+41 } }
+                                    \tweak Accidental.text \markup \concat { \one-septimal-comma-down \hspace #0.125 \abjad-flat  }
+                                    af''!8
+                                    ^ \markup \center-align { \concat { -29 } }
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
@@ -1565,8 +1565,8 @@
                                         \override NoteHead.no-ledgers = ##t
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                        c'''32
+                                        \tweak Accidental.text \markup \concat { \one-septimal-comma-down \hspace #0.125 \abjad-flat  }
+                                        af''32
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1579,7 +1579,7 @@
                                             \revert NoteHead.no-ledgers
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
-                                            c'''16
+                                            af''16
                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                         }
                                         r16.
@@ -1598,9 +1598,9 @@
                                     {
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                        c'''!16
-                                        ^ \markup \center-align { \concat { B+41 } }
+                                        \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                        af''!16
+                                        ^ \markup \center-align { \concat { A-49 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
@@ -1628,7 +1628,7 @@
                                             \revert NoteHead.no-ledgers
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
-                                            c'''16
+                                            af''16
                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "mf"))
                                         }
                                         r16.
@@ -1647,9 +1647,9 @@
                                         r32
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                        c'''!16.
-                                        ^ \markup \center-align { \concat { B+41 } }
+                                        \tweak Accidental.text \markup \concat { \one-septimal-comma-down \hspace #0.125 \abjad-flat  }
+                                        af''!16.
+                                        ^ \markup \center-align { \concat { -29 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
@@ -1677,7 +1677,7 @@
                                             \revert NoteHead.no-ledgers
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
-                                            c'''16
+                                            af''16
                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "f"))
                                         }
                                         r32
@@ -1832,9 +1832,9 @@
                                     r16
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
-                                    \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                    c'''!16
-                                    ^ \markup \center-align { \concat { B+41 } }
+                                    \tweak Accidental.text \markup { \one-twenty-three-limit-comma-up  }
+                                    a''!16
+                                    ^ \markup \center-align { \concat { +28 } }
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
@@ -1862,7 +1862,7 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        c'''16
+                                        a''16
                                             _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                     }
                                       %! +SCORE
@@ -1880,9 +1880,9 @@
                                         r16
                                         r16
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                        c'''!32
-                                        ^ \markup \center-align { \concat { B+41 } }
+                                        \tweak Accidental.text \markup { \one-twenty-three-limit-comma-up  }
+                                        a''!32
+                                        ^ \markup \center-align { \concat { +28 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
@@ -1904,8 +1904,8 @@
                                         \override NoteHead.no-ledgers = ##t
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
-                                        \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                        c'''32
+                                        \tweak Accidental.text \markup { \one-twenty-three-limit-comma-up  }
+                                        a''32
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1918,7 +1918,7 @@
                                             \revert NoteHead.no-ledgers
                                               %! abjad.glissando(6)
                                             \undo \hide NoteHead
-                                            c'''16
+                                            a''16
                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "mf"))
                                         }
                                         r16.
@@ -1969,51 +1969,145 @@
                             {
                                 \context Voice = "cello 3 voice"
                                 {
-                                    \fancy-gliss
-                                       #'(
-                                          (0 0 0.5 0 1 0)
-                                          (1 0 1.5 0 2 0)
-                                          (2 0 2.5 0 3 0)
-                                          (3 0 3.5 0 4 0)
-                                          (4 0 4.5 0.5 5 0)
-                                          (5 0 5.5 -0.5 6 0)
-                                          (6 0 6.5 0.5 7 0)
-                                          (7 0 7.5 -0.5 8 0)
-                                          (8 0 8.5 0.5 9 0)
-                                          (9 0 9.5 -0.5 10 0)
-                                          (10 0 10.5 0.5 11 0)
-                                          (11 0 11.5 -0.5 12 0)
-                                          (12 0 12.5 1 13 0)
-                                          (13 0 13.5 -1 14 0)
-                                          (14 0 14.5 1 15 0)
-                                          (15 0 15.5 -1 16 0)
-                                          (16 0 16.5 1 17 0)
-                                          (17 0 17.5 -1 18 0)
-                                          (18 0 18.5 2 19 0)
-                                          (19 0 19.5 -2 20 0)
-                                          (20 0 20.5 2 21 0)
-                                          (21 0 21.5 -2 22 0)
-                                          (22 0 22.5 3 23 0)
-                                          (23 0 23.5 -3 24 0)
-                                          (24 0 24.5 3 25 0)
-                                          (25 0 25.5 -3 26 0)
-                                          (26 0 26.5 4 27 0)
-                                          (27 0 27.5 -4 28 0)
-                                          (28 0 28.5 5 29 0)
-                                          (29 0 29.5 -5 30 0)
-                                     )
-                                     #-6
                                     \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { violoncello iii }
                                     \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vc. iii }
                                     \clef "bass"
                                     \time 1/8
-                                    d,8
-                                    \p
+                                    d,16
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "sffz"))
+                                    - \accent
+                                    - \tweak color #"darkmagenta"
+                                    - \downbow
+                                    - \abjad-zero-padding-glissando
+                                    \glissando
+                                    - \tweak color #(css-color 'darksalmon)
+                                    - \tweak padding #8
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \skin-default-notehead-markup \hspace #0.5 }
+                                    \startTextSpanOne
+                                    - \tweak color #(css-color 'indianred)
+                                    - \tweak padding #6
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "indianred" { norm. } \hspace #0.5 }
+                                    - \tweak bound-details.right.padding 1
+                                    \startTextSpanTwo
+                                    \>
+                                    \afterGrace
+                                    cqs,32
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "sf"))
+                                    - \marcato
+                                    - \tweak color #"darkmagenta"
+                                    - \downbow
+                                    \stopTextSpanOne
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
-                                    \<
+                                    - \tweak color #(css-color 'darksalmon)
+                                    - \tweak padding #8
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \skin-diamond-notehead-markup \hspace #0.5 }
+                                    - \tweak bound-details.right.text \skin-default-notehead-markup
+                                    \startTextSpanOne
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        cqs,16
+                                        \stopTextSpanOne
+                                    }
+                                    \fancy-gliss
+                                       #'(
+                                          (0 0 0.5 5 1 0)
+                                          (1 0 1.5 -5 2 0)
+                                          (2 0 2.5 4 3 0)
+                                          (3 0 3.5 -4 4 0)
+                                          (4 0 4.5 3 5 0)
+                                          (5 0 5.5 -3 6 0)
+                                          (6 0 6.5 2.5 7 0)
+                                          (7 0 7.5 -2.5 8 0)
+                                          (8 0 8.5 2 9 0)
+                                          (9 0 9.5 -2 10 0)
+                                          (10 0 10.5 1.9 11 0)
+                                          (11 0 11.5 -1.9 12 0)
+                                          (12 0 12.5 1.7 13 0)
+                                          (13 0 13.5 -1.7 14 0)
+                                          (14 0 14.5 1.5 15 0)
+                                          (15 0 15.5 -1.5 16 0)
+                                          (16 0 16.5 1.3 17 0)
+                                          (17 0 17.5 -1.3 18 0)
+                                          (18 0 18.5 1 19 0)
+                                          (19 0 19.5 -1 20 0)
+                                          (20 0 20.5 0.9 21 0)
+                                          (21 0 21.5 -0.9 22 0)
+                                          (22 0 22.5 0.7 23 0)
+                                          (23 0 23.5 -0.7 24 0)
+                                          (24 0 24.5 0.5 25 0)
+                                          (25 0 25.5 -0.5 26 0)
+                                          (26 0 26.5 0.3 27 0)
+                                          (27 0 27.5 -0.3 28 0)
+                                          (28 0 28.5 0.3 29 0)
+                                          (29 0 29.5 -0.3 30 0)
+                                          (30 0 30.5 0.3 31 0)
+                                          (31 0 31.5 -0.3 32 0)
+                                          (32 0 32.5 0.3 33 0)
+                                          (33 0 33.5 -0.3 34 0)
+                                          (34 0 34.5 0.3 35 0)
+                                          (35 0 35.5 -0.3 36 0)
+                                          (36 0 36.5 0.3 37 0)
+                                          (37 0 37.5 -0.3 38 0)
+                                          (38 0 38.5 0.3 39 0)
+                                          (39 0 39.5 -0.3 40 0)
+                                          (40 0 40.5 0.3 41 0)
+                                          (41 0 41.5 -0.3 42 0)
+                                          (42 0 42.5 0.3 43 0)
+                                          (43 0 43.5 -0.3 44 0)
+                                          (44 0 44.5 0.3 45 0)
+                                          (45 0 45.5 -0.3 46 0)
+                                          (46 0 46.5 0.3 47 0)
+                                          (47 0 47.5 -0.3 48 0)
+                                          (48 0 48.5 0.3 49 0)
+                                          (49 0 49.5 -0.3 50 0)
+                                     )
+                                     #-6
+                                    dqs,32
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "sff"))
+                                    - \accent
+                                    - \tweak color #"darkmagenta"
+                                    - \downbow
+                                    \stopTextSpanTwo
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    - \tweak color #(css-color 'darksalmon)
+                                    - \tweak padding #8
+                                    - \abjad-dashed-line-with-hook
+                                    - \tweak bound-details.left.text \markup \concat { \skin-half-diamond-notehead-markup \hspace #0.5 }
+                                    \startTextSpan
+                                    - \tweak color #(css-color 'indianred)
+                                    - \tweak padding #6
+                                    - \abjad-dashed-line-with-hook
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "indianred" { "molto pont." } \hspace #0.5 }
+                                    - \tweak bound-details.right.padding -1.5
+                                    \startTextSpanTwo
+                                    \>
                                     ~
                                       %! abjad.glissando(1)
                                     \hide NoteHead
@@ -2023,10 +2117,149 @@
                                     \override NoteColumn.glissando-skip = ##t
                                       %! abjad.glissando(1)
                                     \override NoteHead.no-ledgers = ##t
-                                    d,8
+                                    \afterGrace
+                                    dqs,16
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        dqs,16
+                                        \stopTextSpan
+                                    }
+                                    \afterGrace
+                                    dqf,32
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "sf"))
+                                    - \marcato
+                                    - \tweak color #"darkmagenta"
+                                    - \downbow
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    - \tweak color #(css-color 'darksalmon)
+                                    - \tweak padding #8
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \skin-default-notehead-markup \hspace #0.5 }
+                                    - \tweak bound-details.right.text \skin-diamond-notehead-markup
+                                    \startTextSpanOne
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        dqf,16
+                                        \stopTextSpanOne
+                                        \stopTextSpanTwo
+                                    }
+                                    \fancy-gliss
+                                       #'(
+                                          (0 0 0.5 5 1 0)
+                                          (1 0 1.5 -5 2 0)
+                                          (2 0 2.5 4 3 0)
+                                          (3 0 3.5 -4 4 0)
+                                          (4 0 4.5 3 5 0)
+                                          (5 0 5.5 -3 6 0)
+                                          (6 0 6.5 2.5 7 0)
+                                          (7 0 7.5 -2.5 8 0)
+                                          (8 0 8.5 2 9 0)
+                                          (9 0 9.5 -2 10 0)
+                                          (10 0 10.5 1.9 11 0)
+                                          (11 0 11.5 -1.9 12 0)
+                                          (12 0 12.5 1.7 13 0)
+                                          (13 0 13.5 -1.7 14 0)
+                                          (14 0 14.5 1.5 15 0)
+                                          (15 0 15.5 -1.5 16 0)
+                                          (16 0 16.5 1.3 17 0)
+                                          (17 0 17.5 -1.3 18 0)
+                                          (18 0 18.5 1 19 0)
+                                          (19 0 19.5 -1 20 0)
+                                          (20 0 20.5 0.9 21 0)
+                                          (21 0 21.5 -0.9 22 0)
+                                          (22 0 22.5 0.7 23 0)
+                                          (23 0 23.5 -0.7 24 0)
+                                          (24 0 24.5 0.5 25 0)
+                                          (25 0 25.5 -0.5 26 0)
+                                          (26 0 26.5 0.3 27 0)
+                                          (27 0 27.5 -0.3 28 0)
+                                          (28 0 28.5 0.3 29 0)
+                                          (29 0 29.5 -0.3 30 0)
+                                          (30 0 30.5 0.3 31 0)
+                                          (31 0 31.5 -0.3 32 0)
+                                          (32 0 32.5 0.3 33 0)
+                                          (33 0 33.5 -0.3 34 0)
+                                          (34 0 34.5 0.3 35 0)
+                                          (35 0 35.5 -0.3 36 0)
+                                          (36 0 36.5 0.3 37 0)
+                                          (37 0 37.5 -0.3 38 0)
+                                          (38 0 38.5 0.3 39 0)
+                                          (39 0 39.5 -0.3 40 0)
+                                          (40 0 40.5 0.3 41 0)
+                                          (41 0 41.5 -0.3 42 0)
+                                          (42 0 42.5 0.3 43 0)
+                                          (43 0 43.5 -0.3 44 0)
+                                          (44 0 44.5 0.3 45 0)
+                                          (45 0 45.5 -0.3 46 0)
+                                          (46 0 46.5 0.3 47 0)
+                                          (47 0 47.5 -0.3 48 0)
+                                          (48 0 48.5 0.3 49 0)
+                                          (49 0 49.5 -0.3 50 0)
+                                     )
+                                     #-6
+                                    d,32
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "sff"))
+                                    - \accent
+                                    - \tweak color #"darkmagenta"
+                                    - \downbow
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    - \tweak circled-tip ##t
+                                    \>
+                                    - \tweak color #(css-color 'darksalmon)
+                                    - \tweak padding #8
+                                    - \abjad-dashed-line-with-hook
+                                    - \tweak bound-details.left.text \markup \concat { \skin-half-diamond-notehead-markup \hspace #0.5 }
+                                    \startTextSpan
+                                    - \tweak color #(css-color 'indianred)
+                                    - \tweak padding #6
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { {  } \hspace #0.5 }
+                                    - \tweak bound-details.right.text \markup \with-color "indianred" { "norm." }
+                                    - \tweak bound-details.right.padding 1
+                                    \startTextSpanTwo
                                     ~
-                                    d,8
-                                    ~
+                                      %! abjad.glissando(1)
+                                    \hide NoteHead
+                                      %! abjad.glissando(1)
+                                    \override Accidental.stencil = ##f
+                                      %! abjad.glissando(1)
+                                    \override NoteColumn.glissando-skip = ##t
+                                      %! abjad.glissando(1)
+                                    \override NoteHead.no-ledgers = ##t
                                     \afterGrace
                                     d,8
                                     {
@@ -2042,7 +2275,16 @@
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
                                         d,16
+                                        \stopTextSpan
                                     }
+                                    d,8
+                                    - \bendAfter #'1.5
+                                    - \tenuto
+                                    - \tweak color #"darkmagenta"
+                                    - \upbow
+                                    \stopTextSpanTwo
+                                    - \tweak circled-tip ##t
+                                    \<
                                     \fancy-gliss
                                        #'(
                                           (0 0 0.5 6 1 0)
@@ -2411,6 +2653,16 @@
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak color #(css-color 'darksalmon)
+                                    - \tweak padding #8
+                                    - \abjad-dashed-line-with-hook
+                                    - \tweak bound-details.left.text \markup \concat { \skin-half-diamond-notehead-markup \hspace #0.5 }
+                                    \startTextSpanOne
+                                    - \tweak color #(css-color 'indianred)
+                                    - \tweak padding #6
+                                    - \abjad-dashed-line-with-hook
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "indianred" { "molto tast." } \hspace #0.5 }
+                                    \startTextSpanTwo
                                     \<
                                     ~
                                       %! abjad.glissando(1)
@@ -2436,6 +2688,7 @@
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
                                         d,16
+                                        \stopTextSpanOne
                                     }
                                     d,16
                                     \f
@@ -2476,6 +2729,7 @@
                                         d,16
                                         \!
                                         \stopTextSpan
+                                        \stopTextSpanTwo
                                     }
                                 }
                             }
@@ -2585,6 +2839,46 @@
                                     R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
+                                    \afterGrace
+                                    \tweak Accidental.stencil #ly:text-interface::print
+                                    \tweak Accidental.text \markup { \abjad-natural  }
+                                    a!8
+                                    ^ \markup \center-align { \concat { +2 } }
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    - \tweak circled-tip ##t
+                                    - \tweak stencil #abjad-flared-hairpin
+                                    \<
+                                    - \tweak color #(css-color 'darksalmon)
+                                    - \tweak padding #5.5
+                                    - \abjad-dashed-line-with-hook
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darksalmon" { "with vinyl covers" } \hspace #0.5 }
+                                    \startTextSpan
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        a16
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
+                                    }
                                       %! +SCORE
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
@@ -2594,33 +2888,82 @@
                                     R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
-                                      %! +SCORE
-                                    \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                    \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                                      %! +SCORE
-                                    \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 1/8
-                                      %! +SCORE
-                                    \stopStaff \startStaff
-                                      %! +SCORE
-                                    \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                    \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                                      %! +SCORE
-                                    \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 1/8
-                                      %! +SCORE
-                                    \stopStaff \startStaff
-                                      %! +SCORE
-                                    \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                    \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                                      %! +SCORE
-                                    \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 1/8
-                                      %! +SCORE
-                                    \stopStaff \startStaff
+                                    \afterGrace
+                                    \tweak Accidental.stencil #ly:text-interface::print
+                                    \tweak Accidental.text \markup { \abjad-natural  }
+                                    a!16
+                                    ^ \markup \center-align { \concat { +2 } }
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    - \tweak circled-tip ##t
+                                    - \tweak stencil #abjad-flared-hairpin
+                                    \<
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        a16
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
+                                    }
+                                    r16
+                                    \times 4/5
+                                    {
+                                        \afterGrace
+                                        \tweak Accidental.stencil #ly:text-interface::print
+                                        \tweak Accidental.text \markup { \abjad-natural  }
+                                        a!16.
+                                        ^ \markup \center-align { \concat { +2 } }
+                                          %! abjad.glissando(7)
+                                        - \abjad-zero-padding-glissando
+                                          %! abjad.glissando(7)
+                                        \glissando
+                                        - \tweak circled-tip ##t
+                                        - \tweak stencil #abjad-flared-hairpin
+                                        \<
+                                        {
+                                            \once \override Accidental.stencil = ##f
+                                            \once \override NoteHead.no-ledgers = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                              %! abjad.glissando(1)
+                                            \hide NoteHead
+                                              %! abjad.glissando(1)
+                                            \override Accidental.stencil = ##f
+                                              %! abjad.glissando(1)
+                                            \override NoteColumn.glissando-skip = ##t
+                                              %! abjad.glissando(1)
+                                            \override NoteHead.no-ledgers = ##t
+                                              %! abjad.glissando(6)
+                                            \revert Accidental.stencil
+                                              %! abjad.glissando(6)
+                                            \revert NoteColumn.glissando-skip
+                                              %! abjad.glissando(6)
+                                            \revert NoteHead.no-ledgers
+                                              %! abjad.glissando(6)
+                                            \undo \hide NoteHead
+                                            a16
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
+                                            \stopTextSpan
+                                        }
+                                        r16
+                                    }
                                       %! +SCORE
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
@@ -2681,6 +3024,7 @@
                                     \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { b. tbn. }
                                       %! +SCORE
                                     \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                    \clef "bass"
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
@@ -2768,51 +3112,136 @@
                                     R1 * 1/8
                                       %! +SCORE
                                     \stopStaff \startStaff
-                                      %! +SCORE
-                                    \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                    \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                                      %! +SCORE
-                                    \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 1/8
-                                      %! +SCORE
-                                    \stopStaff \startStaff
-                                      %! +SCORE
-                                    \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                    \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                                      %! +SCORE
-                                    \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 1/8
-                                      %! +SCORE
-                                    \stopStaff \startStaff
-                                      %! +SCORE
-                                    \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                    \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                                      %! +SCORE
-                                    \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 1/8
-                                      %! +SCORE
-                                    \stopStaff \startStaff
-                                      %! +SCORE
-                                    \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                    \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                                      %! +SCORE
-                                    \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 1/8
-                                      %! +SCORE
-                                    \stopStaff \startStaff
-                                      %! +SCORE
-                                    \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                    \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                                      %! +SCORE
-                                    \once \override MultiMeasureRest.transparent = ##t
-                                    R1 * 1/8
-                                      %! +SCORE
-                                    \stopStaff \startStaff
+                                    r16
+                                    \tweak Accidental.stencil #ly:text-interface::print
+                                    \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                                    d!16
+                                    ^ \markup \center-align { \concat { -22 } }
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    - \tweak circled-tip ##t
+                                    - \tweak stencil #abjad-flared-hairpin
+                                    \<
+                                    - \tweak color #(css-color 'darksalmon)
+                                    - \tweak padding #5.5
+                                    - \abjad-dashed-line-with-hook
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darksalmon" { "with vinyl covers" } \hspace #0.5 }
+                                    \startTextSpan
+                                    ~
+                                      %! abjad.glissando(1)
+                                    \hide NoteHead
+                                      %! abjad.glissando(1)
+                                    \override Accidental.stencil = ##f
+                                      %! abjad.glissando(1)
+                                    \override NoteColumn.glissando-skip = ##t
+                                      %! abjad.glissando(1)
+                                    \override NoteHead.no-ledgers = ##t
+                                    \afterGrace
+                                    \tweak Accidental.stencil #ly:text-interface::print
+                                    \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                                    d32
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        d16
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
+                                    }
+                                    r16.
+                                    r16
+                                    \tweak Accidental.stencil #ly:text-interface::print
+                                    \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                                    d!16
+                                    ^ \markup \center-align { \concat { -22 } }
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    - \tweak circled-tip ##t
+                                    - \tweak stencil #abjad-flared-hairpin
+                                    \<
+                                    ~
+                                    \times 4/5
+                                    {
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                        \afterGrace
+                                        \tweak Accidental.stencil #ly:text-interface::print
+                                        \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                                        d16
+                                        {
+                                            \once \override Accidental.stencil = ##f
+                                            \once \override NoteHead.no-ledgers = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                              %! abjad.glissando(6)
+                                            \revert Accidental.stencil
+                                              %! abjad.glissando(6)
+                                            \revert NoteColumn.glissando-skip
+                                              %! abjad.glissando(6)
+                                            \revert NoteHead.no-ledgers
+                                              %! abjad.glissando(6)
+                                            \undo \hide NoteHead
+                                            d16
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
+                                        }
+                                        r16
+                                        \tweak Accidental.stencil #ly:text-interface::print
+                                        \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                                        d!32
+                                        ^ \markup \center-align { \concat { -22 } }
+                                          %! abjad.glissando(7)
+                                        - \abjad-zero-padding-glissando
+                                          %! abjad.glissando(7)
+                                        \glissando
+                                        - \tweak circled-tip ##t
+                                        - \tweak stencil #abjad-flared-hairpin
+                                        \<
+                                        ~
+                                    }
+                                      %! abjad.glissando(1)
+                                    \hide NoteHead
+                                      %! abjad.glissando(1)
+                                    \override Accidental.stencil = ##f
+                                      %! abjad.glissando(1)
+                                    \override NoteColumn.glissando-skip = ##t
+                                      %! abjad.glissando(1)
+                                    \override NoteHead.no-ledgers = ##t
+                                    \afterGrace
+                                    \tweak Accidental.stencil #ly:text-interface::print
+                                    \tweak Accidental.text \markup { \natural-one-syntonic-comma-down  }
+                                    d8
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        d16
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
+                                        \stopTextSpan
+                                    }
                                       %! +SCORE
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE

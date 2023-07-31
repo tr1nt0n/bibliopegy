@@ -1055,7 +1055,7 @@
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
-                                    - \tweak color #(css-color 'seagreen)
+                                    - \tweak color #(css-color 'seagreen) 
                                     - \tweak padding #7
                                     - \abjad-dashed-line-with-hook
                                     - \tweak bound-details.left.text \markup \concat { \with-color "seagreen" \override #'(size . .6) { \woodwind-diagram #'bass-clarinet #'((cc . (two three four five)) (lh . (thumb)) (rh . ()))} \hspace #0.5 }
@@ -1174,7 +1174,7 @@
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
-                                    - \tweak color #(css-color 'seagreen)
+                                    - \tweak color #(css-color 'seagreen) 
                                     - \tweak padding #7
                                     - \abjad-dashed-line-with-hook
                                     - \tweak bound-details.left.text \markup \concat { \with-color "seagreen" \override #'(size . .6) { \woodwind-diagram #'bass-clarinet #'((cc . (two three four five)) (lh . (thumb)) (rh . ()))} \hspace #0.5 }

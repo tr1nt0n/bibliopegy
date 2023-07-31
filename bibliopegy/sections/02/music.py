@@ -347,7 +347,7 @@ for measure in [1, 11]:
             padding=7,
             right_padding=0,
             full_string=True,
-            tweaks=[r"- \tweak color #(css-color 'seagreen)"],
+            tweaks=[r"""- \tweak color #(css-color 'seagreen) """],
         ),
         trinton.linear_attachment_command(
             attachments=[

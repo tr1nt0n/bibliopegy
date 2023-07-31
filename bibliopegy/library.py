@@ -696,11 +696,11 @@ def blank_measure_by_hand(score, voice_names, measures, clef_whitespace=False):
 _bass_clarinet_multiphonics = {
     1: (
         8,
-        r"""\markup \override \with-color "seagreen" #'(size . .6) { \woodwind-diagram #'bass-clarinet #'((cc . (one two)) (lh . (thumb)) (rh . (two)))}""",
+        r"""\markup \with-color "seagreen" \override #'(size . .6) { \woodwind-diagram #'bass-clarinet #'((cc . (one two)) (lh . (thumb)) (rh . (two)))}""",
     ),
     2: (
         6,
-        r"""\markup \override \with-color "seagreen" #'(size . .6) { \woodwind-diagram #'bass-clarinet #'((cc . (one two three four five six)) (lh . ()) (rh . (e)))}""",
+        r"""\markup \with-color "seagreen" \override #'(size . .6) { \woodwind-diagram #'bass-clarinet #'((cc . (one two three four five six)) (lh . ()) (rh . (e)))}""",
     ),
     3: (
         2.5,
@@ -725,11 +725,16 @@ def dune_ii(voices, measures, rotation=0, dynamics=["ff"]):
     for voice in voices:
         participant_number = voices.index(voice)
 
-        if participant_number % 2 == 0:
-            ratio = "13/2"
+        if participant_number % 3 == 0:
+            ratios = ["21/4", "22/4"]
+
+        elif participant_number % 3 == 1:
+            ratios = [
+                "23/4",
+            ]
 
         else:
-            ratio = "7/1"
+            ratios = ["22/4", "23/4"]
 
         if voice.name == "bassflute voice":
             fundamental = "ef'"
@@ -762,7 +767,7 @@ def dune_ii(voices, measures, rotation=0, dynamics=["ff"]):
             ),
             trinton.treat_tuplets(),
             evans.PitchHandler([fundamental]),
-            evans.PitchHandler([ratio], as_ratios=True),
+            evans.PitchHandler(ratios, as_ratios=True),
             trinton.force_accidentals_command(
                 selector=trinton.logical_ties(first=True, pitched=True, grace=False),
             ),
