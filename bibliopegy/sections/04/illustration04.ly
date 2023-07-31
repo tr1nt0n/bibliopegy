@@ -1,9 +1,9 @@
   %! abjad.LilyPondFile._get_format_pieces()
-\version "2.23.14"
+\version "2.23.81"
   %! abjad.LilyPondFile._get_format_pieces()
 \language "english"
   %! abjad.LilyPondFile._get_format_pieces()
-\version "2.23.14"
+\version "2.23.81"
   %! abjad.LilyPondFile._get_format_pieces()
 \language "english"
 \include "/Users/trintonprater/scores/bibliopegy/bibliopegy/build/section-stylesheet.ily"
@@ -4414,7 +4414,7 @@
                                     ~
                                     d,16
                                     d,16
-                                        _ #(make-dynamic-script (markup #:whiteout #:italic "ffp"))
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "ffmp"))
                                     \>
                                     ~
                                     d,8

@@ -900,6 +900,10 @@ trinton.make_music(
             grace=False,
         ),
     ),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin("<"), abjad.Dynamic("f")],
+        selector=trinton.select_leaves_by_index([-3, -1]),
+    ),
     voice=score["bassclarinet voice"],
 )
 
@@ -1036,12 +1040,16 @@ trinton.make_music(
     evans.RhythmHandler(
         evans.talea(
             [
-                5,
-                9,
-                5,
+                6,
+                13,
+                6,
+                2,
+                6,
                 8,
                 6,
-                7,
+                2,
+                6,
+                100,
             ],
             32,
             extra_counts=[
@@ -1049,7 +1057,6 @@ trinton.make_music(
             ],
         )
     ),
-    trinton.force_rest(selector=trinton.select_logical_ties_by_index([-1])),
     evans.PitchHandler(["d,"]),
     evans.PitchHandler(
         [
@@ -1094,10 +1101,14 @@ trinton.make_music(
     ),
     trinton.hooked_spanner_command(
         string=r"""\markup \with-color "indianred" { "molto pont." }""",
-        selector=trinton.patterned_tie_index_selector(
-            [1, 2], 3, first=True, pitched=True
+        selector=trinton.select_logical_ties_by_index(
+            [
+                1,
+                2,
+            ],
+            first=True,
         ),
-        padding=11.5,
+        padding=10,
         full_string=True,
         tweaks=[r"- \tweak color #(css-color 'indianred)"],
         command="One",
@@ -1106,9 +1117,53 @@ trinton.make_music(
         initial_width=7,
         y_scale=0.9,
         speed_factor=0.7,
-        selector=trinton.patterned_tie_index_selector(
-            [1, 2], 3, first=True, pitched=True
+        selector=trinton.select_logical_ties_by_index([1, 2], first=True),
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(r"\once \override Staff.TextScript.whiteout = ##f"),
+            abjad.Markup(r"""\markup \with-color "indianred" { "molto pont." }"""),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [
+                4,
+            ],
+            first=True,
         ),
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(r"\once \override Staff.TextScript.whiteout = ##f"),
+            abjad.Markup(r"""\markup \with-color "indianred" { "molto pont." }"""),
+        ],
+        selector=trinton.select_logical_ties_by_index([10, 13], first=True),
+        direction=abjad.UP,
+    ),
+    library.cello_trills(
+        initial_width=0.3,
+        y_scale=0.9,
+        speed_factor=-0.1,
+        selector=trinton.select_logical_ties_by_index(
+            [4, 5, 10, 11, 13, 14], first=True
+        ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "indianred" { "molto pont." }""",
+        selector=trinton.select_logical_ties_by_index([7, 8], first=True),
+        padding=10,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'indianred)"],
+        command="One",
+    ),
+    library.cello_trills(
+        initial_width=7,
+        y_scale=0.9,
+        speed_factor=0.8,
+        selector=trinton.select_logical_ties_by_index([7, 8], first=True),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin("<"), abjad.Dynamic("f")],
+        selector=trinton.select_logical_ties_by_index([-2, -1], first=True),
     ),
     library.cello_graces(
         selector=trinton.patterned_tie_index_selector(
@@ -1123,7 +1178,7 @@ trinton.make_music(
         counter_offset=9,
     ),
     voice=score["cello 1 voice"],
-    preprocessor=trinton.fuse_preprocessor((30,)),
+    preprocessor=trinton.fuse_preprocessor((14,)),
 )
 
 library.clean_onbeat_graces(
@@ -1132,16 +1187,61 @@ library.clean_onbeat_graces(
         score["cello 1 voice graces 2"],
         score["cello 1 voice graces 3"],
         score["cello 1 voice graces 4"],
+        score["cello 1 voice graces 5"],
     ],
     measures=(22, 35),
 )
 
-for voice_name in [
-    "cello 1 voice graces 1",
-    "cello 1 voice graces 2",
-    "cello 1 voice graces 3",
-    "cello 1 voice graces 4",
-]:
+trinton.make_music(
+    lambda _: trinton.select_target(_, (22, 35)),
+    library.cello_trills(
+        initial_width=0.2,
+        y_scale=0.9,
+        speed_factor=-0.9,
+    ),
+    trinton.linear_attachment_command(
+        attachments=[library.downbow, abjad.StartSlur(), abjad.StopSlur()],
+        selector=trinton.select_leaves_by_index([0, 0, -2]),
+    ),
+    trinton.spanner_command(
+        strings=library.return_fraction_string_list(
+            [(0, 7), (2, 7), (3, 7), (4, 7), (6, 7), (7, 7)]
+        ),
+        selector=trinton.select_leaves_by_index(
+            [0, 1, 1, 2, 2, 3, 3, 4, 4, 5],
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=19.5,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Dynamic("ff"),
+            abjad.StartHairpin("|>"),
+            abjad.Dynamic("p"),
+        ],
+        selector=trinton.select_leaves_by_index([0, 0, -1]),
+        direction=abjad.DOWN,
+    ),
+    voice=score["cello 1 voice graces 1"],
+)
+
+for voice_name, padding in zip(
+    [
+        "cello 1 voice graces 2",
+        "cello 1 voice graces 3",
+        "cello 1 voice graces 4",
+        "cello 1 voice graces 5",
+    ],
+    [
+        18,
+        19.5,
+        18,
+        19.5,
+    ],
+):
     trinton.make_music(
         lambda _: trinton.select_target(_, (22, 35)),
         library.cello_trills(
@@ -1171,7 +1271,7 @@ for voice_name in [
                 pitched=True,
             ),
             style="solid-line-with-arrow",
-            padding=19,
+            padding=padding,
             full_string=True,
             tweaks=[r"""- \tweak color #darkred"""],
         ),
@@ -1195,21 +1295,30 @@ trinton.make_music(
         evans.talea(
             [
                 5,
-                9,
+                13,
+                5,
+                2,
                 5,
                 8,
-                6,
-                7,
+                5,
+                2,
+                5,
+                100,
             ],
             32,
             extra_counts=[
-                -2,
+                -1,
             ],
         )
     ),
-    # trinton.force_rest(selector=trinton.select_logical_ties_by_index([-1])),
     evans.PitchHandler(["d,"]),
-    evans.PitchHandler(["11/1", "9/1"], as_ratios=True),
+    evans.PitchHandler(
+        [
+            "11/1",
+            "9/1",
+        ],
+        as_ratios=True,
+    ),
     library.change_lines(lines=5, clef="treble"),
     trinton.force_accidentals_command(
         selector=trinton.logical_ties(first=True, pitched=True)
@@ -1247,21 +1356,76 @@ trinton.make_music(
     ),
     trinton.hooked_spanner_command(
         string=r"""\markup \with-color "indianred" { "molto pont." }""",
-        selector=trinton.patterned_tie_index_selector(
-            [1, 2], 3, first=True, pitched=True
+        selector=trinton.select_logical_ties_by_index(
+            [
+                1,
+                2,
+            ],
+            first=True,
         ),
-        padding=9.5,
+        padding=10,
         full_string=True,
         tweaks=[r"- \tweak color #(css-color 'indianred)"],
         command="One",
     ),
     library.cello_trills(
+        initial_width=7,
+        y_scale=0.9,
+        speed_factor=0.5,
+        selector=trinton.select_logical_ties_by_index([1, 2], first=True),
+    ),
+    # trinton.attachment_command(
+    #     attachments=[
+    #         abjad.LilyPondLiteral(r"\once \override Staff.TextScript.whiteout = ##f"),
+    #         abjad.Markup(r"""\markup \with-color "indianred" { "molto pont." }"""),
+    #     ],
+    #     selector=trinton.select_logical_ties_by_index([4,], first=True),
+    # ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(r"\once \override Staff.TextScript.whiteout = ##f"),
+            abjad.Markup(r"""\markup \with-color "indianred" { "molto pont." }"""),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [
+                4,
+                10,
+            ],
+            first=True,
+        ),
+        direction=abjad.UP,
+    ),
+    library.cello_trills(
         initial_width=0.3,
         y_scale=0.9,
-        speed_factor=-0.7,
-        selector=trinton.patterned_tie_index_selector(
-            [1, 2], 3, first=True, pitched=True
+        speed_factor=-0.1,
+        selector=trinton.select_logical_ties_by_index(
+            [
+                4,
+                5,
+                10,
+                11,
+            ],
+            first=True,
         ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "indianred" { "molto pont." }""",
+        selector=trinton.select_logical_ties_by_index([7, 8, 13, 14], first=True),
+        padding=9,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'indianred)"],
+        command="One",
+    ),
+    library.cello_trills(
+        initial_width=7,
+        y_scale=0.9,
+        speed_factor=0.8,
+        selector=trinton.select_logical_ties_by_index([7, 8, 13, 14], first=True),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin("<"), abjad.Dynamic("f")],
+        selector=trinton.select_logical_ties_by_index([-2, -1], first=True),
     ),
     library.cello_graces(
         selector=trinton.patterned_tie_index_selector(
@@ -1272,11 +1436,11 @@ trinton.make_music(
             grace=False,
             pitched=True,
         ),
-        rotation=0,
-        counter_offset=1,
+        rotation=3,
+        counter_offset=9,
     ),
     voice=score["cello 2 voice"],
-    preprocessor=trinton.fuse_preprocessor((30,)),
+    preprocessor=trinton.fuse_preprocessor((14,)),
 )
 
 library.clean_onbeat_graces(
@@ -1285,26 +1449,60 @@ library.clean_onbeat_graces(
         score["cello 2 voice graces 2"],
         score["cello 2 voice graces 3"],
         score["cello 2 voice graces 4"],
+        score["cello 2 voice graces 5"],
     ],
     measures=(22, 35),
 )
 
-for voice_name in [
-    "cello 2 voice graces 1",
-    "cello 2 voice graces 2",
-    "cello 2 voice graces 3",
-    "cello 2 voice graces 4",
-]:
+for voice_name, padding in zip(
+    [
+        "cello 2 voice graces 1",
+        "cello 2 voice graces 2",
+        "cello 2 voice graces 3",
+        "cello 2 voice graces 4",
+    ],
+    [
+        16.5,
+        17.5,
+        16,
+        16.5,
+    ],
+):
     trinton.make_music(
         lambda _: trinton.select_target(_, (22, 35)),
         library.cello_trills(
-            initial_width=6,
+            initial_width=0.2,
             y_scale=0.9,
-            speed_factor=0.9,
+            speed_factor=-0.9,
         ),
         trinton.linear_attachment_command(
             attachments=[library.downbow, abjad.StartSlur(), abjad.StopSlur()],
             selector=trinton.select_leaves_by_index([0, 0, -2]),
+        ),
+        trinton.spanner_command(
+            strings=library.return_fraction_string_list(
+                [
+                    (0, 6),
+                    (2, 6),
+                    (3, 6),
+                    (5, 6),
+                ]
+            ),
+            selector=trinton.select_leaves_by_index(
+                [
+                    0,
+                    1,
+                    1,
+                    2,
+                    2,
+                    3,
+                ],
+                pitched=True,
+            ),
+            style="solid-line-with-arrow",
+            padding=padding,
+            full_string=True,
+            tweaks=[r"""- \tweak color #darkred"""],
         ),
         trinton.linear_attachment_command(
             attachments=[
@@ -1320,14 +1518,21 @@ for voice_name in [
 
 trinton.make_music(
     lambda _: trinton.select_target(_, (22, 35)),
+    library.cello_trills(
+        initial_width=0.2,
+        y_scale=0.9,
+        speed_factor=-0.9,
+    ),
+    trinton.linear_attachment_command(
+        attachments=[library.downbow, abjad.StartSlur(), abjad.StopSlur()],
+        selector=trinton.select_leaves_by_index([0, 0, -2]),
+    ),
     trinton.spanner_command(
         strings=library.return_fraction_string_list(
             [
-                (0, 9),
-                (3, 9),
-                (4, 9),
-                (5, 9),
-                (7, 9),
+                (0, 6),
+                (2, 6),
+                (3, 6),
             ]
         ),
         selector=trinton.select_leaves_by_index(
@@ -1336,47 +1541,25 @@ trinton.make_music(
                 1,
                 1,
                 2,
-                2,
-                3,
-                3,
-                -2,
             ],
             pitched=True,
         ),
         style="solid-line-with-arrow",
-        padding=19,
+        padding=17.5,
         full_string=True,
         tweaks=[r"""- \tweak color #darkred"""],
     ),
-    voice=score["cello 2 voice graces 1"],
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Dynamic("ff"),
+            abjad.StartHairpin("|>"),
+            abjad.Dynamic("p"),
+        ],
+        selector=trinton.select_leaves_by_index([0, 0, -1]),
+        direction=abjad.DOWN,
+    ),
+    voice=score["cello 2 voice graces 5"],
 )
-
-for voice_name, padding in zip(
-    ["cello 2 voice graces 2", "cello 2 voice graces 3", "cello 2 voice graces 4"],
-    [16.5, 18, 21],
-):
-    trinton.make_music(
-        lambda _: trinton.select_target(_, (22, 35)),
-        trinton.spanner_command(
-            strings=library.return_fraction_string_list(
-                [
-                    (0, 9),
-                    (3, 9),
-                    (4, 9),
-                    (7, 9),
-                ]
-            ),
-            selector=trinton.select_leaves_by_index(
-                [0, 1, 1, 2, 2, -2],
-                pitched=True,
-            ),
-            style="solid-line-with-arrow",
-            padding=padding,
-            full_string=True,
-            tweaks=[r"""- \tweak color #darkred"""],
-        ),
-        voice=score[voice_name],
-    )
 
 # cello 3 music
 
@@ -1628,6 +1811,10 @@ trinton.make_music(
             grace=False,
         ),
     ),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin("<"), abjad.Dynamic("f")],
+        selector=trinton.select_leaves_by_index([-3, -1]),
+    ),
     trinton.spanner_command(
         strings=[
             "\\skin-default-notehead-markup",
@@ -1701,19 +1888,10 @@ library.trombone_alpha(
         "p",
         "p",
         "p",
-        "p",
-        "p",
-        "p",
-        "p",
-        "p",
-        "p",
-        "p",
-        "p",
-        "p",
-        "p",
-        "p",
-        "p",
-        "p",
+        "f",
+        "f",
+        "f",
+        "f",
     ],
 )
 
@@ -1756,6 +1934,10 @@ trinton.make_music(
             ],
             first=True,
         ),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin("<"), abjad.Dynamic("f")],
+        selector=trinton.select_leaves_by_index([-3, -1]),
     ),
     trinton.hooked_spanner_command(
         string=r"""\markup \with-color "darkmagenta" { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe222 }""",

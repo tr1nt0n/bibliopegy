@@ -241,7 +241,7 @@ afterGraceFraction = #(cons 255 256)
     bottom-margin = 10\mm
     left-margin = 10\mm
     right-margin = 10\mm
-    top-margin = 17\mm
+    top-margin = 10\mm
 
     oddHeaderMarkup = \markup ""
     evenHeaderMarkup = \markup ""

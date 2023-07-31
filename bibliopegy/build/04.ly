@@ -4400,7 +4400,7 @@
                                     ~
                                     d,16
                                     d,16
-                                        _ #(make-dynamic-script (markup #:whiteout #:italic "ffp"))
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "ffmp"))
                                     \>
                                     ~
                                     d,8

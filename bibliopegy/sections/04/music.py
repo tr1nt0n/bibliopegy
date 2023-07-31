@@ -1184,7 +1184,7 @@ trinton.make_music(
             abjad.StartHairpin("--"),
             abjad.StartHairpin(">"),
             abjad.Dynamic("p"),
-            trinton.make_custom_dynamic("ffp"),
+            trinton.make_custom_dynamic("ffmp"),
             abjad.StartHairpin(">"),
             abjad.Dynamic("p"),
             abjad.StartHairpin(">"),

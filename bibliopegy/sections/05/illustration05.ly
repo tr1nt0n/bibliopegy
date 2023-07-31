@@ -1149,6 +1149,7 @@
                                                     - \tweak padding #17
                                                     - \abjad-solid-line-with-arrow
                                                     - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 7 \hspace #0.5 } \hspace #0.5 }
+                                                    - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 2 7 \hspace #0.5 }
                                                     \startTextSpan
                                                     - \tweak stencil #constante-hairpin
                                                     _ \<
@@ -1179,12 +1180,6 @@
                                                         ]
                                                         - \tweak circled-tip ##t
                                                         _ \>
-                                                        - \tweak color #darkred
-                                                        - \tweak padding #17
-                                                        - \abjad-solid-line-with-arrow
-                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 2 7 \hspace #0.5 } \hspace #0.5 }
-                                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 7 \hspace #0.5 }
-                                                        \startTextSpan
                                                         {
                                                             \once \override Accidental.stencil = ##f
                                                             \once \override NoteHead.no-ledgers = ##t
@@ -1200,7 +1195,6 @@
                                                             \undo \hide NoteHead
                                                             b''16
                                                             \!
-                                                            \stopTextSpan
                                                             \stopTrillSpan
                                                         }
                                                     }
@@ -1218,7 +1212,12 @@
                                                 ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
                                                 ~
                                                 \once \override Accidental.stencil = ##f
+                                                \once \override Beam.stencil = ##f
+                                                \once \override Dots.stencil = ##f
+                                                \once \override Flag.stencil = ##f
+                                                \once \override NoteHead.duration-log = 2
                                                 \once \override NoteHead.no-ledgers = ##t
+                                                \once \override Stem.stencil = ##f
                                                 \once \override NoteHead.transparent = ##t
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
@@ -1228,7 +1227,7 @@
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
                                         \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                        b''!4
+                                        b''!16.
                                             _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                         ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
                                           %! abjad.glissando(7)
@@ -1236,14 +1235,14 @@
                                           %! abjad.glissando(7)
                                         \glissando
                                         - \tweak color #"darkred" 
-                                        - \tweak padding #8.5
+                                        - \tweak padding #11.5
                                         - \abjad-dashed-line-with-hook
                                         - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { flaut. } \hspace #0.5 }
                                         \startTextSpan
                                         - \tweak color #(css-color 'goldenrod)
                                         - \tweak details.squiggle-Y-scale 0.6
                                         - \tweak details.squiggle-initial-width 0.4
-                                        - \tweak details.squiggle-speed-factor -0.9
+                                        - \tweak details.squiggle-speed-factor -0.4
                                         - \tweak thickness 3
                                         \slow-fast-trill
                                         {
@@ -1296,10 +1295,9 @@
                                                       %! abjad.glissando(7)
                                                     \glissando
                                                     - \tweak color #darkred
-                                                    - \tweak padding #20
+                                                    - \tweak padding #17
                                                     - \abjad-solid-line-with-arrow
                                                     - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
-                                                    - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 2 5 \hspace #0.5 }
                                                     \startTextSpan
                                                     - \tweak stencil #constante-hairpin
                                                     _ \<
@@ -1322,15 +1320,22 @@
                                                     b''32
                                                     )
                                                     \stopTextSpan
+                                                    - \tweak color #darkred
+                                                    - \tweak padding #17
+                                                    - \abjad-solid-line-with-arrow
+                                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 2 5 \hspace #0.5 } \hspace #0.5 }
+                                                    \startTextSpan
                                                     \abjad-color-music #'darkred
                                                     b''16 * 1/2
                                                     - \tweak color #"darkmagenta"
                                                     - \upbow
+                                                    \stopTextSpan
                                                     (
                                                     - \tweak color #darkred
-                                                    - \tweak padding #20
+                                                    - \tweak padding #17
                                                     - \abjad-solid-line-with-arrow
-                                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 2 5 \hspace #0.5 } \hspace #0.5 }
+                                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 3 5 \hspace #0.5 } \hspace #0.5 }
+                                                    - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 5 \hspace #0.5 }
                                                     \startTextSpan
                                                     _ \>
                                                     \times 64/112
@@ -1341,12 +1346,6 @@
                                                         )
                                                         \stopTextSpan
                                                         ]
-                                                        - \tweak color #darkred
-                                                        - \tweak padding #20
-                                                        - \abjad-solid-line-with-arrow
-                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 3 5 \hspace #0.5 } \hspace #0.5 }
-                                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 5 5 \hspace #0.5 }
-                                                        \startTextSpan
                                                         {
                                                             \once \override Accidental.stencil = ##f
                                                             \once \override NoteHead.no-ledgers = ##t
@@ -1361,8 +1360,7 @@
                                                               %! abjad.glissando(6)
                                                             \undo \hide NoteHead
                                                             b''16
-                                                                _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
-                                                            \stopTextSpan
+                                                                _ #(make-dynamic-script (markup #:whiteout #:italic "mp +"))
                                                             \stopTrillSpan
                                                         }
                                                     }
@@ -1378,45 +1376,63 @@
                                                 ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
                                                 ~
                                                 \once \override Accidental.stencil = ##f
+                                                \once \override Beam.stencil = ##f
+                                                \once \override Dots.stencil = ##f
+                                                \once \override Flag.stencil = ##f
+                                                \once \override NoteHead.duration-log = 2
                                                 \once \override NoteHead.no-ledgers = ##t
+                                                \once \override Stem.stencil = ##f
                                                 \once \override NoteHead.transparent = ##t
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
                                                 b''32
                                             }
                                         >>
-                                        \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
                                         \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
                                         b''!4
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                         ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
                                         - \tweak color #"darkred" 
-                                        - \tweak padding #8.5
+                                        - \tweak padding #11.5
                                         - \abjad-dashed-line-with-hook
                                         - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { flaut. } \hspace #0.5 }
                                         \startTextSpan
+                                        ~
                                         - \tweak color #(css-color 'goldenrod)
                                         - \tweak details.squiggle-Y-scale 0.6
                                         - \tweak details.squiggle-initial-width 0.4
-                                        - \tweak details.squiggle-speed-factor -0.9
+                                        - \tweak details.squiggle-speed-factor -0.4
                                         - \tweak thickness 3
                                         \slow-fast-trill
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override Beam.stencil = ##f
+                                        \once \override Dots.stencil = ##f
+                                        \once \override Flag.stencil = ##f
+                                        \once \override NoteHead.duration-log = 2
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override Stem.stencil = ##f
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                        \afterGrace
+                                        \tweak Accidental.stencil #ly:text-interface::print
+                                        \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
+                                        b''16.
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
                                             \once \override NoteHead.transparent = ##t
-                                              %! abjad.glissando(1)
-                                            \hide NoteHead
-                                              %! abjad.glissando(1)
-                                            \override Accidental.stencil = ##f
-                                              %! abjad.glissando(1)
-                                            \override NoteColumn.glissando-skip = ##t
-                                              %! abjad.glissando(1)
-                                            \override NoteHead.no-ledgers = ##t
                                               %! abjad.glissando(6)
                                             \revert Accidental.stencil
                                               %! abjad.glissando(6)
@@ -1444,7 +1460,7 @@
                                                     \once \override NoteHead.transparent = ##t
                                                     \abjad-color-music #'darkred
                                                     \voiceOne
-                                                    b''32 * 2/3
+                                                    b''32
                                                     - \tweak color #"darkmagenta"
                                                     - \upbow
                                                     _ \mp
@@ -1455,7 +1471,7 @@
                                                       %! abjad.glissando(7)
                                                     \glissando
                                                     - \tweak color #darkred
-                                                    - \tweak padding #21
+                                                    - \tweak padding #17
                                                     - \abjad-solid-line-with-arrow
                                                     - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 7 7 \hspace #0.5 } \hspace #0.5 }
                                                     \startTextSpan
@@ -1465,41 +1481,34 @@
                                                     - \tweak details.squiggle-speed-factor 0.9
                                                     - \tweak thickness 3
                                                     \slow-fast-trill
-                                                    \tweak edge-height #'(0.7 . 0)
+                                                    \abjad-color-music #'darkred
+                                                      %! abjad.glissando(1)
+                                                    \hide NoteHead
+                                                      %! abjad.glissando(1)
+                                                    \override Accidental.stencil = ##f
+                                                      %! abjad.glissando(1)
+                                                    \override NoteColumn.glissando-skip = ##t
+                                                      %! abjad.glissando(1)
+                                                    \override NoteHead.no-ledgers = ##t
+                                                    \revert Staff.Stem.stencil
+                                                    b''16 * 1/2
+                                                    _ \mf
+                                                    \stopTextSpan
+                                                    - \tweak color #darkred
+                                                    - \tweak padding #17
+                                                    - \abjad-solid-line-with-arrow
+                                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 6 7 \hspace #0.5 } \hspace #0.5 }
+                                                    - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 5 7 \hspace #0.5 }
+                                                    \startTextSpan
+                                                    _ \<
                                                     \times 128/224
                                                     {
                                                         \abjad-color-music #'darkred
-                                                          %! abjad.glissando(1)
-                                                        \hide NoteHead
-                                                          %! abjad.glissando(1)
-                                                        \override Accidental.stencil = ##f
-                                                          %! abjad.glissando(1)
-                                                        \override NoteColumn.glissando-skip = ##t
-                                                          %! abjad.glissando(1)
-                                                        \override NoteHead.no-ledgers = ##t
-                                                        \revert Staff.Stem.stencil
-                                                        b''32 * 7/6
-                                                        _ \mf
-                                                        \stopTextSpan
-                                                        - \tweak color #darkred
-                                                        - \tweak padding #21
-                                                        - \abjad-solid-line-with-arrow
-                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 6 7 \hspace #0.5 } \hspace #0.5 }
-                                                        \startTextSpan
-                                                        _ \<
-                                                        ~
-                                                        \abjad-color-music #'darkred
                                                         \afterGrace
-                                                        b''128 * 14/3
+                                                        b''64. * 7/3
                                                         )
                                                         \stopTextSpan
                                                         ]
-                                                        - \tweak color #darkred
-                                                        - \tweak padding #21
-                                                        - \abjad-solid-line-with-arrow
-                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 5 7 \hspace #0.5 } \hspace #0.5 }
-                                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 7 \hspace #0.5 }
-                                                        \startTextSpan
                                                         {
                                                             \once \override Accidental.stencil = ##f
                                                             \once \override NoteHead.no-ledgers = ##t
@@ -1515,7 +1524,6 @@
                                                             \undo \hide NoteHead
                                                             b''16
                                                             _ \ff
-                                                            \stopTextSpan
                                                             \stopTrillSpan
                                                         }
                                                     }
@@ -1527,7 +1535,7 @@
                                                 \voiceTwo
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                                b''!16
+                                                b''!8
                                                 ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
                                             }
                                         >>
@@ -1568,7 +1576,7 @@
                                                 \voiceOne
                                                 b''8 * 11/28
                                                 - \tweak color #"darkmagenta"
-                                                - \downbow
+                                                - \upbow
                                                 _ \fff
                                                 [
                                                   %! abjad.glissando(7)
@@ -1578,7 +1586,7 @@
                                                 - \tweak color #darkred
                                                 - \tweak padding #16.5
                                                 - \abjad-solid-line-with-arrow
-                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 7 \hspace #0.5 } \hspace #0.5 }
+                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 5 7 \hspace #0.5 } \hspace #0.5 }
                                                 \startTextSpan
                                                 _ \>
                                                 - \tweak color #(css-color 'goldenrod)
@@ -1599,33 +1607,33 @@
                                                 \revert Staff.Stem.stencil
                                                 b''32 * 11/7
                                                 - \tweak color #"darkmagenta"
-                                                - \upbow
-                                                \stopTextSpan
-                                                - \tweak color #darkred
-                                                - \tweak padding #16.5
-                                                - \abjad-solid-line-with-arrow
-                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 2 7 \hspace #0.5 } \hspace #0.5 }
-                                                \startTextSpan
-                                                \abjad-color-music #'darkred
-                                                b''32 * 11/7
-                                                - \tweak color #"darkmagenta"
                                                 - \downbow
                                                 \stopTextSpan
                                                 - \tweak color #darkred
                                                 - \tweak padding #16.5
                                                 - \abjad-solid-line-with-arrow
-                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 1 7 \hspace #0.5 } \hspace #0.5 }
+                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 4 7 \hspace #0.5 } \hspace #0.5 }
+                                                \startTextSpan
+                                                \abjad-color-music #'darkred
+                                                b''32 * 11/7
+                                                - \tweak color #"darkmagenta"
+                                                - \upbow
+                                                \stopTextSpan
+                                                - \tweak color #darkred
+                                                - \tweak padding #16.5
+                                                - \abjad-solid-line-with-arrow
+                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 6 7 \hspace #0.5 } \hspace #0.5 }
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
                                                 b''16 * 11/14
                                                 - \tweak color #"darkmagenta"
-                                                - \upbow
+                                                - \downbow
                                                 \stopTextSpan
                                                 (
                                                 - \tweak color #darkred
                                                 - \tweak padding #16.5
                                                 - \abjad-solid-line-with-arrow
-                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 7 7 \hspace #0.5 } \hspace #0.5 }
+                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 7 \hspace #0.5 } \hspace #0.5 }
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
                                                 b''32 * 11/7
@@ -1633,8 +1641,8 @@
                                                 - \tweak color #darkred
                                                 - \tweak padding #16.5
                                                 - \abjad-solid-line-with-arrow
-                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 3 7 \hspace #0.5 } \hspace #0.5 }
-                                                - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 7 \hspace #0.5 }
+                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 2 7 \hspace #0.5 } \hspace #0.5 }
+                                                - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 3 7 \hspace #0.5 }
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
                                                 \afterGrace
@@ -1750,7 +1758,6 @@
                                                   %! abjad.on_beat_grace_container(1)
                                                 \set fontSize = #-3
                                                 \tweak text #tuplet-number::calc-fraction-text
-                                                \tweak edge-height #'(0.7 . 0)
                                                 \times 1/1
                                                 {
                                                       %! abjad.on_beat_grace_container(2)
@@ -1763,7 +1770,7 @@
                                                     \abjad-color-music #'darkred
                                                     \time 1/8
                                                     \voiceOne
-                                                    g''32 * 6/5
+                                                    g''32
                                                     - \tweak color #"darkmagenta"
                                                     - \upbow
                                                     [
@@ -1794,7 +1801,7 @@
                                                       %! abjad.glissando(1)
                                                     \override NoteHead.no-ledgers = ##t
                                                     \revert Staff.Stem.stencil
-                                                    g''16 * 3/5
+                                                    g''16 * 1/2
                                                     - \tweak color #"darkmagenta"
                                                     - \downbow
                                                     _ \ff
@@ -1808,30 +1815,24 @@
                                                     - \tweak stencil #constante-hairpin
                                                     _ \<
                                                     \abjad-color-music #'darkred
-                                                    g''32 * 6/5
+                                                    g''32
                                                     )
                                                     \stopTextSpan
                                                     - \tweak color #darkred
                                                     - \tweak padding #16
                                                     - \abjad-solid-line-with-arrow
                                                     - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 2 5 \hspace #0.5 } \hspace #0.5 }
+                                                    - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 3 5 \hspace #0.5 }
                                                     \startTextSpan
-                                                    \tweak edge-height #'(0.7 . 0)
-                                                    \times 16/24
+                                                    \times 64/72
                                                     {
                                                         \abjad-color-music #'darkred
                                                         \afterGrace
-                                                        g''16 * 9/10
+                                                        g''64 * 9/4
                                                         - \tweak color #"darkmagenta"
                                                         - \upbow
                                                         \stopTextSpan
                                                         ]
-                                                        - \tweak color #darkred
-                                                        - \tweak padding #16
-                                                        - \abjad-solid-line-with-arrow
-                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 3 5 \hspace #0.5 } \hspace #0.5 }
-                                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 }
-                                                        \startTextSpan
                                                         _ \>
                                                         {
                                                             \once \override Accidental.stencil = ##f
@@ -1848,7 +1849,6 @@
                                                             \undo \hide NoteHead
                                                             g''16
                                                                 _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
-                                                            \stopTextSpan
                                                             \stopTrillSpan
                                                         }
                                                     }
@@ -1863,14 +1863,26 @@
                                                 \voiceTwo
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                                g''!8.
+                                                g''!8
                                                 ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
+                                                ~
+                                                \once \override Accidental.stencil = ##f
+                                                \once \override Beam.stencil = ##f
+                                                \once \override Dots.stencil = ##f
+                                                \once \override Flag.stencil = ##f
+                                                \once \override NoteHead.duration-log = 2
+                                                \once \override NoteHead.no-ledgers = ##t
+                                                \once \override Stem.stencil = ##f
+                                                \once \override NoteHead.transparent = ##t
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
+                                                g''32
                                             }
                                         >>
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
                                         \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                        g''!8..
+                                        g''!16.
                                         ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
@@ -1917,7 +1929,6 @@
                                                   %! abjad.on_beat_grace_container(1)
                                                 \set fontSize = #-3
                                                 \tweak text #tuplet-number::calc-fraction-text
-                                                \tweak edge-height #'(0.7 . 0)
                                                 \times 1/1
                                                 {
                                                       %! abjad.on_beat_grace_container(2)
@@ -1927,7 +1938,7 @@
                                                     \once \override NoteHead.transparent = ##t
                                                     \abjad-color-music #'darkred
                                                     \voiceOne
-                                                    g''16 * 3/5
+                                                    g''16 * 5/8
                                                     - \tweak color #"darkmagenta"
                                                     - \downbow
                                                     _ \ff
@@ -1938,7 +1949,7 @@
                                                       %! abjad.glissando(7)
                                                     \glissando
                                                     - \tweak color #darkred
-                                                    - \tweak padding #16
+                                                    - \tweak padding #17.5
                                                     - \abjad-solid-line-with-arrow
                                                     - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 7 \hspace #0.5 } \hspace #0.5 }
                                                     - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 7 \hspace #0.5 }
@@ -1961,30 +1972,31 @@
                                                       %! abjad.glissando(1)
                                                     \override NoteHead.no-ledgers = ##t
                                                     \revert Staff.Stem.stencil
-                                                    g''32 * 6/5
+                                                    g''32 * 5/4
                                                     )
                                                     \stopTextSpan
-                                                    \abjad-color-music #'darkred
-                                                    g''16 * 3/5
-                                                    - \tweak color #"darkmagenta"
-                                                    - \downbow
-                                                    _ \f
-                                                    (
-                                                    - \tweak color #darkred
-                                                    - \tweak padding #16
-                                                    - \abjad-solid-line-with-arrow
-                                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
-                                                    - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 5 \hspace #0.5 }
-                                                    \startTextSpan
-                                                    - \tweak stencil #constante-hairpin
-                                                    _ \<
-                                                    \tweak edge-height #'(0.7 . 0)
-                                                    \times 64/96
+                                                    \times 256/288
                                                     {
                                                         \abjad-color-music #'darkred
+                                                        g''32. * 15/16
+                                                        - \tweak color #"darkmagenta"
+                                                        - \downbow
+                                                        _ \f
+                                                        (
+                                                        - \tweak color #darkred
+                                                        - \tweak padding #17.5
+                                                        - \abjad-solid-line-with-arrow
+                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
+                                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 5 \hspace #0.5 }
+                                                        \startTextSpan
+                                                        - \tweak stencil #constante-hairpin
+                                                        _ \<
+                                                        ~
+                                                        \abjad-color-music #'darkred
                                                         \afterGrace
-                                                        g''64 * 18/5
+                                                        g''256 * 45/4
                                                         )
+                                                        \stopTextSpan
                                                         ]
                                                         {
                                                             \once \override Accidental.stencil = ##f
@@ -2001,7 +2013,6 @@
                                                             \undo \hide NoteHead
                                                             g''16
                                                             \!
-                                                            \stopTextSpan
                                                             \stopTrillSpan
                                                         }
                                                     }
@@ -2014,14 +2025,25 @@
                                                 \voiceTwo
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                                g''!8.
+                                                g''!8
                                                 ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
+                                                ~
+                                                \once \override Accidental.stencil = ##f
+                                                \once \override Beam.stencil = ##f
+                                                \once \override Dots.stencil = ##f
+                                                \once \override Flag.stencil = ##f
+                                                \once \override NoteHead.duration-log = 2
+                                                \once \override NoteHead.no-ledgers = ##t
+                                                \once \override Stem.stencil = ##f
+                                                \once \override NoteHead.transparent = ##t
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
+                                                g''32
                                             }
                                         >>
-                                        \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
                                         \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                        g''!8..
+                                        g''!4
                                             _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                         ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
                                           %! abjad.glissando(7)
@@ -2033,24 +2055,37 @@
                                         - \abjad-dashed-line-with-hook
                                         - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { flaut. } \hspace #0.5 }
                                         \startTextSpan
+                                        ~
                                         - \tweak color #(css-color 'goldenrod)
                                         - \tweak details.squiggle-Y-scale 0.9
                                         - \tweak details.squiggle-initial-width 4
                                         - \tweak details.squiggle-speed-factor 0.6
                                         - \tweak thickness 3
                                         \slow-fast-trill
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override Beam.stencil = ##f
+                                        \once \override Dots.stencil = ##f
+                                        \once \override Flag.stencil = ##f
+                                        \once \override NoteHead.duration-log = 2
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override Stem.stencil = ##f
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                        \afterGrace
+                                        \tweak Accidental.stencil #ly:text-interface::print
+                                        \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
+                                        g''16.
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
                                             \once \override NoteHead.transparent = ##t
-                                              %! abjad.glissando(1)
-                                            \hide NoteHead
-                                              %! abjad.glissando(1)
-                                            \override Accidental.stencil = ##f
-                                              %! abjad.glissando(1)
-                                            \override NoteColumn.glissando-skip = ##t
-                                              %! abjad.glissando(1)
-                                            \override NoteHead.no-ledgers = ##t
                                               %! abjad.glissando(6)
                                             \revert Accidental.stencil
                                               %! abjad.glissando(6)
@@ -2063,7 +2098,105 @@
                                             \stopTextSpan
                                             \stopTrillSpan
                                         }
-                                        r32
+                                        <<
+                                            \context Voice = "On_Beat_Grace_Container"
+                                            {
+                                                  %! abjad.on_beat_grace_container(1)
+                                                \set fontSize = #-3
+                                                \tweak text #tuplet-number::calc-fraction-text
+                                                \times 1/1
+                                                {
+                                                      %! abjad.on_beat_grace_container(2)
+                                                    \slash
+                                                    \once \override Accidental.stencil = ##f
+                                                    \once \override NoteHead.no-ledgers = ##t
+                                                    \once \override NoteHead.transparent = ##t
+                                                    \abjad-color-music #'darkred
+                                                    \voiceOne
+                                                    g''32
+                                                    - \tweak color #"darkmagenta"
+                                                    - \upbow
+                                                    [
+                                                      %! abjad.glissando(7)
+                                                    - \abjad-zero-padding-glissando
+                                                      %! abjad.glissando(7)
+                                                    \glissando
+                                                    - \tweak color #darkred
+                                                    - \tweak padding #16
+                                                    - \abjad-solid-line-with-arrow
+                                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 7 7 \hspace #0.5 } \hspace #0.5 }
+                                                    \startTextSpan
+                                                    _ \<
+                                                    - \tweak color #(css-color 'goldenrod)
+                                                    - \tweak details.squiggle-Y-scale 0.9
+                                                    - \tweak details.squiggle-initial-width 0.2
+                                                    - \tweak details.squiggle-speed-factor -0.9
+                                                    - \tweak thickness 3
+                                                    \slow-fast-trill
+                                                    \times 64/96
+                                                    {
+                                                        \abjad-color-music #'darkred
+                                                          %! abjad.glissando(1)
+                                                        \hide NoteHead
+                                                          %! abjad.glissando(1)
+                                                        \override Accidental.stencil = ##f
+                                                          %! abjad.glissando(1)
+                                                        \override NoteColumn.glissando-skip = ##t
+                                                          %! abjad.glissando(1)
+                                                        \override NoteHead.no-ledgers = ##t
+                                                        \revert Staff.Stem.stencil
+                                                        g''16 * 3/4
+                                                        - \tweak color #"darkmagenta"
+                                                        - \downbow
+                                                        _ \ff
+                                                        \stopTextSpan
+                                                        (
+                                                        - \tweak color #darkred
+                                                        - \tweak padding #16
+                                                        - \abjad-solid-line-with-arrow
+                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 7 \hspace #0.5 } \hspace #0.5 }
+                                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 3 7 \hspace #0.5 }
+                                                        \startTextSpan
+                                                        - \tweak stencil #constante-hairpin
+                                                        _ \<
+                                                        ~
+                                                        \abjad-color-music #'darkred
+                                                        \afterGrace
+                                                        g''64 * 3
+                                                        )
+                                                        \stopTextSpan
+                                                        ]
+                                                        {
+                                                            \once \override Accidental.stencil = ##f
+                                                            \once \override NoteHead.no-ledgers = ##t
+                                                            \override Staff.Stem.stencil = ##f
+                                                            \once \override NoteHead.transparent = ##t
+                                                              %! abjad.glissando(6)
+                                                            \revert Accidental.stencil
+                                                              %! abjad.glissando(6)
+                                                            \revert NoteColumn.glissando-skip
+                                                              %! abjad.glissando(6)
+                                                            \revert NoteHead.no-ledgers
+                                                              %! abjad.glissando(6)
+                                                            \undo \hide NoteHead
+                                                            g''16
+                                                            \!
+                                                            \stopTrillSpan
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            \context Voice = "cello 2 voice Anchor"
+                                            {
+                                                \once \override NoteHead.X-extent = #'(0.5 . 0)
+                                                  %! abjad.on_beat_grace_container(4)
+                                                \voiceTwo
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
+                                                g''!16.
+                                                ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
+                                            }
+                                        >>
                                     }
                                       %! +SCORE
                                     \once \override Staff.BarLine.transparent = ##f
@@ -2089,7 +2222,6 @@
                                               %! abjad.on_beat_grace_container(1)
                                             \set fontSize = #-3
                                             \tweak text #tuplet-number::calc-fraction-text
-                                            \tweak edge-height #'(0.7 . 0)
                                             \times 1/1
                                             {
                                                   %! abjad.on_beat_grace_container(2)
@@ -2099,7 +2231,7 @@
                                                 \once \override NoteHead.transparent = ##t
                                                 \abjad-color-music #'darkred
                                                 \voiceOne
-                                                g''16 * 11/14
+                                                g''32 * 11/8
                                                 - \tweak color #"darkmagenta"
                                                 - \downbow
                                                 _ \fff
@@ -2110,10 +2242,9 @@
                                                   %! abjad.glissando(7)
                                                 \glissando
                                                 - \tweak color #darkred
-                                                - \tweak padding #16.5
+                                                - \tweak padding #16
                                                 - \abjad-solid-line-with-arrow
-                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 7 \hspace #0.5 } \hspace #0.5 }
-                                                - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 7 \hspace #0.5 }
+                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 3 7 \hspace #0.5 } \hspace #0.5 }
                                                 \startTextSpan
                                                 _ \>
                                                 - \tweak color #(css-color 'goldenrod)
@@ -2132,38 +2263,52 @@
                                                   %! abjad.glissando(1)
                                                 \override NoteHead.no-ledgers = ##t
                                                 \revert Staff.Stem.stencil
-                                                g''32 * 11/7
+                                                g''16 * 11/16
+                                                \stopTextSpan
+                                                - \tweak color #darkred
+                                                - \tweak padding #16
+                                                - \abjad-solid-line-with-arrow
+                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 4 7 \hspace #0.5 } \hspace #0.5 }
+                                                - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 7 7 \hspace #0.5 }
+                                                \startTextSpan
+                                                \abjad-color-music #'darkred
+                                                g''32 * 11/8
                                                 )
                                                 \stopTextSpan
                                                 \abjad-color-music #'darkred
-                                                g''16 * 11/14
+                                                g''8 * 11/32
                                                 - \tweak color #"darkmagenta"
                                                 - \downbow
                                                 (
                                                 - \tweak color #darkred
-                                                - \tweak padding #16.5
+                                                - \tweak padding #16
                                                 - \abjad-solid-line-with-arrow
                                                 - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
-                                                - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 5 \hspace #0.5 }
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
-                                                g''32 * 11/7
+                                                g''32 * 11/8
                                                 )
                                                 \stopTextSpan
+                                                - \tweak color #darkred
+                                                - \tweak padding #16
+                                                - \abjad-solid-line-with-arrow
+                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 1 5 \hspace #0.5 } \hspace #0.5 }
+                                                \startTextSpan
                                                 \abjad-color-music #'darkred
-                                                g''8 * 11/28
+                                                g''32 * 11/8
                                                 - \tweak color #"darkmagenta"
                                                 - \upbow
+                                                \stopTextSpan
                                                 (
                                                 - \tweak color #darkred
-                                                - \tweak padding #16.5
+                                                - \tweak padding #16
                                                 - \abjad-solid-line-with-arrow
-                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 4 5 \hspace #0.5 } \hspace #0.5 }
-                                                - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 5 \hspace #0.5 }
+                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 3 5 \hspace #0.5 } \hspace #0.5 }
+                                                - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 }
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
                                                 \afterGrace
-                                                g''32 * 11/7
+                                                g''32 * 11/8
                                                 )
                                                 \stopTextSpan
                                                 ]
@@ -2269,7 +2414,7 @@
                                 \context Voice = "cello 3 voice"
                                 {
                                     \tweak text #tuplet-number::calc-fraction-text
-                                    \times 6/5
+                                    \times 24/25
                                     {
                                         <<
                                             \context Voice = "On_Beat_Grace_Container"
@@ -2289,7 +2434,7 @@
                                                     \abjad-color-music #'darkred
                                                     \time 1/8
                                                     \voiceOne
-                                                    e''32
+                                                    e''32 * 5/3
                                                         _ #(make-dynamic-script (markup #:whiteout #:italic "ffp"))
                                                     - \tweak color #"darkmagenta"
                                                     - \upbow
@@ -2300,9 +2445,9 @@
                                                       %! abjad.glissando(7)
                                                     \glissando
                                                     - \tweak color #darkred
-                                                    - \tweak padding #16
+                                                    - \tweak padding #15
                                                     - \abjad-solid-line-with-arrow
-                                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 8 8 \hspace #0.5 } \hspace #0.5 }
+                                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 4 4 \hspace #0.5 } \hspace #0.5 }
                                                     \startTextSpan
                                                     _ \<
                                                     - \tweak color #(css-color 'goldenrod)
@@ -2311,6 +2456,7 @@
                                                     - \tweak details.squiggle-speed-factor -0.9
                                                     - \tweak thickness 3
                                                     \slow-fast-trill
+                                                    \tweak edge-height #'(0.7 . 0)
                                                     \times 128/160
                                                     {
                                                         \abjad-color-music #'darkred
@@ -2323,26 +2469,21 @@
                                                           %! abjad.glissando(1)
                                                         \override NoteHead.no-ledgers = ##t
                                                         \revert Staff.Stem.stencil
-                                                        e''16. * 5/12
+                                                        e''8 * 25/48
                                                         \stopTextSpan
                                                         - \tweak color #darkred
-                                                        - \tweak padding #16
+                                                        - \tweak padding #15
                                                         - \abjad-solid-line-with-arrow
-                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 4 8 \hspace #0.5 } \hspace #0.5 }
+                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 2 4 \hspace #0.5 } \hspace #0.5 }
+                                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 4 \hspace #0.5 }
                                                         \startTextSpan
                                                         ~
                                                         \abjad-color-music #'darkred
                                                         \afterGrace
-                                                        e''128 * 5
+                                                        e''64. * 25/9
                                                         )
                                                         \stopTextSpan
                                                         ]
-                                                        - \tweak color #darkred
-                                                        - \tweak padding #16
-                                                        - \abjad-solid-line-with-arrow
-                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 2 8 \hspace #0.5 } \hspace #0.5 }
-                                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 1 8 \hspace #0.5 }
-                                                        \startTextSpan
                                                         {
                                                             \once \override Accidental.stencil = ##f
                                                             \once \override NoteHead.no-ledgers = ##t
@@ -2358,7 +2499,6 @@
                                                             \undo \hide NoteHead
                                                             e''16
                                                             _ \f
-                                                            \stopTextSpan
                                                             \stopTrillSpan
                                                         }
                                                     }
@@ -2372,14 +2512,26 @@
                                                 \voiceTwo
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup { \abjad-natural  }
-                                                e''!16.
+                                                e''!8
                                                 ^ \markup \center-align { \concat { +4 } }
+                                                ~
+                                                \once \override Accidental.stencil = ##f
+                                                \once \override Beam.stencil = ##f
+                                                \once \override Dots.stencil = ##f
+                                                \once \override Flag.stencil = ##f
+                                                \once \override NoteHead.duration-log = 2
+                                                \once \override NoteHead.no-ledgers = ##t
+                                                \once \override Stem.stencil = ##f
+                                                \once \override NoteHead.transparent = ##t
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \abjad-natural  }
+                                                e''32
                                             }
                                         >>
                                         \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
                                         \tweak Accidental.text \markup { \abjad-natural  }
-                                        e''!4
+                                        e''!16.
                                             _ #(make-dynamic-script (markup #:whiteout #:italic "sp +"))
                                         ^ \markup \center-align { \concat { +4 } }
                                           %! abjad.glissando(7)
@@ -2393,7 +2545,7 @@
                                         \startTextSpan
                                         - \tweak color #(css-color 'goldenrod)
                                         - \tweak details.squiggle-Y-scale 0.9
-                                        - \tweak details.squiggle-initial-width 6
+                                        - \tweak details.squiggle-initial-width 4
                                         - \tweak details.squiggle-speed-factor 0
                                         - \tweak thickness 3
                                         \slow-fast-trill
@@ -2427,41 +2579,43 @@
                                                   %! abjad.on_beat_grace_container(1)
                                                 \set fontSize = #-3
                                                 \tweak text #tuplet-number::calc-fraction-text
+                                                \tweak edge-height #'(0.7 . 0)
                                                 \times 1/1
                                                 {
                                                       %! abjad.on_beat_grace_container(2)
                                                     \slash
-                                                    \times 64/80
+                                                    \once \override Accidental.stencil = ##f
+                                                    \once \override NoteHead.no-ledgers = ##t
+                                                    \once \override NoteHead.transparent = ##t
+                                                    \abjad-color-music #'darkred
+                                                    \voiceOne
+                                                    e''8 * 5/12
+                                                    - \tweak color #"darkmagenta"
+                                                    - \downbow
+                                                    _ \f
+                                                    [
+                                                    (
+                                                      %! abjad.glissando(7)
+                                                    - \abjad-zero-padding-glissando
+                                                      %! abjad.glissando(7)
+                                                    \glissando
+                                                    - \tweak color #darkred
+                                                    - \tweak padding #14.5
+                                                    - \abjad-solid-line-with-arrow
+                                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
+                                                    - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 3 5 \hspace #0.5 }
+                                                    \startTextSpan
+                                                    - \tweak stencil #constante-hairpin
+                                                    _ \<
+                                                    - \tweak color #(css-color 'goldenrod)
+                                                    - \tweak details.squiggle-Y-scale 0.9
+                                                    - \tweak details.squiggle-initial-width 0.4
+                                                    - \tweak details.squiggle-speed-factor -0.9
+                                                    - \tweak thickness 3
+                                                    \slow-fast-trill
+                                                    \tweak edge-height #'(0.7 . 0)
+                                                    \times 32/40
                                                     {
-                                                        \once \override Accidental.stencil = ##f
-                                                        \once \override NoteHead.no-ledgers = ##t
-                                                        \once \override NoteHead.transparent = ##t
-                                                        \abjad-color-music #'darkred
-                                                        \voiceOne
-                                                        e''8 * 15/32
-                                                        - \tweak color #"darkmagenta"
-                                                        - \downbow
-                                                        _ \f
-                                                        [
-                                                        (
-                                                          %! abjad.glissando(7)
-                                                        - \abjad-zero-padding-glissando
-                                                          %! abjad.glissando(7)
-                                                        \glissando
-                                                        - \tweak color #darkred
-                                                        - \tweak padding #14.5
-                                                        - \abjad-solid-line-with-arrow
-                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
-                                                        \startTextSpan
-                                                        - \tweak stencil #constante-hairpin
-                                                        _ \<
-                                                        ~
-                                                        - \tweak color #(css-color 'goldenrod)
-                                                        - \tweak details.squiggle-Y-scale 0.9
-                                                        - \tweak details.squiggle-initial-width 0.4
-                                                        - \tweak details.squiggle-speed-factor -0.9
-                                                        - \tweak thickness 3
-                                                        \slow-fast-trill
                                                         \abjad-color-music #'darkred
                                                           %! abjad.glissando(1)
                                                         \hide NoteHead
@@ -2473,16 +2627,10 @@
                                                         \override NoteHead.no-ledgers = ##t
                                                         \revert Staff.Stem.stencil
                                                         \afterGrace
-                                                        e''64 * 15/4
+                                                        e''32 * 25/12
                                                         )
                                                         \stopTextSpan
                                                         ]
-                                                        - \tweak color #darkred
-                                                        - \tweak padding #14.5
-                                                        - \abjad-solid-line-with-arrow
-                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 1 5 \hspace #0.5 } \hspace #0.5 }
-                                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 2 5 \hspace #0.5 }
-                                                        \startTextSpan
                                                         {
                                                             \once \override Accidental.stencil = ##f
                                                             \once \override NoteHead.no-ledgers = ##t
@@ -2498,7 +2646,6 @@
                                                             \undo \hide NoteHead
                                                             e''16
                                                             \!
-                                                            \stopTextSpan
                                                             \stopTrillSpan
                                                         }
                                                     }
@@ -2511,14 +2658,25 @@
                                                 \voiceTwo
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup { \abjad-natural  }
-                                                e''!16.
+                                                e''!8
                                                 ^ \markup \center-align { \concat { +4 } }
+                                                ~
+                                                \once \override Accidental.stencil = ##f
+                                                \once \override Beam.stencil = ##f
+                                                \once \override Dots.stencil = ##f
+                                                \once \override Flag.stencil = ##f
+                                                \once \override NoteHead.duration-log = 2
+                                                \once \override NoteHead.no-ledgers = ##t
+                                                \once \override Stem.stencil = ##f
+                                                \once \override NoteHead.transparent = ##t
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \abjad-natural  }
+                                                e''32
                                             }
                                         >>
-                                        \afterGrace
                                         \tweak Accidental.stencil #ly:text-interface::print
                                         \tweak Accidental.text \markup { \abjad-natural  }
-                                        e''!8.
+                                        e''!4
                                             _ #(make-dynamic-script (markup #:whiteout #:italic "sp +"))
                                         ^ \markup \center-align { \concat { +4 } }
                                           %! abjad.glissando(7)
@@ -2530,24 +2688,37 @@
                                         - \abjad-dashed-line-with-hook
                                         - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { flaut. } \hspace #0.5 }
                                         \startTextSpan
+                                        ~
                                         - \tweak color #(css-color 'goldenrod)
                                         - \tweak details.squiggle-Y-scale 0.9
-                                        - \tweak details.squiggle-initial-width 6
-                                        - \tweak details.squiggle-speed-factor 0
+                                        - \tweak details.squiggle-initial-width 9
+                                        - \tweak details.squiggle-speed-factor 0.9
                                         - \tweak thickness 3
                                         \slow-fast-trill
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override Beam.stencil = ##f
+                                        \once \override Dots.stencil = ##f
+                                        \once \override Flag.stencil = ##f
+                                        \once \override NoteHead.duration-log = 2
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override Stem.stencil = ##f
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                        \afterGrace
+                                        \tweak Accidental.stencil #ly:text-interface::print
+                                        \tweak Accidental.text \markup { \abjad-natural  }
+                                        e''16
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
                                             \once \override NoteHead.transparent = ##t
-                                              %! abjad.glissando(1)
-                                            \hide NoteHead
-                                              %! abjad.glissando(1)
-                                            \override Accidental.stencil = ##f
-                                              %! abjad.glissando(1)
-                                            \override NoteColumn.glissando-skip = ##t
-                                              %! abjad.glissando(1)
-                                            \override NoteHead.no-ledgers = ##t
                                               %! abjad.glissando(6)
                                             \revert Accidental.stencil
                                               %! abjad.glissando(6)
@@ -2560,6 +2731,116 @@
                                             \stopTextSpan
                                             \stopTrillSpan
                                         }
+                                        <<
+                                            \context Voice = "On_Beat_Grace_Container"
+                                            {
+                                                  %! abjad.on_beat_grace_container(1)
+                                                \set fontSize = #-3
+                                                \tweak text #tuplet-number::calc-fraction-text
+                                                \times 1/1
+                                                {
+                                                      %! abjad.on_beat_grace_container(2)
+                                                    \slash
+                                                    \once \override Accidental.stencil = ##f
+                                                    \once \override NoteHead.no-ledgers = ##t
+                                                    \once \override NoteHead.transparent = ##t
+                                                    \abjad-color-music #'darkred
+                                                    \voiceOne
+                                                    e''32 * 2/3
+                                                    - \tweak color #"darkmagenta"
+                                                    - \downbow
+                                                    _ \f
+                                                    [
+                                                    (
+                                                      %! abjad.glissando(7)
+                                                    - \abjad-zero-padding-glissando
+                                                      %! abjad.glissando(7)
+                                                    \glissando
+                                                    - \tweak circled-tip ##t
+                                                    - \tweak stencil #abjad-flared-hairpin
+                                                    _ \>
+                                                    - \tweak color #darkred
+                                                    - \tweak padding #16.5
+                                                    - \abjad-solid-line-with-arrow
+                                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 1 \hspace #0.5 } \hspace #0.5 }
+                                                    \startTextSpan
+                                                    - \tweak color #(css-color 'goldenrod)
+                                                    - \tweak details.squiggle-Y-scale 0.9
+                                                    - \tweak details.squiggle-initial-width 0.4
+                                                    - \tweak details.squiggle-speed-factor -0.9
+                                                    - \tweak thickness 3
+                                                    \slow-fast-trill
+                                                    \tweak edge-height #'(0.7 . 0)
+                                                    \times 512/800
+                                                    {
+                                                        \abjad-color-music #'darkred
+                                                          %! abjad.glissando(1)
+                                                        \hide NoteHead
+                                                          %! abjad.glissando(1)
+                                                        \override Accidental.stencil = ##f
+                                                          %! abjad.glissando(1)
+                                                        \override NoteColumn.glissando-skip = ##t
+                                                          %! abjad.glissando(1)
+                                                        \override NoteHead.no-ledgers = ##t
+                                                        \revert Staff.Stem.stencil
+                                                        e''32 * 25/24
+                                                        - \tweak color #"darkmagenta"
+                                                        - \upbow
+                                                        _ \ff
+                                                        \stopTextSpan
+                                                        - \tweak circled-tip ##t
+                                                        - \tweak stencil #abjad-flared-hairpin
+                                                        _ \>
+                                                        - \tweak color #darkred
+                                                        - \tweak padding #16.5
+                                                        - \abjad-solid-line-with-arrow
+                                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 1 1 \hspace #0.5 } \hspace #0.5 }
+                                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 0 1 \hspace #0.5 }
+                                                        \startTextSpan
+                                                        ~
+                                                        \abjad-color-music #'darkred
+                                                        \afterGrace
+                                                        e''128.. * 50/21
+                                                        - \tweak color #"darkmagenta"
+                                                        - \downbow
+                                                        _ \fff
+                                                        )
+                                                        \stopTextSpan
+                                                        ]
+                                                        - \tweak circled-tip ##t
+                                                        - \tweak stencil #abjad-flared-hairpin
+                                                        _ \>
+                                                        {
+                                                            \once \override Accidental.stencil = ##f
+                                                            \once \override NoteHead.no-ledgers = ##t
+                                                            \override Staff.Stem.stencil = ##f
+                                                            \once \override NoteHead.transparent = ##t
+                                                              %! abjad.glissando(6)
+                                                            \revert Accidental.stencil
+                                                              %! abjad.glissando(6)
+                                                            \revert NoteColumn.glissando-skip
+                                                              %! abjad.glissando(6)
+                                                            \revert NoteHead.no-ledgers
+                                                              %! abjad.glissando(6)
+                                                            \undo \hide NoteHead
+                                                            e''16
+                                                            \!
+                                                            \stopTrillSpan
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                            \context Voice = "cello 3 voice Anchor"
+                                            {
+                                                \once \override NoteHead.X-extent = #'(0.5 . 0)
+                                                  %! abjad.on_beat_grace_container(4)
+                                                \voiceTwo
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \abjad-natural  }
+                                                e''!16
+                                                ^ \markup \center-align { \concat { +4 } }
+                                            }
+                                        >>
                                     }
                                       %! +SCORE
                                     \once \override Staff.BarLine.transparent = ##f
@@ -2585,7 +2866,6 @@
                                               %! abjad.on_beat_grace_container(1)
                                             \set fontSize = #-3
                                             \tweak text #tuplet-number::calc-fraction-text
-                                            \tweak edge-height #'(0.7 . 0)
                                             \times 1/1
                                             {
                                                   %! abjad.on_beat_grace_container(2)
@@ -2595,7 +2875,7 @@
                                                 \once \override NoteHead.transparent = ##t
                                                 \abjad-color-music #'darkred
                                                 \voiceOne
-                                                e''32 * 11/9
+                                                e''16 * 11/16
                                                 - \tweak color #"darkmagenta"
                                                 - \downbow
                                                 _ \fff
@@ -2627,7 +2907,7 @@
                                                   %! abjad.glissando(1)
                                                 \override NoteHead.no-ledgers = ##t
                                                 \revert Staff.Stem.stencil
-                                                e''16 * 11/18
+                                                e''32 * 11/8
                                                 \stopTextSpan
                                                 - \tweak color #darkred
                                                 - \tweak padding #15
@@ -2635,7 +2915,7 @@
                                                 - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 1 9 \hspace #0.5 } \hspace #0.5 }
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
-                                                e''32 * 11/9
+                                                e''16 * 11/16
                                                 \stopTextSpan
                                                 - \tweak color #darkred
                                                 - \tweak padding #15
@@ -2643,7 +2923,7 @@
                                                 - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 2 9 \hspace #0.5 } \hspace #0.5 }
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
-                                                e''16 * 11/18
+                                                e''32 * 11/8
                                                 \stopTextSpan
                                                 - \tweak color #darkred
                                                 - \tweak padding #15
@@ -2651,7 +2931,7 @@
                                                 - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 3 9 \hspace #0.5 } \hspace #0.5 }
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
-                                                e''32 * 11/9
+                                                e''16 * 11/16
                                                 \stopTextSpan
                                                 - \tweak color #darkred
                                                 - \tweak padding #15
@@ -2659,25 +2939,17 @@
                                                 - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 4 9 \hspace #0.5 } \hspace #0.5 }
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
-                                                e''16 * 11/18
+                                                e''32 * 11/8
                                                 \stopTextSpan
                                                 - \tweak color #darkred
                                                 - \tweak padding #15
                                                 - \abjad-solid-line-with-arrow
                                                 - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 5 9 \hspace #0.5 } \hspace #0.5 }
-                                                \startTextSpan
-                                                \abjad-color-music #'darkred
-                                                e''32 * 11/9
-                                                \stopTextSpan
-                                                - \tweak color #darkred
-                                                - \tweak padding #15
-                                                - \abjad-solid-line-with-arrow
-                                                - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 6 9 \hspace #0.5 } \hspace #0.5 }
-                                                - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 7 9 \hspace #0.5 }
+                                                - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 6 9 \hspace #0.5 }
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
                                                 \afterGrace
-                                                e''32 * 11/9
+                                                e''16 * 11/16
                                                 )
                                                 \stopTextSpan
                                                 ]
