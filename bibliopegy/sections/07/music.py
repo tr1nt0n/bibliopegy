@@ -11,7 +11,7 @@ from bibliopegy import pitch
 
 # score
 
-score = library.bibliopegy_score([(1, 8) for _ in range(1, 37)])
+score = library.bibliopegy_score([(1, 8) for _ in range(1, 39)])
 
 # music commands
 
@@ -996,7 +996,7 @@ for voice_name, extra_count in zip(
     [1, 0, -1],
 ):
     trinton.make_music(
-        lambda _: trinton.select_target(_, (36,)),
+        lambda _: trinton.select_target(_, (37,)),
         evans.RhythmHandler(
             evans.talea(
                 [
@@ -1985,8 +1985,40 @@ library.write_short_instrument_names(score=score)
 
 library.write_timestamps(
     global_context=score["Global Context"],
-    second_range=(122, 157),
-    measure_range=(1, 36),
+    second_range=(146, 1000),
+    measure_range=(1, 35),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (36,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Markup(
+                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "3\'1\" - 3\'8\""  }"""
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["Global Context"],
+)
+
+library.write_timestamps(
+    global_context=score["Global Context"],
+    second_range=(189,),
+    measure_range=(37,),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (38,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Markup(
+                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "3\'10\" - 3\'17\""  }"""
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["Global Context"],
 )
 
 # cutaway

@@ -11,14 +11,14 @@ from bibliopegy import pitch
 
 # score
 
-score = library.bibliopegy_score([(1, 8) for _ in range(1, 22)])
+score = library.bibliopegy_score([(1, 8) for _ in range(1, 23)])
 
 # music commands
 
 # tape music commands
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (2, 20)),
+    lambda _: trinton.select_target(_, (3, 21)),
     evans.RhythmHandler(rmakers.note),
     evans.PitchHandler([-1]),
     library.duration_line(color="darkred"),
@@ -43,7 +43,7 @@ trinton.make_music(
 
 for voice_name in ["flute voice", "bassflute voice"]:
     trinton.make_music(
-        lambda _: trinton.select_target(_, (2, 7)),
+        lambda _: trinton.select_target(_, (3, 8)),
         evans.RhythmHandler(evans.talea([12, -6, 5, -1], 32)),
         library.duration_line(),
         trinton.change_lines(lines=1, clef="varpercussion", tag=None),
@@ -64,7 +64,7 @@ for voice_name in ["flute voice", "bassflute voice"]:
     )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (8, 13)),
+    lambda _: trinton.select_target(_, (9, 14)),
     evans.RhythmHandler(
         evans.talea(
             [
@@ -96,7 +96,7 @@ trinton.make_music(
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (14,)),
+    lambda _: trinton.select_target(_, (15,)),
     evans.RhythmHandler(evans.talea([1, 1, 1, 2], 32, extra_counts=[1, 0])),
     library.duration_line(selector=trinton.select_logical_ties_by_index([-1])),
     trinton.attachment_command(
@@ -129,7 +129,7 @@ trinton.make_music(
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (15, 18)),
+    lambda _: trinton.select_target(_, (16, 19)),
     evans.RhythmHandler(evans.talea([2, 1, 5], 32)),
     trinton.force_rest(
         selector=trinton.patterned_tie_index_selector(
@@ -160,7 +160,7 @@ trinton.make_music(
 
 for voice_name in ["flute voice", "bassflute voice"]:
     trinton.make_music(
-        lambda _: trinton.select_target(_, (19, 20)),
+        lambda _: trinton.select_target(_, (20, 21)),
         evans.RhythmHandler(
             evans.talea([-1, 3, 1, 1, 2, 2, 2, 100], 32, extra_counts=[4, 0])
         ),
@@ -198,7 +198,7 @@ for voice_name in ["flute voice", "bassflute voice"]:
 # bass flute music commands
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (8, 11)),
+    lambda _: trinton.select_target(_, (9, 12)),
     evans.RhythmHandler(evans.talea([6, 3, 2], 32)),
     trinton.force_rest(
         selector=trinton.patterned_tie_index_selector(
@@ -221,7 +221,7 @@ trinton.make_music(
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (12, 13)),
+    lambda _: trinton.select_target(_, (13, 14)),
     evans.RhythmHandler(evans.talea([1, 1, 1, 1, 3, 4, -100], 32, extra_counts=[3, 0])),
     trinton.attachment_command(
         attachments=[
@@ -251,7 +251,7 @@ trinton.make_music(
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (14, 18)),
+    lambda _: trinton.select_target(_, (15, 19)),
     evans.RhythmHandler(evans.talea([5, 3, 2], 32)),
     trinton.force_rest(
         selector=trinton.patterned_tie_index_selector(
@@ -282,7 +282,7 @@ trinton.make_music(
 
 for voice_name in ["flute voice", "bassflute voice"]:
     trinton.make_music(
-        lambda _: trinton.select_target(_, (2, 20)),
+        lambda _: trinton.select_target(_, (3, 21)),
         trinton.hooked_spanner_command(
             string=r"""\markup \with-color "indianred" \center-column { \line { covering the entire } \line { mouthpiece with the lips } }""",
             selector=trinton.select_leaves_by_index([0, -1], pitched=True),
@@ -297,7 +297,7 @@ for voice_name in ["flute voice", "bassflute voice"]:
 # violin music commands
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (2, 7)),
+    lambda _: trinton.select_target(_, (3, 8)),
     evans.RhythmHandler(evans.talea([12, -6, 5, -1], 32)),
     evans.PitchHandler(trinton.rotated_sequence(pitch.violin_gamma_pitches, 9)),
     trinton.force_accidentals_command(
@@ -435,7 +435,7 @@ trinton.make_music(
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (8, 14)),
+    lambda _: trinton.select_target(_, (9, 15)),
     evans.RhythmHandler(evans.talea([-3, 11, -4, 8, -100], 32)),
     evans.PitchHandler(trinton.rotated_sequence(pitch.violin_gamma_pitches, 11)),
     trinton.force_accidentals_command(
@@ -534,7 +534,7 @@ trinton.make_music(
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (16, 20)),
+    lambda _: trinton.select_target(_, (17, 21)),
     evans.RhythmHandler(evans.talea([-2, 1, 1, 1, 5, -3, 100], 32)),
     evans.PitchHandler(trinton.rotated_sequence(pitch.violin_gamma_pitches, 13)),
     trinton.force_accidentals_command(
@@ -684,7 +684,7 @@ trinton.make_music(
 # bass clarinet music commands
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (2, 20)),
+    lambda _: trinton.select_target(_, (3, 21)),
     evans.RhythmHandler(
         evans.talea(
             [7, 5, 6, 6, 13, 9, 13, 9, 100],
@@ -788,7 +788,7 @@ trinton.make_music(
 # cello 3 music commands
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (2, 21)),
+    lambda _: trinton.select_target(_, (3, 22)),
     evans.RhythmHandler(
         evans.talea(
             [
@@ -1179,7 +1179,7 @@ for voice_name, extra_count in zip(
 # percussion 2 music commands
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (2, 20)),
+    lambda _: trinton.select_target(_, (3, 21)),
     evans.RhythmHandler(
         evans.talea(
             [7, 5, 6, 6, 14, 8, 17, 100],
@@ -1254,12 +1254,31 @@ library.write_short_instrument_names(score=score)
 
 library.write_timestamps(
     global_context=score["Global Context"],
-    second_range=(80, 100),
-    measure_range=(1, 21),
+    second_range=(96,),
+    measure_range=(1,),
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (20,)),
+    lambda _: trinton.select_target(_, (2,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Markup(
+                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "1\'37\" - 1\'44\""  }"""
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["Global Context"],
+)
+
+library.write_timestamps(
+    global_context=score["Global Context"],
+    second_range=(105, 1000),
+    measure_range=(3, 22),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (21,)),
     trinton.attachment_command(
         attachments=[abjad.LilyPondLiteral(r"\noBreak", "after")],
         selector=trinton.select_leaves_by_index([0]),

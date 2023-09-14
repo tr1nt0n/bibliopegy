@@ -411,6 +411,19 @@ trinton.make_music(
     voice=score["Global Context"],
 )
 
+# trinton.make_music(
+#     lambda _: trinton.select_target(_, (14,)),
+#     trinton.attachment_command(
+#         attachments=[
+#             abjad.Markup(
+#                 r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "50\" - 57\""  }"""
+#             )
+#         ],
+#         selector=trinton.select_leaves_by_index([0]),
+#     ),
+#     voice=score["Global Context"],
+# )
+
 # cutaway
 
 trinton.whiteout_empty_staves(

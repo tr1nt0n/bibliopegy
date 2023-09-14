@@ -11,13 +11,13 @@ from bibliopegy import pitch
 
 # score
 
-score = library.bibliopegy_score([(1, 8) for _ in range(1, 12)])
+score = library.bibliopegy_score([(1, 8) for _ in range(1, 14)])
 # music commands
 
 # tape music commands
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (2, 10)),
+    lambda _: trinton.select_target(_, (3, 11)),
     evans.RhythmHandler(rmakers.note),
     evans.PitchHandler([-3]),
     library.change_lines(lines=3, clef="percussion"),
@@ -50,13 +50,13 @@ trinton.make_music(
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (2, 10)),
+    lambda _: trinton.select_target(_, (3, 11)),
     library.duration_line(color="darkred"),
     voice=score["piano voice temp"],
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (2, 10)),
+    lambda _: trinton.select_target(_, (3, 11)),
     library.duration_line(color="(css-color 'indianred)"),
     trinton.attachment_command(
         attachments=[
@@ -76,7 +76,7 @@ trinton.make_music(
 # flute music commands
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (7, 10)),
+    lambda _: trinton.select_target(_, (8, 11)),
     evans.RhythmHandler(evans.talea([5, 4, 3], 32)),
     trinton.force_rest(
         selector=trinton.patterned_tie_index_selector(
@@ -113,7 +113,7 @@ trinton.make_music(
 # bass flute music commands
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (2, 10)),
+    lambda _: trinton.select_target(_, (3, 11)),
     evans.RhythmHandler(evans.talea([3, 5, 4], 32)),
     trinton.force_rest(
         selector=trinton.patterned_tie_index_selector(
@@ -150,7 +150,7 @@ trinton.make_music(
 # violin music commands
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (2, 10)),
+    lambda _: trinton.select_target(_, (3, 11)),
     evans.RhythmHandler(
         evans.talea(
             [
@@ -492,7 +492,7 @@ trinton.make_music(
 
 # bass clarinet music commands
 
-for measure in [1, 11]:
+for measure in [1, 12]:
     trinton.make_music(
         lambda _: trinton.select_target(_, (measure,)),
         evans.RhythmHandler(rmakers.note),
@@ -519,7 +519,7 @@ for measure in [1, 11]:
 
 # percussion 1 music commands
 
-for measure in [1, 11]:
+for measure in [1, 12]:
     trinton.make_music(
         lambda _: trinton.select_target(_, (measure,)),
         evans.RhythmHandler(rmakers.note),
@@ -551,7 +551,7 @@ for measure in [1, 11]:
     )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (3, 9)),
+    lambda _: trinton.select_target(_, (4, 10)),
     evans.RhythmHandler(
         evans.talea(
             [
@@ -680,7 +680,37 @@ library.write_instrument_names(score=score)
 library.write_short_instrument_names(score=score)
 
 library.write_timestamps(
-    global_context=score["Global Context"], second_range=(50, 60), measure_range=(1, 11)
+    global_context=score["Global Context"], second_range=(50,), measure_range=(1,)
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (2,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Markup(
+                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "51\" - 58\""  }"""
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["Global Context"],
+)
+
+library.write_timestamps(
+    global_context=score["Global Context"], second_range=(59, 69), measure_range=(3, 12)
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (13,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Markup(
+                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "1\'9\" - 1\'16\""  }"""
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["Global Context"],
 )
 
 # cutaway

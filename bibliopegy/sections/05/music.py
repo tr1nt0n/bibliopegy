@@ -1233,7 +1233,7 @@ library.write_short_instrument_names(score=score)
 
 library.write_timestamps(
     global_context=score["Global Context"],
-    second_range=(101, 112),
+    second_range=(125, 1000),
     measure_range=(1, 12),
 )
 

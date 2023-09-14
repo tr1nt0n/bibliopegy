@@ -762,7 +762,7 @@ library.write_instrument_names(score=score)
 library.write_short_instrument_names(score=score)
 
 library.write_timestamps(
-    global_context=score["Global Context"], second_range=(61, 79), measure_range=(1, 19)
+    global_context=score["Global Context"], second_range=(77, 95), measure_range=(1, 19)
 )
 
 # cutaway
