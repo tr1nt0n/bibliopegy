@@ -374,6 +374,20 @@ _viola_processing_markups = {
     ),
 }
 
+# formatting tools
+
+
+def forbid_break(score, measures):
+    for measure in measures:
+        trinton.make_music(
+            lambda _: trinton.select_target(_, (measure,)),
+            trinton.attachment_command(
+                attachments=[abjad.LilyPondLiteral(r"\noBreak", site="after")],
+                selector=trinton.select_leaves_by_index([0]),
+            ),
+            voice=score["Global Context"],
+        )
+
 
 # notation tools
 

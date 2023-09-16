@@ -1237,6 +1237,8 @@ library.write_timestamps(
     measure_range=(1, 12),
 )
 
+library.forbid_break(score=score, measures=[4])
+
 # cutaway
 
 trinton.whiteout_empty_staves(

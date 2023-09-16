@@ -765,6 +765,26 @@ library.write_timestamps(
     global_context=score["Global Context"], second_range=(77, 95), measure_range=(1, 19)
 )
 
+library.forbid_break(
+    score=score,
+    measures=[
+        1,
+        2,
+        5,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+    ],
+)
+
 # cutaway
 
 trinton.whiteout_empty_staves(

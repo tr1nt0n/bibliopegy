@@ -683,6 +683,8 @@ library.write_timestamps(
     global_context=score["Global Context"], second_range=(50,), measure_range=(1,)
 )
 
+library.forbid_break(score=score, measures=list(range(3, 8)))
+
 trinton.make_music(
     lambda _: trinton.select_target(_, (2,)),
     trinton.attachment_command(

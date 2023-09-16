@@ -22,6 +22,7 @@ afterGraceFraction = #(cons 255 256)
         \numericTimeSignature
         \type Engraver_group
         \consists Axis_group_engraver
+        \consists Bar_number_engraver
         \consists Time_signature_engraver
 		\consists Mark_engraver
 		\consists Metronome_mark_engraver
@@ -29,7 +30,7 @@ afterGraceFraction = #(cons 255 256)
 		\consists Text_engraver
 		\consists Text_spanner_engraver
         \consists Measure_spanner_engraver
-        \override BarNumber.stencil = ##f
+        \override BarNumber.break-visibility = ##(#t #t #t)
         \override MetronomeMark.stencil = ##f
 		\override TimeSignature.X-extent = #'(0 . -25)
         \override TimeSignature.Y-extent = #'(25 . 0)

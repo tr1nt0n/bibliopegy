@@ -1989,6 +1989,10 @@ library.write_timestamps(
     measure_range=(1, 35),
 )
 
+library.forbid_break(
+    score=score, measures=[4, 5, 6, 7, 8, 9, 10, 17, 18, 19, 27, 28, 33, 34]
+)
+
 trinton.make_music(
     lambda _: trinton.select_target(_, (36,)),
     trinton.attachment_command(
