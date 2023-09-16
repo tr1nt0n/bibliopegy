@@ -391,6 +391,8 @@ library.write_timestamps(
     global_context=score["Global Context"], second_range=(38, 49), measure_range=(2, 13)
 )
 
+library.silence(score=score, measures=[1], timestamps=[r"0\" - 37\""])
+
 library.forbid_break(score=score, measures=list(range(6, 13)))
 
 trinton.make_music(
@@ -401,14 +403,6 @@ trinton.make_music(
         ],
         selector=trinton.select_leaves_by_index([0]),
         direction=abjad.UP,
-    ),
-    trinton.attachment_command(
-        attachments=[
-            abjad.Markup(
-                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "0\" - 37\""  }"""
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
     ),
     voice=score["Global Context"],
 )

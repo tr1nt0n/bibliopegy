@@ -135,15 +135,19 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "3\'0\""  }
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 140)
             \time 1/8
             s1 * 1/8
-            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "3\'1\" - 3\'8\""  }
+            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 3\'1\" - 3\'8\" "  }
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "3\'9\""  }
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 140)
             \time 1/8
             s1 * 1/8
-            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "3\'10\" - 3\'17\""  }
+            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 3\'10\" - 3\'17\" "  }
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
         }
         \tag #'group1
         {

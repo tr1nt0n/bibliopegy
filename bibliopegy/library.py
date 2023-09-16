@@ -389,6 +389,30 @@ def forbid_break(score, measures):
         )
 
 
+def silence(score, measures, timestamps):
+    for measure, timestamp in zip(measures, timestamps):
+        trinton.make_music(
+            lambda _: trinton.select_target(_, (measure,)),
+            trinton.attachment_command(
+                attachments=[
+                    abjad.LilyPondLiteral(
+                        r"\set Score.proportionalNotationDuration = #(ly:make-moment 1 140)",
+                        site="absolute_before",
+                    ),
+                    abjad.Markup(
+                        rf"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 {{ " {timestamp} "  }}"""
+                    ),
+                    abjad.LilyPondLiteral(
+                        r"\set Score.proportionalNotationDuration = #(ly:make-moment 1 60)",
+                        site="absolute_after",
+                    ),
+                ],
+                selector=trinton.select_leaves_by_index([0]),
+            ),
+            voice=score["Global Context"],
+        )
+
+
 # notation tools
 
 

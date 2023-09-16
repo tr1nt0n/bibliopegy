@@ -685,34 +685,12 @@ library.write_timestamps(
 
 library.forbid_break(score=score, measures=list(range(3, 8)))
 
-trinton.make_music(
-    lambda _: trinton.select_target(_, (2,)),
-    trinton.attachment_command(
-        attachments=[
-            abjad.Markup(
-                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "51\" - 58\""  }"""
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-    ),
-    voice=score["Global Context"],
+library.silence(
+    score=score, measures=[2, 13], timestamps=[r"51\" - 58\"", r"1\'9\" - 1\'16\""]
 )
 
 library.write_timestamps(
     global_context=score["Global Context"], second_range=(59, 69), measure_range=(3, 12)
-)
-
-trinton.make_music(
-    lambda _: trinton.select_target(_, (13,)),
-    trinton.attachment_command(
-        attachments=[
-            abjad.Markup(
-                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "1\'9\" - 1\'16\""  }"""
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-    ),
-    voice=score["Global Context"],
 )
 
 # cutaway

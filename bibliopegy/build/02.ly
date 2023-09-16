@@ -5,9 +5,11 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "50\""  }
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 140)
             \time 1/8
             s1 * 1/8
-            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "51\" - 58\""  }
+            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 51\" - 58\" "  }
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "59\""  }
@@ -43,9 +45,11 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "1\'8\""  }
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 140)
             \time 1/8
             s1 * 1/8
-            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "1\'9\" - 1\'16\""  }
+            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 1\'9\" - 1\'16\" "  }
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
         }
         \tag #'group1
         {

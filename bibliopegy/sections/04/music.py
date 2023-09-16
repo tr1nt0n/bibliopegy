@@ -1252,41 +1252,26 @@ library.write_instrument_names(score=score)
 
 library.write_short_instrument_names(score=score)
 
+library.silence(
+    score=score,
+    measures=[
+        2,
+    ],
+    timestamps=[r"1\'37\" - 1\'44\""],
+)
+
 library.write_timestamps(
     global_context=score["Global Context"],
     second_range=(96,),
     measure_range=(1,),
 )
 
-library.forbid_break(score=score, measures=list(range(3, 21)))
-
-trinton.make_music(
-    lambda _: trinton.select_target(_, (2,)),
-    trinton.attachment_command(
-        attachments=[
-            abjad.Markup(
-                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "1\'37\" - 1\'44\""  }"""
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-    ),
-    voice=score["Global Context"],
-)
+library.forbid_break(score=score, measures=list(range(3, 22)))
 
 library.write_timestamps(
     global_context=score["Global Context"],
     second_range=(105, 1000),
     measure_range=(3, 22),
-)
-
-trinton.make_music(
-    lambda _: trinton.select_target(_, (21,)),
-    trinton.attachment_command(
-        attachments=[abjad.LilyPondLiteral(r"\noBreak", "after")],
-        selector=trinton.select_leaves_by_index([0]),
-        tag=abjad.Tag("+SCORE"),
-    ),
-    voice=score["Global Context"],
 )
 
 # cutaway

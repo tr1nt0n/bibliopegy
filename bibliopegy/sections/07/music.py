@@ -1983,27 +1983,14 @@ library.write_instrument_names(score=score)
 
 library.write_short_instrument_names(score=score)
 
-library.write_timestamps(
-    global_context=score["Global Context"],
-    second_range=(146, 1000),
-    measure_range=(1, 35),
-)
-
 library.forbid_break(
     score=score, measures=[4, 5, 6, 7, 8, 9, 10, 17, 18, 19, 27, 28, 33, 34]
 )
 
-trinton.make_music(
-    lambda _: trinton.select_target(_, (36,)),
-    trinton.attachment_command(
-        attachments=[
-            abjad.Markup(
-                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "3\'1\" - 3\'8\""  }"""
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-    ),
-    voice=score["Global Context"],
+library.write_timestamps(
+    global_context=score["Global Context"],
+    second_range=(146, 1000),
+    measure_range=(1, 35),
 )
 
 library.write_timestamps(
@@ -2012,17 +1999,10 @@ library.write_timestamps(
     measure_range=(37,),
 )
 
-trinton.make_music(
-    lambda _: trinton.select_target(_, (38,)),
-    trinton.attachment_command(
-        attachments=[
-            abjad.Markup(
-                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "3\'10\" - 3\'17\""  }"""
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-    ),
-    voice=score["Global Context"],
+library.silence(
+    score=score,
+    measures=[36, 38],
+    timestamps=[r"3\'1\" - 3\'8\"", r"3\'10\" - 3\'17\""],
 )
 
 # cutaway
