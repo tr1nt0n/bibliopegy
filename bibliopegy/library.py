@@ -416,6 +416,28 @@ def silence(score, measures, timestamps):
 # notation tools
 
 
+def remove_redundant_time_signatures(
+    score, voice_names=["viola voice time signatures"]
+):
+    for voice_name in voice_names:
+        time_signature_voice = score[voice_name]
+        target = abjad.select.leaves(time_signature_voice)
+        target = abjad.select.exclude(target, [-1])
+        for leaf in target:
+            next_leaf = abjad.select.with_next_leaf(leaf)[-1]
+            ts_1 = abjad.get.indicator(leaf, abjad.TimeSignature)
+            ts_2 = abjad.get.indicator(next_leaf, abjad.TimeSignature)
+
+            if ts_1.pair == ts_2.pair:
+                abjad.attach(
+                    abjad.LilyPondLiteral(
+                        r"\once \override Score.TimeSignature.stencil = ##f",
+                        "before",
+                    ),
+                    next_leaf,
+                )
+
+
 def set_all_time_signatures(score, exclude_viola=False):
     if exclude_viola is True:
         voice_names = [_ for _ in all_voice_names if _ != "viola voice"]
@@ -1015,7 +1037,7 @@ def metronome_markups(
 
 
 def write_simultaneous_time_signatures(
-    score, voice_name, signature_pairs, measure_range
+    score, voice_name, signature_pairs, measure_range, reset=True
 ):
     time_signatures = [abjad.TimeSignature(_) for _ in signature_pairs]
     new_skips = [abjad.Skip((1, 1), multiplier=_) for _ in signature_pairs]
@@ -1077,10 +1099,14 @@ def write_simultaneous_time_signatures(
     abjad.mutate.replace(time_signature_skips, new_skips)
     abjad.mutate.replace(old_skips, temp_voice_rests)
 
-    new_range = (measure_range[0], measure_range[-1] + 1)
+    if reset is True:
+        new_range = (measure_range[0], measure_range[-1] + 1)
+    else:
+        new_range = measure_range
     new_measure_selection = trinton.select_target(score[voice_name], new_range)
-    reset_skip = new_measure_selection[-1]
-    abjad.attach(abjad.TimeSignature((1, 8)), reset_skip)
+    if reset is True:
+        reset_skip = new_measure_selection[-1]
+        abjad.attach(abjad.TimeSignature((1, 8)), reset_skip)
 
 
 def select_metered_measures(
