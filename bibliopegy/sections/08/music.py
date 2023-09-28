@@ -19,8 +19,8 @@ score = library.bibliopegy_score([(1, 8) for _ in range(1, 10)])
 
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (1, 6)),
-    evans.RhythmHandler(rmakers.note),
+    lambda _: trinton.select_target(_, (1, 9)),
+    evans.RhythmHandler(evans.talea([6, 3], 8)),
     evans.PitchHandler([-5]),
     library.change_lines(lines=4, clef="percussion"),
     trinton.attachment_command(
@@ -38,27 +38,25 @@ trinton.make_music(
     evans.IntermittentVoiceHandler(
         rhythm_handler=evans.RhythmHandler(
             evans.talea(
-                [
-                    100,
-                ],
-                32,
+                [6, -3],
+                8,
             ),
         ),
         direction=abjad.UP,
         voice_name="beta voice",
     ),
     voice=score["piano voice"],
-    preprocessor=trinton.fuse_preprocessor((6,)),
+    preprocessor=trinton.fuse_preprocessor((9,)),
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (1, 6)),
-    library.duration_line(color="darkred"),
+    lambda _: trinton.select_target(_, (1, 9)),
+    library.duration_line(color="darkred", sustained=True),
     voice=score["piano voice temp"],
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (1, 6)),
+    lambda _: trinton.select_target(_, (1, 9)),
     evans.PitchHandler([-1]),
     trinton.attachment_command(
         attachments=[
@@ -76,9 +74,10 @@ trinton.make_music(
         rhythm_handler=evans.RhythmHandler(
             evans.talea(
                 [
-                    100,
+                    6,
+                    -3,
                 ],
-                32,
+                8,
             ),
         ),
         direction=abjad.UP,
@@ -88,13 +87,13 @@ trinton.make_music(
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (1, 6)),
+    lambda _: trinton.select_target(_, (1, 9)),
     library.duration_line(color="(css-color 'indianred)"),
     voice=score["beta voice temp"],
 )
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (1, 6)),
+    lambda _: trinton.select_target(_, (1, 9)),
     evans.PitchHandler([4]),
     trinton.attachment_command(
         attachments=[
@@ -121,6 +120,27 @@ library.write_simultaneous_time_signatures(
     measure_range=(1, 9),
     reset=False,
 )
+
+# library.make_metric_music(
+#     evans.RhythmHandler(
+#         trinton.handwrite_nested_tuplets(
+#             tuplet_ratios=[(3, 2), (2, 1), (2, 1), (4, 3), (3, 2), (2, 1)],
+#             nested_ratios=[(3, 4), (7, 5)],
+#             triple_nested_ratios=[(1, 1, 1, 1, 1, 1,), (1, 1, 1, 1, 1, 1, 1,),],
+#             nested_vectors=[0, 3],
+#             nested_period=6,
+#             triple_nested_vectors=[1, 3],
+#             triple_nested_period=4,
+#         )
+#     ),
+#     evans.RewriteMeterCommand(boundary_depth=-2),
+#     trinton.notehead_bracket_command(),
+#     score=score,
+#     voice_name="viola voice",
+#     second_range=(1, 9),
+#     measure_number_range=(1, 6),
+#     preprocessor=trinton.fuse_preprocessor((2,))
+# )
 
 library.make_metric_music(
     trinton.attachment_command(
@@ -206,6 +226,7 @@ trinton.make_music(
         ],
         selector=trinton.select_logical_ties_by_index([0], first=True, pitched=True),
     ),
+    library.duration_line(selector=trinton.select_logical_ties_by_index([-1])),
     trinton.hooked_spanner_command(
         string=r"""\markup \with-color "indianred" { "tast. poss." }""",
         selector=trinton.select_leaves_by_index([0, -1], pitched=True),
@@ -220,14 +241,14 @@ trinton.make_music(
             r"""\markup \with-color "darkred" { scratch }""",
         ],
         selector=trinton.select_logical_ties_by_index(
-            [0, -1], first=True, pitched=True
+            [0, 1, 1, -1], first=True, pitched=True
         ),
         style="solid-line-with-arrow",
         padding=6,
         full_string=True,
-        right_padding=-23,
         tweaks=[r"""- \tweak color #darkred"""],
         command="Two",
+        end_hook=True,
     ),
     voice=score["violin voice"],
     preprocessor=trinton.fuse_preprocessor((6,)),
@@ -443,7 +464,9 @@ library.write_timestamps(
 trinton.whiteout_empty_staves(
     score=score,
     cutaway="blank",
-    voice_names=[_ for _ in library.all_voice_names if _ != "viola voice"],
+    voice_names=[
+        _ for _ in library.all_voice_names if _ != "viola voice" and _ != "piano voice"
+    ],
 )
 
 # library.blank_measure_by_hand(
