@@ -366,6 +366,12 @@ movements = [
 movements = [abjad.bundle(movement, r"- \tweak padding #14") for movement in movements]
 
 _viola_processing_markups = {
+    "2 on": abjad.Markup(
+        r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 on" }""",
+    ),
+    "2 off": abjad.Markup(
+        r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 off" }""",
+    ),
     "3 on": abjad.Markup(
         r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 on" }""",
     ),
@@ -772,7 +778,203 @@ _bass_clarinet_multiphonics = {
     ),
 }
 
+_viola_ii_strings_to_pitch_lists = {
+    "I + II": [
+        ["aqs", "a'"],
+        ["aqs", "c'"],
+        ["aqs", "bf"],
+        ["aqs", "af'"],
+        ["aqs", "g'"],
+        ["aqs", "a"],
+        ["aqs", "c'"],
+        ["aqs", "bf"],
+        ["aqs", "af'"],
+        ["aqs", "g'"],
+    ],
+    "III + IV": [
+        ["g", "c"],
+        ["g", "b,"],
+        ["g", "cs,"],
+        ["g", "ef,"],
+        ["g", "c,"],
+        ["g", "bf,"],
+        ["g", "b,"],
+        ["g", "cs,"],
+        ["g", "ef,"],
+        ["g", "bf,"],
+    ],
+}
+
+
+def pitch_viola_ii(
+    index=0,
+    strings=None,
+    selector=trinton.pleaves(),
+    period_selectors=None,
+    alternation_indices=None,
+):
+    def pitch(argument):
+        selections = selector(argument)
+        if strings is not None:
+            pitch_list = trinton.rotated_sequence(
+                _viola_ii_strings_to_pitch_lists[strings], index
+            )
+            handler = evans.PitchHandler(pitch_list)
+            handler(selections)
+
+            selections = selector(argument)
+
+            ties = abjad.select.logical_ties(selections)
+
+            glissando_ties = abjad.select.exclude(ties, [-1])
+
+            for tie in glissando_ties:
+                abjad.attach(abjad.Glissando(zero_padding=True), tie[-1])
+
+        else:
+            pitch_list_1 = trinton.rotated_sequence(
+                _viola_ii_strings_to_pitch_lists["I + II"], alternation_indices[0]
+            )
+            pitch_list_2 = trinton.rotated_sequence(
+                _viola_ii_strings_to_pitch_lists["III + IV"], alternation_indices[1]
+            )
+
+            high_strings_selector = period_selectors[0]
+            low_strings_selector = period_selectors[1]
+            high_selections = high_strings_selector(selections)
+            low_selections = low_strings_selector(selections)
+
+            high_handler = evans.PitchHandler(pitch_list_1)
+            low_handler = evans.PitchHandler(pitch_list_2)
+
+            high_handler(high_selections)
+            low_handler(low_selections)
+
+            selections = selector(argument)
+
+            high_strings_selector = period_selectors[0]
+            low_strings_selector = period_selectors[1]
+            high_selections = high_strings_selector(selections)
+            low_selections = low_strings_selector(selections)
+
+            alternation_groups = [high_selections, low_selections]
+
+            for i, selection in enumerate(alternation_groups):
+                groups = abjad.select.group_by_contiguity(
+                    abjad.select.leaves(selection)
+                )
+                past_groups = trinton.rotated_sequence(groups, -1)
+
+                for group, past_group in zip(groups[1:], past_groups[1:]):
+                    handler = evans.GraceHandler(
+                        boolean_vector=[1],
+                        gesture_lengths=[
+                            1,
+                        ],
+                        remove_skips=True,
+                        forget=False,
+                    )
+
+                    handler(abjad.select.leaf(group, 0))
+
+                    previous_leaf = abjad.select.leaf(past_group, -1)
+                    previous_note_heads = previous_leaf.note_heads
+                    if i == 0:
+                        relevant_note_head = previous_note_heads[1]
+                    else:
+                        relevant_note_head = previous_note_heads[0]
+
+                    relevant_pitch = relevant_note_head.written_pitch.number
+
+                    grace_pitch_handler = evans.PitchHandler([relevant_pitch])
+
+                    grace = abjad.select.with_previous_leaf(
+                        abjad.select.leaf(group, 0)
+                    )[0]
+
+                    grace_pitch_handler(grace)
+
+                    if i == 0:
+                        grace = abjad.select.with_previous_leaf(
+                            abjad.select.leaf(group, 0)
+                        )[0]
+                        abjad.attach(
+                            abjad.LilyPondLiteral(
+                                r"\set glissandoMap = #'((0 . 1) (1 . 0))",
+                                site="before",
+                            ),
+                            grace,
+                        )
+
+                        abjad.attach(
+                            abjad.LilyPondLiteral(r"\unset glissandoMap", site="after"),
+                            grace,
+                        )
+
+                groups = abjad.select.group_by_contiguity(
+                    abjad.select.leaves(selection)
+                )
+
+                for group in groups:
+                    ties = abjad.select.logical_ties(group)
+                    glissando_ties = abjad.select.exclude(ties, [-1])
+
+                    for tie in glissando_ties:
+                        abjad.attach(abjad.Glissando(zero_padding=True), tie[-1])
+
+                selections = selector(argument)
+
+                graces = abjad.select.leaves(selections, grace=True)
+
+                for grace in graces:
+                    abjad.attach(abjad.Glissando(zero_padding=True), grace)
+
+    return pitch
+
+
 # rhythm
+
+
+def viola_ii_rhythm(index=0):
+    first_layer_map = [_ for _ in trinton.logistic_map(x=4, r=3.57, n=9) if _ > 2]
+    first_layer_map = trinton.rotated_sequence(first_layer_map, index)
+    second_layer_map = trinton.rotated_sequence(first_layer_map, 1)
+
+    tuplet_ratios = []
+    for _ in first_layer_map:
+        first_number = math.floor(_ / 2)
+        second_number = math.ceil(_ / 2)
+        tuplet_ratio = (first_number, second_number)
+        tuplet_ratios.append(tuplet_ratio)
+
+    nested_ratios = []
+
+    for _ in second_layer_map:
+        first_number = math.ceil(_ / 2)
+        second_number = math.floor(_ / 2)
+        tuplet_ratio = (first_number, second_number)
+        nested_ratios.append(tuplet_ratio)
+
+    triple_nested_ratios = []
+
+    for _ in first_layer_map:
+        tuplet_ratio = [1 for _ in range(_)]
+        tuplet_ratio = tuple(tuplet_ratio)
+        triple_nested_ratios.append(tuplet_ratio)
+
+    handler = evans.RhythmHandler(
+        trinton.handwrite_nested_tuplets(
+            tuplet_ratios=tuplet_ratios,
+            nested_ratios=nested_ratios,
+            triple_nested_ratios=triple_nested_ratios,
+            nested_vectors=[1],
+            nested_period=2,
+            triple_nested_vectors=[0],
+            triple_nested_period=2,
+        )
+    )
+
+    return handler
 
 
 def dune_ii(voices, measures, rotation=0, dynamics=["ff"]):

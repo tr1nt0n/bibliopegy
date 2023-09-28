@@ -130,6 +130,7 @@ afterGraceFraction = #(cons 255 256)
         \override TupletNumber.whiteout = 1
         \override TupletNumber.text = #tuplet-number::calc-fraction-text
         \override TupletNumber.font-name = "Bodoni72 Book"
+        \override TupletNumber.color = #(css-color 'darkgoldenrod)
     }
 
     \context {
@@ -154,6 +155,7 @@ afterGraceFraction = #(cons 255 256)
         \override TimeSignature.layer = 4
         \override TimeSignature.break-visibility = #end-of-line-invisible
         \override TimeSignature.transparent = ##t
+        \override TimeSignature.color = #(css-color 'darkgoldenrod)
 
         \override InstrumentName.self-alignment-X = #CENTER
         \RemoveAllEmptyStaves

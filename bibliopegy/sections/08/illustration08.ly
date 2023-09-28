@@ -192,21 +192,244 @@
                             <<
                                 \context Voice = "viola voice temp"
                                 {
-                                    \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { viola }
-                                    \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vla. }
-                                    R1 * 7/32
-                                    ^ \markup {
-                                      \raise #2 \with-dimensions-from \null
-                                      \override #'(font-size . 4)
-                                      \concat {
-                                          \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                      }
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 5 7) (ly:make-duration 5 0))
+                                    \times 7/5
+                                    {
+                                        \staff-line-count 5
+                                        \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { viola }
+                                        \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vla. }
+                                        \clef "altovarC"
+                                        <aqs a'>16
+                                        - \tweak color #"darkmagenta"
+                                        - \downbow
+                                        \fff
+                                        _ \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 on" }
+                                        [
+                                        (
+                                        - \abjad-zero-padding-glissando
+                                        \glissando
+                                        - \tweak color #darkred
+                                        - \tweak padding #8
+                                        - \abjad-solid-line-with-arrow
+                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 7 \hspace #0.5 } \hspace #0.5 }
+                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 3 7 \hspace #0.5 }
+                                        \startTextSpan
+                                        - \tweak stencil #constante-hairpin
+                                        \<
+                                        ^ \markup {
+                                          \raise #-15 \with-dimensions-from \null
+                                          \override #'(font-size . 4)
+                                          \concat {
+                                              \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                          }
+                                        }
+                                        \tweak text #tuplet-number::calc-fraction-text
+                                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 7 6) (ly:make-duration 6 0))
+                                        \times 6/7
+                                        {
+                                            \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 5 4) (ly:make-duration 6 0))
+                                            \times 4/5
+                                            {
+                                                <aqs c'>64
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                                <aqs bf>64
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                                <aqs af'>64
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                                <aqs g'>64
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                                <a aqs>64
+                                                )
+                                                \stopTextSpan
+                                                ]
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                            }
+                                            <aqs c'>32.
+                                            - \tweak color #"darkmagenta"
+                                            - \upbow
+                                            [
+                                            (
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            - \tweak color #darkred
+                                            - \tweak padding #8
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 3 5 \hspace #0.5 } \hspace #0.5 }
+                                            - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 }
+                                            \startTextSpan
+                                        }
                                     }
-                                    R1 * 5/32
-                                    R1 * 5/32
-                                    R1 * 7/32
-                                    R1 * 1/4
-                                    R1 * 1/8
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 7 10) (ly:make-duration 5 0))
+                                    \times 10/7
+                                    {
+                                        <aqs bf>16.
+                                        - \abjad-zero-padding-glissando
+                                        \glissando
+                                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 3 2) (ly:make-duration 4 0))
+                                        \times 2/3
+                                        {
+                                            \tweak text #tuplet-number::calc-fraction-text
+                                            \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 7 8) (ly:make-duration 6 0))
+                                            \times 8/7
+                                            {
+                                                <aqs af'>64
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                                <aqs g'>64
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                                <aqs a'>64
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                                <aqs c'>64
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                                <aqs bf>64
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                                <aqs af'>64
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                                <aqs g'>64
+                                                )
+                                                \stopTextSpan
+                                                ]
+                                                - \abjad-zero-padding-glissando
+                                                \glissando
+                                            }
+                                            <a aqs>16
+                                            - \tweak color #"darkmagenta"
+                                            - \downbow
+                                            \mp
+                                            [
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            - \tweak color #darkred
+                                            - \tweak padding #8
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
+                                            \startTextSpan
+                                        }
+                                    }
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 6 7) (ly:make-duration 5 0))
+                                    \times 7/6
+                                    {
+                                        <aqs c'>16
+                                        - \tweak color #"darkmagenta"
+                                        - \upbow
+                                        \stopTextSpan
+                                        - \abjad-zero-padding-glissando
+                                        \glissando
+                                        - \tweak color #darkred
+                                        - \tweak padding #8
+                                        - \abjad-solid-line-with-arrow
+                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 5 5 \hspace #0.5 } \hspace #0.5 }
+                                        \startTextSpan
+                                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 5 4) (ly:make-duration 5 0))
+                                        \times 4/5
+                                        {
+                                            <aqs bf>32
+                                            - \tweak color #"darkmagenta"
+                                            - \downbow
+                                            \stopTextSpan
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            - \tweak color #darkred
+                                            - \tweak padding #8
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
+                                            \startTextSpan
+                                            <aqs af'>32
+                                            - \tweak color #"darkmagenta"
+                                            - \upbow
+                                            \stopTextSpan
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            - \tweak color #darkred
+                                            - \tweak padding #8
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 5 5 \hspace #0.5 } \hspace #0.5 }
+                                            \startTextSpan
+                                            <aqs g'>32
+                                            - \tweak color #"darkmagenta"
+                                            - \downbow
+                                            \stopTextSpan
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            - \tweak color #darkred
+                                            - \tweak padding #8
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
+                                            \startTextSpan
+                                            <aqs a'>16
+                                            - \tweak color #"darkmagenta"
+                                            - \upbow
+                                            \stopTextSpan
+                                            ]
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            - \tweak color #darkred
+                                            - \tweak padding #8
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 5 5 \hspace #0.5 } \hspace #0.5 }
+                                            \startTextSpan
+                                        }
+                                    }
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 5 6) (ly:make-duration 4 0))
+                                    \times 6/5
+                                    {
+                                        <aqs c'>8
+                                        - \tweak color #"darkmagenta"
+                                        - \downbow
+                                        \fff
+                                        \stopTextSpan
+                                        [
+                                        (
+                                        - \abjad-zero-padding-glissando
+                                        \glissando
+                                        - \tweak color #darkred
+                                        - \tweak padding #8
+                                        - \abjad-solid-line-with-arrow
+                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
+                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 2 5 \hspace #0.5 }
+                                        \startTextSpan
+                                        - \tweak stencil #constante-hairpin
+                                        \<
+                                        \tweak text #tuplet-number::calc-fraction-text
+                                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 5 6) (ly:make-duration 6 0))
+                                        \times 6/5
+                                        {
+                                            <aqs bf>64
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            <aqs af'>64
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            <aqs g'>64
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            <a aqs>64
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            <aqs c'>64
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                        }
+                                        <aqs bf>16.
+                                        \!
+                                        )
+                                        \stopTextSpan
+                                        ]
+                                    }
                                 }
                                 \context Voice = "viola voice time signatures"
                                 {
@@ -218,14 +441,8 @@
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 5/32
-                                    s1 * 5/32
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Score.TimeSignature.stencil = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 5/32
-                                    s1 * 5/32
+                                    \time 5/16
+                                    s1 * 5/16
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
@@ -234,13 +451,8 @@
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 2/16
-                                    s1 * 1/8
+                                    \time 3/8
+                                    s1 * 3/8
                                     \once \override Staff.BarLine.transparent = ##f
                                 }
                             >>

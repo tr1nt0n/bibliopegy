@@ -116,39 +116,97 @@ trinton.make_music(
 library.write_simultaneous_time_signatures(
     score=score,
     voice_name="viola voice",
-    signature_pairs=[(7, 32), (5, 32), (5, 32), (7, 32), (4, 16), (2, 16)],
+    signature_pairs=[(7, 32), (5, 16), (7, 32), (3, 8)],
     measure_range=(1, 9),
     reset=False,
 )
 
-# library.make_metric_music(
-#     evans.RhythmHandler(
-#         trinton.handwrite_nested_tuplets(
-#             tuplet_ratios=[(3, 2), (2, 1), (2, 1), (4, 3), (3, 2), (2, 1)],
-#             nested_ratios=[(3, 4), (7, 5)],
-#             triple_nested_ratios=[(1, 1, 1, 1, 1, 1,), (1, 1, 1, 1, 1, 1, 1,),],
-#             nested_vectors=[0, 3],
-#             nested_period=6,
-#             triple_nested_vectors=[1, 3],
-#             triple_nested_period=4,
-#         )
-#     ),
-#     evans.RewriteMeterCommand(boundary_depth=-2),
-#     trinton.notehead_bracket_command(),
-#     score=score,
-#     voice_name="viola voice",
-#     second_range=(1, 9),
-#     measure_number_range=(1, 6),
-#     preprocessor=trinton.fuse_preprocessor((2,))
-# )
+library.make_metric_music(
+    library.viola_ii_rhythm(),
+    library.pitch_viola_ii(
+        strings="I + II",
+    ),
+    library.change_lines(lines=5, clef="altovarC"),
+    trinton.beam_groups(
+        selector=trinton.ranged_selector(
+            ranges=[range(0, 6), range(6, 15), range(15, 21), range(21, 28)],
+            nested=True,
+        )
+    ),
+    trinton.linear_attachment_command(
+        attachments=itertools.cycle(
+            [
+                abjad.StartSlur(),
+                abjad.StopSlur(),
+            ]
+        ),
+        selector=trinton.select_leaves_by_index([0, 5, 6, 14, 21, -1]),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Dynamic("fff"),
+            abjad.StartHairpin("--"),
+            abjad.Dynamic("mp"),
+            abjad.Dynamic("fff"),
+            abjad.StartHairpin("--"),
+            abjad.StopHairpin(),
+        ],
+        selector=trinton.select_leaves_by_index([0, 0, 15, 21, 21, -1]),
+    ),
+    trinton.linear_attachment_command(
+        attachments=itertools.cycle([library.downbow, library.upbow]),
+        selector=trinton.select_leaves_by_index([0, 6, 15, 16, 17, 18, 19, 20, 21]),
+    ),
+    trinton.spanner_command(
+        strings=library.return_fraction_string_list([(0, 7), (3, 7)]),
+        selector=trinton.select_leaves_by_index(
+            [0, 5],
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=8,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+    ),
+    trinton.spanner_command(
+        strings=library.return_fraction_string_list([(3, 5), (0, 5)]),
+        selector=trinton.select_leaves_by_index(
+            [6, 14],
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=8,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+    ),
+    trinton.spanner_command(
+        strings=library.return_fraction_string_list(
+            [(0, 5), (5, 5), (0, 5), (5, 5), (0, 5), (5, 5), (0, 5), (2, 5)]
+        ),
+        selector=trinton.select_leaves_by_index(
+            [15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, -1],
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=8,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+    ),
+    trinton.notehead_bracket_command(),
+    score=score,
+    voice_name="viola voice",
+    second_range=(1, 9),
+    measure_number_range=(1, 4),
+)
 
 library.make_metric_music(
     trinton.attachment_command(
         attachments=[
-            library.metronome_markups(library._metronome_marks["1/1"], height=2),
+            library.metronome_markups(library._metronome_marks["1/1"], height=-15),
+            library._viola_processing_markups["2 on"],
         ],
         selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
+        direction=abjad.DOWN,
     ),
     score=score,
     voice_name="viola voice",
@@ -465,7 +523,11 @@ trinton.whiteout_empty_staves(
     score=score,
     cutaway="blank",
     voice_names=[
-        _ for _ in library.all_voice_names if _ != "viola voice" and _ != "piano voice"
+        _
+        for _ in library.all_voice_names
+        if _ != "viola voice"
+        and _ != "viola voice time signatures"
+        and _ != "piano voice"
     ],
 )
 
