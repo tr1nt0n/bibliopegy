@@ -426,6 +426,7 @@
                                         }
                                         <aqs bf>16.
                                         \!
+                                        _ \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 off" }
                                         )
                                         \stopTextSpan
                                         ]
@@ -433,27 +434,19 @@
                                 }
                                 \context Voice = "viola voice time signatures"
                                 {
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 7/32
                                     \voiceTwo
                                     s1 * 7/32
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 5/16
                                     s1 * 5/16
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 7/32
                                     s1 * 7/32
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 3/8
                                     s1 * 3/8
-                                    \once \override Staff.BarLine.transparent = ##f
                                 }
                             >>
                             \oneVoice

@@ -140,7 +140,6 @@ afterGraceFraction = #(cons 255 256)
 
         \override BarLine.hair-thickness = 2
         \override BarLine.thick-thickness = #10
-        \override BarLine.transparent = ##t
         \override BarLine.X-extent = #'(0 . 0)
 
         \override DurationLine.style = #'line
@@ -171,6 +170,7 @@ afterGraceFraction = #(cons 255 256)
         \override BarLine.hair-thickness = 1
         \override BarLine.thick-thickness = #10
         \override BarLine.glyph-name = "!"
+        \override BarLine.transparent = ##t
 
         \override Dots.stencil = ##f
 

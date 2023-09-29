@@ -200,18 +200,19 @@ library.make_metric_music(
 )
 
 library.make_metric_music(
-    trinton.attachment_command(
+    trinton.linear_attachment_command(
         attachments=[
             library.metronome_markups(library._metronome_marks["1/1"], height=-15),
             library._viola_processing_markups["2 on"],
+            library._viola_processing_markups["2 off"],
         ],
-        selector=trinton.select_leaves_by_index([0]),
+        selector=trinton.select_leaves_by_index([0, 0, -1]),
         direction=abjad.DOWN,
     ),
     score=score,
     voice_name="viola voice",
-    second_range=(1,),
-    measure_number_range=(1,),
+    second_range=(1, 9),
+    measure_number_range=(1, 4),
 )
 
 # flute music

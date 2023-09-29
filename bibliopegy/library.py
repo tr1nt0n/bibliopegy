@@ -366,6 +366,12 @@ movements = [
 movements = [abjad.bundle(movement, r"- \tweak padding #14") for movement in movements]
 
 _viola_processing_markups = {
+    "1 on": abjad.Markup(
+        r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "一 on" }""",
+    ),
+    "1 off": abjad.Markup(
+        r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "一 off" }""",
+    ),
     "2 on": abjad.Markup(
         r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 on" }""",
     ),
@@ -377,6 +383,12 @@ _viola_processing_markups = {
     ),
     "3 off": abjad.Markup(
         r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }""",
+    ),
+    "4 on": abjad.Markup(
+        r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 on" }""",
+    ),
+    "4 off": abjad.Markup(
+        r"""\markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 off" }""",
     ),
 }
 
@@ -521,6 +533,18 @@ def duration_line(
                     with_grace[-1],
                 )
 
+                middle_leaves = abjad.select.exclude(with_grace, [0, -1])
+                for leaf in middle_leaves:
+                    abjad.attach(
+                        abjad.LilyPondLiteral(
+                            r"\once \override Dots.staff-position = #2", "before"
+                        ),
+                        leaf,
+                    )
+
+                for leaf in abjad.select.leaves(with_grace):
+                    abjad.detach(abjad.Tie, leaf)
+
             if color is False:
                 abjad.glissando(
                     with_grace,
@@ -587,6 +611,18 @@ def duration_line(
                         ),
                         with_grace[-1],
                     )
+
+                    middle_leaves = abjad.select.exclude(with_grace, [0, -1])
+                    for leaf in middle_leaves:
+                        abjad.attach(
+                            abjad.LilyPondLiteral(
+                                r"\once \override Dots.staff-position = #2", "before"
+                            ),
+                            leaf,
+                        )
+
+                    for leaf in abjad.select.leaves(with_grace):
+                        abjad.detach(abjad.Tie, leaf)
 
                 if color is False:
                     abjad.glissando(
@@ -935,6 +971,76 @@ def pitch_viola_ii(
 # rhythm
 
 
+def viola_i_rhythm(index=0, extra_counts=False):
+    def viola_i(divisions):
+        logistic_map_with_zeros = trinton.logistic_map(x=4, r=3.58, n=9)
+        logistic_map = [_ for _ in logistic_map_with_zeros if _ > 0]
+        logistic_map = trinton.rotated_sequence(logistic_map, index)
+        logistic_map_with_zeros = trinton.rotated_sequence(
+            logistic_map_with_zeros, index + 1
+        )
+
+        if extra_counts is True:
+            container = abjad.Container(
+                rmakers.talea(
+                    divisions,
+                    logistic_map,
+                    64,
+                    extra_counts=[
+                        _ for _ in logistic_map_with_zeros if _ < 8 and _ % 3 != 0
+                    ],
+                )
+            )
+
+        else:
+            container = abjad.Container(rmakers.talea(divisions, logistic_map, 64))
+
+        period_selector = trinton.patterned_tie_index_selector([0, 3], 5)
+
+        selections = period_selector(container)
+
+        for tie in selections:
+            duration = abjad.get.duration(tie, preprolated=True)
+
+            sixty_fourth_amount = duration / abjad.Duration(1, 64)
+
+            new_notes = [abjad.Note("c'64") for _ in range(int(sixty_fourth_amount))]
+
+            abjad.mutate.replace(tie, new_notes)
+
+        bunches = []
+
+        non_bunches = []
+
+        for tie in abjad.select.logical_ties(container):
+            if abjad.get.duration(tie, preprolated=True) == abjad.Duration(1, 64):
+                bunches.append(tie)
+
+            else:
+                non_bunches.append(tie)
+
+        durational_groups = [bunches, non_bunches]
+
+        for durational_group in durational_groups:
+            beam_groups = abjad.select.group_by_contiguity(durational_group)
+
+            for group in beam_groups:
+                abjad.beam(group)
+
+        rmakers.rewrite_dots(abjad.select.tuplets(container))
+        rmakers.trivialize(abjad.select.tuplets(container))
+        rmakers.rewrite_rest_filled(abjad.select.tuplets(container))
+        rmakers.rewrite_sustained(abjad.select.tuplets(container))
+        rmakers.extract_trivial(abjad.select.tuplets(container))
+        trinton.respell_tuplets(abjad.select.tuplets(container))
+
+        selections = abjad.mutate.eject_contents(container)
+
+        return selections
+
+    return viola_i
+
+
 def viola_ii_rhythm(index=0):
     first_layer_map = [_ for _ in trinton.logistic_map(x=4, r=3.57, n=9) if _ > 2]
     first_layer_map = trinton.rotated_sequence(first_layer_map, index)
@@ -1272,20 +1378,6 @@ def write_simultaneous_time_signatures(
             (1, 1), multiplier=abjad.get.duration(new_skip)
         )
         temp_voice_rests.append(temp_voice_rest)
-
-        abjad.attach(
-            abjad.LilyPondLiteral(
-                r"\once \override Staff.BarLine.transparent = ##f", "before"
-            ),
-            new_skip,
-        )
-
-        abjad.attach(
-            abjad.LilyPondLiteral(
-                r"\once \override Staff.BarLine.transparent = ##f", "after"
-            ),
-            new_skip,
-        )
 
         abjad.attach(
             abjad.LilyPondLiteral(
