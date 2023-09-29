@@ -434,6 +434,75 @@ def silence(score, measures, timestamps):
 # notation tools
 
 
+def viola_bridge_staff(selector=trinton.pleaves()):
+    def staff(argument):
+        selections = selector(argument)
+        abjad.attach(abjad.Clef("percussion"), selections[0])
+        abjad.attach(
+            abjad.LilyPondLiteral(
+                [
+                    r"\staff-line-count 3",
+                    r"\override Staff.StaffSymbol.line-positions = #'(5 3 -5)",
+                    r"\override Staff.Clef.stencil = #ly:text-interface::print",
+                    r"""\override Staff.Clef.text = \markup { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe078 }""",
+                    r"\override Accidental.stencil = ##f",
+                    r"\override Dots.staff-position = #2",
+                    r"\override Glissando.bound-details.left.padding = #0.5",
+                    r"\override Glissando.bound-details.right.padding = #0.5",
+                    r"\override NoteHead.X-extent = #'(0 . 0)",
+                    r"\override NoteHead.transparent = ##t",
+                    r"\override NoteHead.no-ledgers = ##t",
+                ],
+                site="absolute_before",
+            ),
+            selections[0],
+        )
+
+        abjad.attach(
+            abjad.LilyPondLiteral(
+                [
+                    r"\staff-line-count 5",
+                    r"\revert Staff.StaffSymbol.line-positions",
+                    r"\revert Staff.Clef.stencil",
+                    r"\revert Accidental.stencil",
+                    r"\revert Dots.staff-position",
+                    r"\revert Glissando.bound-details.left.padding",
+                    r"\revert Glissando.bound-details.right.padding",
+                    r"\revert NoteHead.X-extent",
+                    r"\override NoteHead.transparent = ##f",
+                    r"\override NoteHead.no-ledgers = ##f",
+                ],
+                site="absolute_after",
+            ),
+            selections[-1],
+        )
+
+        ties = abjad.select.logical_ties(selections)
+        glissando_ties = abjad.select.exclude(ties, [-1])
+
+        for tie in glissando_ties:
+            if len(tie) == 1:
+                abjad.attach(abjad.Glissando(zero_padding=True), tie[0])
+
+            else:
+                with_next_leaf = abjad.select.with_next_leaf(tie)
+                abjad.attach(
+                    abjad.LilyPondLiteral(
+                        r"\once \override NoteColumn.glissando-skip = ##t", site="after"
+                    ),
+                    tie[0],
+                )
+
+                abjad.glissando(
+                    with_next_leaf,
+                    allow_repeats=True,
+                    allow_ties=True,
+                    zero_padding=True,
+                )
+
+    return staff
+
+
 def remove_redundant_time_signatures(
     score, voice_names=["viola voice time signatures"]
 ):

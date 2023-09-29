@@ -229,6 +229,64 @@ library.make_metric_music(
 
 library.make_metric_music(
     evans.RhythmHandler(library.viola_i_rhythm(index=0, extra_counts=True)),
+    evans.PitchHandler([5, -7, 5, 0, 9, -9, 9, -9, 9, -9, 9, -9, 0, -1, 4, -7, 4, -5]),
+    library.viola_bridge_staff(),
+    trinton.linear_attachment_command(
+        attachments=[
+            library._viola_processing_markups["1 on"],
+            abjad.Dynamic("ff"),
+            abjad.Articulation(">"),
+            trinton.make_custom_dynamic("s mp"),
+            abjad.StartHairpin("<|"),
+            abjad.Dynamic("ff"),
+            abjad.StartHairpin("--"),
+            abjad.StartHairpin(">o"),
+            trinton.make_custom_dynamic("s ff"),
+            library._viola_processing_markups["1 off"],
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 0, 0, 1, 1, 3, 3, 12, 13, -1], first=True
+        ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "rosybrown" { I }""",
+        selector=trinton.select_leaves_by_index([0, 1], pitched=True),
+        padding=15.5,
+        right_padding=0,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'rosybrown)"],
+        command="One",
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "rosybrown" { I }""",
+        selector=trinton.select_leaves_by_index([4, 12], pitched=True),
+        padding=15.5,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'rosybrown)"],
+        command="One",
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "rosybrown" { "III + IV" }""",
+        selector=trinton.select_leaves_by_index([1, 3, 13, -1], pitched=True),
+        padding=15.5,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'rosybrown)"],
+        command="One",
+    ),
+    trinton.spanner_command(
+        strings=[
+            r"""\markup \with-color "mediumblue" { +45° }""",
+            r"""\markup \with-color "mediumblue" { -45° }""",
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, -1], first=True, pitched=True
+        ),
+        style="solid-line-with-arrow",
+        padding=12.5,
+        full_string=True,
+        tweaks=[r"""- \tweak color #(css-color 'mediumblue)"""],
+        command="Two",
+    ),
     trinton.notehead_bracket_command(),
     score=score,
     voice_name="viola voice",
@@ -258,17 +316,17 @@ library.write_timestamps(
 
 # cutaway
 
-# trinton.whiteout_empty_staves(
-#     score=score,
-#     cutaway="blank",
-#     voice_names=[
-#         _
-#         for _ in library.all_voice_names
-#         if _ != "viola voice"
-#         and _ != "viola voice time signatures"
-#         and _ != "piano voice"
-#     ],
-# )
+trinton.whiteout_empty_staves(
+    score=score,
+    cutaway="blank",
+    voice_names=[
+        _
+        for _ in library.all_voice_names
+        if _ != "viola voice"
+        and _ != "viola voice time signatures"
+        and _ != "piano voice"
+    ],
+)
 
 # library.blank_measure_by_hand(
 #     score=score,
