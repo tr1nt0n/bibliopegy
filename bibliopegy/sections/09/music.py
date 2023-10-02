@@ -229,7 +229,7 @@ library.make_metric_music(
 
 library.make_metric_music(
     evans.RhythmHandler(library.viola_i_rhythm(index=0, extra_counts=True)),
-    evans.PitchHandler([5, -7, 5, 0, 9, -9, 9, -9, 9, -9, 9, -9, 0, -1, 4, -7, 4, -5]),
+    evans.PitchHandler([5, -7, 5, 0, 2, -3, 2, -3, 2, -3, 2, -3, 0, -1, 4, -7, 4, -5]),
     library.viola_bridge_staff(),
     trinton.linear_attachment_command(
         attachments=[
@@ -250,7 +250,7 @@ library.make_metric_music(
     ),
     trinton.hooked_spanner_command(
         string=r"""\markup \with-color "rosybrown" { I }""",
-        selector=trinton.select_leaves_by_index([0, 1], pitched=True),
+        selector=trinton.select_leaves_by_index([0, 1, 4, 12], pitched=True),
         padding=15.5,
         right_padding=0,
         full_string=True,
@@ -258,17 +258,19 @@ library.make_metric_music(
         command="One",
     ),
     trinton.hooked_spanner_command(
-        string=r"""\markup \with-color "rosybrown" { I }""",
-        selector=trinton.select_leaves_by_index([4, 12], pitched=True),
+        string=r"""\markup \with-color "rosybrown" { "III + IV" }""",
+        selector=trinton.select_leaves_by_index([1, 3], pitched=True),
         padding=15.5,
+        right_padding=0,
         full_string=True,
         tweaks=[r"- \tweak color #(css-color 'rosybrown)"],
         command="One",
     ),
     trinton.hooked_spanner_command(
         string=r"""\markup \with-color "rosybrown" { "III + IV" }""",
-        selector=trinton.select_leaves_by_index([1, 3, 13, -1], pitched=True),
+        selector=trinton.select_leaves_by_index([13, -1], pitched=True),
         padding=15.5,
+        right_padding=4,
         full_string=True,
         tweaks=[r"- \tweak color #(css-color 'rosybrown)"],
         command="One",

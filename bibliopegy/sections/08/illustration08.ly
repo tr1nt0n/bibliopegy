@@ -232,20 +232,24 @@
                                             \times 4/5
                                             {
                                                 <aqs c'>64
+                                                )
+                                                \stopTextSpan
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
                                                 <aqs bf>64
+                                                - \accent
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
                                                 <aqs af'>64
+                                                - \accent
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
                                                 <aqs g'>64
+                                                - \accent
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
                                                 <a aqs>64
-                                                )
-                                                \stopTextSpan
+                                                - \accent
                                                 ]
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
@@ -270,6 +274,7 @@
                                     \times 10/7
                                     {
                                         <aqs bf>16.
+                                        )
                                         - \abjad-zero-padding-glissando
                                         \glissando
                                         \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 3 2) (ly:make-duration 4 0))
@@ -280,26 +285,32 @@
                                             \times 8/7
                                             {
                                                 <aqs af'>64
+                                                - \accent
+                                                \stopTextSpan
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
                                                 <aqs g'>64
+                                                - \accent
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
                                                 <aqs a'>64
+                                                - \accent
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
                                                 <aqs c'>64
+                                                - \accent
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
                                                 <aqs bf>64
+                                                - \accent
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
                                                 <aqs af'>64
+                                                - \accent
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
                                                 <aqs g'>64
-                                                )
-                                                \stopTextSpan
+                                                - \accent
                                                 ]
                                                 - \abjad-zero-padding-glissando
                                                 \glissando
@@ -409,26 +420,31 @@
                                         \times 6/5
                                         {
                                             <aqs bf>64
+                                            )
+                                            \stopTextSpan
                                             - \abjad-zero-padding-glissando
                                             \glissando
                                             <aqs af'>64
+                                            - \accent
                                             - \abjad-zero-padding-glissando
                                             \glissando
                                             <aqs g'>64
+                                            - \accent
                                             - \abjad-zero-padding-glissando
                                             \glissando
                                             <a aqs>64
+                                            - \accent
                                             - \abjad-zero-padding-glissando
                                             \glissando
                                             <aqs c'>64
+                                            - \accent
                                             - \abjad-zero-padding-glissando
                                             \glissando
                                         }
                                         <aqs bf>16.
+                                        - \accent
                                         \!
                                         _ \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 off" }
-                                        )
-                                        \stopTextSpan
                                         ]
                                     }
                                 }

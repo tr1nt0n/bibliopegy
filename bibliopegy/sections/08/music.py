@@ -133,6 +133,30 @@ library.make_metric_music(
             nested=True,
         )
     ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation(">")],
+        selector=trinton.select_logical_ties_by_index(
+            [
+                2,
+                3,
+                4,
+                5,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                23,
+                24,
+                25,
+                26,
+                27,
+            ],
+            first=True,
+        ),
+    ),
     trinton.linear_attachment_command(
         attachments=itertools.cycle(
             [
@@ -140,7 +164,7 @@ library.make_metric_music(
                 abjad.StopSlur(),
             ]
         ),
-        selector=trinton.select_leaves_by_index([0, 5, 6, 14, 21, -1]),
+        selector=trinton.select_leaves_by_index([0, 1, 6, 7, 21, 22]),
     ),
     trinton.linear_attachment_command(
         attachments=[
@@ -160,7 +184,7 @@ library.make_metric_music(
     trinton.spanner_command(
         strings=library.return_fraction_string_list([(0, 7), (3, 7)]),
         selector=trinton.select_leaves_by_index(
-            [0, 5],
+            [0, 1],
             pitched=True,
         ),
         style="solid-line-with-arrow",
@@ -171,7 +195,7 @@ library.make_metric_music(
     trinton.spanner_command(
         strings=library.return_fraction_string_list([(3, 5), (0, 5)]),
         selector=trinton.select_leaves_by_index(
-            [6, 14],
+            [6, 8],
             pitched=True,
         ),
         style="solid-line-with-arrow",
@@ -184,7 +208,7 @@ library.make_metric_music(
             [(0, 5), (5, 5), (0, 5), (5, 5), (0, 5), (5, 5), (0, 5), (2, 5)]
         ),
         selector=trinton.select_leaves_by_index(
-            [15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, -1],
+            [15, 16, 16, 17, 17, 18, 18, 19, 19, 20, 20, 21, 21, 22],
             pitched=True,
         ),
         style="solid-line-with-arrow",

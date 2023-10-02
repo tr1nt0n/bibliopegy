@@ -356,7 +356,6 @@
                                         - \tweak padding #15.5
                                         - \abjad-dashed-line-with-hook
                                         - \tweak bound-details.left.text \markup \concat { \with-color "rosybrown" { "III + IV" } \hspace #0.5 }
-                                        - \tweak bound-details.right.padding -1
                                         \startTextSpanOne
                                         - \tweak stencil #abjad-flared-hairpin
                                         \<
@@ -388,32 +387,31 @@
                                         - \tweak padding #15.5
                                         - \abjad-dashed-line-with-hook
                                         - \tweak bound-details.left.text \markup \concat { \with-color "rosybrown" { I } \hspace #0.5 }
-                                        - \tweak bound-details.right.padding -1
                                         \startTextSpanOne
                                         - \tweak stencil #constante-hairpin
                                         \<
-                                        a'64
+                                        d'64
                                         - \abjad-zero-padding-glissando
                                         \glissando
-                                        ef64
+                                        a64
                                         - \abjad-zero-padding-glissando
                                         \glissando
-                                        a'64
+                                        d'64
                                         - \abjad-zero-padding-glissando
                                         \glissando
-                                        ef64
+                                        a64
                                         - \abjad-zero-padding-glissando
                                         \glissando
-                                        a'64
+                                        d'64
                                         - \abjad-zero-padding-glissando
                                         \glissando
-                                        ef64
+                                        a64
                                         - \abjad-zero-padding-glissando
                                         \glissando
-                                        a'64
+                                        d'64
                                         - \abjad-zero-padding-glissando
                                         \glissando
-                                        ef64
+                                        a64
                                         \stopTextSpanOne
                                         ]
                                         - \abjad-zero-padding-glissando
@@ -427,7 +425,7 @@
                                         - \tweak padding #15.5
                                         - \abjad-dashed-line-with-hook
                                         - \tweak bound-details.left.text \markup \concat { \with-color "rosybrown" { "III + IV" } \hspace #0.5 }
-                                        - \tweak bound-details.right.padding -1
+                                        - \tweak bound-details.right.padding -4
                                         \startTextSpanOne
                                         b64
                                             _ #(make-dynamic-script (markup #:whiteout #:italic "s ff"))
