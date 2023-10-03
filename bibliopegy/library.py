@@ -131,8 +131,11 @@ def return_boxed_markup(string, font=None):
     return boxed_string
 
 
-def return_fractional_scratch_markup(fraction):
-    markup = rf"""\markup \with-color "darkred" {{ {{ \fraction {fraction} }} \hspace #0.5 {{ scratch }} }}"""
+def return_fractional_scratch_markup(fraction, abbreviated=False):
+    if abbreviated is True:
+        markup = rf"""\markup \with-color "darkred" {{ {{ \fraction {fraction} }} \hspace #0.5 {{ scr. }} }}"""
+    else:
+        markup = rf"""\markup \with-color "darkred" {{ {{ \fraction {fraction} }} \hspace #0.5 {{ scratch }} }}"""
 
     return markup
 
@@ -1044,9 +1047,10 @@ def viola_i_rhythm(index=0, extra_counts=False):
     def viola_i(divisions):
         logistic_map_with_zeros = trinton.logistic_map(x=4, r=3.58, n=9)
         logistic_map = [_ for _ in logistic_map_with_zeros if _ > 0]
-        logistic_map = trinton.rotated_sequence(logistic_map, index)
+        logistic_map = trinton.rotated_sequence(logistic_map, index % len(logistic_map))
+        offset_index = index + 1
         logistic_map_with_zeros = trinton.rotated_sequence(
-            logistic_map_with_zeros, index + 1
+            logistic_map_with_zeros, offset_index % len(logistic_map_with_zeros)
         )
 
         if extra_counts is True:
@@ -1112,7 +1116,9 @@ def viola_i_rhythm(index=0, extra_counts=False):
 
 def viola_ii_rhythm(index=0):
     first_layer_map = [_ for _ in trinton.logistic_map(x=4, r=3.57, n=9) if _ > 2]
-    first_layer_map = trinton.rotated_sequence(first_layer_map, index)
+    first_layer_map = trinton.rotated_sequence(
+        first_layer_map, index % len(first_layer_map)
+    )
     second_layer_map = trinton.rotated_sequence(first_layer_map, 1)
 
     tuplet_ratios = []

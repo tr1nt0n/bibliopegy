@@ -46,45 +46,90 @@
                     {
                         \context Voice = "piano voice"
                         {
-                            \staff-line-count 2
-                            \override NoteHead.stencil = #ly:text-interface::print
-                            \override NoteHead.text = \markup \with-color "darkred" { α }
-                            \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { tape }
-                            \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic"){ tp. }
-                            \clef "percussion"
-                            \time 1/8
-                            b1
-                              %! abjad.glissando(7)
-                            - \tweak color #darkred
-                              %! abjad.glissando(7)
-                            - \abjad-zero-padding-glissando
-                              %! abjad.glissando(7)
-                            \glissando
-                            ~
-                              %! abjad.glissando(1)
-                            \hide NoteHead
-                              %! abjad.glissando(1)
-                            \override Accidental.stencil = ##f
-                              %! abjad.glissando(1)
-                            \override NoteColumn.glissando-skip = ##t
-                              %! abjad.glissando(1)
-                            \override NoteHead.no-ledgers = ##t
-                            \afterGrace
-                            b4.
-                            {
-                                \once \override Accidental.stencil = ##f
-                                \once \override NoteHead.no-ledgers = ##t
-                                \once \override NoteHead.transparent = ##t
-                                  %! abjad.glissando(6)
-                                \revert Accidental.stencil
-                                  %! abjad.glissando(6)
-                                \revert NoteColumn.glissando-skip
-                                  %! abjad.glissando(6)
-                                \revert NoteHead.no-ledgers
-                                  %! abjad.glissando(6)
-                                \undo \hide NoteHead
-                                b16
-                            }
+                            <<
+                                \context Voice = "piano voice temp"
+                                {
+                                    \staff-line-count 3
+                                    \override NoteHead.stencil = #ly:text-interface::print
+                                    \override NoteHead.text = \markup \with-color "darkred" { α }
+                                    \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { tape }
+                                    \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic"){ tp. }
+                                    \clef "percussion"
+                                    \time 1/8
+                                    \voiceTwo
+                                    a1
+                                      %! abjad.glissando(7)
+                                    - \tweak color #darkred
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    ~
+                                      %! abjad.glissando(1)
+                                    \hide NoteHead
+                                      %! abjad.glissando(1)
+                                    \override Accidental.stencil = ##f
+                                      %! abjad.glissando(1)
+                                    \override NoteColumn.glissando-skip = ##t
+                                      %! abjad.glissando(1)
+                                    \override NoteHead.no-ledgers = ##t
+                                    \afterGrace
+                                    a4.
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        a16
+                                    }
+                                }
+                                \context Voice = "gamma voice"
+                                {
+                                    \override NoteHead.stencil = #ly:text-interface::print
+                                    \override NoteHead.text = \markup \with-color "darksalmon" { γ }
+                                    \voiceOne
+                                    r4.
+                                    \afterGrace
+                                    d'8
+                                      %! abjad.glissando(7)
+                                    - \tweak color #(css-color 'darksalmon)
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        d'16
+                                    }
+                                    r2..
+                                }
+                            >>
+                            \oneVoice
                         }
                     }
                 }

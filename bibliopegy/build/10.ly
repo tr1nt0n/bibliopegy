@@ -390,6 +390,7 @@
                                     - \tweak bound-details.left.text \markup \concat { \with-color "mediumblue" { +20° } \hspace #0.5 }
                                     - \tweak bound-details.right.padding -1.5
                                     \startTextSpanThree
+                                    - \tweak stencil #constante-hairpin
                                     \<
                                     {
                                         \once \override Accidental.stencil = ##f
@@ -406,30 +407,119 @@
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
                                         <g b>16
-                                        \ff
+                                        \!
                                         \stopTextSpanThree
                                         \stopTextSpanTwo
                                     }
                                     r32
-                                    \afterGrace
-                                    <d' f'>4...
+                                    <d' f'>16.
+                                    [
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak circled-tip ##t
+                                    \<
                                     - \tweak color #(css-color 'mediumblue)
                                     - \tweak padding #7
                                     - \abjad-solid-line-with-arrow
-                                    - \tweak bound-details.left.text \markup \concat { \with-color "mediumblue" { 0° } \hspace #0.5 }
-                                    - \tweak bound-details.right.text \markup \with-color "mediumblue" { -45° }
-                                    - \tweak bound-details.right.padding 1.5
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "mediumblue" { -45° } \hspace #0.5 }
                                     \startTextSpanThree
                                     - \tweak color #darkred
                                     - \tweak padding #10
                                     - \abjad-solid-line-with-arrow
-                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { scratch } \hspace #0.5 }
-                                    - \tweak bound-details.right.text \markup \with-color "darkred" { "molto flaut." }
-                                    - \tweak bound-details.right.padding 4
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { norm. } \hspace #0.5 }
+                                    \startTextSpanTwo
+                                    \once \override Dots.staff-position = #2
+                                      %! abjad.glissando(1)
+                                    \hide NoteHead
+                                      %! abjad.glissando(1)
+                                    \override Accidental.stencil = ##f
+                                      %! abjad.glissando(1)
+                                    \override NoteColumn.glissando-skip = ##t
+                                      %! abjad.glissando(1)
+                                    \override NoteHead.no-ledgers = ##t
+                                    <d' f'>16
+                                    \fff
+                                    \stopTextSpanThree
+                                    \stopTextSpanTwo
+                                    ]
+                                    - \tweak circled-tip ##t
+                                    \>
+                                    - \tweak color #(css-color 'mediumblue)
+                                    - \tweak padding #7
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "mediumblue" { -10° } \hspace #0.5 }
+                                    \startTextSpanThree
+                                    - \tweak color #darkred
+                                    - \tweak padding #10
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { scr. } \hspace #0.5 }
+                                    \startTextSpanTwo
+                                    \once \override Dots.staff-position = #2
+                                    <d' f'>16.
+                                    \stopTextSpanThree
+                                    \stopTextSpanTwo
+                                    [
+                                    - \tweak circled-tip ##t
+                                    \<
+                                    - \tweak color #(css-color 'mediumblue)
+                                    - \tweak padding #7
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "mediumblue" { -25° } \hspace #0.5 }
+                                    \startTextSpanThree
+                                    - \tweak color #darkred
+                                    - \tweak padding #10
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { norm. } \hspace #0.5 }
+                                    \startTextSpanTwo
+                                    \once \override Dots.staff-position = #2
+                                    <d' f'>16
+                                    \f
+                                    \stopTextSpanThree
+                                    \stopTextSpanTwo
+                                    ]
+                                    - \tweak circled-tip ##t
+                                    \>
+                                    - \tweak color #(css-color 'mediumblue)
+                                    - \tweak padding #7
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "mediumblue" { 0° } \hspace #0.5 }
+                                    \startTextSpanThree
+                                    - \tweak color #darkred
+                                    - \tweak padding #10
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { { \fraction 3 4 } \hspace #0.5 { scr. } } \hspace #0.5 }
+                                    \startTextSpanTwo
+                                    \once \override Dots.staff-position = #2
+                                    <d' f'>16.
+                                    \stopTextSpanThree
+                                    \stopTextSpanTwo
+                                    [
+                                    - \tweak circled-tip ##t
+                                    \<
+                                    - \tweak color #(css-color 'mediumblue)
+                                    - \tweak padding #7
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "mediumblue" { -10° } \hspace #0.5 }
+                                    - \tweak bound-details.right.text \markup \with-color "mediumblue" { +25° }
+                                    \startTextSpanThree
+                                    - \tweak color #darkred
+                                    - \tweak padding #10
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { norm. } \hspace #0.5 }
+                                    \startTextSpanTwo
+                                    \once \override Dots.staff-position = #2
+                                    \afterGrace
+                                    <d' f'>16
+                                    \mp
+                                    \stopTextSpanTwo
+                                    ]
+                                    - \tweak color #darkred
+                                    - \tweak padding #10
+                                    - \abjad-solid-line-with-arrow
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { { \fraction 1 2 } \hspace #0.5 { scr. } } \hspace #0.5 }
+                                    - \tweak bound-details.right.text \markup \with-color "darkred" { norm. }
                                     \startTextSpanTwo
                                     \>
                                     {
@@ -437,14 +527,6 @@
                                         \once \override Flag.stroke-style = #"grace"
                                         \once \override NoteHead.no-ledgers = ##t
                                         \once \override NoteHead.transparent = ##t
-                                          %! abjad.glissando(1)
-                                        \hide NoteHead
-                                          %! abjad.glissando(1)
-                                        \override Accidental.stencil = ##f
-                                          %! abjad.glissando(1)
-                                        \override NoteColumn.glissando-skip = ##t
-                                          %! abjad.glissando(1)
-                                        \override NoteHead.no-ledgers = ##t
                                         \once \override NoteHead.X-extent = #'(0 . 0)
                                           %! abjad.glissando(6)
                                         \revert Accidental.stencil
@@ -455,7 +537,7 @@
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
                                         <d' f'>16
-                                        \mp
+                                        \pp
                                         \stopTextSpanThree
                                         \stopTextSpanTwo
                                     }
@@ -474,8 +556,8 @@
                                     - \tweak color #darkred
                                     - \tweak padding #10
                                     - \abjad-solid-line-with-arrow
-                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { { \fraction 1 5 } \hspace #0.5 { scratch } } \hspace #0.5 }
-                                    - \tweak bound-details.right.text \markup \with-color "darkred" { scratch }
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { { \fraction 1 5 } \hspace #0.5 { scr. } } \hspace #0.5 }
+                                    - \tweak bound-details.right.text \markup \with-color "darkred" { scr. }
                                     \startTextSpanTwo
                                     \>
                                     \once \override Dots.staff-position = #2
@@ -508,6 +590,7 @@
                                     - \tweak bound-details.left.text \markup \concat { \with-color "mediumblue" { +20° } \hspace #0.5 }
                                     - \tweak bound-details.right.padding -1.5
                                     \startTextSpanThree
+                                    - \tweak stencil #constante-hairpin
                                     \<
                                     {
                                         \once \override Accidental.stencil = ##f
@@ -524,14 +607,104 @@
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
                                         <g b>16
-                                        \ff
+                                        \!
                                         \stopTextSpanOne
                                         \stopTextSpanThree
                                         \stopTextSpanTwo
                                     }
                                     r32
                                     - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 off" }
-                                    R1 * 7/32
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 5 7) (ly:make-duration 5 0))
+                                    \times 7/5
+                                    {
+                                        r16
+                                        \tweak text #tuplet-number::calc-fraction-text
+                                        \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 5 6) (ly:make-duration 7 0))
+                                        \times 6/5
+                                        {
+                                            r128
+                                            \staff-line-count 5
+                                            \clef "altovarC"
+                                            <aqs bf>128
+                                            - \tweak color #"darkmagenta"
+                                            - \upbow
+                                            \mp
+                                            - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 on" }
+                                            [
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            - \tweak color #darkred
+                                            - \tweak padding #8
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 6 7 \hspace #0.5 } \hspace #0.5 }
+                                            - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 5 7 \hspace #0.5 }
+                                            \startTextSpan
+                                            - \tweak stencil #abjad-flared-hairpin
+                                            \<
+                                            _ (
+                                            <aqs af'>128
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            <aqs g'>128
+                                            )
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            <a aqs>128
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "ffp"))
+                                            - \accent
+                                            - \tweak color #"darkmagenta"
+                                            - \downbow
+                                            \stopTextSpan
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                            - \tweak stencil #abjad-flared-hairpin
+                                            \<
+                                        }
+                                        \afterGrace
+                                        <aqs c'>32.
+                                        - \accent
+                                        - \tweak color #"darkmagenta"
+                                        - \upbow
+                                        ]
+                                          %! abjad.glissando(7)
+                                        - \abjad-zero-padding-glissando
+                                          %! abjad.glissando(7)
+                                        \glissando
+                                        - \tweak color #darkred
+                                        - \tweak padding #8
+                                        - \abjad-solid-line-with-arrow
+                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 5 7 \hspace #0.5 } \hspace #0.5 }
+                                        - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 4 7 \hspace #0.5 }
+                                        \startTextSpan
+                                        {
+                                            \once \override Accidental.stencil = ##f
+                                            \once \override Flag.stroke-style = #"grace"
+                                            \once \override NoteHead.no-ledgers = ##t
+                                            \once \override NoteHead.transparent = ##t
+                                              %! abjad.glissando(1)
+                                            \hide NoteHead
+                                              %! abjad.glissando(1)
+                                            \override Accidental.stencil = ##f
+                                              %! abjad.glissando(1)
+                                            \override NoteColumn.glissando-skip = ##t
+                                              %! abjad.glissando(1)
+                                            \override NoteHead.no-ledgers = ##t
+                                            \once \override NoteHead.X-extent = #'(0 . 0)
+                                              %! abjad.glissando(6)
+                                            \revert Accidental.stencil
+                                              %! abjad.glissando(6)
+                                            \revert NoteColumn.glissando-skip
+                                              %! abjad.glissando(6)
+                                            \revert NoteHead.no-ledgers
+                                              %! abjad.glissando(6)
+                                            \undo \hide NoteHead
+                                            <aqs c'>16
+                                            \ff
+                                            - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 off" }
+                                            \stopTextSpan
+                                        }
+                                    }
                                 }
                                 \context Voice = "viola voice time signatures"
                                 {

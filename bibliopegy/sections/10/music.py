@@ -239,7 +239,7 @@ library.make_metric_music(
 )
 
 library.make_metric_music(
-    evans.RhythmHandler(evans.talea([1, 3, 1, -1, 15, 1, 3, 1, -100], 32)),
+    evans.RhythmHandler(evans.talea([1, 3, 1, -1, 5, 5, 5, 1, 3, 1, -100], 32)),
     evans.RewriteMeterCommand(boundary_depth=-2),
     trinton.pitch_with_selector_command(
         pitch_list=[[-1, -5]],
@@ -247,11 +247,13 @@ library.make_metric_music(
     ),
     trinton.pitch_with_selector_command(
         pitch_list=[[5, 2]],
-        selector=trinton.select_logical_ties_by_index([3], pitched=True),
+        selector=trinton.select_logical_ties_by_index([3, 4, 5], pitched=True),
     ),
     library.change_lines(lines=4, clef="varpercussion"),
     library.duration_line(
-        selector=trinton.select_leaves_by_index([3], pitched=True), viola=True
+        selector=trinton.select_logical_ties_by_index([3, 4, 5], pitched=True),
+        sustained=True,
+        viola=True,
     ),
     library.duration_line(
         selector=trinton.select_leaves_by_index(
@@ -292,21 +294,42 @@ library.make_metric_music(
     ),
     trinton.spanner_command(
         strings=[
-            r"""\markup \with-color "darkred" { scratch }""",
-            r"""\markup \with-color "darkred" { "molto flaut." }""",
+            r"""\markup \with-color "darkred" { norm. }""",
+            r"""\markup \with-color "darkred" { scr. }""",
+            r"""\markup \with-color "darkred" { norm. }""",
+            library.return_fractional_scratch_markup("3 4", abbreviated=True),
+            r"""\markup \with-color "darkred" { norm. }""",
+            library.return_fractional_scratch_markup("1 2", abbreviated=True),
+            r"""\markup \with-color "darkred" { norm. }""",
         ],
-        selector=trinton.select_logical_ties_by_index([4, 5], first=True, pitched=True),
+        selector=trinton.select_logical_ties_by_index(
+            [
+                4,
+                5,
+                5,
+                6,
+                6,
+                7,
+                7,
+                8,
+                8,
+                9,
+                9,
+                10,
+            ],
+            first=True,
+            pitched=True,
+        ),
         style="solid-line-with-arrow",
         padding=10,
-        right_padding=-4,
         full_string=True,
         tweaks=[r"""- \tweak color #darkred"""],
         command="Two",
     ),
     trinton.spanner_command(
         strings=[
-            library.return_fractional_scratch_markup("1 5"),
-            r"""\markup \with-color "darkred" { scratch }""",
+            library.return_fractional_scratch_markup("1 5", abbreviated=True),
+            r"""\markup \with-color "darkred" { scr. }""",
         ],
         selector=trinton.select_logical_ties_by_index(
             [-4, -1], first=True, pitched=True
@@ -335,13 +358,31 @@ library.make_metric_music(
     ),
     trinton.spanner_command(
         strings=[
-            r"""\markup \with-color "mediumblue" { 0° }""",
             r"""\markup \with-color "mediumblue" { -45° }""",
+            r"""\markup \with-color "mediumblue" { -10° }""",
+            r"""\markup \with-color "mediumblue" { -25° }""",
+            r"""\markup \with-color "mediumblue" { 0° }""",
+            r"""\markup \with-color "mediumblue" { -10° }""",
+            r"""\markup \with-color "mediumblue" { +25° }""",
         ],
-        selector=trinton.select_logical_ties_by_index([4, 5], first=True, pitched=True),
+        selector=trinton.select_logical_ties_by_index(
+            [
+                4,
+                5,
+                5,
+                6,
+                6,
+                7,
+                7,
+                8,
+                8,
+                10,
+            ],
+            first=True,
+            pitched=True,
+        ),
         style="solid-line-with-arrow",
         padding=7,
-        right_padding=-1.5,
         full_string=True,
         tweaks=[r"""- \tweak color #(css-color 'mediumblue)"""],
         command="Three",
@@ -369,21 +410,55 @@ library.make_metric_music(
             abjad.Dynamic("p"),
             abjad.StartHairpin("<"),
             abjad.Dynamic("mp"),
-            abjad.StartHairpin("<"),
-            abjad.Dynamic("ff"),
-            abjad.StartHairpin(">"),
+            abjad.StartHairpin("--"),
+            abjad.StopHairpin(),
+            abjad.StartHairpin("o<"),
+            abjad.Dynamic("fff"),
+            abjad.StartHairpin(">o"),
+            abjad.StartHairpin("o<"),
+            abjad.Dynamic("f"),
+            abjad.StartHairpin(">o"),
+            abjad.StartHairpin("o<"),
             abjad.Dynamic("mp"),
+            abjad.StartHairpin(">"),
+            abjad.Dynamic("pp"),
             abjad.Dynamic("ff"),
             abjad.StartHairpin(">"),
             abjad.Dynamic("p"),
             abjad.StartHairpin("<"),
             abjad.Dynamic("mp"),
-            abjad.StartHairpin("<"),
-            abjad.Dynamic("ff"),
+            abjad.StartHairpin("--"),
+            abjad.StopHairpin(),
             library._viola_processing_markups["4 off"],
         ],
         selector=trinton.select_leaves_by_index(
-            [0, 0, 1, 1, 2, 2, 3, 5, 6, 7, 7, 8, 8, 9, 9, 10, -1]
+            [
+                0,
+                0,
+                1,
+                1,
+                2,
+                2,
+                3,
+                5,
+                6,
+                6,
+                7,
+                8,
+                8,
+                9,
+                10,
+                10,
+                11,
+                -5,
+                -5,
+                -4,
+                -4,
+                -3,
+                -3,
+                -2,
+                -1,
+            ]
         ),
     ),
     score=score,
@@ -403,74 +478,95 @@ for measure in [5, 7]:
         measure_number_range=(measure,),
     )
 
-# library.make_metric_music(
-#     evans.RhythmHandler(library.viola_i_rhythm(index=0, extra_counts=True)),
-#     evans.PitchHandler([5, -7, 5, 0, 2, -3, 2, -3, 2, -3, 2, -3, 0, -1, 4, -7, 4, -5]),
-#     library.viola_bridge_staff(),
-#     trinton.linear_attachment_command(
-#         attachments=[
-#             library._viola_processing_markups["1 on"],
-#             abjad.Dynamic("ff"),
-#             abjad.Articulation(">"),
-#             trinton.make_custom_dynamic("s mp"),
-#             abjad.StartHairpin("<|"),
-#             abjad.Dynamic("ff"),
-#             abjad.StartHairpin("--"),
-#             abjad.StartHairpin(">o"),
-#             trinton.make_custom_dynamic("s ff"),
-#             library._viola_processing_markups["1 off"],
-#         ],
-#         selector=trinton.select_logical_ties_by_index(
-#             [0, 0, 0, 1, 1, 3, 3, 12, 13, -1], first=True
-#         ),
-#     ),
-#     trinton.hooked_spanner_command(
-#         string=r"""\markup \with-color "rosybrown" { I }""",
-#         selector=trinton.select_leaves_by_index([0, 1, 4, 12], pitched=True),
-#         padding=15.5,
-#         right_padding=0,
-#         full_string=True,
-#         tweaks=[r"- \tweak color #(css-color 'rosybrown)"],
-#         command="One",
-#     ),
-#     trinton.hooked_spanner_command(
-#         string=r"""\markup \with-color "rosybrown" { "III + IV" }""",
-#         selector=trinton.select_leaves_by_index([1, 3], pitched=True),
-#         padding=15.5,
-#         right_padding=0,
-#         full_string=True,
-#         tweaks=[r"- \tweak color #(css-color 'rosybrown)"],
-#         command="One",
-#     ),
-#     trinton.hooked_spanner_command(
-#         string=r"""\markup \with-color "rosybrown" { "III + IV" }""",
-#         selector=trinton.select_leaves_by_index([13, -1], pitched=True),
-#         padding=15.5,
-#         right_padding=4,
-#         full_string=True,
-#         tweaks=[r"- \tweak color #(css-color 'rosybrown)"],
-#         command="One",
-#     ),
-#     trinton.spanner_command(
-#         strings=[
-#             r"""\markup \with-color "mediumblue" { +45° }""",
-#             r"""\markup \with-color "mediumblue" { -45° }""",
-#         ],
-#         selector=trinton.select_logical_ties_by_index(
-#             [0, -1], first=True, pitched=True
-#         ),
-#         style="solid-line-with-arrow",
-#         padding=12.5,
-#         full_string=True,
-#         tweaks=[r"""- \tweak color #(css-color 'mediumblue)"""],
-#         command="Two",
-#     ),
-#     trinton.notehead_bracket_command(),
-#     score=score,
-#     voice_name="viola voice",
-#     second_range=(1, 11),
-#     measure_number_range=(6, 7),
-# )
+library.make_metric_music(
+    trinton.beam_groups(
+        selector=trinton.ranged_selector(
+            ranges=[
+                range(0, 2),
+                range(2, 4),
+                range(4, 6),
+            ],
+            nested=True,
+        )
+    ),
+    score=score,
+    voice_name="viola voice",
+    second_range=(1, 17),
+    measure_number_range=(6,),
+)
+
+library.make_metric_music(
+    library.viola_ii_rhythm(index=3),
+    trinton.force_rest(selector=trinton.select_leaves_by_index([0, 1])),
+    library.pitch_viola_ii(strings="I + II", index=2),
+    library.change_lines(lines=5, clef="altovarC"),
+    library.duration_line(
+        selector=trinton.select_logical_ties_by_index([-1]), viola=True
+    ),
+    trinton.beam_groups(
+        selector=trinton.ranged_selector(
+            ranges=[range(2, 7)],
+            nested=True,
+        )
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation(">")],
+        selector=trinton.select_logical_ties_by_index([3, 4], first=True, pitched=True),
+    ),
+    trinton.linear_attachment_command(
+        attachments=itertools.cycle(
+            [
+                abjad.StartSlur(),
+                abjad.StopSlur(),
+            ]
+        ),
+        selector=trinton.select_leaves_by_index([0, 2], pitched=True),
+        direction=abjad.DOWN,
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            library._viola_processing_markups["2 on"],
+            abjad.Dynamic("mp"),
+            abjad.StartHairpin("<|"),
+            trinton.make_custom_dynamic("ffp"),
+            abjad.StartHairpin("<|"),
+            abjad.Dynamic("ff"),
+            library._viola_processing_markups["2 off"],
+        ],
+        selector=trinton.select_leaves_by_index([0, 0, 0, 3, 3, -1, -1], pitched=True),
+    ),
+    trinton.linear_attachment_command(
+        attachments=itertools.cycle([library.upbow, library.downbow]),
+        selector=trinton.select_leaves_by_index([0, 3, 4], pitched=True),
+    ),
+    trinton.spanner_command(
+        strings=library.return_fraction_string_list([(6, 7), (5, 7)]),
+        selector=trinton.select_leaves_by_index(
+            [0, 3],
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=8,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+    ),
+    trinton.spanner_command(
+        strings=library.return_fraction_string_list([(5, 7), (4, 7)]),
+        selector=trinton.select_leaves_by_index(
+            [4, -1],
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=8,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+    ),
+    trinton.notehead_bracket_command(),
+    score=score,
+    voice_name="viola voice",
+    second_range=(1, 17),
+    measure_number_range=(8,),
+)
 
 # globals
 

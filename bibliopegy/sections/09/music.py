@@ -21,9 +21,8 @@ score = library.bibliopegy_score([(1, 8) for _ in range(1, 12)])
 trinton.make_music(
     lambda _: trinton.select_target(_, (1, 11)),
     evans.RhythmHandler(evans.talea([100], 8)),
-    evans.PitchHandler([-1]),
-    library.duration_line(color="darkred"),
-    library.change_lines(lines=2, clef="percussion"),
+    evans.PitchHandler([-3]),
+    library.change_lines(lines=3, clef="percussion"),
     trinton.attachment_command(
         attachments=[
             abjad.LilyPondLiteral(
@@ -36,8 +35,43 @@ trinton.make_music(
         ],
         selector=trinton.select_leaves_by_index([0]),
     ),
+    evans.IntermittentVoiceHandler(
+        rhythm_handler=evans.RhythmHandler(
+            evans.talea(
+                [-3, 1, -100],
+                8,
+            ),
+        ),
+        direction=abjad.UP,
+        voice_name="gamma voice",
+    ),
     voice=score["piano voice"],
     preprocessor=trinton.fuse_preprocessor((11,)),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 11)),
+    library.duration_line(color="darkred"),
+    voice=score["piano voice temp"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 11)),
+    evans.PitchHandler([2]),
+    library.duration_line(color="(css-color 'darksalmon)"),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                [
+                    r"\override NoteHead.stencil = #ly:text-interface::print",
+                    r"""\override NoteHead.text = \markup \with-color "darksalmon" { γ }""",
+                ],
+                site="before",
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["gamma voice"],
 )
 
 # viola music
