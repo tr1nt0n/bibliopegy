@@ -75,7 +75,11 @@ boxed-markup = #(
           (markup #:override '(baseline-skip . 2.5) #:number
                   (#:line ((#:fontsize 1 #:column ("X" "X")))))))
 
-safe-green = #(rgb-color 49/110 77/110 63/110)
+一 = #(rgb-color 190/255 132/255 170/255)
+二 = #(rgb-color 170/255 165/255 230/255)
+三 = #(rgb-color 125/255 200/255 240/255)
+四 = #(rgb-color 133/255 176/255 147/255)
+
 
 skin-diamond-notehead-markup = \markup \with-color "darksalmon" \musicglyph "noteheads.s0harmonic"
 skin-default-notehead-markup = \markup \with-color "darksalmon" \musicglyph "noteheads.s1"

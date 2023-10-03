@@ -190,7 +190,7 @@
                                         - \tweak color #"darkmagenta"
                                         - \downbow
                                         \fff
-                                        _ \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 on" }
+                                        _ \markup \with-color \二 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 on" }
                                         [
                                         (
                                         - \abjad-zero-padding-glissando
@@ -430,7 +430,7 @@
                                         <aqs bf>16.
                                         - \accent
                                         \!
-                                        _ \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 off" }
+                                        _ \markup \with-color \二 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 off" }
                                         ]
                                     }
                                 }

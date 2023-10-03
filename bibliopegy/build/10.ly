@@ -199,7 +199,7 @@
                                     \clef "varpercussion"
                                     <d' f'>16
                                     \p
-                                    - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 on" }
+                                    - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 on" }
                                     [
                                     - \tweak color #(css-color 'indianred)
                                     - \tweak padding #9.5
@@ -331,12 +331,12 @@
                                     c'8.
                                     - \accent
                                     \!
-                                    - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }
+                                    - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }
                                     ]
                                     \staff-line-count 4
                                     \clef "varpercussion"
                                     <g b>32
-                                    - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 on" }
+                                    - \markup \with-color \四 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 on" }
                                     [
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
@@ -613,7 +613,7 @@
                                         \stopTextSpanTwo
                                     }
                                     r32
-                                    - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 off" }
+                                    - \markup \with-color \四 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 off" }
                                     \tweak text #tuplet-number::calc-fraction-text
                                     \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 5 7) (ly:make-duration 5 0))
                                     \times 7/5
@@ -630,7 +630,7 @@
                                             - \tweak color #"darkmagenta"
                                             - \upbow
                                             \mp
-                                            - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 on" }
+                                            - \markup \with-color \二 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 on" }
                                             [
                                             - \abjad-zero-padding-glissando
                                             \glissando
@@ -701,7 +701,7 @@
                                             \undo \hide NoteHead
                                             <aqs c'>16
                                             \ff
-                                            - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 off" }
+                                            - \markup \with-color \二 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 off" }
                                             \stopTextSpan
                                         }
                                     }

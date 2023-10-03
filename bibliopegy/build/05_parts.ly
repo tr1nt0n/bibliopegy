@@ -359,7 +359,7 @@
                                     \clef "varpercussion"
                                     <b d'>16.
                                     \p
-                                    - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 on" }
+                                    - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 on" }
                                     [
                                     - \tweak color #(css-color 'indianred)
                                     - \tweak padding #13.5
@@ -426,7 +426,7 @@
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                             \time 1/8
                             s1 * 1/8
-                            - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }
+                            - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }
                               %! +SCORE
                         %%% \stopStaff \startStaff
                               %! +SCORE

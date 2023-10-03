@@ -225,7 +225,7 @@
                                     \clef "varpercussion"
                                     <b d'>16.
                                     \p
-                                    - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 on" }
+                                    - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 on" }
                                     [
                                     - \tweak color #(css-color 'indianred)
                                     - \tweak padding #13.5
@@ -268,7 +268,7 @@
                                     R1 * 5/32
                                     <d' f'>8
                                     \ppp
-                                    - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 on" }
+                                    - \markup \with-color \四 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 on" }
                                     [
                                     (
                                     - \tweak color #(css-color 'indianred)
@@ -338,7 +338,7 @@
                                         \undo \hide NoteHead
                                         <b d'>16
                                         \f
-                                        - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 off" }
+                                        - \markup \with-color \四 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 off" }
                                         )
                                         \stopTextSpanOne
                                         \stopTextSpanThree
@@ -363,7 +363,7 @@
                                         f'64
                                         - \accent
                                         \ff
-                                        - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "一 on" }
+                                        - \markup \with-color \一 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "一 on" }
                                         - \abjad-zero-padding-glissando
                                         \glissando
                                         - \tweak color #(css-color 'mediumblue)
@@ -467,7 +467,7 @@
                                         - \abjad-zero-padding-glissando
                                         \glissando
                                         f64
-                                        - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "一 off" }
+                                        - \markup \with-color \一 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "一 off" }
                                         \stopTextSpanOne
                                         \stopTextSpanTwo
                                         ]
@@ -495,7 +495,7 @@
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 5/32
                                     s1 * 5/32
-                                    - \markup \with-color "darkcyan" \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }
+                                    - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 4/32
                                     s1 * 1/8
