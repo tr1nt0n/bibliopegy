@@ -437,25 +437,48 @@ def silence(score, measures, timestamps):
 # notation tools
 
 
-def viola_bridge_staff(selector=trinton.pleaves()):
+def viola_bridge_staff(selector=abjad.select.leaves, stage=1):
     def staff(argument):
         selections = selector(argument)
         abjad.attach(abjad.Clef("percussion"), selections[0])
+
+        start_literals = [
+            r"\staff-line-count 3",
+            r"\override Staff.StaffSymbol.line-positions = #'(5 3 -5)",
+            r"\override Staff.Clef.stencil = #ly:text-interface::print",
+            r"""\override Staff.Clef.text = \markup { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe078 }""",
+            r"\override Accidental.stencil = ##f",
+            r"\override Dots.staff-position = #2",
+            r"\override Glissando.bound-details.left.padding = #0.5",
+            r"\override Glissando.bound-details.right.padding = #0.5",
+            r"\override NoteHead.X-extent = #'(0 . 0)",
+            r"\override NoteHead.transparent = ##t",
+            r"\override NoteHead.no-ledgers = ##t",
+        ]
+
+        stop_literals = [
+            r"\staff-line-count 5",
+            r"\revert Staff.StaffSymbol.line-positions",
+            r"\revert Staff.Clef.stencil",
+            r"\revert Accidental.stencil",
+            r"\revert Dots.staff-position",
+            r"\revert Glissando.bound-details.left.padding",
+            r"\revert Glissando.bound-details.right.padding",
+            r"\revert NoteHead.X-extent",
+            r"\override NoteHead.transparent = ##f",
+            r"\override NoteHead.no-ledgers = ##f",
+        ]
+
+        if stage > 1:
+            start_literals.append(r"\override Glissando.style = #'zigzag")
+            start_literals.append(r"\override Glissando.thickness = #2")
+
+            stop_literals.append(r"\revert Glissando.style")
+            stop_literals.append(r"\override Glissando.thickness = #3")
+
         abjad.attach(
             abjad.LilyPondLiteral(
-                [
-                    r"\staff-line-count 3",
-                    r"\override Staff.StaffSymbol.line-positions = #'(5 3 -5)",
-                    r"\override Staff.Clef.stencil = #ly:text-interface::print",
-                    r"""\override Staff.Clef.text = \markup { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe078 }""",
-                    r"\override Accidental.stencil = ##f",
-                    r"\override Dots.staff-position = #2",
-                    r"\override Glissando.bound-details.left.padding = #0.5",
-                    r"\override Glissando.bound-details.right.padding = #0.5",
-                    r"\override NoteHead.X-extent = #'(0 . 0)",
-                    r"\override NoteHead.transparent = ##t",
-                    r"\override NoteHead.no-ledgers = ##t",
-                ],
+                start_literals,
                 site="absolute_before",
             ),
             selections[0],
@@ -463,45 +486,64 @@ def viola_bridge_staff(selector=trinton.pleaves()):
 
         abjad.attach(
             abjad.LilyPondLiteral(
-                [
-                    r"\staff-line-count 5",
-                    r"\revert Staff.StaffSymbol.line-positions",
-                    r"\revert Staff.Clef.stencil",
-                    r"\revert Accidental.stencil",
-                    r"\revert Dots.staff-position",
-                    r"\revert Glissando.bound-details.left.padding",
-                    r"\revert Glissando.bound-details.right.padding",
-                    r"\revert NoteHead.X-extent",
-                    r"\override NoteHead.transparent = ##f",
-                    r"\override NoteHead.no-ledgers = ##f",
-                ],
+                stop_literals,
                 site="absolute_after",
             ),
             selections[-1],
         )
 
-        ties = abjad.select.logical_ties(selections)
-        glissando_ties = abjad.select.exclude(ties, [-1])
+        ties = abjad.select.logical_ties(selections, pitched=True)
+        if stage < 3:
+            glissando_ties = abjad.select.exclude(ties, [-1])
+            for tie in glissando_ties:
+                if len(tie) == 1:
+                    abjad.attach(abjad.Glissando(zero_padding=True), tie[0])
 
-        for tie in glissando_ties:
-            if len(tie) == 1:
-                abjad.attach(abjad.Glissando(zero_padding=True), tie[0])
+                else:
+                    with_next_leaf = abjad.select.with_next_leaf(tie)
+                    abjad.attach(
+                        abjad.LilyPondLiteral(
+                            r"\once \override NoteColumn.glissando-skip = ##t",
+                            site="after",
+                        ),
+                        tie[0],
+                    )
 
-            else:
-                with_next_leaf = abjad.select.with_next_leaf(tie)
-                abjad.attach(
-                    abjad.LilyPondLiteral(
-                        r"\once \override NoteColumn.glissando-skip = ##t", site="after"
-                    ),
-                    tie[0],
-                )
+                    abjad.glissando(
+                        with_next_leaf,
+                        allow_repeats=True,
+                        allow_ties=True,
+                        zero_padding=True,
+                    )
 
-                abjad.glissando(
-                    with_next_leaf,
-                    allow_repeats=True,
-                    allow_ties=True,
-                    zero_padding=True,
-                )
+        else:
+            glissando_groups = abjad.select.group_by_contiguity(ties)
+            for group in glissando_groups:
+                if len(group) > 1:
+                    glissando_ties = abjad.select.exclude(group, [-1])
+                    for tie in glissando_ties:
+                        if len(tie) == 1:
+                            abjad.attach(abjad.Glissando(zero_padding=True), tie[0])
+
+                        else:
+                            with_next_leaf = abjad.select.with_next_leaf(tie)
+                            abjad.attach(
+                                abjad.LilyPondLiteral(
+                                    r"\once \override NoteColumn.glissando-skip = ##t",
+                                    site="after",
+                                ),
+                                tie[0],
+                            )
+
+                            abjad.glissando(
+                                with_next_leaf,
+                                allow_repeats=True,
+                                allow_ties=True,
+                                zero_padding=True,
+                            )
+                else:
+                    abjad.attach(abjad.BendAfter(-2), group[0][0])
+                    abjad.attach(abjad.Articulation("staccato"), group[0][0])
 
     return staff
 
@@ -1043,7 +1085,7 @@ def pitch_viola_ii(
 # rhythm
 
 
-def viola_i_rhythm(index=0, extra_counts=False):
+def viola_i_rhythm(index=0, extra_counts=False, stage=1):
     def viola_i(divisions):
         logistic_map_with_zeros = trinton.logistic_map(x=4, r=3.58, n=9)
         logistic_map = [_ for _ in logistic_map_with_zeros if _ > 0]
@@ -1080,6 +1122,11 @@ def viola_i_rhythm(index=0, extra_counts=False):
             new_notes = [abjad.Note("c'64") for _ in range(int(sixty_fourth_amount))]
 
             abjad.mutate.replace(tie, new_notes)
+
+        if stage == 3:
+            rest_selector = trinton.patterned_tie_index_selector([0, 2, 3, 7], 9)
+            rests = rest_selector(container)
+            rmakers.force_rest(rests)
 
         bunches = []
 
