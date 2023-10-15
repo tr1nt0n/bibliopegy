@@ -325,6 +325,29 @@ library.make_metric_music(
     measure_number_range=(6, 8),
 )
 
+# percussion 2 music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 14)),
+    evans.RhythmHandler(library.marimba_alpha_iv()),
+    library.marimba_graces(),
+    evans.PitchHandler(["ef,"]),
+    trinton.pitch_with_selector_command(
+        selector=trinton.pleaves(grace=True),
+        pitch_list=library._marimba_grace_pitch_list["6 first"],
+    ),
+    library.marimba_grace_ottavas(),
+    library.duration_line(selector=trinton.pleaves(grace=False)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Clef("bass"),
+        ],
+        selector=trinton.select_leaves_by_index([0], pitched=True),
+    ),
+    voice=score["percussion 2 voice"],
+    preprocessor=trinton.fuse_preprocessor((3,)),
+)
+
 # globals
 
 library.set_all_time_signatures(score=score, exclude_viola=True)

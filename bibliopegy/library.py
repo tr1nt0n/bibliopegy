@@ -437,6 +437,35 @@ def silence(score, measures, timestamps):
 # notation tools
 
 
+def marimba_grace_ottavas(selector=trinton.pleaves()):
+    def ottava(argument):
+        selections = selector(argument)
+        graces = abjad.select.leaves(selections, grace=True)
+        grace_groups = abjad.select.group_by_contiguity(graces)
+
+        for group in grace_groups:
+            abjad.attach(
+                abjad.LilyPondLiteral(
+                    r"\set suggestAccidentals = ##t", "absolute_before"
+                ),
+                group[1],
+            )
+            abjad.attach(
+                abjad.LilyPondLiteral(
+                    r"\set suggestAccidentals = ##f", "absolute_after"
+                ),
+                group[-1],
+            )
+            if group[1].written_pitch.number > 0:
+                abjad.attach(abjad.Ottava(n=1), group[1])
+            else:
+                abjad.attach(abjad.Ottava(n=1), group[3])
+
+            abjad.attach(abjad.Ottava(n=0, site="after"), group[-1])
+
+    return ottava
+
+
 def viola_bridge_staff(selector=abjad.select.leaves, stage=1):
     def staff(argument):
         selections = selector(argument)
@@ -955,6 +984,35 @@ _viola_ii_strings_to_pitch_lists = {
     ],
 }
 
+_marimba_grace_pitch_list = {
+    "6 first": [
+        "ef,",
+        "ef",
+        "bf",
+        "ef'",
+        "g'",
+        "a'",
+        "ef,",
+        "bf'",
+        "df''",
+        "f''",
+        "af''",
+    ],
+    "5 first": [
+        "ef,",
+        "bf'",
+        "df''",
+        "f''",
+        "af''",
+        "ef,",
+        "ef",
+        "bf",
+        "ef'",
+        "g'",
+        "a'",
+    ],
+}
+
 
 def pitch_viola_ii(
     index=0,
@@ -1083,6 +1141,69 @@ def pitch_viola_ii(
 
 
 # rhythm
+
+
+def marimba_graces(selector=trinton.pleaves(), counter_offset=1):
+    def graces(argument):
+        selections = selector(argument)
+        logical_ties = abjad.select.logical_ties(selections, pitched=True)
+
+        name_count = counter_offset
+        for tie in logical_ties:
+            if abjad.get.duration(tie) <= abjad.Duration((1, 16)):
+                grace_name = f"marimba graces {name_count}"
+                tie_duration = abjad.get.duration(tie)
+
+                if name_count % 2 == 0:
+                    tuplet_ratio = (1, 1, 1, 1, 1)
+
+                else:
+                    tuplet_ratio = (1, 1, 1, 1, 1, 1)
+
+                nested_music = rmakers.tuplet([abjad.get.duration(tie)], [tuplet_ratio])
+                nested_music_logical_ties = abjad.select.logical_ties(nested_music)
+                leaf_denominator = len(nested_music_logical_ties) + 1
+                leaf_duration = tie_duration / leaf_denominator
+                tuplet_container = abjad.Container(nested_music)
+                contents = abjad.mutate.eject_contents(tuplet_container)
+
+                grace_container = trinton.on_beat_grace_container(
+                    contents=contents,
+                    anchor_voice_selection=tie,
+                    leaf_duration=leaf_duration,
+                    name=grace_name,
+                )
+
+                name_count += 1
+
+    return graces
+
+
+def marimba_alpha_iv(index=0):
+    def marimba_alpha(divisions):
+        logistic_map_with_zeros = trinton.logistic_map(x=4, r=3.577, n=9)
+        logistic_map_with_zeros = trinton.rotated_sequence(
+            logistic_map_with_zeros, index % len(logistic_map_with_zeros)
+        )
+        logistic_map = [_ for _ in logistic_map_with_zeros if _ > 2]
+
+        talea_counts = []
+
+        for item in logistic_map:
+            talea_counts.append(item)
+            talea_counts.append(1)
+
+        container = abjad.Container(
+            rmakers.talea(
+                divisions, talea_counts, 16, extra_counts=logistic_map_with_zeros
+            )
+        )
+
+        selections = abjad.mutate.eject_contents(container)
+
+        return selections
+
+    return marimba_alpha
 
 
 def viola_i_rhythm(index=0, extra_counts=False, stage=1):
