@@ -328,8 +328,8 @@ library.make_metric_music(
 # percussion 2 music
 
 trinton.make_music(
-    lambda _: trinton.select_target(_, (1, 14)),
-    evans.RhythmHandler(library.marimba_alpha_iv()),
+    lambda _: trinton.select_target(_, (3, 6)),
+    evans.RhythmHandler(library.marimba_alpha_iv(index=1)),
     library.marimba_graces(),
     evans.PitchHandler(["ef,"]),
     trinton.pitch_with_selector_command(
@@ -338,14 +338,72 @@ trinton.make_music(
     ),
     library.marimba_grace_ottavas(),
     library.duration_line(selector=trinton.pleaves(grace=False)),
-    trinton.attachment_command(
+    trinton.linear_attachment_command(
         attachments=[
             abjad.Clef("bass"),
+            abjad.Dynamic("p"),
+            abjad.StartHairpin("<|"),
+            abjad.Dynamic("fff"),
+            abjad.Dynamic("p"),
+            abjad.StartHairpin("<"),
+            abjad.Dynamic("mf"),
         ],
-        selector=trinton.select_leaves_by_index([0], pitched=True),
+        selector=trinton.select_logical_ties_by_index(
+            [0, 0, 0, 1, -2, -2, -1], first=True
+        ),
+    ),
+    library.marimba_tremoli(),
+    library.boxed_markup(string="Marimba", site="opening"),
+    voice=score["percussion 2 voice"],
+    preprocessor=trinton.fuse_preprocessor((2,)),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (8, 11)),
+    evans.RhythmHandler(library.marimba_alpha_iv(index=3)),
+    library.marimba_graces(counter_offset=2),
+    evans.PitchHandler(["ef,"]),
+    trinton.pitch_with_selector_command(
+        selector=trinton.pleaves(grace=True),
+        pitch_list=library._marimba_grace_pitch_list["5 first"],
+    ),
+    library.marimba_grace_ottavas(),
+    library.duration_line(selector=trinton.pleaves(grace=False)),
+    library.marimba_tremoli(),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Dynamic("mp"),
+            abjad.StartHairpin("<|"),
+            abjad.Dynamic("f"),
+        ],
+        selector=trinton.select_logical_ties_by_index([0, 0, 1], first=True),
     ),
     voice=score["percussion 2 voice"],
-    preprocessor=trinton.fuse_preprocessor((3,)),
+    preprocessor=trinton.fuse_preprocessor((2,)),
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (13, 14)),
+    evans.RhythmHandler(library.marimba_alpha_iv(index=5)),
+    library.marimba_graces(counter_offset=3),
+    evans.PitchHandler(["ef,"]),
+    trinton.pitch_with_selector_command(
+        selector=trinton.pleaves(grace=True),
+        pitch_list=library._marimba_grace_pitch_list["6 first"],
+    ),
+    library.marimba_grace_ottavas(),
+    library.duration_line(selector=trinton.pleaves(grace=False)),
+    library.marimba_tremoli(),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Dynamic("pp"),
+            abjad.StartHairpin("--"),
+            abjad.Dynamic("fff"),
+        ],
+        selector=trinton.select_logical_ties_by_index([0, 0, 1], first=True),
+    ),
+    voice=score["percussion 2 voice"],
+    preprocessor=trinton.fuse_preprocessor((2,)),
 )
 
 # globals

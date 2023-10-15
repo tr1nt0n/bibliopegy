@@ -437,6 +437,51 @@ def silence(score, measures, timestamps):
 # notation tools
 
 
+def marimba_tremoli(selector=trinton.pleaves(), padding=8.5):
+    def tremoli(argument):
+        selections = selector(argument)
+        leaves = abjad.select.leaves(selections)
+
+        relevant_leaves = []
+
+        for leaf in leaves:
+            leaf_parent = abjad.get.parentage(leaf).parent
+            if isinstance(leaf_parent, abjad.AfterGraceContainer):
+                abjad.attach(abjad.StopTextSpan(), leaf)
+                abjad.attach(
+                    abjad.LilyPondLiteral(
+                        r"\textSpannerUp",
+                        "after",
+                    ),
+                    leaf,
+                )
+
+        start_text_span = abjad.StartTextSpan(
+            left_text=abjad.Markup(
+                r"""\markup \with-color "darkmagenta" { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe222 }"""
+            ),
+            right_text=None,
+            style="dashed-line-with-up-hook",
+        )
+
+        bundle = abjad.bundle(start_text_span, rf"- \tweak padding #{padding}")
+
+        bundle = abjad.bundle(bundle, r"- \tweak color #darkmagenta")
+
+        ties = abjad.select.logical_ties(selections, pitched=True, grace=False)
+        for tie in ties:
+            abjad.attach(
+                abjad.LilyPondLiteral(
+                    r"\textSpannerDown",
+                    "before",
+                ),
+                tie[0],
+            )
+            abjad.attach(bundle, tie[0])
+
+    return tremoli
+
+
 def marimba_grace_ottavas(selector=trinton.pleaves()):
     def ottava(argument):
         selections = selector(argument)
