@@ -182,7 +182,7 @@ afterGraceFraction = #(cons 255 256)
 
         \override MultiMeasureRestNumber.stencil = ##f
 
-        % \override Rest.transparent = ##t
+        \override Rest.transparent = ##t
 
         \override Stem.stencil = ##f
 
