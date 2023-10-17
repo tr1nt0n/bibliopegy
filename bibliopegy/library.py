@@ -437,6 +437,45 @@ def silence(score, measures, timestamps):
 # notation tools
 
 
+def color_fingerings(selector=trinton.pleaves(), index=0):
+    def trill(argument):
+        selections = selector(argument)
+
+        selections = abjad.select.logical_ties(selections)
+
+        trill_sequence = trinton.random_walk(
+            chord=[
+                1,
+                3,
+                2,
+                4,
+            ],
+            seed=12,
+        )
+
+        trill_sequence = trinton.remove_adjacent(trill_sequence)
+
+        trill_sequence = trinton.rotated_sequence(trill_sequence, index)
+
+        for tie, trill in zip(selections, trill_sequence):
+            abjad.attach(
+                abjad.LilyPondLiteral(
+                    r"\once \override Staff.TextScript.whiteout = ##f", site="before"
+                ),
+                tie[0],
+                direction=abjad.UP,
+            )
+            abjad.attach(
+                abjad.Markup(
+                    rf"""\markup \with-color "seagreen" \center-column {{ \circle {trill} }}"""
+                ),
+                tie[0],
+                direction=abjad.UP,
+            )
+
+    return trill
+
+
 def marimba_tremoli(selector=trinton.pleaves(), padding=8.5):
     def tremoli(argument):
         selections = selector(argument)

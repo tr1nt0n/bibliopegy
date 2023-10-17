@@ -38,6 +38,7 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "4\'6\""  }
+            \noBreak
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "4\'7\""  }
@@ -2218,7 +2219,6 @@
                                     - \tweak padding #8
                                     - \abjad-solid-line-with-arrow
                                     - \tweak bound-details.left.text \markup \concat { \skin-default-notehead-markup \hspace #0.5 }
-                                    - \tweak bound-details.right.padding 1
                                     \startTextSpanOne
                                     - \tweak color #(css-color 'indianred)
                                     - \tweak padding #6
@@ -2238,7 +2238,6 @@
                                     - \abjad-solid-line-with-arrow
                                     - \tweak bound-details.left.text \markup \concat { \skin-diamond-notehead-markup \hspace #0.5 }
                                     - \tweak bound-details.right.text \skin-default-notehead-markup
-                                    - \tweak bound-details.right.padding 1
                                     \startTextSpanOne
                                     - \tweak color #(css-color 'indianred)
                                     - \tweak padding #6

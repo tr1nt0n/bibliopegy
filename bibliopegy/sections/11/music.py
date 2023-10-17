@@ -646,7 +646,6 @@ trinton.make_music(
         padding=8,
         full_string=True,
         command="One",
-        right_padding=-1,
         tweaks=[r"""- \tweak color #(css-color 'darksalmon)"""],
     ),
     trinton.spanner_command(
@@ -782,9 +781,12 @@ library.write_instrument_names(score=score)
 
 library.write_short_instrument_names(score=score)
 
-# library.forbid_break(
-#     score=score, measures=[]
-# )
+library.forbid_break(
+    score=score,
+    measures=[
+        12,
+    ],
+)
 
 library.write_timestamps(
     global_context=score["Global Context"],
