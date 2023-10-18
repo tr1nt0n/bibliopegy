@@ -92,6 +92,25 @@ all_voice_names = eval(
     ]"""
 )
 
+all_voice_names_include_time_signature_context = eval(
+    """[
+        "Global Context",
+        "piano voice",
+        "viola voice",
+        "flute voice",
+        "bassflute voice",
+        "violin voice",
+        "bassclarinet voice",
+        "percussion 1 voice",
+        "cello 1 voice",
+        "cello 2 voice",
+        "cello 3 voice",
+        "tenortrombone voice",
+        "basstrombone voice",
+        "percussion 2 voice"
+    ]"""
+)
+
 upbow = abjad.bundle(abjad.Articulation("upbow"), r'- \tweak color #"darkmagenta"')
 
 downbow = abjad.bundle(abjad.Articulation("downbow"), r'- \tweak color #"darkmagenta"')
