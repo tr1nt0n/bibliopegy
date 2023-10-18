@@ -485,26 +485,33 @@
                                 }
                                 \context Voice = "viola voice time signatures"
                                 {
+                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 4/16
                                     \voiceTwo
                                     s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 6/32
                                     s1 * 3/16
+                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 5/32
                                     s1 * 5/32
                                     - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }
+                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 4/32
                                     s1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 9/32
                                     s1 * 9/32
+                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 5/32
                                     s1 * 5/32
+                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 7/32
                                     s1 * 7/32

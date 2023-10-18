@@ -403,13 +403,16 @@
                                 }
                                 \context Voice = "viola voice time signatures"
                                 {
+                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 4/16
                                     \voiceTwo
                                     s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 6/32
                                     s1 * 3/16
+                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 1/16
                                     s1 * 1/16

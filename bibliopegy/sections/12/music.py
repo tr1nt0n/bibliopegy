@@ -232,6 +232,33 @@ trinton.make_music(
     preprocessor=trinton.fuse_preprocessor((2, 3)),
 )
 
+# percusion 1 music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (6, 7)),
+    evans.RhythmHandler(rmakers.note),
+    evans.PitchHandler([[-1, 2]]),
+    library.duration_line(),
+    library.change_lines(lines=2, clef="percussion"),
+    library.boxed_markup(string="Anvils with pipe", site="opening"),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin("o<"), abjad.Dynamic("fff")],
+        selector=trinton.select_leaves_by_index([0, -1]),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "darkmagenta" { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe222 }""",
+        selector=trinton.select_leaves_by_index([0, -1]),
+        padding=8.5,
+        direction="down",
+        right_padding=1,
+        full_string=True,
+        style="dashed-line-with-up-hook",
+        tweaks=[r"- \tweak color #darkmagenta"],
+    ),
+    voice=score["percussion 1 voice"],
+    preprocessor=trinton.fuse_preprocessor((2,)),
+)
+
 # cello 1 and cello 2 music
 
 for voice_name, rotation, ratio in zip(

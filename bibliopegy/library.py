@@ -113,11 +113,11 @@ def boxed_markup(
         pitched=True,
     ),
     site="after",
+    direction=abjad.UP,
 ):
     literal = abjad.LilyPondLiteral(rf'\boxed-markup "{string}" 1', site)
     command = trinton.attachment_command(
-        attachments=[literal],
-        selector=selector,
+        attachments=[literal], selector=selector, direction=direction
     )
     return command
 
@@ -1709,6 +1709,14 @@ def write_simultaneous_time_signatures(
         abjad.attach(
             abjad.LilyPondLiteral(
                 r"\once \override Staff.TimeSignature.transparent = ##f", "before"
+            ),
+            new_skip,
+        )
+
+        abjad.attach(
+            abjad.LilyPondLiteral(
+                r"\once \override Staff.BarLine.transparent = ##f",
+                "before",
             ),
             new_skip,
         )

@@ -29,6 +29,7 @@ afterGraceFraction = #(cons 255 256)
         \numericTimeSignature
         \type Engraver_group
         \consists Axis_group_engraver
+        \consists Bar_number_engraver
         \consists Time_signature_engraver
 		\consists Mark_engraver
 		\consists Metronome_mark_engraver
@@ -36,7 +37,7 @@ afterGraceFraction = #(cons 255 256)
 		\consists Text_engraver
 		\consists Text_spanner_engraver
         \consists Measure_spanner_engraver
-        \override BarNumber.stencil = ##f
+        \override BarNumber.break-visibility = ##(#t #t #t)
         \override MetronomeMark.stencil = ##f
 		\override TimeSignature.X-extent = #'(0 . -25)
         \override TimeSignature.Y-extent = #'(25 . 0)
@@ -63,9 +64,6 @@ afterGraceFraction = #(cons 255 256)
 
         autoBeaming = ##f
         \override Beam.breakable = ##t
-        % \override Beam.damping = 99
-        % \override Beam.concaveness = #10000
-        % \override Beam.beam-thickness = #0.75
         \override Beam.length-fraction = 1.25
 
         \override BendAfter.thickness = #3
@@ -140,16 +138,6 @@ afterGraceFraction = #(cons 255 256)
         \override TupletNumber.text = #tuplet-number::calc-fraction-text
         \override TupletNumber.font-name = "Bodoni72 Book"
         \override TupletNumber.color = #(css-color 'darkgoldenrod)
-        % \override TupletBracket.stencil =
-        %     #(lambda (grob)
-        %        (let* ((pos (ly:grob-property grob 'positions))
-        %               (dir (ly:grob-property grob 'direction))
-        %               (new-pos (if (= dir 1)
-        %                            (max (car pos)(cdr pos))
-        %                            (min (car pos)(cdr pos)))))
-        %          (ly:grob-set-property! grob 'positions (cons new-pos new-pos))
-        %          (ly:tuplet-bracket::print grob)))
-        % \override TupletBracket.direction = #up
     }
 
     \context {
@@ -159,7 +147,8 @@ afterGraceFraction = #(cons 255 256)
 
         \override BarLine.hair-thickness = 2
         \override BarLine.thick-thickness = #10
-        \override BarLine.X-extent = #'(0 . 0)
+        % \override BarLine.X-extent = #'(0 . 0)
+        \override BarLine.transparent = ##t
 
         \override DurationLine.style = #'line
         \override DurationLine.thickness = #3
@@ -189,7 +178,7 @@ afterGraceFraction = #(cons 255 256)
         \override BarLine.hair-thickness = 1
         \override BarLine.thick-thickness = #10
         \override BarLine.glyph-name = "!"
-        \override BarLine.transparent = ##t
+        % \override BarLine.transparent = ##t
 
         \override Dots.stencil = ##f
 
@@ -260,7 +249,7 @@ afterGraceFraction = #(cons 255 256)
             \concat {
                 \fontsize #5
                 \override #'(font-name . "Bodoni72 Book Italic")
-                    \fromproperty #'page:page-number-string
+                \fromproperty #'page:page-number-string
             }
         }
 
@@ -269,7 +258,7 @@ afterGraceFraction = #(cons 255 256)
                 \concat {
                     \fontsize #5
                     \override #'(font-name . "Bodoni72 Book Italic")
-                        \fromproperty #'page:page-number-string
+                    \fromproperty #'page:page-number-string
                 }
                 \concat {
                     \override #'(font-name . "Bodoni72 Book Italic")
