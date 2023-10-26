@@ -685,6 +685,8 @@
                                     \tweak text #tuplet-number::calc-fraction-text
                                     \times 8/7
                                     {
+                                        \staff-line-count 1
+                                        \clef "varpercussion"
                                         \afterGrace
                                         c'32
                                         \fff
@@ -1303,6 +1305,8 @@
                                     \times 8/11
                                     {
                                         r32
+                                        \staff-line-count 1
+                                        \clef "varpercussion"
                                         \afterGrace
                                         c'16
                                         \fff

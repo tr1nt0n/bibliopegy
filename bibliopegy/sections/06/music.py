@@ -134,6 +134,7 @@ trinton.make_music(
         )
     ),
     trinton.force_rest(selector=trinton.patterned_tie_index_selector([1], 2)),
+    library.change_lines(lines=1, clef="varpercussion"),
     library.duration_line(),
     trinton.linear_attachment_command(
         attachments=[
@@ -289,6 +290,7 @@ trinton.make_music(
         )
     ),
     trinton.force_rest(selector=trinton.patterned_tie_index_selector([0], 2)),
+    library.change_lines(lines=1, clef="varpercussion"),
     library.duration_line(),
     trinton.linear_attachment_command(
         attachments=[
