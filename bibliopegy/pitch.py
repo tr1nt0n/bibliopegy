@@ -1,5 +1,7 @@
 import fractions
 import math
+import abjad
+import evans
 import trinton
 
 # violin gamma pitches
@@ -97,3 +99,20 @@ for pitch_1, pitch_2 in zip(transposed_2[18:], part_1[18:]):
 
 for pitch in part_1[22:]:
     glockenspiel_pitches.append(pitch)
+
+
+delta_pitches_1 = evans.Sequence(glockenspiel_pitches).alpha(category=1)
+
+delta_pitches_2 = evans.Sequence(glockenspiel_pitches).alpha(category=0)
+
+delta_pitches_2 = abjad.PitchClassSegment(delta_pitches_2).retrograde()
+
+delta_pitches_2 = [_.number for _ in delta_pitches_2]
+
+delta_pitches = []
+
+for pitch_1, pitch_2 in zip(delta_pitches_1, delta_pitches_2):
+    delta_pitches.append(pitch_1)
+    delta_pitches.append(pitch_2)
+
+delta_pitches = trinton.remove_adjacent(delta_pitches)
