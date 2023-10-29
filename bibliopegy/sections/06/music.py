@@ -1465,7 +1465,7 @@ trinton.make_music(
             trinton.make_custom_dynamic("spp"),
             abjad.Dynamic("p"),
             abjad.StartHairpin("<"),
-            abjad.Dynamic("f"),
+            abjad.Dynamic("mf"),
         ],
         selector=trinton.select_logical_ties_by_index(
             [

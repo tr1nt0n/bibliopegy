@@ -894,6 +894,7 @@ trinton.make_music(
     ),
     evans.PitchHandler(["d,"]),
     evans.PitchHandler(["9/1"], as_ratios=True),
+    library.change_lines(lines=5, clef="treble"),
     trinton.force_accidentals_command(
         selector=trinton.logical_ties(first=True, pitched=True)
     ),

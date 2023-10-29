@@ -2651,6 +2651,7 @@
                                             }
                                             \context Voice = "cello 3 voice Anchor"
                                             {
+                                                \staff-line-count 5
                                                 \clef "treble"
                                                 \once \override NoteHead.X-extent = #'(0.5 . 0)
                                                   %! abjad.on_beat_grace_container(4)
