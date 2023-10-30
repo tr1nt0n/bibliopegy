@@ -39,6 +39,60 @@ trinton.make_music(
     preprocessor=trinton.fuse_preprocessor((12,)),
 )
 
+# viola music commands
+
+library.write_simultaneous_time_signatures(
+    score=score,
+    voice_name="viola voice",
+    signature_pairs=[
+        (6, 16),
+    ],
+    measure_range=(10, 12),
+    reset=True,
+)
+
+library.make_metric_music(
+    evans.RhythmHandler(library.viola_i_rhythm(index=15, extra_counts=True, stage=1)),
+    evans.PitchHandler([[2, -1]]),
+    library.change_lines(lines=4, clef="varpercussion"),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("staccato")],
+        selector=trinton.durational_selector(
+            durations=[abjad.Duration(1, 64)], first=True
+        ),
+    ),
+    trinton.linear_attachment_command(
+        attachments=itertools.cycle([abjad.StartSlur(), abjad.StopSlur()]),
+        selector=trinton.select_logical_ties_by_index(
+            [0, 1, 3, 6, 8, -1], first=True, pitched=True
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("ricochet")],
+        selector=trinton.select_logical_ties_by_index([2, 7], first=True, pitched=True),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            library._viola_processing_markups["1 on"],
+            abjad.Dynamic("p"),
+            abjad.StartHairpin("<"),
+            abjad.Dynamic("mf"),
+            abjad.StartHairpin(">o"),
+            abjad.StopHairpin(),
+            library._viola_processing_markups["1 off"],
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 0, 0, 7, 7, -1, -1], first=True, pitched=True
+        ),
+    ),
+    trinton.notehead_bracket_command(),
+    score=score,
+    voice_name="viola voice",
+    second_range=(10, 12),
+    measure_number_range=(1,),
+    preprocessor=trinton.fuse_sixteenths_preprocessor((3,)),
+)
+
 # cello 1 music commands
 
 trinton.make_music(
@@ -88,14 +142,24 @@ trinton.make_music(
         selector=trinton.patterned_tie_index_selector([1], 2, first=True, grace=False),
     ),
     library.duration_line(),
-    trinton.linear_attachment_command(
+    trinton.attachment_command(
+        attachments=[trinton.make_custom_dynamic("p +"), abjad.StartHairpin("--")],
+        selector=trinton.patterned_tie_index_selector(
+            [1], 2, first=True, pitched=True, grace=False
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Dynamic("f"), abjad.StartHairpin("--")],
+        selector=trinton.patterned_tie_index_selector(
+            [0], 2, first=True, pitched=True, grace=False
+        ),
+    ),
+    trinton.attachment_command(
         attachments=[
-            trinton.make_custom_dynamic("sp +"),
-            abjad.StartHairpin("--"),
-            abjad.StopHairpin(),
             abjad.StopSlur(),
+            abjad.StopHairpin(),
         ],
-        selector=trinton.select_leaves_by_index([0, 0, -1, -1], pitched=True),
+        selector=trinton.select_leaves_by_index([-1], pitched=True),
     ),
     trinton.attachment_command(
         attachments=[
@@ -304,7 +368,7 @@ trinton.make_music(
         selector=trinton.select_leaves_by_index([0, 0, 0, 0, -1], pitched=True),
     ),
     trinton.hooked_spanner_command(
-        string="""\markup \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  11°/C1(IV)" }""",
+        string="""\markup \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  11°/C2(IV)" }""",
         selector=trinton.select_leaves_by_index([0, -1], pitched=True),
         padding=5,
         right_padding=0,
@@ -333,27 +397,37 @@ library.write_timestamps(
 
 library.silence(score=score, measures=[13], timestamps=[r"""4\'48\" - 4\'56\""""])
 
+library.forbid_break(score=score, measures=[9, 10, 11])
+
 # cutaway
 
 trinton.whiteout_empty_staves(
     score=score,
     cutaway="blank",
-    # voice_names=[
-    #     _
-    #     for _ in library.all_voice_names
-    #     # if _ != "viola voice"
-    #     # and _ != "viola voice time signatures"
-    #     # if _ != "piano voice"
-    #     # and _ != "percussion 1 voice"
-    # ],
+    voice_names=[
+        _
+        for _ in library.all_voice_names
+        if _ != "viola voice" and _ != "viola voice time signatures"
+    ],
     last_segment=True,
 )
 
-# library.blank_measure_by_hand(
-#     score=score,
-#     voice_names=["piano voice"],
-#     measures=[17],
-# )
+library.blank_measure_by_hand(
+    score=score,
+    voice_names=["viola voice"],
+    measures=[
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        13,
+    ],
+)
 
 # parts
 

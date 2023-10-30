@@ -29,12 +29,15 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "4\'44\""  }
+            \noBreak
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "4\'45\""  }
+            \noBreak
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "4\'46\""  }
+            \noBreak
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "4\'47\""  }
@@ -113,150 +116,232 @@
                         {
                               %! +SCORE
                         %%% \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                        %%% \once \override MultiMeasureRest.transparent = ##t
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { viola }
                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vla. }
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 1/8
-                            R1 * 1/8
+                            s1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
                               %! +SCORE
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            s1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
                               %! +SCORE
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            s1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
                               %! +SCORE
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            s1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
                               %! +SCORE
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            s1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
                               %! +SCORE
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            s1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
                               %! +SCORE
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            s1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
                               %! +SCORE
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            s1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
                               %! +SCORE
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            s1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
+                            <<
+                                \context Voice = "viola voice temp"
+                                {
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 7 6) (ly:make-duration 5 0))
+                                    \times 6/7
+                                    {
+                                        \staff-line-count 4
+                                        \clef "varpercussion"
+                                        <b d'>64
+                                        - \staccato
+                                        \p
+                                        - \markup \with-color \一 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "一 on" }
+                                        [
+                                        (
+                                        \<
+                                        <b d'>64
+                                        - \staccato
+                                        )
+                                        ]
+                                        <b d'>8
+                                        - \ricochet
+                                        <b d'>64
+                                        - \staccato
+                                        [
+                                        (
+                                        <b d'>64
+                                        - \staccato
+                                        <b d'>64
+                                        - \staccato
+                                        <b d'>64
+                                        - \staccato
+                                        )
+                                        ]
+                                    }
+                                    \tweak text #tuplet-number::calc-fraction-text
+                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 13 12) (ly:make-duration 6 0))
+                                    \times 12/13
+                                    {
+                                        <b d'>8
+                                        - \ricochet
+                                        \mf
+                                        [
+                                        - \tweak circled-tip ##t
+                                        \>
+                                        ~
+                                        <b d'>64
+                                        ]
+                                        <b d'>64
+                                        - \staccato
+                                        [
+                                        (
+                                        <b d'>64
+                                        - \staccato
+                                        <b d'>64
+                                        - \staccato
+                                        <b d'>64
+                                        - \staccato
+                                        \!
+                                        - \markup \with-color \一 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "一 off" }
+                                        )
+                                        ]
+                                    }
+                                }
+                                \context Voice = "viola voice time signatures"
+                                {
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 6/16
+                                    \voiceTwo
+                                    s1 * 3/8
+                                }
+                            >>
+                            \oneVoice
                               %! +SCORE
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            \time 1/8
+                            s1 * 1/8
                               %! +SCORE
                         %%% \stopStaff \startStaff
                               %! +SCORE
-                        %%% \once \override Staff.BarLine.transparent = ##f
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
                               %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
-                              %! +SCORE
-                        %%% \stopStaff \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.BarLine.transparent = ##f
-                              %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
-                              %! +SCORE
-                        %%% \stopStaff \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.BarLine.transparent = ##f
-                              %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.TimeSignature.transparent = ##t
-                              %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
-                            R1 * 1/8
-                              %! +SCORE
-                        %%% \stopStaff \startStaff
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
                         }
                     }
                 }
@@ -1129,9 +1214,9 @@
                                     {
                                         \afterGrace
                                         f'32
-                                            _ #(make-dynamic-script (markup #:whiteout #:italic "sp +"))
                                         - \accent
                                         - \tenuto
+                                        \f
                                         (
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
@@ -1177,10 +1262,13 @@
                                         \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                         \afterGrace
                                         f'32
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1205,10 +1293,13 @@
                                         }
                                         \afterGrace
                                         f'32
+                                        \f
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1237,10 +1328,13 @@
                                         \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                         \afterGrace
                                         f'32
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1268,11 +1362,14 @@
                                         f'32
                                         - \accent
                                         - \tenuto
+                                        \f
                                         (
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1305,10 +1402,13 @@
                                         \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                         \afterGrace
                                         f'32
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1333,10 +1433,13 @@
                                         }
                                         \afterGrace
                                         f'32
+                                        \f
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1365,10 +1468,13 @@
                                         \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                         \afterGrace
                                         f'32
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1397,11 +1503,14 @@
                                     f'32
                                     - \accent
                                     - \tenuto
+                                    \f
                                     (
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak stencil #constante-hairpin
+                                    \<
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1430,10 +1539,13 @@
                                     \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                     \afterGrace
                                     f'32
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak stencil #constante-hairpin
+                                    \<
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1458,10 +1570,13 @@
                                     }
                                     \afterGrace
                                     f'32
+                                    \f
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak stencil #constante-hairpin
+                                    \<
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1490,10 +1605,13 @@
                                     \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                     \afterGrace
                                     f'32
+                                        _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak stencil #constante-hairpin
+                                    \<
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1523,11 +1641,14 @@
                                         f'32
                                         - \accent
                                         - \tenuto
+                                        \f
                                         (
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1556,10 +1677,13 @@
                                         \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                         \afterGrace
                                         f'32
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1584,10 +1708,13 @@
                                         }
                                         \afterGrace
                                         f'32
+                                        \f
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1616,10 +1743,13 @@
                                         \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                         \afterGrace
                                         f'32
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1647,11 +1777,14 @@
                                         f'32
                                         - \accent
                                         - \tenuto
+                                        \f
                                         (
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1680,10 +1813,13 @@
                                         \once \override Staff.AccidentalPlacement.right-padding = #0.6
                                         \afterGrace
                                         f'32
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -1708,10 +1844,13 @@
                                         }
                                         \afterGrace
                                         f'32
+                                        \f
                                           %! abjad.glissando(7)
                                         - \abjad-zero-padding-glissando
                                           %! abjad.glissando(7)
                                         \glissando
+                                        - \tweak stencil #constante-hairpin
+                                        \<
                                         {
                                             \once \override Accidental.stencil = ##f
                                             \once \override NoteHead.no-ledgers = ##t
@@ -2140,7 +2279,7 @@
                                     - \tweak color #(css-color 'darksalmon)
                                     - \tweak padding #5
                                     - \abjad-dashed-line-with-hook
-                                    - \tweak bound-details.left.text \markup \concat { \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  11°/C1(IV)" } \hspace #0.5 }
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  11°/C2(IV)" } \hspace #0.5 }
                                     \startTextSpanOne
                                     - \tweak stencil #constante-hairpin
                                     \<
