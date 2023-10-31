@@ -6,7 +6,7 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 0\" - 37\" "  }
-            - \tweak padding #14
+            - \tweak padding #3
             ^ \markup \override #'(font-name . "Source Han Serif SC Bold") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { \center-column { \line { I. 鬼火 } \line { ( 粦 ) } } }
             \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
             \time 1/8

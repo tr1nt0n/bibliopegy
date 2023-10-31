@@ -231,11 +231,11 @@ trinton.make_music(
     trinton.spanner_command(
         strings=[
             "\skin-default-notehead-markup",
-            "\skin-diamond-notehead-markup",
+            """\markup \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  ( IV )" }""",
         ],
         selector=trinton.select_leaves_by_index([0, 3, 3, -1], pitched=True),
         style="solid-line-with-arrow",
-        padding=6,
+        padding=5.5,
         full_string=True,
         command="One",
         right_padding=0,
@@ -249,7 +249,7 @@ trinton.make_music(
         ],
         selector=trinton.select_leaves_by_index([0, 3, 3, -1], pitched=True),
         style="solid-line-with-arrow",
-        padding=4,
+        padding=3.5,
         right_padding=0,
         full_string=True,
         end_hook=True,
@@ -261,7 +261,7 @@ trinton.make_music(
         selector=trinton.select_logical_ties_by_index(
             [-2, -1], first=True, pitched=True
         ),
-        padding=8.5,
+        padding=8,
         right_padding=1.5,
         full_string=True,
         tweaks=[r"- \tweak color #darkmagenta"],
@@ -376,7 +376,7 @@ trinton.make_music(
         selector=trinton.select_leaves_by_index([0, 0, 0, 0, -1], pitched=True),
     ),
     trinton.hooked_spanner_command(
-        string="""\markup \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  11°/C2(IV)" }""",
+        string="""\markup \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  11° / C2 ( IV )" }""",
         selector=trinton.select_leaves_by_index([0, -1], pitched=True),
         padding=5,
         right_padding=0,

@@ -385,7 +385,7 @@ movements = [
     ),
 ]
 
-movements = [abjad.bundle(movement, r"- \tweak padding #14") for movement in movements]
+movements = [abjad.bundle(movement, r"- \tweak padding #3") for movement in movements]
 
 _viola_processing_markups = {
     "1 on": abjad.Markup(
@@ -454,6 +454,44 @@ def silence(score, measures, timestamps):
 
 
 # notation tools
+
+
+def pitch_trombone_cascading_glissandi(
+    starting_point, direction, selector=trinton.pleaves()
+):
+    def pitch(argument):
+        selections = selector(argument)
+        pties = abjad.select.logical_ties(selections, pitched=True, grace=False)
+
+        if direction == "up":
+            modulator = 2
+        else:
+            modulator = -2
+
+        pitch_list = [starting_point]
+
+        excluded_tie_length = len(pties) - 1
+
+        for _ in range(excluded_tie_length):
+            previous_pitch = pitch_list[-1]
+            modulated_pitch = previous_pitch + modulator
+            pitch_list.append(modulated_pitch)
+
+        handler = evans.PitchHandler(pitch_list=pitch_list)
+
+        handler(pties)
+
+        graces = abjad.select.leaves(selections, pitched=True, grace=True)
+
+        grace_modulator = modulator + modulator
+
+        grace_pitch_list = [_ + grace_modulator for _ in pitch_list]
+
+        handler = evans.PitchHandler(grace_pitch_list)
+
+        handler(graces)
+
+    return pitch
 
 
 def color_fingerings(selector=trinton.pleaves(), index=0):
@@ -676,6 +714,44 @@ def viola_bridge_staff(selector=abjad.select.leaves, stage=1):
                 else:
                     abjad.attach(abjad.BendAfter(-2), group[0][0])
                     abjad.attach(abjad.Articulation("staccato"), group[0][0])
+
+    return staff
+
+
+def trombone_glissando_staff(selector=trinton.pleaves()):
+    def staff(argument):
+        selections = selector(argument)
+        abjad.attach(abjad.Clef("varpercussion"), selections[0])
+
+        start_literals = [
+            r"\staff-line-count 2",
+            r"\override Staff.StaffSymbol.line-positions = #'(5 -5)",
+            r"\override Staff.Accidental.stencil = ##f",
+            r"\override Staff.NoteHead.no-ledgers = ##t",
+        ]
+
+        stop_literals = [
+            r"\staff-line-count 5",
+            r"\revert Staff.StaffSymbol.line-positions",
+            r"\revert Staff.Accidental.stencil",
+            r"\override Staff.NoteHead.no-ledgers = ##f",
+        ]
+
+        abjad.attach(
+            abjad.LilyPondLiteral(
+                start_literals,
+                site="absolute_before",
+            ),
+            selections[0],
+        )
+
+        abjad.attach(
+            abjad.LilyPondLiteral(
+                stop_literals,
+                site="absolute_after",
+            ),
+            selections[-1],
+        )
 
     return staff
 
@@ -1571,7 +1647,7 @@ def dune_ii(voices, measures, rotation=0, dynamics=["ff"]):
             )
 
 
-def trombone_alpha(voices, measures, rotation=0, dynamics=["ff"]):
+def trombone_alpha(voices, measures, rotation=0, dynamics=["ff"], pitching=True):
 
     talea_seed = eval("""[[3, 2, 5,], [4, 3, 4,], [2, 5, 2,], [2, 3, 4,]]""")
     counts_seed = eval("""[[0, 4], [-2, 1], [0, 5], [-3, 2]]""")
@@ -1615,27 +1691,35 @@ def trombone_alpha(voices, measures, rotation=0, dynamics=["ff"]):
             trinton.force_rest(
                 selector=trinton.patterned_tie_index_selector(rest_leaves, len(voices))
             ),
-            trinton.treat_tuplets(),
-            evans.PitchHandler(["d,"]),
-            evans.PitchHandler([ratio], as_ratios=True),
-            trinton.force_accidentals_command(
-                selector=trinton.logical_ties(first=True, pitched=True, grace=False),
-            ),
-            library.duration_line(),
-            trinton.linear_attachment_command(
-                attachments=cycle(line_spanner_list),
-                selector=trinton.logical_ties(first=True, pitched=True),
-            ),
-            trinton.hooked_spanner_command(
-                string=r"""\markup \with-color "darksalmon" { "with vinyl covers" }""",
-                selector=trinton.select_leaves_by_index([0, -1], pitched=True),
-                padding=5.5,
-                right_padding=0,
-                full_string=True,
-                tweaks=[r"- \tweak color #(css-color 'darksalmon)"],
-            ),
             voice=voice,
         )
+
+        if pitching is True:
+            trinton.make_music(
+                lambda _: trinton.select_target(_, measures),
+                trinton.treat_tuplets(),
+                evans.PitchHandler(["d,"]),
+                evans.PitchHandler([ratio], as_ratios=True),
+                trinton.force_accidentals_command(
+                    selector=trinton.logical_ties(
+                        first=True, pitched=True, grace=False
+                    ),
+                ),
+                library.duration_line(),
+                trinton.linear_attachment_command(
+                    attachments=cycle(line_spanner_list),
+                    selector=trinton.logical_ties(first=True, pitched=True),
+                ),
+                trinton.hooked_spanner_command(
+                    string=r"""\markup \with-color "darksalmon" { "with vinyl covers" }""",
+                    selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+                    padding=5.5,
+                    right_padding=0,
+                    full_string=True,
+                    tweaks=[r"- \tweak color #(css-color 'darksalmon)"],
+                ),
+                voice=voice,
+            )
 
 
 def cello_graces(selector=trinton.pleaves(), rotation=0, counter=1, counter_offset=0):

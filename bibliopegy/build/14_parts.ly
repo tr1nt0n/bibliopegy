@@ -1981,12 +1981,12 @@
                                       %! abjad.glissando(7)
                                     \glissando
                                     - \tweak color #(css-color 'darksalmon)
-                                    - \tweak padding #6
+                                    - \tweak padding #5.5
                                     - \abjad-solid-line-with-arrow
                                     - \tweak bound-details.left.text \markup \concat { \skin-default-notehead-markup \hspace #0.5 }
                                     \startTextSpanOne
                                     - \tweak color #(css-color 'indianred)
-                                    - \tweak padding #4
+                                    - \tweak padding #3.5
                                     - \abjad-solid-line-with-arrow
                                     - \tweak bound-details.left.text \markup \concat { \with-color "indianred" { "molto tast." } \hspace #0.5 }
                                     \startTextSpanTwo
@@ -2029,19 +2029,19 @@
                                       %! abjad.glissando(7)
                                     \glissando
                                     - \tweak color #(css-color 'darksalmon)
-                                    - \tweak padding #6
+                                    - \tweak padding #5.5
                                     - \abjad-dashed-line-with-hook
-                                    - \tweak bound-details.left.text \markup \concat { \skin-diamond-notehead-markup \hspace #0.5 }
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  ( IV )" } \hspace #0.5 }
                                     - \tweak bound-details.right.padding -1.5
                                     \startTextSpanOne
                                     - \tweak color #(css-color 'indianred)
-                                    - \tweak padding #4
+                                    - \tweak padding #3.5
                                     - \abjad-dashed-line-with-hook
                                     - \tweak bound-details.left.text \markup \concat { \with-color "indianred" { "molto pont." } \hspace #0.5 }
                                     - \tweak bound-details.right.padding -1.5
                                     \startTextSpanTwo
                                     - \tweak color #darkmagenta
-                                    - \tweak padding #8.5
+                                    - \tweak padding #8
                                     - \abjad-dashed-line-with-hook
                                     - \tweak bound-details.left.text \markup \concat { \with-color "darkmagenta" { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe222 \override #'(font-name . "Bodoni72 Italic") " ( trem. largo )" } \hspace #0.5 }
                                     - \tweak bound-details.right.padding -1.5
@@ -2285,7 +2285,7 @@
                                     - \tweak color #(css-color 'darksalmon)
                                     - \tweak padding #5
                                     - \abjad-dashed-line-with-hook
-                                    - \tweak bound-details.left.text \markup \concat { \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  11°/C2(IV)" } \hspace #0.5 }
+                                    - \tweak bound-details.left.text \markup \concat { \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  11° / C2 ( IV )" } \hspace #0.5 }
                                     \startTextSpanOne
                                     - \tweak stencil #constante-hairpin
                                     \<

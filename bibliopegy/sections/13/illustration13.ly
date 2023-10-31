@@ -20,7 +20,7 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 3\'52\" - 4\'4\" "  }
-            - \tweak padding #14
+            - \tweak padding #3
             ^ \markup \override #'(font-name . "Bodoni72 Book") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box \line { II. Perros de paja }
             \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
             \time 1/8
