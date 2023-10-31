@@ -53,8 +53,7 @@ library.write_simultaneous_time_signatures(
 
 library.make_metric_music(
     evans.RhythmHandler(library.viola_i_rhythm(index=15, extra_counts=True, stage=1)),
-    evans.PitchHandler([[2, -1]]),
-    library.change_lines(lines=4, clef="varpercussion"),
+    evans.PitchHandler([["g", "aqs"]]),
     trinton.attachment_command(
         attachments=[abjad.Articulation("staccato")],
         selector=trinton.durational_selector(
@@ -73,6 +72,7 @@ library.make_metric_music(
     ),
     trinton.linear_attachment_command(
         attachments=[
+            abjad.Clef("altovarC"),
             library._viola_processing_markups["1 on"],
             abjad.Dynamic("p"),
             abjad.StartHairpin("<"),
@@ -82,8 +82,16 @@ library.make_metric_music(
             library._viola_processing_markups["1 off"],
         ],
         selector=trinton.select_logical_ties_by_index(
-            [0, 0, 0, 7, 7, -1, -1], first=True, pitched=True
+            [0, 0, 0, 0, 7, 7, -1, -1], first=True, pitched=True
         ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "indianred" { "pont." }""",
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+        padding=10,
+        right_padding=2.5,
+        full_string=True,
+        tweaks=[r"""- \tweak color #(css-color 'indianred)"""],
     ),
     trinton.notehead_bracket_command(),
     score=score,

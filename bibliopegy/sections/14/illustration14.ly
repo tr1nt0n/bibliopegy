@@ -273,30 +273,35 @@
                                     \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 7 6) (ly:make-duration 5 0))
                                     \times 6/7
                                     {
-                                        \staff-line-count 4
-                                        \clef "varpercussion"
-                                        <b d'>64
+                                        \clef "altovarC"
+                                        <g aqs>64
                                         - \staccato
                                         \p
                                         - \markup \with-color \一 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "一 on" }
                                         [
                                         (
+                                        - \tweak color #(css-color 'indianred)
+                                        - \tweak padding #10
+                                        - \abjad-dashed-line-with-hook
+                                        - \tweak bound-details.left.text \markup \concat { \with-color "indianred" { "pont." } \hspace #0.5 }
+                                        - \tweak bound-details.right.padding -2.5
+                                        \startTextSpan
                                         \<
-                                        <b d'>64
+                                        <g aqs>64
                                         - \staccato
                                         )
                                         ]
-                                        <b d'>8
+                                        <g aqs>8
                                         - \ricochet
-                                        <b d'>64
+                                        <g aqs>64
                                         - \staccato
                                         [
                                         (
-                                        <b d'>64
+                                        <g aqs>64
                                         - \staccato
-                                        <b d'>64
+                                        <g aqs>64
                                         - \staccato
-                                        <b d'>64
+                                        <g aqs>64
                                         - \staccato
                                         )
                                         ]
@@ -305,28 +310,29 @@
                                     \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 13 12) (ly:make-duration 6 0))
                                     \times 12/13
                                     {
-                                        <b d'>8
+                                        <g aqs>8
                                         - \ricochet
                                         \mf
                                         [
                                         - \tweak circled-tip ##t
                                         \>
                                         ~
-                                        <b d'>64
+                                        <g aqs>64
                                         ]
-                                        <b d'>64
+                                        <g aqs>64
                                         - \staccato
                                         [
                                         (
-                                        <b d'>64
+                                        <g aqs>64
                                         - \staccato
-                                        <b d'>64
+                                        <g aqs>64
                                         - \staccato
-                                        <b d'>64
+                                        <g aqs>64
                                         - \staccato
                                         \!
                                         - \markup \with-color \一 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "一 off" }
                                         )
+                                        \stopTextSpan
                                         ]
                                     }
                                 }
