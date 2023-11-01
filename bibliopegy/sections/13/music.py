@@ -163,7 +163,7 @@ trinton.make_music(
         selector=trinton.select_leaves_by_index([0, -1], grace=False, pitched=True),
     ),
     trinton.hooked_spanner_command(
-        string=r"""\markup \with-color "darkred" { "flaut. molitissimo" }""",
+        string=r"""\markup \with-color "darkred" { "flaut. moltissimo" }""",
         selector=trinton.select_logical_ties_by_index(
             [
                 0,

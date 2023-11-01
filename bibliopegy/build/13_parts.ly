@@ -1254,7 +1254,7 @@
                                         - \tweak color #darkred
                                         - \tweak padding #10
                                         - \abjad-dashed-line-with-hook
-                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { "flaut. molitissimo" } \hspace #0.5 }
+                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { "flaut. moltissimo" } \hspace #0.5 }
                                         \startTextSpan
                                         {
                                             \once \override Accidental.stencil = ##f
