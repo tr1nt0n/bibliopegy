@@ -132,6 +132,98 @@ trinton.make_music(
     voice=score["violin voice"],
 )
 
+# flute music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (2, 6)),
+    evans.RhythmHandler(
+        evans.talea(
+            [
+                1,
+            ],
+            32,
+            extra_counts=[1, 0, 1, 1, 2],
+        )
+    ),
+    trinton.force_rest(selector=trinton.select_leaves_by_index([0, 1, 2, 11, 12, 13])),
+    evans.PitchHandler(pitch_list=trinton.rotated_sequence(pitch.delta_pitches, 11)),
+    library.octave_up(
+        selector=trinton.select_leaves_by_index(
+            [6, 7, 8, 9, 10, 11, 12, 15, 16, 17, 18], pitched=True
+        ),
+    ),
+    library.double_octave_up(
+        selector=trinton.select_leaves_by_index(
+            [
+                13,
+            ],
+            pitched=True,
+        ),
+    ),
+    library.octave_down(
+        selector=trinton.select_leaves_by_index(
+            [
+                0,
+            ],
+            pitched=True,
+        ),
+    ),
+    library.duration_line(),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(r"\slurDashed", site="before"),
+            abjad.LilyPondLiteral(r"\slurSolid", site="after"),
+        ],
+        selector=trinton.select_leaves_by_index(
+            [
+                0,
+                -1,
+            ],
+            pitched=True,
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.StartSlur(),
+            abjad.StartHairpin("o<"),
+        ],
+        selector=trinton.select_leaves_by_index(
+            [
+                0,
+                8,
+            ],
+            pitched=True,
+            grace=False,
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.StopSlur()],
+        selector=trinton.select_leaves_by_index([7, -1], pitched=True, grace=True),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Dynamic("ff"),
+            trinton.make_custom_dynamic("fff +"),
+        ],
+        selector=trinton.select_leaves_by_index([7, -1], pitched=True, grace=True),
+    ),
+    voice=score["flute voice"],
+)
+
+# bass flute music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 7)),
+    evans.RhythmHandler(evans.talea([5, 6], 32)),
+    evans.PitchHandler(["d'", "ef'"]),
+    library.duration_line(),
+    trinton.linear_attachment_command(
+        attachments=[abjad.Dynamic("p"), abjad.StartHairpin("<"), abjad.Dynamic("f")],
+        selector=trinton.select_leaves_by_index([0, 0, -1], pitched=True),
+    ),
+    voice=score["bassflute voice"],
+)
+
 # globals
 
 library.set_all_time_signatures(score=score, exclude_viola=False)
