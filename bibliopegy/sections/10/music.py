@@ -335,7 +335,7 @@ trinton.make_music(
             32,
         )
     ),
-    evans.PitchHandler(["d,"]),
+    evans.PitchHandler(["ef,"]),
     evans.PitchHandler(["13/1"], as_ratios=True),
     library.change_lines(lines=5, clef="treble"),
     trinton.force_accidentals_command(
@@ -412,6 +412,7 @@ library.clean_onbeat_graces(
         score["cello 1 voice graces 1"],
     ],
     measures=(13, 14),
+    stage=2,
 )
 
 trinton.make_music(
@@ -474,7 +475,7 @@ trinton.make_music(
             32,
         )
     ),
-    evans.PitchHandler(["d,"]),
+    evans.PitchHandler(["ef,"]),
     evans.PitchHandler(["11/1"], as_ratios=True),
     library.change_lines(lines=5, clef="treble"),
     trinton.force_accidentals_command(
@@ -551,6 +552,7 @@ library.clean_onbeat_graces(
         score["cello 2 voice graces 1"],
     ],
     measures=(13, 14),
+    stage=2,
 )
 
 trinton.make_music(

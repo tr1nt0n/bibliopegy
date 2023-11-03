@@ -979,12 +979,19 @@ def color_onbeat_graces(
     return color
 
 
-def clean_onbeat_graces(voices, measures):
-    _cello_number_to_pitch = {
-        "1": "b''",
-        "2": "g''",
-        "3": "e''",
-    }
+def clean_onbeat_graces(voices, measures, stage=1):
+    if stage == 1:
+        _cello_number_to_pitch = {
+            "1": "b''",
+            "2": "g''",
+            "3": "e''",
+        }
+    else:
+        _cello_number_to_pitch = {
+            "1": "c'''",
+            "2": "a''",
+            "3": "f''",
+        }
 
     for voice in voices:
         cello_number = voice.name[6:7]

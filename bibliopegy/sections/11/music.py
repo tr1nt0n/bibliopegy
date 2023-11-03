@@ -275,7 +275,7 @@ for voice_name, rotation, ratio in zip(
                 64,
             )
         ),
-        evans.PitchHandler(["d,"]),
+        evans.PitchHandler(["ef,"]),
         evans.PitchHandler([ratio], as_ratios=True),
         trinton.force_accidentals_command(
             selector=trinton.logical_ties(first=True, pitched=True)

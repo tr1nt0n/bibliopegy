@@ -940,9 +940,9 @@
                                     \time 1/8
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                    b''!8
+                                    c'''!8
                                     \pp
-                                    ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
+                                    ^ \markup \center-align { \concat { B+41 } }
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
@@ -975,7 +975,7 @@
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                    b''32
+                                    c'''32
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -988,14 +988,14 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        b''16
+                                        c'''16
                                         \stopTrillSpan
                                     }
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                    b''!16..
-                                    ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
+                                    c'''!16..
+                                    ^ \markup \center-align { \concat { B+41 } }
                                     \stopTextSpanTwo
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
@@ -1032,13 +1032,13 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        b''16
+                                        c'''16
                                         \stopTrillSpan
                                     }
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                    b''!8
-                                    ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
+                                    c'''!8
+                                    ^ \markup \center-align { \concat { B+41 } }
                                     \stopTextSpanTwo
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
@@ -1067,7 +1067,7 @@
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                    b''32
+                                    c'''32
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1080,14 +1080,14 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        b''16
+                                        c'''16
                                         \stopTrillSpan
                                     }
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                    b''!16..
-                                    ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
+                                    c'''!16..
+                                    ^ \markup \center-align { \concat { B+41 } }
                                     \stopTextSpanTwo
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
@@ -1124,14 +1124,14 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        b''16
+                                        c'''16
                                         \stopTrillSpan
                                     }
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                    b''!16.
-                                    ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
+                                    c'''!16.
+                                    ^ \markup \center-align { \concat { B+41 } }
                                     \stopTextSpanTwo
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
@@ -1169,7 +1169,7 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        b''16
+                                        c'''16
                                         \stopTextSpanOne
                                         \stopTextSpanTwo
                                         \stopTrillSpan
@@ -1210,10 +1210,10 @@
                                     \time 1/8
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
-                                    \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                    g''!16..
+                                    \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                    af''!16..
                                     \pp
-                                    ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
+                                    ^ \markup \center-align { \concat { A-49 } }
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
@@ -1254,13 +1254,13 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        g''16
+                                        af''16
                                         \stopTrillSpan
                                     }
                                     \tweak Accidental.stencil #ly:text-interface::print
-                                    \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                    g''!8
-                                    ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
+                                    \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                    af''!8
+                                    ^ \markup \center-align { \concat { A-49 } }
                                     \stopTextSpanTwo
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
@@ -1288,8 +1288,8 @@
                                     \override NoteHead.no-ledgers = ##t
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
-                                    \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                    g''32
+                                    \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                    af''32
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1302,14 +1302,14 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        g''16
+                                        af''16
                                         \stopTrillSpan
                                     }
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
-                                    \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                    g''!16..
-                                    ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
+                                    \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                    af''!16..
+                                    ^ \markup \center-align { \concat { A-49 } }
                                     \stopTextSpanTwo
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
@@ -1346,13 +1346,13 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        g''16
+                                        af''16
                                         \stopTrillSpan
                                     }
                                     \tweak Accidental.stencil #ly:text-interface::print
-                                    \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                    g''!8
-                                    ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
+                                    \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                    af''!8
+                                    ^ \markup \center-align { \concat { A-49 } }
                                     \stopTextSpanTwo
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
@@ -1380,8 +1380,8 @@
                                     \override NoteHead.no-ledgers = ##t
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
-                                    \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                    g''32
+                                    \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                    af''32
                                     {
                                         \once \override Accidental.stencil = ##f
                                         \once \override NoteHead.no-ledgers = ##t
@@ -1394,14 +1394,14 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        g''16
+                                        af''16
                                         \stopTrillSpan
                                     }
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
-                                    \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                    g''!16.
-                                    ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
+                                    \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                    af''!16.
+                                    ^ \markup \center-align { \concat { A-49 } }
                                     \stopTextSpanTwo
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
@@ -1439,7 +1439,7 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        g''16
+                                        af''16
                                         \stopTextSpanOne
                                         \stopTextSpanTwo
                                         \stopTrillSpan

@@ -1649,7 +1649,7 @@
                                                 \once \override NoteHead.transparent = ##t
                                                 \abjad-color-music #'darkred
                                                 \voiceOne
-                                                b''16 * 5/8
+                                                c'''16 * 5/8
                                                 - \tweak color #"darkmagenta"
                                                 - \downbow
                                                 _ \fff
@@ -1680,7 +1680,7 @@
                                                   %! abjad.glissando(1)
                                                 \override NoteHead.no-ledgers = ##t
                                                 \revert Staff.Stem.stencil
-                                                b''32 * 5/4
+                                                c'''32 * 5/4
                                                 - \tweak color #"darkmagenta"
                                                 - \upbow
                                                 \stopTextSpan
@@ -1693,7 +1693,7 @@
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
                                                 \afterGrace
-                                                b''16 * 5/8
+                                                c'''16 * 5/8
                                                 )
                                                 \stopTextSpan
                                                 ]
@@ -1710,7 +1710,7 @@
                                                     \revert NoteHead.no-ledgers
                                                       %! abjad.glissando(6)
                                                     \undo \hide NoteHead
-                                                    b''16
+                                                    c'''16
                                                     \!
                                                     \stopTrillSpan
                                                 }
@@ -1724,8 +1724,8 @@
                                             \voiceTwo
                                             \tweak Accidental.stencil #ly:text-interface::print
                                             \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                            b''!8
-                                            ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
+                                            c'''!8
+                                            ^ \markup \center-align { \concat { B+41 } }
                                             ~
                                             \once \override Accidental.stencil = ##f
                                             \once \override Beam.stencil = ##f
@@ -1738,15 +1738,15 @@
                                             \once \override NoteHead.transparent = ##t
                                             \tweak Accidental.stencil #ly:text-interface::print
                                             \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                            b''32
+                                            c'''32
                                         }
                                     >>
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \markup { \one-tridecimal-third-tone-down  }
-                                    b''!16.
+                                    c'''!16.
                                         _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
-                                    ^ \markup \center-align { \concat { B\raise #0.5 { \teeny \flat } +41 } }
+                                    ^ \markup \center-align { \concat { B+41 } }
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
@@ -1782,7 +1782,7 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        b''16
+                                        c'''16
                                         \stopTextSpan
                                         \stopTrillSpan
                                     }
@@ -1945,7 +1945,7 @@
                                                 \once \override NoteHead.transparent = ##t
                                                 \abjad-color-music #'darkred
                                                 \voiceOne
-                                                g''16 * 5/8
+                                                a''16 * 5/8
                                                 - \tweak color #"darkmagenta"
                                                 - \downbow
                                                 _ \fff
@@ -1976,7 +1976,7 @@
                                                   %! abjad.glissando(1)
                                                 \override NoteHead.no-ledgers = ##t
                                                 \revert Staff.Stem.stencil
-                                                g''32 * 5/4
+                                                a''32 * 5/4
                                                 - \tweak color #"darkmagenta"
                                                 - \upbow
                                                 \stopTextSpan
@@ -1989,7 +1989,7 @@
                                                 \startTextSpan
                                                 \abjad-color-music #'darkred
                                                 \afterGrace
-                                                g''16 * 5/8
+                                                a''16 * 5/8
                                                 )
                                                 \stopTextSpan
                                                 ]
@@ -2006,7 +2006,7 @@
                                                     \revert NoteHead.no-ledgers
                                                       %! abjad.glissando(6)
                                                     \undo \hide NoteHead
-                                                    g''16
+                                                    a''16
                                                     \!
                                                     \stopTrillSpan
                                                 }
@@ -2019,9 +2019,9 @@
                                               %! abjad.on_beat_grace_container(4)
                                             \voiceTwo
                                             \tweak Accidental.stencil #ly:text-interface::print
-                                            \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                            g''!8
-                                            ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
+                                            \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                            af''!8
+                                            ^ \markup \center-align { \concat { A-49 } }
                                             ~
                                             \once \override Accidental.stencil = ##f
                                             \once \override Beam.stencil = ##f
@@ -2033,16 +2033,16 @@
                                             \once \override Tie.stencil = ##f
                                             \once \override NoteHead.transparent = ##t
                                             \tweak Accidental.stencil #ly:text-interface::print
-                                            \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                            g''32
+                                            \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                            af''32
                                         }
                                     >>
                                     \afterGrace
                                     \tweak Accidental.stencil #ly:text-interface::print
-                                    \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
-                                    g''!16.
+                                    \tweak Accidental.text \markup \concat { \one-undecimal-quarter-tone-up \hspace #0.125 \abjad-flat  }
+                                    af''!16.
                                         _ #(make-dynamic-script (markup #:whiteout #:italic "p +"))
-                                    ^ \markup \center-align { \concat { A\raise #0.5 { \teeny \flat } -49 } }
+                                    ^ \markup \center-align { \concat { A-49 } }
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
@@ -2078,7 +2078,7 @@
                                         \revert NoteHead.no-ledgers
                                           %! abjad.glissando(6)
                                         \undo \hide NoteHead
-                                        g''16
+                                        af''16
                                         \stopTextSpan
                                         \stopTrillSpan
                                     }

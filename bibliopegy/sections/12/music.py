@@ -576,7 +576,7 @@ for measure_range in [(1, 6), (12, 14)]:
                 64,
             )
         ),
-        evans.PitchHandler(["d,"]),
+        evans.PitchHandler(["ef,"]),
         evans.PitchHandler(
             [
                 "13/1",
@@ -678,7 +678,7 @@ for measure_range in [(1, 9), (13, 14)]:
                 64,
             )
         ),
-        evans.PitchHandler(["d,"]),
+        evans.PitchHandler(["ef,"]),
         evans.PitchHandler(["11/1"], as_ratios=True),
         trinton.force_accidentals_command(
             selector=trinton.logical_ties(first=True, pitched=True)
@@ -688,7 +688,7 @@ for measure_range in [(1, 9), (13, 14)]:
             string=r"""\markup \with-color "darkred" { "flaut. moltissimo" }""",
             selector=trinton.select_leaves_by_index([0, -1]),
             command="One",
-            padding=10,
+            padding=11,
             right_padding=0,
             full_string=True,
             tweaks=[r"""- \tweak color #"darkred" """],
@@ -743,7 +743,7 @@ trinton.make_music(
             pitched=True,
         ),
         style="solid-line-with-arrow",
-        padding=12,
+        padding=13,
         full_string=True,
         command="Two",
         tweaks=[r"""- \tweak color #(css-color 'indianred)"""],
@@ -763,7 +763,7 @@ trinton.make_music(
             [0, 2, 2, -1], first=True, pitched=True
         ),
         style="solid-line-with-arrow",
-        padding=12,
+        padding=13,
         full_string=True,
         command="Two",
         tweaks=[r"""- \tweak color #(css-color 'indianred)"""],
