@@ -1027,6 +1027,7 @@ def cello_trills(
     speed_factor,
     thickness=3,
     selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+    head=False,
 ):
     def trills(argument):
         if speed_factor > 0.9:
@@ -1044,6 +1045,13 @@ def cello_trills(
             rf"- \tweak details.squiggle-speed-factor {speed_factor}",
             rf"- \tweak thickness {thickness}",
         )
+
+        if head is True:
+            start_trill = abjad.bundle(
+                abjad.StartTrillSpan(),
+                r"- \tweak color #(css-color 'goldenrod)",
+                r"""- \tweak bound-details.left.text \markup \with-color "goldenrod" { \center-column { \fontsize #5 \override #'(font-name . "ekmelos") \line { \char ##xe0BE | \char ##xe0A4 } } }""",
+            )
 
         stop_trill = abjad.StopTrillSpan()
 
