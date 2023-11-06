@@ -1095,6 +1095,10 @@ def blank_measure_by_hand(score, voice_names, measures, clef_whitespace=False):
                             "before",
                         ),
                         abjad.LilyPondLiteral(
+                            r"\once \override Staff.TimeSignature.stencil = ##f",
+                            "before",
+                        ),
+                        abjad.LilyPondLiteral(
                             r"\once \override MultiMeasureRest.transparent = ##t",
                             "before",
                         ),
