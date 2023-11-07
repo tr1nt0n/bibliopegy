@@ -143,6 +143,23 @@ library.make_metric_music(
         )
     ),
     trinton.notehead_bracket_command(),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(r"\break", site="after"),
+        ],
+        selector=trinton.select_leaves_by_index([-1]),
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\override Staff.BarLine.bar-extent = #'(-2 . 2)", site="after"
+            ),
+            abjad.LilyPondLiteral(
+                r"\override Staff.BarLine.transparent = ##f", site="after"
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
     score=score,
     voice_name="viola voice",
     second_range=(6, 9),
@@ -334,6 +351,12 @@ library.make_metric_music(
             nested=True,
         )
     ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(r"\break", site="after"),
+        ],
+        selector=trinton.select_leaves_by_index([-1]),
+    ),
     score=score,
     voice_name="viola voice",
     second_range=(14, 17),
@@ -496,27 +519,13 @@ library.write_instrument_names(score=score)
 
 library.write_short_instrument_names(score=score)
 
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (1,)),
-#     trinton.attachment_command(
-#         attachments=[
-#             library.movements[0],
-#         ],
-#         selector=trinton.select_leaves_by_index([0]),
-#         direction=abjad.UP,
-#     ),
-#     trinton.attachment_command(
-#         attachments=[
-#             abjad.Markup(
-#                 r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "0\" - 37\""  }"""
-#             )
-#         ],
-#         selector=trinton.select_leaves_by_index([0]),
-#     ),
-#     voice=score["Global Context"],
-# )
+library.blank_measure_by_hand(
+    score=score,
+    voice_names=["viola voice"],
+    measures=[23],
+)
 
-for voice_name in library.all_voice_names:
+for voice_name in library.all_voice_names_include_time_signature_context:
     trinton.make_music(
         lambda _: trinton.select_target(_, (1,)),
         trinton.attachment_command(
@@ -544,6 +553,10 @@ for voice_name in library.all_voice_names:
                 abjad.LilyPondLiteral(
                     r"\once \override Staff.BarLine.transparent = ##f"
                 ),
+                abjad.LilyPondLiteral(
+                    r"\once \override Staff.BarLine.bar-extent = #'(-2 . 2)",
+                    site="after",
+                ),
                 abjad.BarLine(":|.", "after"),
             ],
             selector=trinton.select_leaves_by_index([-1]),
@@ -551,14 +564,14 @@ for voice_name in library.all_voice_names:
         voice=score[voice_name],
     )
 
-trinton.make_music(
-    lambda _: trinton.select_target(_, (4,)),
-    trinton.attachment_command(
-        attachments=[abjad.BarLine("||", "after")],
-        selector=trinton.select_leaves_by_index([-1]),
-    ),
-    voice=score["viola voice time signatures"],
-)
+# trinton.make_music(
+#     lambda _: trinton.select_target(_, (4,)),
+#     trinton.attachment_command(
+#         attachments=[abjad.BarLine("||", "after")],
+#         selector=trinton.select_leaves_by_index([-1]),
+#     ),
+#     voice=score["viola voice time signatures"],
+# )
 
 trinton.make_music(
     lambda _: trinton.select_target(_, (1,)),
@@ -602,31 +615,31 @@ trinton.make_music(
     voice=score["Global Context"],
 )
 
-trinton.make_music(
-    lambda _: trinton.select_target(_, (22,)),
-    trinton.attachment_command(
-        attachments=[
-            abjad.Markup(
-                r"""\markup \fontsize #5 \override #'(font-name . "Bodoni72 Book Italic") { \hspace #17 "D.C. al Fine" }"""
-            ),
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-    ),
-    voice=score["Global Context"],
+library.silence(
+    score=score,
+    measures=[1, 23],
+    timestamps=[r"""6\'46\" - 6\'52\"""", r"""0\" - 12\""""],
 )
 
-trinton.make_music(
-    lambda _: trinton.select_target(_, (23,)),
-    trinton.attachment_command(
-        attachments=[
-            abjad.Markup(
-                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "0\" - 12\""  }"""
-            ),
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-    ),
-    voice=score["Global Context"],
-)
+for voice_name in library.all_voice_names_include_time_signature_context:
+    trinton.make_music(
+        lambda _: trinton.select_target(_, (23,)),
+        trinton.attachment_command(
+            attachments=[
+                abjad.LilyPondLiteral(
+                    r"\once \override Staff.BarLine.transparent = ##f", site="after"
+                ),
+                abjad.LilyPondLiteral(
+                    r"""\once \override Staff.BarLine.glyph-name = "||" """,
+                    site="absolute_after",
+                ),
+            ],
+            selector=trinton.select_leaves_by_index([-1]),
+        ),
+        voice=score[voice_name],
+    )
+
+library.forbid_break(score=score, measures=[1, 22])
 
 # cutaway
 
@@ -644,9 +657,9 @@ trinton.extract_parts(score)
 
 trinton.render_file(
     score=score,
-    segment_path="/Users/trintonprater/scores/bibliopegy/bibliopegy/sections/cadenza",
+    segment_path="/Users/trintonprater/scores/bibliopegy/bibliopegy/sections/20",
     build_path="/Users/trintonprater/scores/bibliopegy/bibliopegy/build",
-    segment_name="cadenza",
+    segment_name="20",
     includes=[
         "/Users/trintonprater/scores/bibliopegy/bibliopegy/build/section-stylesheet.ily",
         "/Users/trintonprater/abjad/abjad/scm/abjad.ily",

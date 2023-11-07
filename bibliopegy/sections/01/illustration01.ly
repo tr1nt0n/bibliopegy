@@ -141,6 +141,7 @@
                             \once \override MultiMeasureRest.transparent = ##t
                             \time 1/8
                             R1 * 1/8
+                            \override Staff.BarLine.bar-extent = #'(-2 . 2)
                               %! +SCORE
                             \stopStaff \startStaff
                               %! +SCORE

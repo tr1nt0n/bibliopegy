@@ -68,6 +68,15 @@ trinton.make_music(
     voice=score["bassclarinet voice"],
 )
 
+# viola music
+
+abjad.attach(
+    abjad.LilyPondLiteral(
+        r"\override Staff.BarLine.bar-extent = #'(-2 . 2)", site="after"
+    ),
+    abjad.select.leaf(score["viola voice"], 0),
+)
+
 # cello 3 music commands
 
 trinton.make_music(

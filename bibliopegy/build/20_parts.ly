@@ -2,14 +2,21 @@
     <<
         \context TimeSignatureContext = "Global Context"
         {
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 140)
             \time 1/8
             s1 * 1/8
-            - \tweak padding #14
+            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 6\'46\" - 6\'52\" "  }
+            - \tweak padding #3
             - \markup \override #'(font-name . "Source Han Serif SC Bold") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box  \line { II,5. 胸がはち切れそうで }
+            \bar ".|:"
+            \noBreak
+            \once \override Staff.BarLine.X-extent = ##f
+            \once \override Staff.BarLine.X-offset = -6
+            \once \override Staff.BarLine.transparent = ##f
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
             \time 4/16
             s1 * 1/4
             ^ \markup \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \box \fontsize #0 { \column { \line { "After the preceeding 6 seconds:" } \line { "- the clocks stop" } \line { "- all electronics are deactivated, including the viola's amplification" } \line { "- without removing the viola from its position, the violist places their chin on the chin rest" } \line { "- the violist places the palm of their left hand under the neck of the instrument, and wraps the fingers around to the strings, as in ordinary playing position" } \line { "- the violist places their bow across the strings, as in ordinary playing position" } \line { "- the violist plays the following passage, fingering the notated pitches' ordinary playing positions on the fingerboard, despite the strained position of the body, despite the instrument's alterations" } \line { "- the passage is played in its entirety without vibrato, not romantically, nevertheless struggling for the tenderness of the material" } \line { "- when the violist is finished, they assume their previous position, the amplification is reactivated, the clocks are reset, and the piece resumes." } } }
-            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
             \time 3/16
@@ -18,55 +25,51 @@
             - \markup \fontsize #5 \override #'(font-name . "Bodoni72 Book Italic") { \hspace #20 "Fine" }
             \time 4/16
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
-            \time 4/16
-            s1 * 1/4
-            \time 3/16
-            s1 * 3/16
-            \time 4/16
-            s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
             \time 3/16
             s1 * 3/16
             \time 4/16
             s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
-            \time 4/16
-            s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
-            \time 4/16
-            s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
-            \time 4/16
-            s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
-            \time 4/16
-            s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
-            \time 4/16
-            s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
-            \time 4/16
-            s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
-            \time 4/16
-            s1 * 1/4
-            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
             \time 3/16
             s1 * 3/16
             \time 4/16
             s1 * 1/4
-            - \markup \fontsize #5 \override #'(font-name . "Bodoni72 Book Italic") { \hspace #17 "D.C. al Fine" }
+            \time 4/16
+            s1 * 1/4
+            \time 4/16
+            s1 * 1/4
+            \time 4/16
+            s1 * 1/4
+            \time 4/16
+            s1 * 1/4
+            \time 4/16
+            s1 * 1/4
+            \time 4/16
+            s1 * 1/4
+            \time 4/16
+            s1 * 1/4
+            \time 4/16
+            s1 * 1/4
+            \time 3/16
+            s1 * 3/16
+            \once \override Staff.BarLine.transparent = ##f
+            \time 4/16
+            s1 * 1/4
+            \bar ":|."
+            \noBreak
+            \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 140)
             \time 1/8
             s1 * 1/8
-            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { "0\" - 12\""  }
+            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 0\" - 12\" "  }
+            \once \override Staff.BarLine.transparent = ##f
+            \once \override Staff.BarLine.glyph-name = "||" 
+            \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
         }
         \tag #'group1
         {
@@ -85,6 +88,8 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 1/8
                             R1 * 1/8
@@ -99,15 +104,7 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
-                            \time 4/16
-                            R1 * 1/4
-                              %! +SCORE
-                        %%% \stopStaff \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.BarLine.transparent = ##f
-                              %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 4/16
@@ -118,6 +115,20 @@
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
+                        %%% \once \override MultiMeasureRest.transparent = ##t
+                            \time 4/16
+                            R1 * 1/4
+                              %! +SCORE
+                        %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 3/16
@@ -129,15 +140,7 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
-                            \time 4/16
-                            R1 * 1/4
-                              %! +SCORE
-                        %%% \stopStaff \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.BarLine.transparent = ##f
-                              %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 4/16
@@ -149,6 +152,8 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 4/16
                             R1 * 1/4
@@ -158,6 +163,20 @@
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
+                        %%% \once \override MultiMeasureRest.transparent = ##t
+                            \time 4/16
+                            R1 * 1/4
+                              %! +SCORE
+                        %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 3/16
@@ -169,15 +188,7 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
-                            \time 4/16
-                            R1 * 1/4
-                              %! +SCORE
-                        %%% \stopStaff \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.BarLine.transparent = ##f
-                              %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 4/16
@@ -188,6 +199,20 @@
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
+                        %%% \once \override MultiMeasureRest.transparent = ##t
+                            \time 4/16
+                            R1 * 1/4
+                              %! +SCORE
+                        %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 3/16
@@ -199,15 +224,7 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
-                            \time 4/16
-                            R1 * 1/4
-                              %! +SCORE
-                        %%% \stopStaff \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.BarLine.transparent = ##f
-                              %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 4/16
@@ -219,15 +236,7 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
-                            \time 4/16
-                            R1 * 1/4
-                              %! +SCORE
-                        %%% \stopStaff \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.BarLine.transparent = ##f
-                              %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 4/16
@@ -239,15 +248,7 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
-                            \time 4/16
-                            R1 * 1/4
-                              %! +SCORE
-                        %%% \stopStaff \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.BarLine.transparent = ##f
-                              %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 4/16
@@ -259,15 +260,7 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
-                        %%% \once \override MultiMeasureRest.transparent = ##t
-                            \time 4/16
-                            R1 * 1/4
-                              %! +SCORE
-                        %%% \stopStaff \startStaff
-                              %! +SCORE
-                        %%% \once \override Staff.BarLine.transparent = ##f
-                              %! +SCORE
-                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 4/16
@@ -279,6 +272,8 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 4/16
                             R1 * 1/4
@@ -288,6 +283,56 @@
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
+                        %%% \once \override MultiMeasureRest.transparent = ##t
+                            \time 4/16
+                            R1 * 1/4
+                              %! +SCORE
+                        %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
+                        %%% \once \override MultiMeasureRest.transparent = ##t
+                            \time 4/16
+                            R1 * 1/4
+                              %! +SCORE
+                        %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
+                        %%% \once \override MultiMeasureRest.transparent = ##t
+                            \time 4/16
+                            R1 * 1/4
+                              %! +SCORE
+                        %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
+                        %%% \once \override MultiMeasureRest.transparent = ##t
+                            \time 4/16
+                            R1 * 1/4
+                              %! +SCORE
+                        %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 3/16
@@ -298,12 +343,15 @@
                         %%% \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
                               %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \once \override Staff.BarLine.transparent = ##f
                             \time 4/16
                             R1 * 1/4
                             \bar ":|."
+                            \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                               %! +SCORE
                         %%% \stopStaff \startStaff
                               %! +SCORE
@@ -311,11 +359,15 @@
                               %! +SCORE
                         %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                               %! +SCORE
+                        %%% \once \override Staff.TimeSignature.transparent = ##t
+                              %! +SCORE
                         %%% \once \override MultiMeasureRest.transparent = ##t
                             \time 1/8
                             R1 * 1/8
+                            \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
                         %%% \stopStaff \startStaff
+                            \once \override Staff.BarLine.glyph-name = "||" 
                         }
                     }
                 }
@@ -385,6 +437,8 @@
                                     ]
                                     r8
                                     d'8
+                                    \override Staff.BarLine.bar-extent = #'(-2 . 2)
+                                    \override Staff.BarLine.transparent = ##f
                                     r32
                                     cs'64
                                     [
@@ -428,6 +482,7 @@
                                     \!
                                     r32
                                     r8
+                                    \break
                                     e'64
                                         _ #(make-dynamic-script (markup #:whiteout #:italic "pmf"))
                                     [
@@ -556,6 +611,7 @@
                                     \!
                                     r64
                                     r8.
+                                    \break
                                     g'64
                                     \f
                                     [
@@ -679,114 +735,111 @@
                                     \voiceTwo
                                     s1 * 1/4
                                     \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 4/16
                                     s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 3/16
-                                    s1 * 3/16
-                                    \bar "||"
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 3/16
                                     s1 * 3/16
                                     \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 4/16
+                                    s1 * 1/4
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 4/16
                                     s1 * 1/4
                                     \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 4/16
                                     s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 3/16
                                     s1 * 3/16
                                     \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 4/16
                                     s1 * 1/4
                                     \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 4/16
                                     s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \once \override Staff.TimeSignature.transparent = ##f
-                                    \time 4/16
-                                    s1 * 1/4
-                                    \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \time 3/16
                                     s1 * 3/16
                                     \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 4/16
+                                    s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 4/16
+                                    s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 4/16
+                                    s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 4/16
+                                    s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 4/16
+                                    s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 4/16
+                                    s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 4/16
+                                    s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 4/16
+                                    s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 4/16
+                                    s1 * 1/4
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.TimeSignature.transparent = ##f
+                                    \time 3/16
+                                    s1 * 3/16
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.TimeSignature.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     s1 * 1/4
                                     \bar ":|."
-                                    \once \override Staff.BarLine.transparent = ##f
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                 }
                             >>
                             \oneVoice
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                        %%% \once \override MultiMeasureRest.transparent = ##t
+                              %! +SCORE
+                        %%% \once \override Rest.transparent = ##t
+                              %! +SCORE
+                        %%% \once \override Staff.TimeSignature.stencil = ##f
+                              %! +SCORE
+                        %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                             \time 1/8
                             s1 * 1/8
+                            \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                        %%% \stopStaff \startStaff
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.glyph-name = "!" 
+                            \once \override Staff.BarLine.glyph-name = "||" 
+                              %! +SCORE
+                        %%% \once \override Staff.BarLine.hair-thickness = 1 
                         }
                     }
                 }
@@ -807,6 +860,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -821,15 +876,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -840,6 +887,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -851,15 +912,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -871,6 +924,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -880,6 +935,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -891,15 +960,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -910,6 +971,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -921,15 +996,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -941,15 +1008,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -961,15 +1020,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -981,15 +1032,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1001,6 +1044,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -1010,6 +1055,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1020,12 +1115,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -1033,11 +1131,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
@@ -1054,6 +1156,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -1068,15 +1172,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1087,6 +1183,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1098,15 +1208,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1118,6 +1220,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -1127,6 +1231,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1138,15 +1256,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1157,6 +1267,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1168,15 +1292,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1188,15 +1304,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1208,15 +1316,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1228,15 +1328,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1248,6 +1340,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -1257,6 +1351,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1267,12 +1411,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -1280,11 +1427,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
@@ -1301,6 +1452,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -1315,15 +1468,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1334,6 +1479,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1345,15 +1504,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1365,6 +1516,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -1374,6 +1527,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1385,15 +1552,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1404,6 +1563,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1415,15 +1588,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1435,15 +1600,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1455,15 +1612,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1475,15 +1624,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1495,6 +1636,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -1504,6 +1647,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1514,12 +1707,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -1527,11 +1723,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
@@ -1554,6 +1754,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -1568,15 +1770,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1587,6 +1781,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1598,15 +1806,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1618,6 +1818,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -1627,6 +1829,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1638,15 +1854,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1657,6 +1865,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1668,15 +1890,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1688,15 +1902,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1708,15 +1914,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1728,15 +1926,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1748,6 +1938,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -1757,6 +1949,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1767,12 +2009,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -1780,11 +2025,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
@@ -1801,6 +2050,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -1815,15 +2066,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1834,6 +2077,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1845,15 +2102,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1865,6 +2114,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -1874,6 +2125,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1885,15 +2150,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1904,6 +2161,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -1915,15 +2186,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1935,15 +2198,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1955,15 +2210,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1975,15 +2222,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -1995,6 +2234,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -2004,6 +2245,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2014,12 +2305,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -2027,11 +2321,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
@@ -2054,6 +2352,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -2068,15 +2368,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2087,6 +2379,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2098,15 +2404,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2118,6 +2416,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -2127,6 +2427,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2138,15 +2452,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2157,6 +2463,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2168,15 +2488,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2188,15 +2500,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2208,15 +2512,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2228,15 +2524,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2248,6 +2536,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -2257,6 +2547,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2267,12 +2607,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -2280,11 +2623,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
@@ -2301,6 +2648,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -2315,15 +2664,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2334,6 +2675,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2345,15 +2700,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2365,6 +2712,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -2374,6 +2723,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2385,15 +2748,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2404,6 +2759,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2415,15 +2784,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2435,15 +2796,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2455,15 +2808,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2475,15 +2820,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2495,6 +2832,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -2504,6 +2843,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2514,12 +2903,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -2527,11 +2919,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
@@ -2548,6 +2944,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -2562,15 +2960,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2581,6 +2971,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2592,15 +2996,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2612,6 +3008,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -2621,6 +3019,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2632,15 +3044,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2651,6 +3055,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2662,15 +3080,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2682,15 +3092,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2702,15 +3104,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2722,15 +3116,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2742,6 +3128,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -2751,6 +3139,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2761,12 +3199,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -2774,11 +3215,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
@@ -2801,6 +3246,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -2815,15 +3262,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2834,6 +3273,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2845,15 +3298,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2865,6 +3310,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -2874,6 +3321,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2885,15 +3346,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2904,6 +3357,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -2915,15 +3382,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2935,15 +3394,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2955,15 +3406,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2975,15 +3418,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -2995,6 +3430,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -3004,6 +3441,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -3014,12 +3501,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -3027,11 +3517,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
@@ -3048,6 +3542,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -3062,15 +3558,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3081,6 +3569,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -3092,15 +3594,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3112,6 +3606,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -3121,6 +3617,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -3132,15 +3642,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3151,6 +3653,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -3162,15 +3678,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3182,15 +3690,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3202,15 +3702,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3222,15 +3714,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3242,6 +3726,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -3251,6 +3737,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -3261,12 +3797,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -3274,11 +3813,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
@@ -3295,6 +3838,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
@@ -3309,15 +3854,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3328,6 +3865,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -3339,15 +3890,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3359,6 +3902,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -3368,6 +3913,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -3379,15 +3938,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3398,6 +3949,20 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -3409,15 +3974,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3429,15 +3986,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3449,15 +3998,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3469,15 +4010,7 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
-                                %%% \once \override MultiMeasureRest.transparent = ##t
-                                    \time 4/16
-                                    R1 * 1/4
-                                      %! +SCORE
-                                %%% \stopStaff \startStaff
-                                      %! +SCORE
-                                %%% \once \override Staff.BarLine.transparent = ##f
-                                      %! +SCORE
-                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
@@ -3489,6 +4022,8 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 4/16
                                     R1 * 1/4
@@ -3498,6 +4033,56 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
+                                %%% \once \override MultiMeasureRest.transparent = ##t
+                                    \time 4/16
+                                    R1 * 1/4
+                                      %! +SCORE
+                                %%% \stopStaff \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.BarLine.transparent = ##f
+                                      %! +SCORE
+                                %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 3/16
@@ -3508,12 +4093,15 @@
                                 %%% \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                      %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
                                       %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \once \override Staff.BarLine.transparent = ##f
                                     \time 4/16
                                     R1 * 1/4
                                     \bar ":|."
+                                    \once \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
                                       %! +SCORE
@@ -3521,11 +4109,15 @@
                                       %! +SCORE
                                 %%% \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                       %! +SCORE
+                                %%% \once \override Staff.TimeSignature.transparent = ##t
+                                      %! +SCORE
                                 %%% \once \override MultiMeasureRest.transparent = ##t
                                     \time 1/8
                                     R1 * 1/8
+                                    \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                 %%% \stopStaff \startStaff
+                                    \once \override Staff.BarLine.glyph-name = "||" 
                                 }
                             }
                         }
