@@ -34,7 +34,7 @@
             s1 * 1/4
             \time 3/16
             s1 * 3/16
-            - \tweak padding 30
+            - \tweak padding 8
             - \markup \fontsize #5 \override #'(font-name . "Bodoni72 Book Italic") { \hspace #20 "Fine" }
             \time 4/16
             s1 * 1/4
@@ -88,6 +88,7 @@
             \once \override Staff.BarLine.transparent = ##f
             \time 4/16
             s1 * 1/4
+            - \markup \fontsize #5 \override #'(font-name . "Bodoni72 Book Italic") { \hspace #17 "D.C. al Fine" }
             \bar ":|."
             \noBreak
             \once \override Staff.BarLine.bar-extent = #'(-2 . 2)

@@ -570,8 +570,21 @@ trinton.make_music(
                 abjad.Markup(
                     r"""\markup \fontsize #5 \override #'(font-name . "Bodoni72 Book Italic") { \hspace #20 "Fine" }"""
                 ),
-                r"- \tweak padding 30",
+                r"- \tweak padding 8",
             )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["Global Context"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (22,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Markup(
+                r"""\markup \fontsize #5 \override #'(font-name . "Bodoni72 Book Italic") { \hspace #17 "D.C. al Fine" }"""
+            ),
         ],
         selector=trinton.select_leaves_by_index([0]),
     ),
