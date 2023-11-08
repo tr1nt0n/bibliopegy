@@ -25,6 +25,6 @@
         \include "17.ly"
         \include "18.ly"
         \include "19.ly"
-        % \include "20.ly"
+        \include "20.ly"
     }
 }

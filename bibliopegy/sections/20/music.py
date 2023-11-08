@@ -18,6 +18,8 @@ score = library.bibliopegy_score(ts.cadenza_ts)
 
 abjad.attach(abjad.TimeSignature((1, 8)), abjad.select.leaf(score["viola voice"], 0))
 
+abjad.attach(abjad.Clef("altovarC"), abjad.select.leaf(score["viola voice"], 0))
+
 library.write_simultaneous_time_signatures(
     score=score,
     voice_name="viola voice",
@@ -25,7 +27,8 @@ library.write_simultaneous_time_signatures(
     measure_range=(2, 22),
 )
 
-library.make_metric_music(
+trinton.make_music(
+    lambda _: trinton.select_target(_, (2, 5)),
     evans.RhythmHandler(
         evans.talea([8, -2, 4, 4, 4, -4, 1, 2, 4, 4, 6, 1, 8, -100], 64)
     ),
@@ -44,7 +47,6 @@ library.make_metric_music(
             "a",
         ]
     ),
-    library.change_lines(lines=5, clef="altovarC"),
     trinton.attachment_command(
         attachments=[
             abjad.bundle(
@@ -89,13 +91,11 @@ library.make_metric_music(
             nested=True,
         )
     ),
-    score=score,
-    voice_name="viola voice",
-    second_range=(2, 5),
-    measure_number_range=(1, 4),
+    voice=score["viola voice temp"],
 )
 
-library.make_metric_music(
+trinton.make_music(
+    lambda _: trinton.select_target(_, (6, 10)),
     evans.RhythmHandler(
         evans.talea([8, -2, 1, 2, 4, 7, -4, 1, 1, 4, 4, 4, 8, -2, -100], 64)
     ),
@@ -145,12 +145,6 @@ library.make_metric_music(
     trinton.notehead_bracket_command(),
     trinton.attachment_command(
         attachments=[
-            abjad.LilyPondLiteral(r"\break", site="after"),
-        ],
-        selector=trinton.select_leaves_by_index([-1]),
-    ),
-    trinton.attachment_command(
-        attachments=[
             abjad.LilyPondLiteral(
                 r"\override Staff.BarLine.bar-extent = #'(-2 . 2)", site="after"
             ),
@@ -160,13 +154,11 @@ library.make_metric_music(
         ],
         selector=trinton.select_leaves_by_index([0]),
     ),
-    score=score,
-    voice_name="viola voice",
-    second_range=(6, 9),
-    measure_number_range=(1, 4),
+    voice=score["viola voice temp"],
 )
 
-library.make_metric_music(
+trinton.make_music(
+    lambda _: trinton.select_target(_, (10, 13)),
     evans.RhythmHandler(
         evans.talea([1, 7, 4, 2, 10, -2, 1, 1, 2, 2, 2, 4, 4, 12, -100], 64)
     ),
@@ -281,13 +273,11 @@ library.make_metric_music(
         )
     ),
     trinton.notehead_bracket_command(),
-    score=score,
-    voice_name="viola voice",
-    second_range=(10, 13),
-    measure_number_range=(1, 4),
+    voice=score["viola voice temp"],
 )
 
-library.make_metric_music(
+trinton.make_music(
+    lambda _: trinton.select_target(_, (14, 17)),
     evans.RhythmHandler(
         evans.talea([1, 1, 6, -2, 1, 4, 4, 5, -4, 1, 2, 4, 4, 4, 4, 4, -1, -100], 64)
     ),
@@ -351,19 +341,11 @@ library.make_metric_music(
             nested=True,
         )
     ),
-    trinton.attachment_command(
-        attachments=[
-            abjad.LilyPondLiteral(r"\break", site="after"),
-        ],
-        selector=trinton.select_leaves_by_index([-1]),
-    ),
-    score=score,
-    voice_name="viola voice",
-    second_range=(14, 17),
-    measure_number_range=(1, 4),
+    voice=score["viola voice temp"],
 )
 
-library.make_metric_music(
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 22)),
     evans.RhythmHandler(
         evans.talea([1, 7, 2, 4, 4, 8, 4, 4, 4, 1, 2, 1, 4, 4, 4, 4, 2, 100], 64)
     ),
@@ -497,12 +479,8 @@ library.make_metric_music(
         )
     ),
     trinton.notehead_bracket_command(),
-    score=score,
-    voice_name="viola voice",
-    second_range=(18, 22),
-    measure_number_range=(1, 5),
+    voice=score["viola voice temp"],
 )
-
 
 # globals
 
@@ -533,12 +511,6 @@ for voice_name in library.all_voice_names_include_time_signature_context:
                 abjad.LilyPondLiteral(
                     r"\once \override Staff.BarLine.transparent = ##f", "after"
                 ),
-                abjad.LilyPondLiteral(
-                    r"\once \override Staff.BarLine.X-extent = ##f", "after"
-                ),
-                abjad.LilyPondLiteral(
-                    r"\once \override Staff.BarLine.X-offset = -6", "after"
-                ),
                 abjad.BarLine(".|:", "after"),
             ],
             selector=trinton.select_leaves_by_index([-1]),
@@ -563,15 +535,6 @@ for voice_name in library.all_voice_names_include_time_signature_context:
         ),
         voice=score[voice_name],
     )
-
-# trinton.make_music(
-#     lambda _: trinton.select_target(_, (4,)),
-#     trinton.attachment_command(
-#         attachments=[abjad.BarLine("||", "after")],
-#         selector=trinton.select_leaves_by_index([-1]),
-#     ),
-#     voice=score["viola voice time signatures"],
-# )
 
 trinton.make_music(
     lambda _: trinton.select_target(_, (1,)),
@@ -637,6 +600,17 @@ for voice_name in library.all_voice_names_include_time_signature_context:
             selector=trinton.select_leaves_by_index([-1]),
         ),
         voice=score[voice_name],
+    )
+
+for measure in [9, 17]:
+    trinton.make_music(
+        lambda _: trinton.select_target(_, (measure,)),
+        trinton.attachment_command(
+            attachments=[abjad.LilyPondLiteral(r"\break", site="after")],
+            selector=trinton.select_leaves_by_index([-1]),
+            tag=abjad.Tag("+SCORE"),
+        ),
+        voice=score["Global Context"],
     )
 
 library.forbid_break(score=score, measures=[1, 22])

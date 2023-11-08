@@ -24,13 +24,12 @@
             - \markup \override #'(font-name . "Source Han Serif SC Bold") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box  \line { II,5. 胸がはち切れそうで }
             \bar ".|:"
             \noBreak
-            \once \override Staff.BarLine.X-extent = ##f
-            \once \override Staff.BarLine.X-offset = -6
             \once \override Staff.BarLine.transparent = ##f
             \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
             \time 4/16
             s1 * 1/4
             ^ \markup \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \box \fontsize #0 { \column { \line { "After the preceeding 6 seconds:" } \line { "- the clocks stop" } \line { "- all electronics are deactivated, including the viola's amplification" } \line { "- without removing the viola from its position, the violist places their chin on the chin rest" } \line { "- the violist places the palm of their left hand under the neck of the instrument, and wraps the fingers around to the strings, as in ordinary playing position" } \line { "- the violist places their bow across the strings, as in ordinary playing position" } \line { "- the violist plays the following passage, fingering the notated pitches' ordinary playing positions on the fingerboard, despite the strained position of the body, despite the instrument's alterations" } \line { "- the passage is played in its entirety without vibrato, not romantically, nevertheless struggling for the tenderness of the material" } \line { "- when the violist is finished, they assume their previous position, the amplification is reactivated, the clocks are reset, and the piece resumes." } } }
+            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
             \time 3/16
@@ -39,34 +38,49 @@
             - \markup \fontsize #5 \override #'(font-name . "Bodoni72 Book Italic") { \hspace #20 "Fine" }
             \time 4/16
             s1 * 1/4
+            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
-            \time 4/16
-            s1 * 1/4
-            \time 3/16
-            s1 * 3/16
-            \time 4/16
-            s1 * 1/4
+            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
             \time 3/16
             s1 * 3/16
             \time 4/16
             s1 * 1/4
+              %! +SCORE
+            \break
+            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
+            \time 3/16
+            s1 * 3/16
             \time 4/16
             s1 * 1/4
+            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
+            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
+            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
+            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
+            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
+              %! +SCORE
+            \break
+            \once \override Score.TimeSignature.stencil = ##f
+            \time 4/16
+            s1 * 1/4
+            \once \override Score.TimeSignature.stencil = ##f
+            \time 4/16
+            s1 * 1/4
+            \once \override Score.TimeSignature.stencil = ##f
             \time 4/16
             s1 * 1/4
             \time 3/16
@@ -108,8 +122,6 @@
                             \time 1/8
                             R1 * 1/8
                             \bar ".|:"
-                            \once \override Staff.BarLine.X-extent = ##f
-                            \once \override Staff.BarLine.X-offset = -6
                             \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
                             \stopStaff \startStaff
@@ -393,17 +405,14 @@
                         {
                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { viola }
                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vla. }
+                            \clef "altovarC"
                             \time 1/8
                             s1 * 1/8
                             \bar ".|:"
-                            \once \override Staff.BarLine.X-extent = ##f
-                            \once \override Staff.BarLine.X-offset = -6
                             \once \override Staff.BarLine.transparent = ##f
                             <<
                                 \context Voice = "viola voice temp"
                                 {
-                                    \staff-line-count 5
-                                    \clef "altovarC"
                                     d'8
                                     \pp
                                     - \tweak padding #7
@@ -496,7 +505,6 @@
                                     \!
                                     r32
                                     r8
-                                    \break
                                     e'64
                                         _ #(make-dynamic-script (markup #:whiteout #:italic "pmf"))
                                     [
@@ -625,7 +633,6 @@
                                     \!
                                     r64
                                     r8.
-                                    \break
                                     g'64
                                     \f
                                     [
@@ -880,8 +887,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
@@ -1176,8 +1181,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
@@ -1472,8 +1475,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
@@ -1774,8 +1775,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
@@ -2070,8 +2069,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
@@ -2372,8 +2369,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
@@ -2668,8 +2663,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
@@ -2964,8 +2957,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
@@ -3266,8 +3257,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
@@ -3562,8 +3551,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
@@ -3858,8 +3845,6 @@
                                     \time 1/8
                                     R1 * 1/8
                                     \bar ".|:"
-                                    \once \override Staff.BarLine.X-extent = ##f
-                                    \once \override Staff.BarLine.X-offset = -6
                                     \once \override Staff.BarLine.transparent = ##f
                                       %! +SCORE
                                     \stopStaff \startStaff
