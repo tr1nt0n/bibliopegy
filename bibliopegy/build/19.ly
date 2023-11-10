@@ -778,6 +778,7 @@
                             \once \override Staff.TimeSignature.stencil = ##f
                               %! +SCORE
                             \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            \time 1/8
                             s1 * 1/8
                             \once \override Staff.BarLine.transparent = ##f
                               %! +SCORE
@@ -3132,13 +3133,13 @@
                                       %! +SCORE
                                     \stopStaff \startStaff
                                     r16
-                                    - \tweak circled-tip ##t
-                                    \<
                                     af'16
                                       %! abjad.glissando(7)
                                     - \abjad-zero-padding-glissando
                                       %! abjad.glissando(7)
                                     \glissando
+                                    - \tweak circled-tip ##t
+                                    \<
                                     - \tweak color #(css-color 'seagreen) 
                                     - \tweak padding #9
                                     - \abjad-dashed-line-with-hook

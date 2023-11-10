@@ -16,15 +16,22 @@ score = library.bibliopegy_score(ts.cadenza_ts)
 
 # music commands
 
-abjad.attach(abjad.TimeSignature((1, 8)), abjad.select.leaf(score["viola voice"], 0))
+for voice_name in library.all_voice_names:
+    library.write_simultaneous_time_signatures(
+        score=score,
+        voice_name=voice_name,
+        signature_pairs=ts.cadenza_ts,
+        measure_range=(1, 23),
+        reset=False,
+    )
 
-abjad.attach(abjad.Clef("altovarC"), abjad.select.leaf(score["viola voice"], 0))
-
-library.write_simultaneous_time_signatures(
-    score=score,
-    voice_name="viola voice",
-    signature_pairs=ts.cadenza_ts[1:-1],
-    measure_range=(2, 22),
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1,)),
+    trinton.attachment_command(
+        attachments=[abjad.Clef("altovarC")],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["viola voice temp"],
 )
 
 trinton.make_music(
@@ -484,12 +491,14 @@ trinton.make_music(
 
 # globals
 
-for voice_name in [_ for _ in library.all_voice_names if _ != "viola voice"]:
-    measures = abjad.select.group_by_measure(score[voice_name])
+# for voice_name in [_ for _ in library.all_voice_names if _ != "viola voice"]:
+#     measures = abjad.select.group_by_measure(score[voice_name])
+#
+#     for measure, signature in zip(measures, ts.cadenza_ts):
+#         first_leaf = abjad.select.leaf(measure, 0)
+#         abjad.attach(abjad.TimeSignature(signature), first_leaf)
 
-    for measure, signature in zip(measures, ts.cadenza_ts):
-        first_leaf = abjad.select.leaf(measure, 0)
-        abjad.attach(abjad.TimeSignature(signature), first_leaf)
+# library.set_all_time_signatures(score=score, exclude_viola=True)
 
 trinton.remove_redundant_time_signatures(score=score)
 
@@ -499,42 +508,81 @@ library.write_short_instrument_names(score=score)
 
 library.blank_measure_by_hand(
     score=score,
-    voice_names=["viola voice"],
-    measures=[23],
+    voice_names=["viola voice temp", "viola voice time signatures"],
+    measures=[1, 23],
 )
 
-for voice_name in library.all_voice_names_include_time_signature_context:
-    trinton.make_music(
-        lambda _: trinton.select_target(_, (1,)),
-        trinton.attachment_command(
-            attachments=[
-                abjad.LilyPondLiteral(
-                    r"\once \override Staff.BarLine.transparent = ##f", "after"
-                ),
-                abjad.BarLine(".|:", "after"),
-            ],
-            selector=trinton.select_leaves_by_index([-1]),
-        ),
-        voice=score[voice_name],
-    )
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override Staff.BarLine.transparent = ##f", "after"
+            ),
+            abjad.BarLine(".|:", "after"),
+        ],
+        selector=trinton.select_leaves_by_index([-1]),
+    ),
+    voice=score["Global Context"],
+)
 
-    trinton.make_music(
-        lambda _: trinton.select_target(_, (22,)),
-        trinton.attachment_command(
-            attachments=[
-                abjad.LilyPondLiteral(
-                    r"\once \override Staff.BarLine.transparent = ##f"
-                ),
-                abjad.LilyPondLiteral(
-                    r"\once \override Staff.BarLine.bar-extent = #'(-2 . 2)",
-                    site="after",
-                ),
-                abjad.BarLine(":|.", "after"),
-            ],
-            selector=trinton.select_leaves_by_index([-1]),
-        ),
-        voice=score[voice_name],
-    )
+trinton.make_music(
+    lambda _: trinton.select_target(_, (22,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(r"\once \override Staff.BarLine.transparent = ##f"),
+            abjad.LilyPondLiteral(
+                r"\once \override Staff.BarLine.bar-extent = #'(-2 . 2)",
+                site="after",
+            ),
+            abjad.BarLine(":|.", "after"),
+        ],
+        selector=trinton.select_leaves_by_index([-1]),
+    ),
+    voice=score["Global Context"],
+)
+
+for voice_name in library.all_voice_names:
+    temp_voice = voice_name + " temp"
+    ts_voice = voice_name + " time signatures"
+    both_voices = [temp_voice, ts_voice]
+
+    for voice_name in both_voices:
+        trinton.make_music(
+            lambda _: trinton.select_target(_, (1,)),
+            trinton.attachment_command(
+                attachments=[
+                    abjad.LilyPondLiteral(
+                        r"\once \override Staff.BarLine.transparent = ##f", "after"
+                    ),
+                    # abjad.BarLine(".|:", "after"),
+                    abjad.LilyPondLiteral(
+                        r"""\once \override Staff.BarLine.glyph-name = ".|:" """,
+                        site="absolute_after",
+                    ),
+                ],
+                selector=trinton.select_leaves_by_index([-1]),
+            ),
+            voice=score[voice_name],
+        )
+
+        trinton.make_music(
+            lambda _: trinton.select_target(_, (22,)),
+            trinton.attachment_command(
+                attachments=[
+                    abjad.LilyPondLiteral(
+                        r"\once \override Staff.BarLine.transparent = ##f"
+                    ),
+                    abjad.LilyPondLiteral(
+                        r"\once \override Staff.BarLine.bar-extent = #'(-2 . 2)",
+                        site="after",
+                    ),
+                    abjad.BarLine(":|.", "after"),
+                ],
+                selector=trinton.select_leaves_by_index([-1]),
+            ),
+            voice=score[voice_name],
+        )
 
 trinton.make_music(
     lambda _: trinton.select_target(_, (1,)),

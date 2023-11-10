@@ -66,7 +66,7 @@ library.write_simultaneous_time_signatures(
     voice_name="viola voice",
     signature_pairs=[(3, 8), (5, 32), (3, 32)],
     measure_range=(13, 17),
-    reset=False,
+    reset=True,
 )
 
 trinton.make_music(
@@ -404,7 +404,7 @@ trinton.make_music(
     ),
     trinton.linear_attachment_command(
         attachments=[abjad.StartHairpin("o<"), abjad.Dynamic("ffff")],
-        selector=trinton.select_leaves_by_index([0, -1]),
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
     ),
     voice=score["bassclarinet voice"],
 )
