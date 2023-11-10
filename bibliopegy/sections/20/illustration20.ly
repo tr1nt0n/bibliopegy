@@ -96,6 +96,8 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 0\" - 12\" "  }
+              %! +SCORE
+            \break
             \once \override Staff.BarLine.transparent = ##f
             \once \override Staff.BarLine.glyph-name = "||" 
             \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)

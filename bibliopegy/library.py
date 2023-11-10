@@ -381,7 +381,7 @@ movements = [
         r"""\markup \override #'(font-name . "Source Han Serif SC Bold") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box  \line { II,5. 胸がはち切れそうで }""",
     ),
     abjad.Markup(
-        r"""\markup \override #'(font-name . "Bodoni72 Book") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { \center-column { \line { III. Five Dunes } \line { ( desiderata ) } } }""",
+        r"""\markup \override #'(font-name . "Bodoni72 Book") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { \center-column { \line { III. Desiderata } \line { ( five dunes ) } } }""",
     ),
 ]
 

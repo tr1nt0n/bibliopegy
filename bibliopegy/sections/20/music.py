@@ -491,15 +491,6 @@ trinton.make_music(
 
 # globals
 
-# for voice_name in [_ for _ in library.all_voice_names if _ != "viola voice"]:
-#     measures = abjad.select.group_by_measure(score[voice_name])
-#
-#     for measure, signature in zip(measures, ts.cadenza_ts):
-#         first_leaf = abjad.select.leaf(measure, 0)
-#         abjad.attach(abjad.TimeSignature(signature), first_leaf)
-
-# library.set_all_time_signatures(score=score, exclude_viola=True)
-
 trinton.remove_redundant_time_signatures(score=score)
 
 library.write_instrument_names(score=score)
@@ -663,7 +654,7 @@ for voice_name in library.all_voice_names_include_time_signature_context:
         voice=score[voice_name],
     )
 
-for measure in [9, 17]:
+for measure in [9, 17, 23]:
     trinton.make_music(
         lambda _: trinton.select_target(_, (measure,)),
         trinton.attachment_command(
