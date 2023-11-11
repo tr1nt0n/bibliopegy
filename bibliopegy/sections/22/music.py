@@ -39,6 +39,50 @@ trinton.make_music(
     preprocessor=trinton.fuse_preprocessor((7,)),
 )
 
+# the second dune
+
+library.dune_ii(
+    voices=[
+        score["violin voice"],
+        score["bassflute voice"],
+        score["flute voice"],
+    ],
+    measures=(13, 14),
+    rotation=1,
+    dynamics=["mp", "mf"],
+)
+
+library.dune_ii(
+    voices=[
+        score["bassclarinet voice"],
+        score["violin voice"],
+        score["bassflute voice"],
+        score["flute voice"],
+    ],
+    measures=(15, 18),
+    rotation=3,
+    dynamics=["f", "mp", "ppp"],
+)
+
+# viola music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (15, 19)),
+    evans.RhythmHandler(evans.talea([1000], 8)),
+    library.duration_line(),
+    trinton.noteheads_only(),
+    library.change_lines(lines=1, clef="percussion"),
+    library.boxed_markup(
+        string="Rotate Baoding Balls in Hand, dynamics controlled by amplification"
+    ),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin("o<"), abjad.Dynamic("mp")],
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+    ),
+    voice=score["viola voice"],
+    preprocessor=trinton.fuse_preprocessor((5,)),
+)
+
 # bass clarinet music
 
 trinton.make_music(
@@ -171,7 +215,7 @@ trinton.make_music(
     trinton.hooked_spanner_command(
         string=library._bass_clarinet_multiphonics[3][1],
         selector=trinton.select_logical_ties_by_index(
-            [27, 28, 36, -1], first=True, pitched=True
+            [27, 28, 30, 31, 36, -1], first=True, pitched=True
         ),
         padding=7,
         right_padding=0,
@@ -180,6 +224,81 @@ trinton.make_music(
     ),
     voice=score["bassclarinet voice"],
 )
+
+# percussion 1 music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (17, 19)),
+    evans.RhythmHandler(evans.tuplet([(1, 2)])),
+    evans.PitchHandler([[-1, 2]]),
+    library.duration_line(sustained=True, selector=trinton.pleaves()),
+    library.change_lines(lines=2, clef="percussion"),
+    library.boxed_markup(string="Anvils w/ Hammers"),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Dynamic("pppp"),
+            abjad.StartHairpin("<"),
+            abjad.Dynamic("mf"),
+            abjad.StartHairpin(">o"),
+            abjad.StopHairpin(),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 0, 1, 1, -1], first=True, pitched=True
+        ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "darkmagenta" { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe222 }""",
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+        padding=7,
+        full_string=True,
+        tweaks=[r"- \tweak color #darkmagenta"],
+    ),
+    voice=score["percussion 1 voice"],
+    preprocessor=trinton.fuse_preprocessor((3,)),
+)
+
+# celli music
+
+for voice_name in ["cello 1 voice", "cello 2 voice", "cello 3 voice"]:
+    trinton.make_music(
+        lambda _: trinton.select_target(_, (1, 19)),
+        evans.RhythmHandler(evans.talea([19, 19], 16)),
+        library.duration_line(
+            selector=trinton.select_logical_ties_by_index(
+                [-1], pitched=True, grace=False
+            )
+        ),
+        trinton.glissando_command(
+            selector=trinton.ranged_selector(ranges=[range(0, 3)], nested=True),
+            zero_padding=True,
+        ),
+        evans.PitchHandler(["a'", "ef,", "a'"]),
+        trinton.linear_attachment_command(
+            attachments=[
+                abjad.Clef("bass"),
+                abjad.Dynamic("pppp"),
+                abjad.StartHairpin("<"),
+                abjad.Dynamic("f"),
+                abjad.StartHairpin(">"),
+                abjad.Dynamic("pppp"),
+            ],
+            selector=trinton.select_logical_ties_by_index(
+                [0, 0, 0, 1, 1, -1], pitched=True, first=True
+            ),
+        ),
+        trinton.linear_attachment_command(
+            attachments=[
+                abjad.StartSlur(),
+                abjad.LilyPondLiteral(r"\slurDashed", site="before"),
+                abjad.StopSlur(),
+                abjad.LilyPondLiteral(r"\slurSolid", site="after"),
+            ],
+            selector=trinton.select_leaves_by_index([0, 0, -1, -1], pitched=True),
+            direction=abjad.DOWN,
+        ),
+        voice=score[voice_name],
+        preprocessor=trinton.fuse_preprocessor((20,)),
+    )
 
 # tenor trombone music
 
@@ -298,6 +417,26 @@ trinton.make_music(
     voice=score["tenortrombone voice"],
 )
 
+library.trombone_alpha(
+    voices=[score["tenortrombone voice"], score["basstrombone voice"]],
+    measures=(15, 18),
+    rotation=4,
+    # dynamics=["ff"],
+    pitching=False,
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (15, 18)),
+    library.duration_line(),
+    library.pitch_trombone_cascading_glissandi(starting_point=5, direction="down"),
+    library.trombone_glissando_staff(),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin(">"), abjad.Dynamic("pppp")],
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+    ),
+    voice=score["tenortrombone voice"],
+)
+
 # bass trombone music
 
 trinton.make_music(
@@ -403,6 +542,71 @@ trinton.make_music(
         ),
     ),
     voice=score["basstrombone voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (15, 18)),
+    library.duration_line(),
+    library.pitch_trombone_cascading_glissandi(starting_point=-3, direction="up"),
+    library.trombone_glissando_staff(),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin(">"), abjad.Dynamic("pppp")],
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+    ),
+    voice=score["basstrombone voice"],
+)
+
+# percussion 2 music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 19)),
+    evans.RhythmHandler(evans.talea([19, 19], 16)),
+    library.duration_line(
+        selector=trinton.select_logical_ties_by_index([-1], pitched=True, grace=False)
+    ),
+    trinton.glissando_command(
+        selector=trinton.ranged_selector(ranges=[range(0, 3)], nested=True),
+        zero_padding=True,
+    ),
+    evans.PitchHandler(
+        [
+            "a'",
+            "ef,",
+            "a'",
+        ]
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override Glissando.style = #'trill", site="before"
+            ),
+        ],
+        selector=trinton.logical_ties(first=True, pitched=True, grace=False),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Clef("bass"),
+            abjad.Dynamic("pppp"),
+            abjad.StartHairpin("<"),
+            abjad.Dynamic("ff"),
+            abjad.StartHairpin(">"),
+            abjad.Dynamic("pppp"),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 0, 0, 1, 1, -1], pitched=True, first=True
+        ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "darkmagenta" { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe222 }""",
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+        style="dashed-line-with-up-hook",
+        direction="down",
+        padding=9,
+        full_string=True,
+        tweaks=[r"- \tweak color #darkmagenta"],
+    ),
+    voice=score["percussion 2 voice"],
+    preprocessor=trinton.fuse_preprocessor((20,)),
 )
 
 # globals

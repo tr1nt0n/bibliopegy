@@ -1619,6 +1619,12 @@ def dune_ii(voices, measures, rotation=0, dynamics=["ff"]):
         else:
             fundamental = "ef"
 
+        if voice.name == "bassclarinet voice":
+            fundamental = "f"
+
+        else:
+            fundamental = "ef"
+
         rest_leaves = [_ for _ in range(0, len(voices))]
 
         rest_leaves.pop(participant_number)
