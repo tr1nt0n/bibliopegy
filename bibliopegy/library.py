@@ -1613,14 +1613,12 @@ def dune_ii(voices, measures, rotation=0, dynamics=["ff"]):
         else:
             ratios = ["22/4", "23/4"]
 
-        if voice.name == "bassflute voice":
-            fundamental = "ef'"
+        if voice.name == "bassflute voice" or voice.name == "bassclarinet voice":
+            if voice.name == "bassflute voice":
+                fundamental = "ef'"
 
-        else:
-            fundamental = "ef"
-
-        if voice.name == "bassclarinet voice":
-            fundamental = "f"
+            else:
+                fundamental = "f"
 
         else:
             fundamental = "ef"
