@@ -100,6 +100,11 @@ for pitch_1, pitch_2 in zip(transposed_2[18:], part_1[18:]):
 for pitch in part_1[22:]:
     glockenspiel_pitches.append(pitch)
 
+third_dune_chords = evans.Sequence(glockenspiel_pitches).grouper(
+    [4 for _ in glockenspiel_pitches]
+)
+
+third_dune_chords = [_ for _ in third_dune_chords]
 
 delta_pitches_1 = evans.Sequence(glockenspiel_pitches).alpha(category=1)
 
