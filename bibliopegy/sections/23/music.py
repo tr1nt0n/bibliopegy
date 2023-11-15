@@ -155,6 +155,463 @@ trinton.make_music(
     voice=score["viola voice"],
 )
 
+# flute music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 20)),
+    evans.RhythmHandler(evans.talea([11, 1], 32)),
+    evans.PitchHandler(["ef'''", "d'''"]),
+    trinton.glissando_command(
+        selector=trinton.ranged_selector(ranges=[range(0, 4)], nested=True),
+        zero_padding=True,
+    ),
+    trinton.attachment_command(
+        attachments=[trinton.make_custom_dynamic("sfff")],
+        selector=trinton.select_leaves_by_index([0], pitched=True),
+    ),
+    voice=score["flute voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (21, 41)),
+    evans.RhythmHandler(evans.talea([3, 1, 15], 32)),
+    evans.PitchHandler(["ef'''", "df'''", "g''", "ef'''", "a''", "g''"]),
+    library.octave_down(
+        selector=trinton.logical_ties(pitched=True, exclude=list(range(0, 9)))
+    ),
+    library.duration_line(),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin(">o"), abjad.StopHairpin()],
+        selector=trinton.select_logical_ties_by_index(
+            [12, -1], first=True, pitched=True
+        ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "darkmagenta" { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe222 }""",
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+        padding=7,
+        full_string=True,
+        tweaks=[r"- \tweak color #darkmagenta"],
+    ),
+    voice=score["flute voice"],
+)
+
+# bass flute music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 20)),
+    evans.RhythmHandler(evans.talea([11, 1], 32)),
+    evans.PitchHandler(["d'''", "ef'''"]),
+    trinton.glissando_command(
+        selector=trinton.ranged_selector(ranges=[range(0, 4)], nested=True),
+        zero_padding=True,
+    ),
+    trinton.attachment_command(
+        attachments=[trinton.make_custom_dynamic("sfff")],
+        selector=trinton.select_leaves_by_index([0], pitched=True),
+    ),
+    voice=score["bassflute voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (21, 41)),
+    evans.RhythmHandler(evans.talea([4, 5, 5, 5], 32)),
+    evans.PitchHandler(["a'", "af''", "bf''"]),
+    library.octave_down(
+        selector=trinton.logical_ties(pitched=True, exclude=list(range(0, 12)))
+    ),
+    library.octave_up(
+        selector=trinton.select_logical_ties_by_index(
+            [12, 15], pitched=True, grace=False
+        )
+    ),
+    library.duration_line(),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin(">o"), abjad.StopHairpin()],
+        selector=trinton.select_logical_ties_by_index(
+            [16, -1], first=True, pitched=True
+        ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "darkmagenta" { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe222 }""",
+        selector=trinton.select_leaves_by_index([0, -1], pitched=True),
+        padding=6,
+        full_string=True,
+        tweaks=[r"- \tweak color #darkmagenta"],
+    ),
+    voice=score["bassflute voice"],
+)
+
+# violin music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 20)),
+    evans.RhythmHandler(evans.talea([11, 1], 32)),
+    evans.PitchHandler(["af''", "gf''"]),
+    trinton.glissando_command(
+        selector=trinton.ranged_selector(ranges=[range(0, 4)], nested=True),
+        zero_padding=True,
+    ),
+    trinton.attachment_command(
+        attachments=[trinton.make_custom_dynamic("sfff")],
+        selector=trinton.select_leaves_by_index([0], pitched=True),
+    ),
+    trinton.hooked_spanner_command(
+        string=library.return_fractional_scratch_markup("1 5"),
+        selector=trinton.select_leaves_by_index(
+            [0, -1],
+            pitched=True,
+        ),
+        padding=6,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+    ),
+    voice=score["violin voice"],
+)
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (21, 41)),
+    evans.RhythmHandler(evans.talea([15, 2, 2], 32)),
+    trinton.force_rest(
+        selector=trinton.select_logical_ties_by_index([0], pitched=True)
+    ),
+    evans.PitchHandler(["e''", "d''", "b'"]),
+    library.octave_down(
+        selector=trinton.logical_ties(pitched=True, exclude=list(range(0, 6)))
+    ),
+    library.duration_line(),
+    trinton.linear_attachment_command(
+        attachments=[abjad.StartHairpin(">o"), abjad.StopHairpin()],
+        selector=trinton.select_logical_ties_by_index(
+            [10, -1], first=True, pitched=True
+        ),
+    ),
+    trinton.linear_attachment_command(
+        attachments=itertools.cycle(
+            [abjad.StartSlur(), abjad.StopSlur()],
+        ),
+        selector=trinton.select_logical_ties_by_index(
+            [0, 3, 6, 9, 12, 15, 18, 21],
+            first=True,
+            pitched=True,
+        ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "darkmagenta" { \fontsize #3.5 \override #'(font-name . "ekmelos") \char ##xe222 }""",
+        selector=trinton.select_logical_ties_by_index(
+            [0, 3, 6, 9, 12, 15, 18, 21],
+            first=True,
+            pitched=True,
+        ),
+        padding=8.5,
+        right_padding=0,
+        full_string=True,
+        tweaks=[r"- \tweak color #darkmagenta"],
+        command="One",
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "indianred" { "pont." }""",
+        selector=trinton.select_logical_ties_by_index(
+            [0, 3, 6, 9, 12, 15, 18, 21],
+            first=True,
+            pitched=True,
+        ),
+        padding=5.5,
+        right_padding=0,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'indianred)"],
+        command="Two",
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color #(css-color 'goldenrod) { "senza vib." }""",
+        selector=trinton.select_logical_ties_by_index(
+            [4, 5, 10, 11, 16, 17, 22, -1],
+            first=True,
+            pitched=True,
+        ),
+        padding=7,
+        right_padding=0,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'goldenrod)"],
+        command="One",
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "indianred" { "tast." }""",
+        selector=trinton.select_logical_ties_by_index(
+            [4, 5, 10, 11, 16, 17, 22, -1],
+            first=True,
+            pitched=True,
+        ),
+        padding=4,
+        right_padding=0,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'indianred)"],
+        command="Two",
+    ),
+    voice=score["violin voice"],
+)
+
+# bass clarinet music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 41)),
+    evans.RhythmHandler(
+        evans.talea([1, 1, 1, 1, 1, 4, 2, 4], 64, extra_counts=[0, -1, 0, 2, 0, 1])
+    ),
+    evans.PitchHandler(["c'''", "c'''", "c'''", "c'''", "c'''", "f'", "c'", "e"]),
+    trinton.change_notehead_command(
+        notehead="highest",
+        selector=trinton.patterned_tie_index_selector(
+            [0, 1, 2, 3, 4], 8, pitched=True, grace=False, first=True
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.BendAfter(3)],
+        selector=trinton.patterned_tie_index_selector(
+            [0, 2, 4], 8, pitched=True, grace=False, first=True
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.BendAfter(-3)],
+        selector=trinton.patterned_tie_index_selector(
+            [
+                1,
+                3,
+            ],
+            8,
+            pitched=True,
+            grace=False,
+            first=True,
+        ),
+    ),
+    library.duration_line(
+        selector=trinton.patterned_tie_index_selector(
+            [5, 6, 7], 8, pitched=True, grace=False
+        )
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            trinton.make_custom_dynamic("sfff"),
+            abjad.StartHairpin(">o"),
+            abjad.StopHairpin(),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 77, -1], first=True, pitched=True
+        ),
+    ),
+    voice=score["bassclarinet voice"],
+)
+
+# percussion 1 music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 41)),
+    evans.RhythmHandler(evans.talea([1], 16, extra_counts=[1])),
+    evans.PitchHandler(
+        [
+            "c'",
+            "e'",
+            "c'",
+            "e'",
+            ["c'", "a"],
+            "e'",
+            "c'",
+            "e'",
+        ]
+    ),
+    library.change_lines(lines=3, clef="percussion"),
+    library.duration_line(
+        selector=trinton.patterned_tie_index_selector(
+            [0, 1, 2, 3, 5, 6, 7], 8, grace=False, pitched=True
+        )
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Markup(
+                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { \column { \line { "1. Bow Snare Drum on right side of Fishing Line" } \line { "2. Bow Snare Drum on left side of Fishing Line" } \line { "3. Strike Timpani on Cymbal" } } }""",
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            trinton.make_custom_dynamic("sfff"),
+            abjad.StartHairpin(">o"),
+            abjad.StopHairpin(),
+        ],
+        selector=trinton.select_leaves_by_index([0, 68, -1], pitched=True),
+    ),
+    voice=score["percussion 1 voice"],
+)
+
+# cello 1 music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 41)),
+    evans.RhythmHandler(evans.talea([1, 1, 1, 1, 1, 4, 2, 4], 64)),
+    evans.PitchHandler(["e'", "e'", "e'", "e'", "e'", "cs", "gs,", "d,"]),
+    trinton.change_notehead_command(
+        notehead="highest",
+        selector=trinton.patterned_tie_index_selector(
+            [0, 1, 2, 3, 4], 8, pitched=True, grace=False, first=True
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.BendAfter(3)],
+        selector=trinton.patterned_tie_index_selector(
+            [0, 2, 4], 8, pitched=True, grace=False, first=True
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.BendAfter(-3)],
+        selector=trinton.patterned_tie_index_selector(
+            [
+                1,
+                3,
+            ],
+            8,
+            pitched=True,
+            grace=False,
+            first=True,
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LaissezVibrer(),
+        ],
+        selector=trinton.patterned_tie_index_selector(
+            [5, 6, 7], 8, pitched=True, grace=False, first=True
+        ),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Clef("bass"),
+            trinton.make_custom_dynamic("sfff"),
+            abjad.StartHairpin(">o"),
+            abjad.StopHairpin(),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 0, 77, -1], first=True, pitched=True
+        ),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "indianred" { "pizz. pont." }""",
+        selector=trinton.select_logical_ties_by_index(
+            [0, -1], first=True, pitched=True
+        ),
+        padding=7,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'indianred)"],
+    ),
+    voice=score["cello 1 voice"],
+    preprocessor=trinton.fuse_preprocessor((100,)),
+)
+
+# cello 2 music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 41)),
+    evans.RhythmHandler(
+        evans.talea([1, 1, 1, 1, 1, 4, 2, 4], 64, extra_counts=[1, 0, -1, 0, 2, 0])
+    ),
+    evans.PitchHandler(["e'", "e'", "e'", "e'", "e'", "d", "a,", "ef,"]),
+    trinton.change_notehead_command(
+        notehead="highest",
+        selector=trinton.patterned_tie_index_selector(
+            [0, 1, 2, 3, 4], 8, pitched=True, grace=False, first=True
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.BendAfter(3)],
+        selector=trinton.patterned_tie_index_selector(
+            [0, 2, 4], 8, pitched=True, grace=False, first=True
+        ),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.BendAfter(-3)],
+        selector=trinton.patterned_tie_index_selector(
+            [
+                1,
+                3,
+            ],
+            8,
+            pitched=True,
+            grace=False,
+            first=True,
+        ),
+    ),
+    library.duration_line(
+        selector=trinton.patterned_tie_index_selector(
+            [5, 6, 7], 8, pitched=True, grace=False
+        )
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Clef("bass"),
+            trinton.make_custom_dynamic("sfff"),
+            abjad.StartHairpin(">o"),
+            abjad.StopHairpin(),
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [0, 0, 77, -1], first=True, pitched=True
+        ),
+    ),
+    trinton.spanner_command(
+        strings=[
+            r"""\markup \with-color "indianred" { "ord." }""",
+            r"""\markup \with-color "indianred" { "pont. moltiss." }""",
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [77, -1], first=True, pitched=True
+        ),
+        style="solid-line-with-arrow",
+        padding=7,
+        right_padding=-3,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'indianred)"],
+    ),
+    voice=score["cello 2 voice"],
+)
+
+# cello 3 music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (18, 30)),
+    evans.RhythmHandler(evans.talea([25, -100], 16)),
+    library.duration_line(),
+    evans.PitchHandler(["a", "f''"]),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Clef("tenorvarC"),
+            abjad.StartHairpin("o<"),
+            abjad.Dynamic("ffff"),
+        ],
+        selector=trinton.select_leaves_by_index([0, 0, -1], pitched=True),
+    ),
+    voice=score["cello 3 voice"],
+)
+
+# tenor trombone music and bass trombone music
+
+for voice_name in ["tenortrombone voice", "basstrombone voice"]:
+    trinton.make_music(
+        lambda _: trinton.select_target(_, (18, 41)),
+        evans.RhythmHandler(evans.talea([1000], 8)),
+        library.duration_line(),
+        library.trombone_glissando_staff(),
+        trinton.linear_attachment_command(
+            attachments=[
+                trinton.make_custom_dynamic("sfff"),
+                abjad.StartHairpin(">o"),
+                abjad.StopHairpin(),
+            ],
+            selector=trinton.select_leaves_by_index([0, 12, -1]),
+        ),
+        voice=score[voice_name],
+    )
+
+
 # percussion 2 music commands
 
 trinton.make_music(

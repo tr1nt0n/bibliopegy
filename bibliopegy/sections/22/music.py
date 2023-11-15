@@ -83,6 +83,19 @@ trinton.make_music(
     preprocessor=trinton.fuse_preprocessor((5,)),
 )
 
+# flute music and bass flute music
+
+for voice_name, string in zip(
+    ["flute voice", "bassflute voice"], ["Flute", "Bass Flute"]
+):
+    trinton.make_music(
+        lambda _: trinton.select_target(_, (13,)),
+        library.boxed_markup(
+            string=string, selector=trinton.select_leaves_by_index([0])
+        ),
+        voice=score[voice_name],
+    )
+
 # bass clarinet music
 
 trinton.make_music(

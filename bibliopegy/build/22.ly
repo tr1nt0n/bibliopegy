@@ -490,6 +490,7 @@
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
                                     R1 * 1/8
+                                    \boxed-markup "Flute" 1
                                       %! +SCORE
                                     \stopStaff \startStaff
                                     \times 2/3
@@ -789,6 +790,7 @@
                                       %! +SCORE
                                     \stopStaff \startStaff
                                     r16
+                                    \boxed-markup "Bass Flute" 1
                                     \ottava 1
                                     \tweak Accidental.stencil #ly:text-interface::print
                                     \tweak Accidental.text \markup { \one-twenty-three-limit-comma-up  }
