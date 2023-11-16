@@ -602,6 +602,7 @@
                                     \clef "altovarC"
                                     g16
                                     \mf
+                                    - \markup \with-color \二 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 on" }
                                     [
                                     (
                                     - \tweak color #(css-color 'mediumblue)
@@ -780,6 +781,7 @@
                                             - \tenuto
                                             <c g>16
                                             - \tenuto
+                                            - \markup \with-color \二 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "二 off" }
                                             \stopTextSpanOne
                                             \stopTextSpanTwo
                                             ]
@@ -830,6 +832,7 @@
                             \once \override Tie.stencil = ##f
                             cs8
                             \mf
+                            - \markup \with-color \四 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 on" }
                               %! abjad.glissando(7)
                             - \abjad-zero-padding-glissando
                               %! abjad.glissando(7)
@@ -1189,6 +1192,7 @@
                                 \undo \hide NoteHead
                                 g16
                                 \!
+                                - \markup \with-color \四 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "四 off" }
                                 \stopTextSpanOne
                                 \stopTextSpanThree
                                 \stopTextSpanTwo

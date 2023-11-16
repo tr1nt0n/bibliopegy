@@ -73,6 +73,12 @@ library.make_metric_music(
         selector=trinton.select_leaves_by_index([0]),
         direction=abjad.UP,
     ),
+    trinton.attachment_command(
+        attachments=[
+            library._viola_processing_markups["2 on"],
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
     trinton.linear_attachment_command(
         attachments=[
             abjad.StartSlur(),
@@ -200,6 +206,12 @@ library.make_metric_music(
         attachments=[abjad.StartHairpin(">"), trinton.make_custom_dynamic("p +")],
         selector=trinton.select_leaves_by_index([0, 5]),
     ),
+    trinton.attachment_command(
+        attachments=[
+            library._viola_processing_markups["2 off"],
+        ],
+        selector=trinton.select_leaves_by_index([-1]),
+    ),
     trinton.spanner_command(
         strings=[
             r"""\markup \with-color "indianred" { "pont." }""",
@@ -267,6 +279,13 @@ trinton.make_music(
     trinton.attachment_command(
         attachments=[abjad.StopHairpin()],
         selector=trinton.logical_ties(first=True, pitched=True, grace=True),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            library._viola_processing_markups["4 on"],
+            library._viola_processing_markups["4 off"],
+        ],
+        selector=trinton.select_leaves_by_index([0, -1]),
     ),
     trinton.hooked_spanner_command(
         string=r"""\markup \with-color #(css-color 'goldenrod) { "senza vib." }""",
