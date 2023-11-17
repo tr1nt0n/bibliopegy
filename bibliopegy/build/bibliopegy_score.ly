@@ -30,5 +30,6 @@
         \include "22.ly"
         \include "23.ly"
         \include "24.ly"
+        \include "25.ly"
     }
 }
