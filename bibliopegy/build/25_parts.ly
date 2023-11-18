@@ -34,22 +34,101 @@
                             <<
                                 \context Voice = "piano voice temp"
                                 {
-                                    \once \override Staff.BarLine.glyph-name = ".|:" 
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \override Staff.BarLine.bar-extent = #'(-2 . 2)
-                                    \override Staff.Rest.transparent = ##f
-                                    \revert Staff.Dots.stencil
-                                    \revert Staff.Flag.stencil
-                                    \revert Staff.NoteHead.duration-log
-                                    \revert Staff.Stem.stencil
-                                    \revert Staff.Tie.stencil
-                                    \revert Staff.TimeSignature.stencil
-                                    \revert Staff.TupletBracket.stencil
-                                    \revert Staff.TupletNumber.stencil
-                                    \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { tape }
-                                    \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic"){ tp. }
-                                    R1 * 1/2
-                                    R1 * 1/2
+                                    <<
+                                        \context Voice = "piano voice temp temp"
+                                        {
+                                            \staff-line-count 3
+                                            \once \override Staff.BarLine.glyph-name = ".|:" 
+                                            \once \override Staff.BarLine.transparent = ##f
+                                            \override NoteHead.stencil = #ly:text-interface::print
+                                            \override NoteHead.text = \markup \with-color "forestgreen" \override #'(font-name . "Source Han Serif SC Bold") { 是 }
+                                            \override Staff.BarLine.bar-extent = #'(-2 . 2)
+                                            \override Staff.Rest.transparent = ##f
+                                            \revert Staff.Dots.stencil
+                                            \revert Staff.Flag.stencil
+                                            \revert Staff.NoteHead.duration-log
+                                            \revert Staff.Stem.stencil
+                                            \revert Staff.Tie.stencil
+                                            \revert Staff.TimeSignature.stencil
+                                            \revert Staff.TupletBracket.stencil
+                                            \revert Staff.TupletNumber.stencil
+                                            \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { tape }
+                                            \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic"){ tp. }
+                                            \clef "percussion"
+                                            \voiceOne
+                                            \afterGrace
+                                            c'1
+                                              %! abjad.glissando(7)
+                                            - \tweak color #(css-color 'forestgreen)
+                                              %! abjad.glissando(7)
+                                            - \abjad-zero-padding-glissando
+                                              %! abjad.glissando(7)
+                                            \glissando
+                                            {
+                                                \once \override Accidental.stencil = ##f
+                                                \once \override Flag.stroke-style = #"grace"
+                                                \once \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.transparent = ##t
+                                                  %! abjad.glissando(1)
+                                                \hide NoteHead
+                                                  %! abjad.glissando(1)
+                                                \override Accidental.stencil = ##f
+                                                  %! abjad.glissando(1)
+                                                \override NoteColumn.glissando-skip = ##t
+                                                  %! abjad.glissando(1)
+                                                \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.X-extent = #'(0 . 0)
+                                                  %! abjad.glissando(6)
+                                                \revert Accidental.stencil
+                                                  %! abjad.glissando(6)
+                                                \revert NoteColumn.glissando-skip
+                                                  %! abjad.glissando(6)
+                                                \revert NoteHead.no-ledgers
+                                                  %! abjad.glissando(6)
+                                                \undo \hide NoteHead
+                                                c'16
+                                            }
+                                        }
+                                        \context Voice = "theta voice"
+                                        {
+                                            \override NoteHead.stencil = #ly:text-interface::print
+                                            \override NoteHead.text = \markup \with-color "darkmagenta" { θ }
+                                            \voiceTwo
+                                            \afterGrace
+                                            g1
+                                            - \abjad-zero-padding-glissando
+                                            \glissando
+                                              %! abjad.glissando(7)
+                                            - \tweak color #darkmagenta
+                                              %! abjad.glissando(7)
+                                            - \abjad-zero-padding-glissando
+                                              %! abjad.glissando(7)
+                                            \glissando
+                                            {
+                                                \once \override Accidental.stencil = ##f
+                                                \once \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.transparent = ##t
+                                                  %! abjad.glissando(1)
+                                                \hide NoteHead
+                                                  %! abjad.glissando(1)
+                                                \override Accidental.stencil = ##f
+                                                  %! abjad.glissando(1)
+                                                \override NoteColumn.glissando-skip = ##t
+                                                  %! abjad.glissando(1)
+                                                \override NoteHead.no-ledgers = ##t
+                                                  %! abjad.glissando(6)
+                                                \revert Accidental.stencil
+                                                  %! abjad.glissando(6)
+                                                \revert NoteColumn.glissando-skip
+                                                  %! abjad.glissando(6)
+                                                \revert NoteHead.no-ledgers
+                                                  %! abjad.glissando(6)
+                                                \undo \hide NoteHead
+                                                g16
+                                            }
+                                        }
+                                    >>
+                                    \oneVoice
                                 }
                                 \context Voice = "piano voice time signatures"
                                 {
@@ -71,7 +150,7 @@
                                     \voiceTwo
                                     s1 * 1/2
                                     ^ \markup {
-                                      \raise #5 \with-dimensions-from \null
+                                      \raise #4 \with-dimensions-from \null
                                       \override #'(font-size . 4)
                                       \concat {
                                           \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -171,22 +250,83 @@
                                     <<
                                         \context Voice = "flute voice temp"
                                         {
-                                            \once \override Staff.BarLine.glyph-name = ".|:" 
-                                            \once \override Staff.BarLine.transparent = ##f
-                                            \override Staff.BarLine.bar-extent = #'(-2 . 2)
-                                            \override Staff.Rest.transparent = ##f
-                                            \revert Staff.Dots.stencil
-                                            \revert Staff.Flag.stencil
-                                            \revert Staff.NoteHead.duration-log
-                                            \revert Staff.Stem.stencil
-                                            \revert Staff.Tie.stencil
-                                            \revert Staff.TimeSignature.stencil
-                                            \revert Staff.TupletBracket.stencil
-                                            \revert Staff.TupletNumber.stencil
-                                            \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { flute }
-                                            \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { fl. }
-                                            R1 * 1/2
-                                            R1 * 1/2
+                                            <<
+                                                \context Voice = "On_Beat_Grace_Container"
+                                                {
+                                                      %! abjad.on_beat_grace_container(1)
+                                                    \set fontSize = #-3
+                                                    \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { flute }
+                                                    \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { fl. }
+                                                    \slash
+                                                    \voiceOne
+                                                    g'16 * 2/5
+                                                    [
+                                                    (
+                                                    \ottava 1
+                                                    \tweak style #'harmonic
+                                                    d'''16 * 2/5
+                                                    \tweak style #'harmonic
+                                                    g'''16 * 2/5
+                                                    \tweak style #'harmonic
+                                                    b'''16 * 2/5
+                                                    \ottava 0
+                                                    g'16 * 2/5
+                                                    )
+                                                    ]
+                                                }
+                                                \context Voice = "flute voice temp Anchor"
+                                                {
+                                                    \once \override Staff.BarLine.glyph-name = ".|:" 
+                                                    \once \override Staff.BarLine.transparent = ##f
+                                                    \override Staff.BarLine.bar-extent = #'(-2 . 2)
+                                                    \override Staff.Rest.transparent = ##f
+                                                    \revert Staff.Dots.stencil
+                                                    \revert Staff.Flag.stencil
+                                                    \revert Staff.NoteHead.duration-log
+                                                    \revert Staff.Stem.stencil
+                                                    \revert Staff.Tie.stencil
+                                                    \revert Staff.TimeSignature.stencil
+                                                    \revert Staff.TupletBracket.stencil
+                                                    \revert Staff.TupletNumber.stencil
+                                                    \voiceTwo
+                                                    g'4
+                                                        _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz mf"))
+                                                    - \markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "Flute ( do not play first repetition )" }
+                                                }
+                                            >>
+                                            f''16
+                                            [
+                                            \<
+                                            fs''16
+                                            - \tenuto
+                                            \f
+                                            r16
+                                            cs''16
+                                            :128
+                                            - \accent
+                                            ]
+                                            ~
+                                            cs''4
+                                            :32
+                                            \>
+                                            ~
+                                            cs''16
+                                            :128
+                                            \mp
+                                            [
+                                            \<
+                                            g''16
+                                            :128
+                                            \ff
+                                            (
+                                            \>
+                                            ef''32
+                                            :256
+                                            a'16.
+                                            :128
+                                            \!
+                                            )
+                                            ]
                                         }
                                         \context Voice = "flute voice time signatures"
                                         {
@@ -208,7 +348,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #10.5 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -261,22 +401,82 @@
                                     <<
                                         \context Voice = "bassflute voice temp"
                                         {
-                                            \once \override Staff.BarLine.glyph-name = ".|:" 
-                                            \once \override Staff.BarLine.transparent = ##f
-                                            \override Staff.BarLine.bar-extent = #'(-2 . 2)
-                                            \override Staff.Rest.transparent = ##f
-                                            \revert Staff.Dots.stencil
-                                            \revert Staff.Flag.stencil
-                                            \revert Staff.NoteHead.duration-log
-                                            \revert Staff.Stem.stencil
-                                            \revert Staff.Tie.stencil
-                                            \revert Staff.TimeSignature.stencil
-                                            \revert Staff.TupletBracket.stencil
-                                            \revert Staff.TupletNumber.stencil
-                                            \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { bass flute }
-                                            \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { b. fl. }
-                                            R1 * 1/2
-                                            R1 * 1/2
+                                            <<
+                                                \context Voice = "On_Beat_Grace_Container"
+                                                {
+                                                      %! abjad.on_beat_grace_container(1)
+                                                    \set fontSize = #-3
+                                                    \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { bass flute }
+                                                    \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { b. fl. }
+                                                    \slash
+                                                    \voiceOne
+                                                    g'16 * 2/5
+                                                    [
+                                                    (
+                                                    \ottava 1
+                                                    \tweak style #'harmonic
+                                                    d'''16 * 2/5
+                                                    \tweak style #'harmonic
+                                                    g'''16 * 2/5
+                                                    \tweak style #'harmonic
+                                                    b'''16 * 2/5
+                                                    \ottava 0
+                                                    g'16 * 2/5
+                                                    )
+                                                    ]
+                                                }
+                                                \context Voice = "bassflute voice temp Anchor"
+                                                {
+                                                    \once \override Staff.BarLine.glyph-name = ".|:" 
+                                                    \once \override Staff.BarLine.transparent = ##f
+                                                    \override Staff.BarLine.bar-extent = #'(-2 . 2)
+                                                    \override Staff.Rest.transparent = ##f
+                                                    \revert Staff.Dots.stencil
+                                                    \revert Staff.Flag.stencil
+                                                    \revert Staff.NoteHead.duration-log
+                                                    \revert Staff.Stem.stencil
+                                                    \revert Staff.Tie.stencil
+                                                    \revert Staff.TimeSignature.stencil
+                                                    \revert Staff.TupletBracket.stencil
+                                                    \revert Staff.TupletNumber.stencil
+                                                    \voiceTwo
+                                                    g'4
+                                                        _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz mf"))
+                                                }
+                                            >>
+                                            f''16
+                                            [
+                                            \<
+                                            fs''16
+                                            - \tenuto
+                                            \f
+                                            r16
+                                            cs''16
+                                            :128
+                                            - \accent
+                                            ]
+                                            ~
+                                            cs''4
+                                            :32
+                                            \>
+                                            ~
+                                            cs''16
+                                            :128
+                                            \mp
+                                            [
+                                            \<
+                                            g''16
+                                            :128
+                                            \ff
+                                            (
+                                            \>
+                                            ef''32
+                                            :256
+                                            a'16.
+                                            :128
+                                            \!
+                                            )
+                                            ]
                                         }
                                         \context Voice = "bassflute voice time signatures"
                                         {
@@ -298,7 +498,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #10.5 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -388,7 +588,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #4 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -461,8 +661,74 @@
                                             \revert Staff.TupletNumber.stencil
                                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { bass clarinet }
                                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic"){ b. cl. }
-                                            R1 * 1/2
-                                            R1 * 1/2
+                                            \afterGrace
+                                            e2
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz mf"))
+                                            - \accent
+                                              %! abjad.glissando(7)
+                                            - \abjad-zero-padding-glissando
+                                              %! abjad.glissando(7)
+                                            \glissando
+                                            \>
+                                            {
+                                                \once \override Accidental.stencil = ##f
+                                                \once \override Flag.stroke-style = #"grace"
+                                                \once \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.transparent = ##t
+                                                  %! abjad.glissando(1)
+                                                \hide NoteHead
+                                                  %! abjad.glissando(1)
+                                                \override Accidental.stencil = ##f
+                                                  %! abjad.glissando(1)
+                                                \override NoteColumn.glissando-skip = ##t
+                                                  %! abjad.glissando(1)
+                                                \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.X-extent = #'(0 . 0)
+                                                  %! abjad.glissando(6)
+                                                \revert Accidental.stencil
+                                                  %! abjad.glissando(6)
+                                                \revert NoteColumn.glissando-skip
+                                                  %! abjad.glissando(6)
+                                                \revert NoteHead.no-ledgers
+                                                  %! abjad.glissando(6)
+                                                \undo \hide NoteHead
+                                                e16
+                                                \p
+                                            }
+                                            \afterGrace
+                                            gqf2
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz mf"))
+                                            - \accent
+                                              %! abjad.glissando(7)
+                                            - \abjad-zero-padding-glissando
+                                              %! abjad.glissando(7)
+                                            \glissando
+                                            \>
+                                            {
+                                                \once \override Accidental.stencil = ##f
+                                                \once \override Flag.stroke-style = #"grace"
+                                                \once \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.transparent = ##t
+                                                  %! abjad.glissando(1)
+                                                \hide NoteHead
+                                                  %! abjad.glissando(1)
+                                                \override Accidental.stencil = ##f
+                                                  %! abjad.glissando(1)
+                                                \override NoteColumn.glissando-skip = ##t
+                                                  %! abjad.glissando(1)
+                                                \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.X-extent = #'(0 . 0)
+                                                  %! abjad.glissando(6)
+                                                \revert Accidental.stencil
+                                                  %! abjad.glissando(6)
+                                                \revert NoteColumn.glissando-skip
+                                                  %! abjad.glissando(6)
+                                                \revert NoteHead.no-ledgers
+                                                  %! abjad.glissando(6)
+                                                \undo \hide NoteHead
+                                                gqf16
+                                                \p
+                                            }
                                         }
                                         \context Voice = "bassclarinet voice time signatures"
                                         {
@@ -484,7 +750,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #4 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -537,22 +803,119 @@
                                     <<
                                         \context Voice = "percussion 1 voice temp"
                                         {
-                                            \once \override Staff.BarLine.glyph-name = ".|:" 
-                                            \once \override Staff.BarLine.transparent = ##f
-                                            \override Staff.BarLine.bar-extent = #'(-2 . 2)
-                                            \override Staff.Rest.transparent = ##f
-                                            \revert Staff.Dots.stencil
-                                            \revert Staff.Flag.stencil
-                                            \revert Staff.NoteHead.duration-log
-                                            \revert Staff.Stem.stencil
-                                            \revert Staff.Tie.stencil
-                                            \revert Staff.TimeSignature.stencil
-                                            \revert Staff.TupletBracket.stencil
-                                            \revert Staff.TupletNumber.stencil
-                                            \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { percussion i }
-                                            \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { perc. i }
-                                            R1 * 1/2
-                                            R1 * 1/2
+                                            <<
+                                                \context Voice = "percussion 1 voice temp temp"
+                                                {
+                                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 5 4) (ly:make-duration 3 0))
+                                                    \times 4/5
+                                                    {
+                                                        \staff-line-count 4
+                                                        \once \override Staff.BarLine.glyph-name = ".|:" 
+                                                        \once \override Staff.BarLine.transparent = ##f
+                                                        \override Staff.BarLine.bar-extent = #'(-2 . 2)
+                                                        \override Staff.Rest.transparent = ##f
+                                                        \revert Staff.Dots.stencil
+                                                        \revert Staff.Flag.stencil
+                                                        \revert Staff.NoteHead.duration-log
+                                                        \revert Staff.Stem.stencil
+                                                        \revert Staff.Tie.stencil
+                                                        \revert Staff.TimeSignature.stencil
+                                                        \revert Staff.TupletBracket.stencil
+                                                        \revert Staff.TupletNumber.stencil
+                                                        \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { percussion i }
+                                                        \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { perc. i }
+                                                        \clef "percussion"
+                                                        \voiceTwo
+                                                        r4.
+                                                        ^ \markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { \column { \line { "1. Bow Snare Drum on right side of Fishing Line" } \line { "2. Bow Snare Drum on left side of Fishing Line" } \line { "3. Strike Snare Drum on Cymbal" } \line { "4. Strike Timpani on Head" } } }
+                                                        \scaleDurations #'(1 . 1) {
+                                                        \slashedGrace {
+                                                            g16
+                                                            (
+                                                        }
+                                                        }
+                                                        b8
+                                                        - \marcato
+                                                        )
+                                                        r8
+                                                    }
+                                                    \tweak text #tuplet-number::calc-fraction-text
+                                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 7 8) (ly:make-duration 4 0))
+                                                    \times 8/7
+                                                    {
+                                                        r8.
+                                                        \scaleDurations #'(1 . 1) {
+                                                        \slashedGrace {
+                                                            g16
+                                                            (
+                                                        }
+                                                        }
+                                                        b16
+                                                        - \marcato
+                                                        )
+                                                        r8.
+                                                    }
+                                                }
+                                                \context Voice = "snare voice"
+                                                {
+                                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 17 16) (ly:make-duration 5 0))
+                                                    \times 16/17
+                                                    {
+                                                        \voiceOne
+                                                        d'32
+                                                            _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz pp"))
+                                                        [
+                                                        _ \<
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        r32
+                                                        _ \f
+                                                        d'32
+                                                        _ \>
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        _ \p
+                                                    }
+                                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 17 16) (ly:make-duration 5 0))
+                                                    \times 16/17
+                                                    {
+                                                        d'32
+                                                            _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz pp"))
+                                                        _ \<
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        d'32
+                                                        r32
+                                                        _ \f
+                                                        f'32
+                                                        _ \>
+                                                        d'32
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        d'32
+                                                        f'32
+                                                        _ \p
+                                                        ]
+                                                    }
+                                                }
+                                            >>
+                                            \oneVoice
                                         }
                                         \context Voice = "percussion 1 voice time signatures"
                                         {
@@ -574,7 +937,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #25 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -670,7 +1033,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #4 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -760,7 +1123,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #4 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -850,7 +1213,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #4 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -946,7 +1309,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #4 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -1036,7 +1399,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #4 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
@@ -1103,8 +1466,80 @@
                                             \revert Staff.TupletNumber.stencil
                                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { percussion ii }
                                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { perc. ii }
-                                            R1 * 1/2
-                                            R1 * 1/2
+                                            \boxed-markup "Marimba" 1
+                                            \clef "bass"
+                                            \afterGrace
+                                            <d, d d' d''>2
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz mf"))
+                                            :32
+                                            - \accent
+                                              %! abjad.glissando(7)
+                                            - \abjad-zero-padding-glissando
+                                              %! abjad.glissando(7)
+                                            \glissando
+                                            \>
+                                            {
+                                                \once \override Accidental.stencil = ##f
+                                                \once \override Flag.stroke-style = #"grace"
+                                                \once \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.transparent = ##t
+                                                  %! abjad.glissando(1)
+                                                \hide NoteHead
+                                                  %! abjad.glissando(1)
+                                                \override Accidental.stencil = ##f
+                                                  %! abjad.glissando(1)
+                                                \override NoteColumn.glissando-skip = ##t
+                                                  %! abjad.glissando(1)
+                                                \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.X-extent = #'(0 . 0)
+                                                  %! abjad.glissando(6)
+                                                \revert Accidental.stencil
+                                                  %! abjad.glissando(6)
+                                                \revert NoteColumn.glissando-skip
+                                                  %! abjad.glissando(6)
+                                                \revert NoteHead.no-ledgers
+                                                  %! abjad.glissando(6)
+                                                \undo \hide NoteHead
+                                                <d, d d' d''>16
+                                                :128
+                                                \p
+                                            }
+                                            \afterGrace
+                                            <e, e e' e''>2
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz mf"))
+                                            :32
+                                            - \accent
+                                              %! abjad.glissando(7)
+                                            - \abjad-zero-padding-glissando
+                                              %! abjad.glissando(7)
+                                            \glissando
+                                            \>
+                                            {
+                                                \once \override Accidental.stencil = ##f
+                                                \once \override Flag.stroke-style = #"grace"
+                                                \once \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.transparent = ##t
+                                                  %! abjad.glissando(1)
+                                                \hide NoteHead
+                                                  %! abjad.glissando(1)
+                                                \override Accidental.stencil = ##f
+                                                  %! abjad.glissando(1)
+                                                \override NoteColumn.glissando-skip = ##t
+                                                  %! abjad.glissando(1)
+                                                \override NoteHead.no-ledgers = ##t
+                                                \once \override NoteHead.X-extent = #'(0 . 0)
+                                                  %! abjad.glissando(6)
+                                                \revert Accidental.stencil
+                                                  %! abjad.glissando(6)
+                                                \revert NoteColumn.glissando-skip
+                                                  %! abjad.glissando(6)
+                                                \revert NoteHead.no-ledgers
+                                                  %! abjad.glissando(6)
+                                                \undo \hide NoteHead
+                                                <e, e e' e''>16
+                                                :128
+                                                \p
+                                            }
                                         }
                                         \context Voice = "percussion 2 voice time signatures"
                                         {
@@ -1126,7 +1561,7 @@
                                             \voiceTwo
                                             s1 * 1/2
                                             ^ \markup {
-                                              \raise #5 \with-dimensions-from \null
+                                              \raise #10.5 \with-dimensions-from \null
                                               \override #'(font-size . 4)
                                               \concat {
                                                   \abjad-metronome-mark-markup #3 #0 #1 #"60"
