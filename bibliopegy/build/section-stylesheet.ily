@@ -51,6 +51,7 @@ afterGraceFraction = #(cons 255 256)
         \override StaffGrouper.staffgroup-staff-spacing = #'((basic-distance . 0) (minimum distance . 5) (padding . 8) (stretchability . 28))
 
         \override AccidentalSuggestion.avoid-slur = #'ignore
+        \override TrillPitchAccidental.avoid-slur = #'ignore
         \override Accidental.layer = 2
         \override Accidental.whiteout-style = #'outline
         \override Accidental.whiteout = 1

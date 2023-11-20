@@ -131,7 +131,8 @@ for voice_name in library.all_voice_names:
 
 library.make_metric_music(
     evans.RhythmHandler(evans.talea([1000], 8)),
-    library.change_lines(lines=3, clef="percussion"),
+    evans.PitchHandler(pitch_list=[-1]),
+    library.change_lines(lines=2, clef="percussion"),
     trinton.attachment_command(
         attachments=[
             abjad.LilyPondLiteral(
@@ -144,58 +145,12 @@ library.make_metric_music(
         ],
         selector=trinton.select_leaves_by_index([0]),
     ),
-    evans.IntermittentVoiceHandler(
-        rhythm_handler=evans.RhythmHandler(
-            evans.talea(
-                [
-                    1000,
-                ],
-                8,
-            ),
-        ),
-        direction=abjad.DOWN,
-        voice_name="theta voice",
-    ),
+    library.duration_line(color="(css-color 'forestgreen)", viola=True),
     score=score,
     voice_name="piano voice",
     second_range=(1, 8),
     measure_number_range=(1, 2),
     preprocessor=trinton.fuse_preprocessor((2,)),
-)
-
-trinton.make_music(
-    lambda _: trinton.select_target(_, (1, 8)),
-    library.duration_line(color="(css-color 'forestgreen)", viola=True),
-    trinton.linear_attachment_command(
-        attachments=[
-            library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=0,
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
-    ),
-    voice=score["piano voice temp"],
-)
-
-trinton.make_music(
-    lambda _: trinton.select_target(_, (1, 8)),
-    evans.PitchHandler([-5]),
-    library.duration_line(color="darkmagenta"),
-    trinton.attachment_command(
-        attachments=[
-            abjad.LilyPondLiteral(
-                [
-                    r"\override NoteHead.stencil = #ly:text-interface::print",
-                    r"""\override NoteHead.text = \markup \with-color "darkmagenta" { θ }""",
-                ],
-                site="before",
-            ),
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-    ),
-    voice=score["theta voice"],
 )
 
 # viola voice
@@ -259,16 +214,6 @@ library.make_metric_music(
             ]
         ),
         selector=trinton.select_leaves_by_index([0, 0, 0, 1, 2, 2, 2, -1]),
-    ),
-    trinton.linear_attachment_command(
-        attachments=[
-            library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=0,
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
     ),
     score=score,
     voice_name="bassclarinet voice",
@@ -366,16 +311,6 @@ library.make_metric_music(
         ),
     ),
     trinton.tremolo_command(selector=trinton.pleaves(grace=False, exclude=[0, 1, 2])),
-    trinton.linear_attachment_command(
-        attachments=[
-            library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=10,
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
-    ),
     score=score,
     voice_name="flute voice",
     second_range=(1, 8),
@@ -486,16 +421,6 @@ library.make_metric_music(
         zero_padding=True,
         no_ties=True,
     ),
-    trinton.linear_attachment_command(
-        attachments=[
-            library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=2,
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
-    ),
     score=score,
     voice_name="bassflute voice",
     second_range=(1, 8),
@@ -550,16 +475,6 @@ library.make_metric_music(
         command="Three",
     ),
     trinton.tremolo_command(selector=trinton.select_leaves_by_index([0])),
-    trinton.linear_attachment_command(
-        attachments=[
-            library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=11.5,
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
-    ),
     score=score,
     voice_name="violin voice",
     second_range=(1, 8),
@@ -604,16 +519,6 @@ library.make_metric_music(
         selector=trinton.pleaves(),
     ),
     trinton.notehead_bracket_command(),
-    trinton.linear_attachment_command(
-        attachments=[
-            library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=25,
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
-    ),
     evans.IntermittentVoiceHandler(
         rhythm_handler=evans.RhythmHandler(evans.talea([1000], 32, extra_counts=[2])),
         direction=abjad.UP,
@@ -696,16 +601,6 @@ library.make_metric_music(
         command="Three",
     ),
     trinton.tremolo_command(selector=trinton.select_leaves_by_index([0])),
-    trinton.linear_attachment_command(
-        attachments=[
-            library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=12.5,
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
-    ),
     score=score,
     voice_name="cello 1 voice",
     second_range=(1, 8),
@@ -762,16 +657,6 @@ library.make_metric_music(
         command="Three",
     ),
     trinton.tremolo_command(selector=trinton.select_leaves_by_index([0])),
-    trinton.linear_attachment_command(
-        attachments=[
-            library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=12.5,
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
-    ),
     score=score,
     voice_name="cello 2 voice",
     second_range=(1, 8),
@@ -825,16 +710,6 @@ library.make_metric_music(
         command="Three",
     ),
     trinton.tremolo_command(selector=trinton.select_leaves_by_index([0])),
-    trinton.linear_attachment_command(
-        attachments=[
-            library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=12.5,
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
-    ),
     score=score,
     voice_name="cello 3 voice",
     second_range=(1, 8),
@@ -863,16 +738,6 @@ library.make_metric_music(
         selector=trinton.select_leaves_by_index([0, 0, 0, 1, 2, 2, 2, -1]),
     ),
     trinton.tremolo_command(),
-    trinton.linear_attachment_command(
-        attachments=[
-            library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=10,
-            )
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
-    ),
     score=score,
     voice_name="percussion 2 voice",
     second_range=(1, 8),
@@ -890,6 +755,10 @@ trinton.make_music(
             ),
             abjad.Markup(
                 r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 2\'20\" - 3\'32\" " }"""
+            ),
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=0,
             ),
         ],
         selector=trinton.select_leaves_by_index([0]),
@@ -915,12 +784,13 @@ library.write_short_instrument_names(score=score)
 #     voice_names=[_ for _ in library.all_voice_names if _ != "viola voice"],
 #     last_segment=True,
 # )
-#
-# library.blank_measure_by_hand(
-#     score=score,
-#     voice_names=["piano voice"],
-#     measures=[1, 2],
-# )
+
+for voice_name in ["tenortrombone voice", "basstrombone voice"]:
+    library.blank_measure_by_hand(
+        score=score,
+        voice_names=[voice_name],
+        measures=[1, 2, 3, 4, 5, 6, 7, 8],
+    )
 
 # library.blank_measure_by_hand(
 #     score=score,

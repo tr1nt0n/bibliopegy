@@ -20,6 +20,13 @@
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 2\'20\" - 3\'32\" " }
             - \markup \override #'(font-name . "Bodoni72 Book") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #8 \box { ×9 }
+            ^ \markup {
+              \raise #0 \with-dimensions-from \null
+              \override #'(font-size . 4)
+              \concat {
+                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
+              }
+            }
             \time 1/8
             s1 * 1/8
             \time 1/8
@@ -48,109 +55,57 @@
                             <<
                                 \context Voice = "piano voice temp"
                                 {
-                                    <<
-                                        \context Voice = "piano voice temp temp"
-                                        {
-                                            \staff-line-count 3
-                                            \bar ".|:"
-                                            \once \override Staff.BarLine.glyph-name = ".|:" 
-                                            \once \override Staff.BarLine.transparent = ##f
-                                            \override NoteHead.stencil = #ly:text-interface::print
-                                            \override NoteHead.text = \markup \with-color "forestgreen" \override #'(font-name . "Source Han Serif SC Bold") { 是 }
-                                            \override Staff.BarLine.bar-extent = #'(-2 . 2)
-                                            \override Staff.Rest.transparent = ##f
-                                            \revert Staff.Dots.stencil
-                                            \revert Staff.Flag.stencil
-                                            \revert Staff.NoteHead.duration-log
-                                            \revert Staff.Stem.stencil
-                                            \revert Staff.Tie.stencil
-                                            \revert Staff.TimeSignature.stencil
-                                            \revert Staff.TupletBracket.stencil
-                                            \revert Staff.TupletNumber.stencil
-                                            \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { tape }
-                                            \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic"){ tp. }
-                                            \clef "percussion"
-                                            \voiceOne
-                                            \afterGrace
-                                            c'1
-                                              %! abjad.glissando(7)
-                                            - \tweak color #(css-color 'forestgreen)
-                                              %! abjad.glissando(7)
-                                            - \abjad-zero-padding-glissando
-                                              %! abjad.glissando(7)
-                                            \glissando
-                                            ^ \markup {
-                                              \raise #0 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
-                                            {
-                                                \once \override Accidental.stencil = ##f
-                                                \once \override Flag.stroke-style = #"grace"
-                                                \once \override NoteHead.no-ledgers = ##t
-                                                \once \override NoteHead.transparent = ##t
-                                                  %! abjad.glissando(1)
-                                                \hide NoteHead
-                                                  %! abjad.glissando(1)
-                                                \override Accidental.stencil = ##f
-                                                  %! abjad.glissando(1)
-                                                \override NoteColumn.glissando-skip = ##t
-                                                  %! abjad.glissando(1)
-                                                \override NoteHead.no-ledgers = ##t
-                                                \once \override NoteHead.X-extent = #'(0 . 0)
-                                                  %! abjad.glissando(6)
-                                                \revert Accidental.stencil
-                                                  %! abjad.glissando(6)
-                                                \revert NoteColumn.glissando-skip
-                                                  %! abjad.glissando(6)
-                                                \revert NoteHead.no-ledgers
-                                                  %! abjad.glissando(6)
-                                                \undo \hide NoteHead
-                                                c'16
-                                            }
-                                        }
-                                        \context Voice = "theta voice"
-                                        {
-                                            \override NoteHead.stencil = #ly:text-interface::print
-                                            \override NoteHead.text = \markup \with-color "darkmagenta" { θ }
-                                            \voiceTwo
-                                            \afterGrace
-                                            g1
-                                            - \abjad-zero-padding-glissando
-                                            \glissando
-                                              %! abjad.glissando(7)
-                                            - \tweak color #darkmagenta
-                                              %! abjad.glissando(7)
-                                            - \abjad-zero-padding-glissando
-                                              %! abjad.glissando(7)
-                                            \glissando
-                                            {
-                                                \once \override Accidental.stencil = ##f
-                                                \once \override NoteHead.no-ledgers = ##t
-                                                \once \override NoteHead.transparent = ##t
-                                                  %! abjad.glissando(1)
-                                                \hide NoteHead
-                                                  %! abjad.glissando(1)
-                                                \override Accidental.stencil = ##f
-                                                  %! abjad.glissando(1)
-                                                \override NoteColumn.glissando-skip = ##t
-                                                  %! abjad.glissando(1)
-                                                \override NoteHead.no-ledgers = ##t
-                                                  %! abjad.glissando(6)
-                                                \revert Accidental.stencil
-                                                  %! abjad.glissando(6)
-                                                \revert NoteColumn.glissando-skip
-                                                  %! abjad.glissando(6)
-                                                \revert NoteHead.no-ledgers
-                                                  %! abjad.glissando(6)
-                                                \undo \hide NoteHead
-                                                g16
-                                            }
-                                        }
-                                    >>
-                                    \oneVoice
+                                    \staff-line-count 2
+                                    \bar ".|:"
+                                    \once \override Staff.BarLine.glyph-name = ".|:" 
+                                    \once \override Staff.BarLine.transparent = ##f
+                                    \override NoteHead.stencil = #ly:text-interface::print
+                                    \override NoteHead.text = \markup \with-color "forestgreen" \override #'(font-name . "Source Han Serif SC Bold") { 是 }
+                                    \override Staff.BarLine.bar-extent = #'(-2 . 2)
+                                    \override Staff.Rest.transparent = ##f
+                                    \revert Staff.Dots.stencil
+                                    \revert Staff.Flag.stencil
+                                    \revert Staff.NoteHead.duration-log
+                                    \revert Staff.Stem.stencil
+                                    \revert Staff.Tie.stencil
+                                    \revert Staff.TimeSignature.stencil
+                                    \revert Staff.TupletBracket.stencil
+                                    \revert Staff.TupletNumber.stencil
+                                    \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { tape }
+                                    \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic"){ tp. }
+                                    \clef "percussion"
+                                    \afterGrace
+                                    b1
+                                      %! abjad.glissando(7)
+                                    - \tweak color #(css-color 'forestgreen)
+                                      %! abjad.glissando(7)
+                                    - \abjad-zero-padding-glissando
+                                      %! abjad.glissando(7)
+                                    \glissando
+                                    {
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override Flag.stroke-style = #"grace"
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.X-extent = #'(0 . 0)
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        b16
+                                    }
                                 }
                                 \context Voice = "piano voice time signatures"
                                 {
@@ -346,13 +301,6 @@
                                                     g'16 * 2/5
                                                     [
                                                     (
-                                                    ^ \markup {
-                                                      \raise #10 \with-dimensions-from \null
-                                                      \override #'(font-size . 4)
-                                                      \concat {
-                                                          \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                                      }
-                                                    }
                                                     \ottava 1
                                                     \tweak style #'harmonic
                                                     d'''16 * 2/5
@@ -507,13 +455,6 @@
                                             \ff
                                             ^ \espressivo
                                             [
-                                            ^ \markup {
-                                              \raise #2 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             <<
                                                 \context Voice = "On_Beat_Grace_Container"
                                                 {
@@ -697,13 +638,6 @@
                                             - \tweak bound-details.right.text \markup \with-color "darkred" { { \fraction 1 4 } \hspace #0.5 { scratch } }
                                             \startTextSpanThree
                                             \<
-                                            ^ \markup {
-                                              \raise #11.5 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             <
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup { \abjad-sharp  }
@@ -813,13 +747,6 @@
                                               %! abjad.glissando(7)
                                             \glissando
                                             \>
-                                            ^ \markup {
-                                              \raise #0 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             {
                                                 \once \override Accidental.stencil = ##f
                                                 \once \override Flag.stroke-style = #"grace"
@@ -973,13 +900,6 @@
                                                         \voiceTwo
                                                         r4.
                                                         ^ \markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { \column { \line { "1. Bow Snare Drum on right side of Fishing Line" } \line { "2. Bow Snare Drum on left side of Fishing Line" } \line { "3. Strike Snare Drum on Cymbal" } \line { "4. Strike Timpani on Head" } } }
-                                                        ^ \markup {
-                                                          \raise #25 \with-dimensions-from \null
-                                                          \override #'(font-size . 4)
-                                                          \concat {
-                                                              \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                                          }
-                                                        }
                                                         \scaleDurations #'(1 . 1) {
                                                         \slashedGrace {
                                                             g16
@@ -1176,13 +1096,6 @@
                                             - \tweak bound-details.right.text \markup \with-color "darkred" { { \fraction 1 4 } \hspace #0.5 { scratch } }
                                             \startTextSpanThree
                                             \<
-                                            ^ \markup {
-                                              \raise #12.5 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             <
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup \concat { \one-seventeen-limit-schisma-down \hspace #0.125 \double-sharp-one-syntonic-comma-down  }
@@ -1296,13 +1209,6 @@
                                             - \tweak bound-details.right.text \markup \with-color "darkred" { { \fraction 1 4 } \hspace #0.5 { scratch } }
                                             \startTextSpanThree
                                             \<
-                                            ^ \markup {
-                                              \raise #12.5 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             <
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
@@ -1416,13 +1322,6 @@
                                             - \tweak bound-details.right.text \markup \with-color "darkred" { { \fraction 1 4 } \hspace #0.5 { scratch } }
                                             \startTextSpanThree
                                             \<
-                                            ^ \markup {
-                                              \raise #12.5 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             <
                                                 \tweak Accidental.stencil #ly:text-interface::print
                                                 \tweak Accidental.text \markup \concat { \one-tridecimal-third-tone-down \hspace #0.125 \abjad-sharp  }
@@ -1508,9 +1407,73 @@
                                     <<
                                         \context Voice = "tenortrombone voice temp"
                                         {
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
                                             \bar ".|:"
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
                                             \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                             \override Staff.Rest.transparent = ##f
                                             \revert Staff.Dots.stencil
@@ -1523,7 +1486,71 @@
                                             \revert Staff.TupletNumber.stencil
                                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { tenor trombone }
                                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { t. tbn. }
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                             R1 * 1/2
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
                                             R1 * 1/2
                                         }
                                         \context Voice = "tenortrombone voice time signatures"
@@ -1593,9 +1620,73 @@
                                     <<
                                         \context Voice = "basstrombone voice temp"
                                         {
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.transparent = ##f
                                             \bar ".|:"
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override MultiMeasureRest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
+                                              %! +SCORE
+                                            \once \override Rest.transparent = ##t
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
+                                              %! +SCORE
+                                            \once \override Staff.TimeSignature.stencil = ##f
                                             \override Staff.BarLine.bar-extent = #'(-2 . 2)
                                             \override Staff.Rest.transparent = ##f
                                             \revert Staff.Dots.stencil
@@ -1608,7 +1699,71 @@
                                             \revert Staff.TupletNumber.stencil
                                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { bass trombone }
                                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { b. tbn. }
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                                              %! +SCORE
+                                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                             R1 * 1/2
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \stopStaff \startStaff
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.glyph-name = "!" 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
+                                              %! +SCORE
+                                            \once \override Staff.BarLine.hair-thickness = 1 
                                             R1 * 1/2
                                         }
                                         \context Voice = "basstrombone voice time signatures"
@@ -1705,13 +1860,6 @@
                                               %! abjad.glissando(7)
                                             \glissando
                                             \>
-                                            ^ \markup {
-                                              \raise #10 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             {
                                                 \once \override Accidental.stencil = ##f
                                                 \once \override Flag.stroke-style = #"grace"
