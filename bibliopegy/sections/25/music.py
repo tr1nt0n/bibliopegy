@@ -31,6 +31,7 @@ for voice_name in library.all_voice_names:
         abjad.LilyPondLiteral(
             r"""\once \override Staff.BarLine.transparent = ##f""", site="before"
         ),
+        abjad.BarLine(".|:", site="before"),
     ]
 
     if voice_name != "viola voice":
@@ -64,39 +65,6 @@ for voice_name in library.all_voice_names:
         )
 
         abjad.attach(literal, abjad.select.leaf(score[voice_name], 0))
-
-    if voice_name != "viola voice":
-        if voice_name == "percussion 1 voice":
-            markup = library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=25,
-            )
-
-        if (
-            voice_name == "percussion 2 voice"
-            or voice_name == "flute voice"
-            or voice_name == "bassflute voice"
-        ):
-            markup = library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=10.5,
-            )
-
-        if (
-            voice_name != "flute voice"
-            and voice_name != "bassflute voice"
-            and voice_name != "percussion 1 voice"
-            and voice_name != "percussion 2 voice"
-        ):
-            markup = library.metronome_markups(
-                met_string=library._metronome_marks["1/1"],
-                height=4,
-            )
-
-        abjad.attach(
-            markup,
-            abjad.select.leaf(score[f"{voice_name} time signatures"], 0),
-        )
 
     ending_literals = [
         abjad.LilyPondLiteral(
@@ -198,6 +166,16 @@ library.make_metric_music(
 trinton.make_music(
     lambda _: trinton.select_target(_, (1, 8)),
     library.duration_line(color="(css-color 'forestgreen)", viola=True),
+    trinton.linear_attachment_command(
+        attachments=[
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=0,
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
     voice=score["piano voice temp"],
 )
 
@@ -220,6 +198,51 @@ trinton.make_music(
     voice=score["theta voice"],
 )
 
+# viola voice
+
+library.make_metric_music(
+    evans.RhythmHandler(evans.talea([1], 32, extra_counts=[2])),
+    evans.PitchHandler([[-5, -1], [2, 5]]),
+    library.change_lines(lines=4, clef="varpercussion"),
+    abjad.beam,
+    trinton.linear_attachment_command(
+        attachments=[
+            library._viola_processing_markups["3 on"],
+            abjad.Dynamic("mf"),
+            abjad.StartHairpin("--"),
+            abjad.StopHairpin(),
+            library._viola_processing_markups["3 off"],
+        ],
+        selector=trinton.select_leaves_by_index([0, 0, 0, -1, -1], pitched=True),
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "indianred" { "pont." }""",
+        selector=trinton.select_leaves_by_index(
+            [0, -1],
+            pitched=True,
+        ),
+        padding=5.5,
+        full_string=True,
+        tweaks=[r"- \tweak color #(css-color 'indianred)"],
+        command="One",
+    ),
+    trinton.hooked_spanner_command(
+        string=r"""\markup \with-color "darkred" { "molto flaut." }""",
+        selector=trinton.select_leaves_by_index(
+            [0, -1],
+        ),
+        padding=3.5,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+        command="Two",
+    ),
+    trinton.notehead_bracket_command(),
+    score=score,
+    voice_name="viola voice",
+    second_range=(1, 8),
+    measure_number_range=(1, 2),
+)
+
 # bass clarinet music
 
 library.make_metric_music(
@@ -236,6 +259,16 @@ library.make_metric_music(
             ]
         ),
         selector=trinton.select_leaves_by_index([0, 0, 0, 1, 2, 2, 2, -1]),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=0,
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
     ),
     score=score,
     voice_name="bassclarinet voice",
@@ -333,32 +366,46 @@ library.make_metric_music(
         ),
     ),
     trinton.tremolo_command(selector=trinton.pleaves(grace=False, exclude=[0, 1, 2])),
+    trinton.linear_attachment_command(
+        attachments=[
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=10,
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
     score=score,
     voice_name="flute voice",
     second_range=(1, 8),
     measure_number_range=(1, 2),
 )
 
-# bass flute
+# bass flute music
 
 library.make_metric_music(
     evans.RhythmHandler(
         evans.talea(
             [
-                8,
                 2,
-                2,
-                -2,
-                12,
                 2,
                 1,
-                5,
+                1,
+                1,
+                3,
+                3,
+                2,
+                1,
+                1000,
             ],
-            32,
+            16,
         )
     ),
     evans.RewriteMeterCommand(boundary_depth=-2),
-    abjad.beam,
+    trinton.beam_durations(
+        divisions=[(4, 8), (4, 8)], beam_rests=False, preprolated=True
+    ),
     score=score,
     voice_name="bassflute voice",
     second_range=(1, 8),
@@ -379,55 +426,142 @@ contents = abjad.mutate.eject_contents(contents)
 
 trinton.on_beat_grace_container(
     contents=contents,
-    anchor_voice_selection=abjad.select.logical_tie(score["bassflute voice"], 0),
+    anchor_voice_selection=abjad.select.logical_tie(score["bassflute voice"], 1),
     leaf_duration=abjad.Duration((1, 40)),
     name="bassflute graces",
 )
 
 library.make_metric_music(
     trinton.pitch_with_selector_command(
-        pitch_list=trinton.rotated_sequence(pitch.delta_pitches, 6),
+        pitch_list=trinton.rotated_sequence(pitch.delta_pitches, 40),
         selector=trinton.logical_ties(grace=False),
     ),
     trinton.pitch_with_selector_command(
-        pitch_list=["g'", "d'''", "g'''", "b'''"],
-        selector=trinton.logical_ties(grace=True),
-    ),
-    library.octave_up(
+        pitch_list=["f''"],
         selector=trinton.select_logical_ties_by_index(
-            [1, 2, 4], pitched=True, grace=False
-        )
+            [-4, -3, -2, -1], grace=False, pitched=True
+        ),
+    ),
+    trinton.pitch_with_selector_command(
+        pitch_list=["af'", "ef'''", "af'''", "c''''"],
+        selector=trinton.logical_ties(grace=True),
     ),
     trinton.change_notehead_command(
         notehead="harmonic",
         selector=trinton.select_leaves_by_index([1, 2, 3], grace=True),
     ),
     trinton.ottava_command(selector=trinton.select_leaves_by_index([1, 3], grace=True)),
-    trinton.linear_attachment_command(
-        attachments=[abjad.StartSlur(), abjad.StopSlur()],
-        selector=trinton.select_leaves_by_index([-3, -1]),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("espressivo")],
+        selector=trinton.select_leaves_by_index([0, 1], grace=False),
+        direction=abjad.UP,
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.Articulation("staccato"), abjad.Articulation("marcato")],
+        selector=trinton.select_leaves_by_index([2, 3, 4], grace=False),
     ),
     trinton.linear_attachment_command(
         attachments=[
-            trinton.make_custom_dynamic("sfffz mf"),
-            abjad.StartHairpin("<"),
-            abjad.Dynamic("f"),
-            abjad.Articulation("tenuto"),
-            abjad.Articulation(">"),
-            abjad.StartHairpin(">"),
+            abjad.Dynamic("ff"),
+            abjad.Dynamic("ff"),
             abjad.Dynamic("mp"),
             abjad.StartHairpin("<"),
             abjad.Dynamic("ff"),
             abjad.StartHairpin(">"),
-            abjad.StopHairpin(),
+            abjad.Dynamic("p"),
+            abjad.StartHairpin("<"),
+            abjad.Dynamic("ff"),
+            abjad.StartHairpin(">"),
+            abjad.Dynamic("pp"),
         ],
         selector=trinton.select_leaves_by_index(
-            [0, 1, 2, 2, 3, 4, 5, 5, 6, 6, -1], pitched=True, grace=False
+            [0, 1, 3, 3, 5, 6, 7, 7, 8, 8, -1], pitched=True, grace=False
         ),
     ),
-    trinton.tremolo_command(selector=trinton.pleaves(grace=False, exclude=[0, 1, 2])),
+    trinton.tremolo_command(
+        selector=trinton.select_leaves_by_index([0, -4], grace=False)
+    ),
+    trinton.glissando_command(
+        selector=trinton.ranged_selector(ranges=[range(10, 16)], nested=True),
+        zero_padding=True,
+        no_ties=True,
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=2,
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
     score=score,
     voice_name="bassflute voice",
+    second_range=(1, 8),
+    measure_number_range=(1, 2),
+)
+
+# violin music
+
+library.make_metric_music(
+    evans.RhythmHandler(evans.talea([1], 2)),
+    evans.PitchHandler(["d''", "e,"]),
+    evans.PitchHandler(
+        [
+            ["4/3", "4/6"],
+            ["9/2", "9/1"],
+        ],
+        as_ratios=True,
+    ),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True, grace=False),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            trinton.make_custom_dynamic("sffz pp"),
+            abjad.StartHairpin("<"),
+            abjad.Dynamic("ff"),
+        ],
+        selector=trinton.select_leaves_by_index(
+            [
+                0,
+                0,
+                1,
+            ]
+        ),
+    ),
+    trinton.spanner_command(
+        strings=[
+            r"""\markup \with-color "darkred" { "flaut. moltiss." }""",
+            library.return_fractional_scratch_markup("1 4"),
+        ],
+        selector=trinton.select_leaves_by_index(
+            [
+                0,
+                1,
+            ],
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=11,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+        command="Three",
+    ),
+    trinton.tremolo_command(selector=trinton.select_leaves_by_index([0])),
+    trinton.linear_attachment_command(
+        attachments=[
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=11.5,
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
+    score=score,
+    voice_name="violin voice",
     second_range=(1, 8),
     measure_number_range=(1, 2),
 )
@@ -470,6 +604,16 @@ library.make_metric_music(
         selector=trinton.pleaves(),
     ),
     trinton.notehead_bracket_command(),
+    trinton.linear_attachment_command(
+        attachments=[
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=25,
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
     evans.IntermittentVoiceHandler(
         rhythm_handler=evans.RhythmHandler(evans.talea([1000], 32, extra_counts=[2])),
         direction=abjad.UP,
@@ -505,6 +649,198 @@ trinton.make_music(
     preprocessor=trinton.fuse_preprocessor((4,)),
 )
 
+# cello 1 music
+
+library.make_metric_music(
+    evans.RhythmHandler(evans.talea([1], 2)),
+    evans.PitchHandler(["d,", "e,"]),
+    evans.PitchHandler(
+        [
+            ["72/11", "36/11"],
+            ["85/16", "85/32"],
+        ],
+        as_ratios=True,
+    ),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True, grace=False),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Clef("tenorvarC"),
+            trinton.make_custom_dynamic("sffz pp"),
+            abjad.StartHairpin("<"),
+            abjad.Dynamic("ff"),
+        ],
+        selector=trinton.select_leaves_by_index(
+            [
+                0,
+                0,
+                0,
+                1,
+            ]
+        ),
+    ),
+    trinton.spanner_command(
+        strings=[
+            r"""\markup \with-color "darkred" { "flaut. moltiss." }""",
+            library.return_fractional_scratch_markup("1 4"),
+        ],
+        selector=trinton.select_leaves_by_index(
+            [0, 1],
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=12,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+        command="Three",
+    ),
+    trinton.tremolo_command(selector=trinton.select_leaves_by_index([0])),
+    trinton.linear_attachment_command(
+        attachments=[
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=12.5,
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
+    score=score,
+    voice_name="cello 1 voice",
+    second_range=(1, 8),
+    measure_number_range=(1, 2),
+)
+
+# cello 2 music
+
+library.make_metric_music(
+    evans.RhythmHandler(evans.talea([1], 2)),
+    evans.PitchHandler(["d", "e"]),
+    evans.PitchHandler(
+        [
+            ["3/1", "3/2"],
+            ["11/8", "11/4"],
+        ],
+        as_ratios=True,
+    ),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True, grace=False),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Clef("tenorvarC"),
+            trinton.make_custom_dynamic("sffz pp"),
+            abjad.StartHairpin("<"),
+            abjad.Dynamic("ff"),
+        ],
+        selector=trinton.select_leaves_by_index(
+            [
+                0,
+                0,
+                0,
+                1,
+            ]
+        ),
+    ),
+    trinton.spanner_command(
+        strings=[
+            r"""\markup \with-color "darkred" { "flaut. moltiss." }""",
+            library.return_fractional_scratch_markup("1 4"),
+        ],
+        selector=trinton.select_leaves_by_index(
+            [
+                0,
+                1,
+            ],
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=12,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+        command="Three",
+    ),
+    trinton.tremolo_command(selector=trinton.select_leaves_by_index([0])),
+    trinton.linear_attachment_command(
+        attachments=[
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=12.5,
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
+    score=score,
+    voice_name="cello 2 voice",
+    second_range=(1, 8),
+    measure_number_range=(1, 2),
+)
+
+# cello 3 music
+
+library.make_metric_music(
+    evans.RhythmHandler(evans.talea([1], 2)),
+    evans.PitchHandler(["d,", "e,"]),
+    evans.PitchHandler(
+        [
+            ["15/8", "15/4"],
+            ["13/8", "13/4"],
+        ],
+        as_ratios=True,
+    ),
+    trinton.force_accidentals_command(
+        selector=trinton.logical_ties(first=True, pitched=True, grace=False),
+    ),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Clef("bass"),
+            trinton.make_custom_dynamic("sffz pp"),
+            abjad.StartHairpin("<"),
+            abjad.Dynamic("ff"),
+        ],
+        selector=trinton.select_leaves_by_index(
+            [
+                0,
+                0,
+                0,
+                1,
+            ]
+        ),
+    ),
+    trinton.spanner_command(
+        strings=[
+            r"""\markup \with-color "darkred" { "flaut. moltiss." }""",
+            library.return_fractional_scratch_markup("1 4"),
+        ],
+        selector=trinton.select_leaves_by_index(
+            [0, 1],
+            pitched=True,
+        ),
+        style="solid-line-with-arrow",
+        padding=12,
+        full_string=True,
+        tweaks=[r"""- \tweak color #darkred"""],
+        command="Three",
+    ),
+    trinton.tremolo_command(selector=trinton.select_leaves_by_index([0])),
+    trinton.linear_attachment_command(
+        attachments=[
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=12.5,
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
+    score=score,
+    voice_name="cello 3 voice",
+    second_range=(1, 8),
+    measure_number_range=(1, 2),
+)
+
 # percussion 2 music
 
 library.make_metric_music(
@@ -527,6 +863,16 @@ library.make_metric_music(
         selector=trinton.select_leaves_by_index([0, 0, 0, 1, 2, 2, 2, -1]),
     ),
     trinton.tremolo_command(),
+    trinton.linear_attachment_command(
+        attachments=[
+            library.metronome_markups(
+                met_string=library._metronome_marks["1/1"],
+                height=10,
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        direction=abjad.UP,
+    ),
     score=score,
     voice_name="percussion 2 voice",
     second_range=(1, 8),

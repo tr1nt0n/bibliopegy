@@ -38,6 +38,7 @@
                                         \context Voice = "piano voice temp temp"
                                         {
                                             \staff-line-count 3
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \override NoteHead.stencil = #ly:text-interface::print
@@ -64,6 +65,13 @@
                                             - \abjad-zero-padding-glissando
                                               %! abjad.glissando(7)
                                             \glissando
+                                            ^ \markup {
+                                              \raise #0 \with-dimensions-from \null
+                                              \override #'(font-size . 4)
+                                              \concat {
+                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                              }
+                                            }
                                             {
                                                 \once \override Accidental.stencil = ##f
                                                 \once \override Flag.stroke-style = #"grace"
@@ -132,6 +140,7 @@
                                 }
                                 \context Voice = "piano voice time signatures"
                                 {
+                                    \bar ".|:"
                                     \once \override Staff.BarLine.glyph-name = ".|:" 
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f
@@ -149,13 +158,6 @@
                                     \time 4/8
                                     \voiceTwo
                                     s1 * 1/2
-                                    ^ \markup {
-                                      \raise #4 \with-dimensions-from \null
-                                      \override #'(font-size . 4)
-                                      \concat {
-                                          \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                      }
-                                    }
                                     \once \override Staff.BarLine.glyph-name = "|" 
                                     \once \override Staff.BarLine.glyph-name = "|" 
                                     \once \override Staff.BarLine.transparent = ##f
@@ -203,15 +205,83 @@
                             <<
                                 \context Voice = "viola voice temp"
                                 {
-                                    \once \override Staff.BarLine.glyph-name = ".|:" 
-                                    \once \override Staff.BarLine.transparent = ##f
-                                    \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { viola }
-                                    \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vla. }
-                                    R1 * 1/2
-                                    R1 * 1/2
+                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 9 8) (ly:make-duration 4 0))
+                                    \times 8/9
+                                    {
+                                        \staff-line-count 4
+                                        \bar ".|:"
+                                        \once \override Staff.BarLine.glyph-name = ".|:" 
+                                        \once \override Staff.BarLine.transparent = ##f
+                                        \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { viola }
+                                        \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vla. }
+                                        \clef "varpercussion"
+                                        <g b>32
+                                        \mf
+                                        - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 on" }
+                                        [
+                                        - \tweak color #(css-color 'indianred)
+                                        - \tweak padding #5.5
+                                        - \abjad-dashed-line-with-hook
+                                        - \tweak bound-details.left.text \markup \concat { \with-color "indianred" { "pont." } \hspace #0.5 }
+                                        - \tweak bound-details.right.padding -1
+                                        \startTextSpanOne
+                                        - \tweak color #darkred
+                                        - \tweak padding #3.5
+                                        - \abjad-dashed-line-with-hook
+                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { "molto flaut." } \hspace #0.5 }
+                                        - \tweak bound-details.right.padding -1
+                                        \startTextSpanTwo
+                                        - \tweak stencil #constante-hairpin
+                                        \<
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                    }
+                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 9 8) (ly:make-duration 4 0))
+                                    \times 8/9
+                                    {
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        <g b>32
+                                        <d' f'>32
+                                        \!
+                                        - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }
+                                        \stopTextSpanOne
+                                        \stopTextSpanTwo
+                                        ]
+                                    }
                                 }
                                 \context Voice = "viola voice time signatures"
                                 {
+                                    \bar ".|:"
                                     \once \override Staff.BarLine.glyph-name = ".|:" 
                                     \once \override Staff.BarLine.transparent = ##f
                                     \once \override Staff.BarLine.transparent = ##f
@@ -262,6 +332,13 @@
                                                     g'16 * 2/5
                                                     [
                                                     (
+                                                    ^ \markup {
+                                                      \raise #10 \with-dimensions-from \null
+                                                      \override #'(font-size . 4)
+                                                      \concat {
+                                                          \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                                      }
+                                                    }
                                                     \ottava 1
                                                     \tweak style #'harmonic
                                                     d'''16 * 2/5
@@ -276,6 +353,7 @@
                                                 }
                                                 \context Voice = "flute voice temp Anchor"
                                                 {
+                                                    \bar ".|:"
                                                     \once \override Staff.BarLine.glyph-name = ".|:" 
                                                     \once \override Staff.BarLine.transparent = ##f
                                                     \override Staff.BarLine.bar-extent = #'(-2 . 2)
@@ -330,6 +408,7 @@
                                         }
                                         \context Voice = "flute voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -347,13 +426,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #10.5 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f
@@ -401,85 +473,119 @@
                                     <<
                                         \context Voice = "bassflute voice temp"
                                         {
+                                            \bar ".|:"
+                                            \once \override Staff.BarLine.glyph-name = ".|:" 
+                                            \once \override Staff.BarLine.transparent = ##f
+                                            \override Staff.BarLine.bar-extent = #'(-2 . 2)
+                                            \override Staff.Rest.transparent = ##f
+                                            \revert Staff.Dots.stencil
+                                            \revert Staff.Flag.stencil
+                                            \revert Staff.NoteHead.duration-log
+                                            \revert Staff.Stem.stencil
+                                            \revert Staff.Tie.stencil
+                                            \revert Staff.TimeSignature.stencil
+                                            \revert Staff.TupletBracket.stencil
+                                            \revert Staff.TupletNumber.stencil
+                                            \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { bass flute }
+                                            \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { b. fl. }
+                                            g'8
+                                            :64
+                                            \ff
+                                            ^ \espressivo
+                                            [
+                                            ^ \markup {
+                                              \raise #2 \with-dimensions-from \null
+                                              \override #'(font-size . 4)
+                                              \concat {
+                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                              }
+                                            }
                                             <<
                                                 \context Voice = "On_Beat_Grace_Container"
                                                 {
                                                       %! abjad.on_beat_grace_container(1)
                                                     \set fontSize = #-3
-                                                    \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { bass flute }
-                                                    \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { b. fl. }
                                                     \slash
                                                     \voiceOne
-                                                    g'16 * 2/5
+                                                    af'16 * 2/5
                                                     [
                                                     (
                                                     \ottava 1
                                                     \tweak style #'harmonic
-                                                    d'''16 * 2/5
+                                                    ef'''16 * 2/5
                                                     \tweak style #'harmonic
-                                                    g'''16 * 2/5
+                                                    af'''16 * 2/5
                                                     \tweak style #'harmonic
-                                                    b'''16 * 2/5
+                                                    c''''16 * 2/5
                                                     \ottava 0
-                                                    g'16 * 2/5
+                                                    af'16 * 2/5
                                                     )
                                                     ]
                                                 }
                                                 \context Voice = "bassflute voice temp Anchor"
                                                 {
-                                                    \once \override Staff.BarLine.glyph-name = ".|:" 
-                                                    \once \override Staff.BarLine.transparent = ##f
-                                                    \override Staff.BarLine.bar-extent = #'(-2 . 2)
-                                                    \override Staff.Rest.transparent = ##f
-                                                    \revert Staff.Dots.stencil
-                                                    \revert Staff.Flag.stencil
-                                                    \revert Staff.NoteHead.duration-log
-                                                    \revert Staff.Stem.stencil
-                                                    \revert Staff.Tie.stencil
-                                                    \revert Staff.TimeSignature.stencil
-                                                    \revert Staff.TupletBracket.stencil
-                                                    \revert Staff.TupletNumber.stencil
                                                     \voiceTwo
-                                                    g'4
-                                                        _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz mf"))
+                                                    af'8
+                                                    \ff
+                                                    ^ \espressivo
                                                 }
                                             >>
-                                            f''16
-                                            [
-                                            \<
-                                            fs''16
-                                            - \tenuto
-                                            \f
-                                            r16
-                                            cs''16
-                                            :128
-                                            - \accent
-                                            ]
-                                            ~
-                                            cs''4
-                                            :32
-                                            \>
-                                            ~
-                                            cs''16
-                                            :128
+                                            a'16
+                                            - \marcato
+                                            - \staccato
+                                            fs'16
+                                            - \marcato
+                                            - \staccato
                                             \mp
-                                            [
                                             \<
-                                            g''16
-                                            :128
+                                            cs''16
+                                            - \marcato
+                                            - \staccato
+                                            f''16
                                             \ff
-                                            (
+                                            ]
+                                              %! abjad.glissando(7)
+                                            - \abjad-zero-padding-glissando
+                                              %! abjad.glissando(7)
+                                            \glissando
+                                            \once \override Dots.staff-position = #2
+                                              %! abjad.glissando(1)
+                                            \hide NoteHead
+                                              %! abjad.glissando(1)
+                                            \override Accidental.stencil = ##f
+                                              %! abjad.glissando(1)
+                                            \override NoteColumn.glissando-skip = ##t
+                                              %! abjad.glissando(1)
+                                            \override NoteHead.no-ledgers = ##t
+                                            f''8
+                                            [
                                             \>
-                                            ef''32
-                                            :256
-                                            a'16.
-                                            :128
-                                            \!
-                                            )
+                                            \once \override Dots.staff-position = #2
+                                            f''8.
+                                            :64
+                                            \p
+                                            \<
+                                            \once \override Dots.staff-position = #2
+                                            f''16
+                                            \ff
+                                            \>
+                                            \once \override Dots.staff-position = #2
+                                            f''16
+                                              %! abjad.glissando(6)
+                                            \revert Accidental.stencil
+                                              %! abjad.glissando(6)
+                                            \revert NoteColumn.glissando-skip
+                                              %! abjad.glissando(6)
+                                            \revert NoteHead.no-ledgers
+                                              %! abjad.glissando(6)
+                                            \undo \hide NoteHead
+                                            f''16
+                                            \pp
                                             ]
                                         }
                                         \context Voice = "bassflute voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -497,13 +603,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #10.5 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f
@@ -551,6 +650,7 @@
                                     <<
                                         \context Voice = "violin voice temp"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \override Staff.BarLine.bar-extent = #'(-2 . 2)
@@ -565,11 +665,46 @@
                                             \revert Staff.TupletNumber.stencil
                                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { violin }
                                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vln. }
-                                            R1 * 1/2
-                                            R1 * 1/2
+                                            <
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \abjad-natural  }
+                                                g'!
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \abjad-natural  }
+                                                g''!
+                                            >2
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "sffz pp"))
+                                            :32
+                                            ^ \markup \center-align { \center-column { \line { \concat { -2 }  }\line { \concat { -2 }  } } }
+                                            - \tweak color #darkred
+                                            - \tweak padding #11
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { "flaut. moltiss." } \hspace #0.5 }
+                                            - \tweak bound-details.right.text \markup \with-color "darkred" { { \fraction 1 4 } \hspace #0.5 { scratch } }
+                                            \startTextSpanThree
+                                            \<
+                                            ^ \markup {
+                                              \raise #11.5 \with-dimensions-from \null
+                                              \override #'(font-size . 4)
+                                              \concat {
+                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                              }
+                                            }
+                                            <
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \abjad-sharp  }
+                                                fs'!
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \abjad-sharp  }
+                                                fs''!
+                                            >2
+                                            \ff
+                                            ^ \markup \center-align { \center-column { \line { \concat { +4 }  }\line { \concat { +4 }  } } }
+                                            \stopTextSpanThree
                                         }
                                         \context Voice = "violin voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -587,13 +722,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #4 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f
@@ -647,6 +775,7 @@
                                     <<
                                         \context Voice = "bassclarinet voice temp"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \override Staff.BarLine.bar-extent = #'(-2 . 2)
@@ -670,6 +799,13 @@
                                               %! abjad.glissando(7)
                                             \glissando
                                             \>
+                                            ^ \markup {
+                                              \raise #0 \with-dimensions-from \null
+                                              \override #'(font-size . 4)
+                                              \concat {
+                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                              }
+                                            }
                                             {
                                                 \once \override Accidental.stencil = ##f
                                                 \once \override Flag.stroke-style = #"grace"
@@ -732,6 +868,7 @@
                                         }
                                         \context Voice = "bassclarinet voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -749,13 +886,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #4 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f
@@ -810,6 +940,7 @@
                                                     \times 4/5
                                                     {
                                                         \staff-line-count 4
+                                                        \bar ".|:"
                                                         \once \override Staff.BarLine.glyph-name = ".|:" 
                                                         \once \override Staff.BarLine.transparent = ##f
                                                         \override Staff.BarLine.bar-extent = #'(-2 . 2)
@@ -828,6 +959,13 @@
                                                         \voiceTwo
                                                         r4.
                                                         ^ \markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { \column { \line { "1. Bow Snare Drum on right side of Fishing Line" } \line { "2. Bow Snare Drum on left side of Fishing Line" } \line { "3. Strike Snare Drum on Cymbal" } \line { "4. Strike Timpani on Head" } } }
+                                                        ^ \markup {
+                                                          \raise #25 \with-dimensions-from \null
+                                                          \override #'(font-size . 4)
+                                                          \concat {
+                                                              \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                                          }
+                                                        }
                                                         \scaleDurations #'(1 . 1) {
                                                         \slashedGrace {
                                                             g16
@@ -919,6 +1057,7 @@
                                         }
                                         \context Voice = "percussion 1 voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -936,13 +1075,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #25 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f
@@ -996,6 +1128,7 @@
                                     <<
                                         \context Voice = "cello 1 voice temp"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \override Staff.BarLine.bar-extent = #'(-2 . 2)
@@ -1010,11 +1143,47 @@
                                             \revert Staff.TupletNumber.stencil
                                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { violoncello i }
                                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vc. i }
-                                            R1 * 1/2
-                                            R1 * 1/2
+                                            \clef "tenorvarC"
+                                            <
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \one-undecimal-quarter-tone-down  }
+                                                b!
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \one-undecimal-quarter-tone-down  }
+                                                b'!
+                                            >2
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "sffz pp"))
+                                            :32
+                                            ^ \markup \center-align { \center-column { \line { \concat { -47 }  }\line { \concat { -47 }  } } }
+                                            - \tweak color #darkred
+                                            - \tweak padding #12
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { "flaut. moltiss." } \hspace #0.5 }
+                                            - \tweak bound-details.right.text \markup \with-color "darkred" { { \fraction 1 4 } \hspace #0.5 { scratch } }
+                                            \startTextSpanThree
+                                            \<
+                                            ^ \markup {
+                                              \raise #12.5 \with-dimensions-from \null
+                                              \override #'(font-size . 4)
+                                              \concat {
+                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                              }
+                                            }
+                                            <
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup \concat { \one-seventeen-limit-schisma-down \hspace #0.125 \double-sharp-one-syntonic-comma-down  }
+                                                gss!
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup \concat { \one-seventeen-limit-schisma-down \hspace #0.125 \double-sharp-one-syntonic-comma-down  }
+                                                gss'!
+                                            >2
+                                            \ff
+                                            ^ \markup \center-align { \center-column { \line { \concat { -9 }  }\line { \concat { -9 }  } } }
+                                            \stopTextSpanThree
                                         }
                                         \context Voice = "cello 1 voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1032,13 +1201,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #4 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1086,6 +1248,7 @@
                                     <<
                                         \context Voice = "cello 2 voice temp"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \override Staff.BarLine.bar-extent = #'(-2 . 2)
@@ -1100,11 +1263,47 @@
                                             \revert Staff.TupletNumber.stencil
                                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { violoncello ii }
                                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vc. ii }
-                                            R1 * 1/2
-                                            R1 * 1/2
+                                            \clef "tenorvarC"
+                                            <
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \abjad-natural  }
+                                                a!
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \abjad-natural  }
+                                                a'!
+                                            >2
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "sffz pp"))
+                                            :32
+                                            ^ \markup \center-align { \center-column { \line { \concat { +2 }  }\line { \concat { +2 }  } } }
+                                            - \tweak color #darkred
+                                            - \tweak padding #12
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { "flaut. moltiss." } \hspace #0.5 }
+                                            - \tweak bound-details.right.text \markup \with-color "darkred" { { \fraction 1 4 } \hspace #0.5 { scratch } }
+                                            \startTextSpanThree
+                                            \<
+                                            ^ \markup {
+                                              \raise #12.5 \with-dimensions-from \null
+                                              \override #'(font-size . 4)
+                                              \concat {
+                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                              }
+                                            }
+                                            <
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
+                                                a!
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \one-undecimal-quarter-tone-up  }
+                                                a'!
+                                            >2
+                                            \ff
+                                            ^ \markup \center-align { \center-column { \line { \concat { B\raise #0.5 { \teeny \flat } -49 }  }\line { \concat { B\raise #0.5 { \teeny \flat } -49 }  } } }
+                                            \stopTextSpanThree
                                         }
                                         \context Voice = "cello 2 voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1122,13 +1321,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #4 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1176,6 +1368,7 @@
                                     <<
                                         \context Voice = "cello 3 voice temp"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \override Staff.BarLine.bar-extent = #'(-2 . 2)
@@ -1190,11 +1383,47 @@
                                             \revert Staff.TupletNumber.stencil
                                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { violoncello iii }
                                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vc. iii }
-                                            R1 * 1/2
-                                            R1 * 1/2
+                                            \clef "bass"
+                                            <
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \sharp-one-syntonic-comma-down  }
+                                                cs!
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup { \sharp-one-syntonic-comma-down  }
+                                                cs'!
+                                            >2
+                                                _ #(make-dynamic-script (markup #:whiteout #:italic "sffz pp"))
+                                            :32
+                                            ^ \markup \center-align { \center-column { \line { \concat { -12 }  }\line { \concat { -12 }  } } }
+                                            - \tweak color #darkred
+                                            - \tweak padding #12
+                                            - \abjad-solid-line-with-arrow
+                                            - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { "flaut. moltiss." } \hspace #0.5 }
+                                            - \tweak bound-details.right.text \markup \with-color "darkred" { { \fraction 1 4 } \hspace #0.5 { scratch } }
+                                            \startTextSpanThree
+                                            \<
+                                            ^ \markup {
+                                              \raise #12.5 \with-dimensions-from \null
+                                              \override #'(font-size . 4)
+                                              \concat {
+                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                              }
+                                            }
+                                            <
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup \concat { \one-tridecimal-third-tone-down \hspace #0.125 \abjad-sharp  }
+                                                cs!
+                                                \tweak Accidental.stencil #ly:text-interface::print
+                                                \tweak Accidental.text \markup \concat { \one-tridecimal-third-tone-down \hspace #0.125 \abjad-sharp  }
+                                                cs'!
+                                            >2
+                                            \ff
+                                            ^ \markup \center-align { \center-column { \line { \concat { C+41 }  }\line { \concat { C+41 }  } } }
+                                            \stopTextSpanThree
                                         }
                                         \context Voice = "cello 3 voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1212,13 +1441,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #4 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1272,6 +1494,7 @@
                                     <<
                                         \context Voice = "tenortrombone voice temp"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \override Staff.BarLine.bar-extent = #'(-2 . 2)
@@ -1291,6 +1514,7 @@
                                         }
                                         \context Voice = "tenortrombone voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1308,13 +1532,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #4 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1362,6 +1579,7 @@
                                     <<
                                         \context Voice = "basstrombone voice temp"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \override Staff.BarLine.bar-extent = #'(-2 . 2)
@@ -1381,6 +1599,7 @@
                                         }
                                         \context Voice = "basstrombone voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1398,13 +1617,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #4 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1452,6 +1664,7 @@
                                     <<
                                         \context Voice = "percussion 2 voice temp"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \override Staff.BarLine.bar-extent = #'(-2 . 2)
@@ -1478,6 +1691,13 @@
                                               %! abjad.glissando(7)
                                             \glissando
                                             \>
+                                            ^ \markup {
+                                              \raise #10 \with-dimensions-from \null
+                                              \override #'(font-size . 4)
+                                              \concat {
+                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
+                                              }
+                                            }
                                             {
                                                 \once \override Accidental.stencil = ##f
                                                 \once \override Flag.stroke-style = #"grace"
@@ -1543,6 +1763,7 @@
                                         }
                                         \context Voice = "percussion 2 voice time signatures"
                                         {
+                                            \bar ".|:"
                                             \once \override Staff.BarLine.glyph-name = ".|:" 
                                             \once \override Staff.BarLine.transparent = ##f
                                             \once \override Staff.BarLine.transparent = ##f
@@ -1560,13 +1781,6 @@
                                             \time 4/8
                                             \voiceTwo
                                             s1 * 1/2
-                                            ^ \markup {
-                                              \raise #10.5 \with-dimensions-from \null
-                                              \override #'(font-size . 4)
-                                              \concat {
-                                                  \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                              }
-                                            }
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.glyph-name = "|" 
                                             \once \override Staff.BarLine.transparent = ##f

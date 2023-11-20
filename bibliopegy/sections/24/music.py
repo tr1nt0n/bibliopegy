@@ -489,6 +489,38 @@ trinton.make_music(
     voice=score["bassclarinet voice"],
 )
 
+# percussion 1 music
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (12, 33)),
+    evans.RhythmHandler(evans.talea([6, -2, 6, -1, 3, 4], 8)),
+    library.change_lines(lines=1, clef="percussion"),
+    library.boxed_markup(string="bow String of Thunder Tube"),
+    library.duration_line(),
+    trinton.noteheads_only(),
+    trinton.invisible_rests(),
+    trinton.linear_attachment_command(
+        attachments=[
+            abjad.Dynamic("mf"),
+            abjad.Dynamic("p"),
+            abjad.Dynamic("mf"),
+            abjad.Dynamic("f"),
+        ],
+        selector=trinton.logical_ties(first=True, pitched=True, grace=False),
+    ),
+    trinton.attachment_command(
+        attachments=[
+            abjad.StartHairpin("--"),
+        ],
+        selector=trinton.logical_ties(first=True, pitched=True, grace=False),
+    ),
+    trinton.attachment_command(
+        attachments=[abjad.StopHairpin()],
+        selector=trinton.logical_ties(first=True, pitched=True, grace=True),
+    ),
+    voice=score["percussion 1 voice"],
+)
+
 # cello 1 music
 
 trinton.make_music(
