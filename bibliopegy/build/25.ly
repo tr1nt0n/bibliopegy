@@ -2,6 +2,7 @@
     <<
         \context TimeSignatureContext = "Global Context"
         {
+            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (17 11 32 29 26 14 38 31 26 27 25)))
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 2\'20\" - 3\'32\" " }
@@ -317,7 +318,7 @@
                                                     \voiceTwo
                                                     g'4
                                                         _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz mf"))
-                                                    - \markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "Flute ( do not play first repetition )" }
+                                                    - \markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "Flute ( do not play first three repetitions )" }
                                                 }
                                             >>
                                             f''16
@@ -507,11 +508,9 @@
                                             \p
                                             \<
                                             \once \override Dots.staff-position = #2
-                                            f''16
+                                            f''8
                                             \ff
                                             \>
-                                            \once \override Dots.staff-position = #2
-                                            f''16
                                               %! abjad.glissando(6)
                                             \revert Accidental.stencil
                                               %! abjad.glissando(6)
@@ -885,7 +884,7 @@
                                                         \clef "percussion"
                                                         \voiceTwo
                                                         r4.
-                                                        ^ \markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { \column { \line { "1. Bow Snare Drum on right side of Fishing Line" } \line { "2. Bow Snare Drum on left side of Fishing Line" } \line { "3. Strike Snare Drum on Cymbal" } \line { "4. Strike Timpani on Head" } } }
+                                                        ^ \markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #0.01 \box { \column { \line { "1. Bow Snare Drum on right side of Fishing Line" } \line { "2. Bow Snare Drum on left side of Fishing Line" } \line { "3. Strike Snare Drum on Cymbal" } \line { "4. Strike Timpani on Head" } } }
                                                         \scaleDurations #'(1 . 1) {
                                                         \slashedGrace {
                                                             g16

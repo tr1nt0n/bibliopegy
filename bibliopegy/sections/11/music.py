@@ -70,20 +70,6 @@ library.write_simultaneous_time_signatures(
 )
 
 library.make_metric_music(
-    trinton.attachment_command(
-        attachments=[
-            library.metronome_markups(library._metronome_marks["1/1"], height=2),
-        ],
-        selector=trinton.select_leaves_by_index([0]),
-        direction=abjad.UP,
-    ),
-    score=score,
-    voice_name="viola voice",
-    second_range=(5, 7),
-    measure_number_range=(1,),
-)
-
-library.make_metric_music(
     evans.RhythmHandler(evans.tuplet([(1, 1, 1)])),
     rmakers.rewrite_dots,
     abjad.beam,
@@ -597,6 +583,31 @@ library.write_timestamps(
     second_range=(205, 1000),
     measure_range=(1, 7),
 )
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (7,)),
+    trinton.attachment_command(
+        attachments=[abjad.LilyPondLiteral(r"\break", site="after")],
+        selector=trinton.select_leaves_by_index([-1]),
+    ),
+    voice=score["Global Context"],
+)
+
+# staff spacing
+
+# trinton.make_music(
+#     lambda _: trinton.select_target(_, (3,)),
+#     trinton.attachment_command(
+#         attachments=[
+#             abjad.LilyPondLiteral(
+#                 r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (10 30.5 22 22 22 20 22 29 27 22 22 22 22 22)))",
+#                 site="before"
+#             )
+#         ],
+#         selector=trinton.select_leaves_by_index([0])
+#     ),
+#     voice=score["Global Context"]
+# )
 
 # cutaway
 

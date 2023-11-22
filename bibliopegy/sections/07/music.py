@@ -200,6 +200,7 @@ library.make_metric_music(
         ),
         style="solid-line-with-arrow",
         padding=8,
+        right_padding=-1,
         full_string=True,
         tweaks=[r"""- \tweak color #darkred"""],
     ),
@@ -213,6 +214,7 @@ library.make_metric_music(
         ),
         style="solid-line-with-arrow",
         padding=8,
+        right_padding=-1,
         full_string=True,
         tweaks=[r"""- \tweak color #darkred"""],
     ),
@@ -540,6 +542,22 @@ library.write_timestamps(
     global_context=score["Global Context"],
     second_range=(154, 1000),
     measure_range=(1, 9),
+)
+
+# staff spacing
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (9 14 34 17 18 21 20 20 20 20 20 20)))",
+                site="before",
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["Global Context"],
 )
 
 # cutaway

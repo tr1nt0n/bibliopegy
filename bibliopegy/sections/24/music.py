@@ -11,7 +11,6 @@ from bibliopegy import pitch
 
 # score
 
-# 11
 
 score = library.bibliopegy_score([(1, 8) for _ in range(1, 34)])
 
@@ -717,6 +716,44 @@ library.write_timestamps(
     second_range=(118, 1000),
     measure_range=(12, 33),
 )
+
+# staff spacing
+
+# for voice_name in ["piano voice", "bassflute voice", "percussion 1 voice"]:
+#     trinton.make_music(
+#         lambda _: trinton.select_target(_, (33,)),
+#         trinton.attachment_command(
+#             attachments=[
+#                 # abjad.LilyPondLiteral(
+#                 #     r"\once \override StaffGrouper.staffgroup-staff-spacing .basic-distance = #20"
+#                 # )
+#                 abjad.LilyPondLiteral(
+#                     r"\once \override Staff.VerticalAxisGroup.staff-staff-spacing =  #'((basic-distance . 13) (minimum-distance . 13) (padding . 13))",
+#                     site="absolute_after"
+#                 )
+#             ],
+#             selector=trinton.select_leaves_by_index([0])
+#         ),
+#         voice=score[voice_name]
+#     )
+#
+# for voice_name in ["cello 1 voice", "cello 2 voice"]:
+#     trinton.make_music(
+#         lambda _: trinton.select_target(_, (33,)),
+#         trinton.attachment_command(
+#             attachments=[
+#                 # abjad.LilyPondLiteral(
+#                 #     r"\once \override StaffGrouper.staffgroup-staff-spacing .basic-distance = #20"
+#                 # )
+#                 abjad.LilyPondLiteral(
+#                     r"\once \override Staff.VerticalAxisGroup.staff-staff-spacing =  #'((basic-distance . 14) (minimum-distance . 14) (padding . 14))",
+#                     site="absolute_after"
+#                 )
+#             ],
+#             selector=trinton.select_leaves_by_index([0])
+#         ),
+#         voice=score[voice_name]
+#     )
 
 # library.forbid_break(score=score, measures=[3, 4, 8, 9, 10, 11, 12])
 

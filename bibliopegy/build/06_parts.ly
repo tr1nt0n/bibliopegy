@@ -82,6 +82,7 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 2\'26\" - 2\'33\" "  }
+            \break
             \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
         }
         \tag #'group1

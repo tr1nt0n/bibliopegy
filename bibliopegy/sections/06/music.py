@@ -1731,6 +1731,15 @@ library.silence(
     timestamps=[r"2\'17\" - 2\'24\"", r"2\'26\" - 2\'33\""],
 )
 
+trinton.make_music(
+    lambda _: trinton.select_target(_, (23,)),
+    trinton.attachment_command(
+        attachments=[abjad.LilyPondLiteral(r"\break", site="absolute_after")],
+        selector=trinton.select_leaves_by_index([-1]),
+    ),
+    voice=score["Global Context"],
+)
+
 # cutaway
 
 trinton.whiteout_empty_staves(

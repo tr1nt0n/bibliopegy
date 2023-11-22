@@ -26,6 +26,7 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "3\'31\""  }
+            \break
         }
         \tag #'group1
         {
@@ -123,6 +124,8 @@
                             \once \override MultiMeasureRest.transparent = ##t
                               %! +SCORE
                             \once \override Rest.transparent = ##t
+                              %! +SCORE
+                            \once \override Staff.TimeSignature.stencil = ##f
                             \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { viola }
                             \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vla. }
                               %! +SCORE
@@ -142,20 +145,7 @@
                               %! +SCORE
                             \once \override Rest.transparent = ##t
                               %! +SCORE
-                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
-                            s1 * 1/8
-                              %! +SCORE
-                            \stopStaff \startStaff
-                              %! +SCORE
-                            \once \override Staff.BarLine.glyph-name = "!" 
-                              %! +SCORE
-                            \once \override Staff.BarLine.hair-thickness = 1 
-                              %! +SCORE
-                            \once \override Staff.BarLine.transparent = ##f
-                              %! +SCORE
-                            \once \override MultiMeasureRest.transparent = ##t
-                              %! +SCORE
-                            \once \override Rest.transparent = ##t
+                            \once \override Staff.TimeSignature.stencil = ##f
                               %! +SCORE
                             \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                             s1 * 1/8
@@ -171,6 +161,25 @@
                             \once \override MultiMeasureRest.transparent = ##t
                               %! +SCORE
                             \once \override Rest.transparent = ##t
+                              %! +SCORE
+                            \once \override Staff.TimeSignature.stencil = ##f
+                              %! +SCORE
+                            \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
+                            s1 * 1/8
+                              %! +SCORE
+                            \stopStaff \startStaff
+                              %! +SCORE
+                            \once \override Staff.BarLine.glyph-name = "!" 
+                              %! +SCORE
+                            \once \override Staff.BarLine.hair-thickness = 1 
+                              %! +SCORE
+                            \once \override Staff.BarLine.transparent = ##f
+                              %! +SCORE
+                            \once \override MultiMeasureRest.transparent = ##t
+                              %! +SCORE
+                            \once \override Rest.transparent = ##t
+                              %! +SCORE
+                            \once \override Staff.TimeSignature.stencil = ##f
                               %! +SCORE
                             \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                             s1 * 1/8
@@ -184,13 +193,6 @@
                                 \context Voice = "viola voice temp"
                                 {
                                     R1 * 1/16
-                                    ^ \markup {
-                                      \raise #2 \with-dimensions-from \null
-                                      \override #'(font-size . 4)
-                                      \concat {
-                                          \abjad-metronome-mark-markup #3 #0 #1 #"60"
-                                      }
-                                    }
                                     \tweak text #tuplet-number::calc-fraction-text
                                     \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 6 5) (ly:make-duration 4 0))
                                     \times 15/18

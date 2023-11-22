@@ -2,6 +2,7 @@
     <<
         \context TimeSignatureContext = "Global Context"
         {
+            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12 29 24 22 29 27 22 22 22 22 22 22 22 22)))
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "3\'32\""  }
@@ -44,6 +45,7 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "3\'43\""  }
+            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12 29 24 22 29 27 22 22 22 22 22 22 22 22)))
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "3\'44\""  }
@@ -1846,6 +1848,8 @@
                                       %! +SCORE
                                     \once \override Rest.transparent = ##t
                                       %! +SCORE
+                                    \once \override Staff.TimeSignature.stencil = ##f
+                                      %! +SCORE
                                     \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                     r8
                                       %! +SCORE
@@ -1865,6 +1869,8 @@
                                       %! +SCORE
                                     \once \override Rest.transparent = ##t
                                       %! +SCORE
+                                    \once \override Staff.TimeSignature.stencil = ##f
+                                      %! +SCORE
                                     \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                     s1 * 1/8
                                       %! +SCORE
@@ -1879,6 +1885,8 @@
                                     \once \override MultiMeasureRest.transparent = ##t
                                       %! +SCORE
                                     \once \override Rest.transparent = ##t
+                                      %! +SCORE
+                                    \once \override Staff.TimeSignature.stencil = ##f
                                       %! +SCORE
                                     \stopStaff \once \override Staff.StaffSymbol.line-count = #0 \startStaff
                                     s1 * 1/8

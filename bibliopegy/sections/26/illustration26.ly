@@ -1430,7 +1430,7 @@
                                         b''16
                                         \stopTrillSpan
                                     }
-                                    a'''32
+                                    bqs'''32
                                     - \staccato
                                     )
                                     \stopTrillSpan
@@ -1594,7 +1594,7 @@
                                         b''16
                                         \stopTrillSpan
                                     }
-                                    a'''32
+                                    bqs'''32
                                     - \staccato
                                     \p
                                     )
@@ -2198,7 +2198,7 @@
                                         \undo \hide NoteHead
                                         b''16
                                     }
-                                    a'''32
+                                    bqs'''32
                                     - \staccato
                                     )
                                     \stopTrillSpan
@@ -9992,6 +9992,8 @@
                                       %! +SCORE
                                     \once \override MultiMeasureRest.transparent = ##t
                                     R1 * 1/8
+                                      %! +SCORE
+                                    ^ \markup { \override #'(font-name . "Bodoni72 Book Italic") { \hspace #70 \right-column { \line { Donaueschingen \hspace #0.75 – \hspace #0.75 Leipzig, DE. } \line { June 2023 \hspace #0.75 – \hspace #0.75 June 2024. } } } }
                                     \bar "|."
                                     \once \override Staff.BarLine.X-extent = #'(0 . 0)
                                     \once \override Staff.BarLine.bar-extent = #'(-2 . 2)

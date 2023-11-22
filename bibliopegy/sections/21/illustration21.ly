@@ -16,6 +16,7 @@
     <<
         \context TimeSignatureContext = "Global Context"
         {
+            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (17 16 17 19 27 17 17 17 17 17 17 17)))
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "13\""  }

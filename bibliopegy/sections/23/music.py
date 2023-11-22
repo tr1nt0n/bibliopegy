@@ -428,7 +428,7 @@ trinton.make_music(
     trinton.attachment_command(
         attachments=[
             abjad.Markup(
-                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { \column { \line { "1. Bow Snare Drum on right side of Fishing Line" } \line { "2. Bow Snare Drum on left side of Fishing Line" } \line { "3. Strike Timpani on Cymbal" } } }""",
+                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #0.01 \box { \column { \line { "1. Bow Snare Drum on right side of Fishing Line" } \line { "2. Bow Snare Drum on left side of Fishing Line" } \line { "3. Strike Timpani on Cymbal" } } }""",
             ),
         ],
         selector=trinton.select_leaves_by_index([0]),

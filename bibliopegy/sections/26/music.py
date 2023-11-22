@@ -138,7 +138,7 @@ trinton.make_music(
         evans.talea([-4, 3, 1, -2, 4, 1, -2, 3, 1], 32),
     ),
     trinton.force_rest(selector=trinton.select_logical_ties_by_index([-1])),
-    evans.PitchHandler(["b''", "a'", "b''", "a'''"]),
+    evans.PitchHandler(["b''", "a'", "b''", "a'''", "b''", "a'", "b''", "bqs'''"]),
     trinton.attachment_command(
         attachments=[
             abjad.bundle(
@@ -226,7 +226,7 @@ trinton.make_music(
         evans.talea([-6, 5, 1, -2, 4, 1, -2, 3, 1], 32),
     ),
     trinton.force_rest(selector=trinton.select_logical_ties_by_index([-1])),
-    evans.PitchHandler(["b''", "a'''", "b''", "a'"]),
+    evans.PitchHandler(["b''", "a'''", "b''", "a'", "b''", "bqs'''", "b''", "a'"]),
     library.duration_line(
         selector=trinton.patterned_tie_index_selector(
             [0], 2, pitched=True, first=True, grace=False
@@ -757,6 +757,44 @@ library.write_timestamps(
 
 # library.forbid_break(score=score, measures=[3, 4, 8, 9, 10, 11, 12])
 
+# staff spacing
+
+# for voice_name in ["piano voice", "bassflute voice", "percussion 1 voice"]:
+#     trinton.make_music(
+#         lambda _: trinton.select_target(_, (2,)),
+#         trinton.attachment_command(
+#             attachments=[
+#                 # abjad.LilyPondLiteral(
+#                 #     r"\once \override StaffGrouper.staffgroup-staff-spacing .basic-distance = #20"
+#                 # )
+#                 abjad.LilyPondLiteral(
+#                     r"\once \override Staff.VerticalAxisGroup.staff-staff-spacing =  #'((basic-distance . 13) (minimum-distance . 13) (padding . 13))",
+#                     site="absolute_before"
+#                 )
+#             ],
+#             selector=trinton.select_leaves_by_index([0])
+#         ),
+#         voice=score[voice_name]
+#     )
+#
+# for voice_name in ["cello 1 voice", "cello 2 voice"]:
+#     trinton.make_music(
+#         lambda _: trinton.select_target(_, (2,)),
+#         trinton.attachment_command(
+#             attachments=[
+#                 # abjad.LilyPondLiteral(
+#                 #     r"\once \override StaffGrouper.staffgroup-staff-spacing .basic-distance = #20"
+#                 # )
+#                 abjad.LilyPondLiteral(
+#                     r"\once \override Staff.VerticalAxisGroup.staff-staff-spacing =  #'((basic-distance . 14) (minimum-distance . 14) (padding . 14))",
+#                     site="absolute_before"
+#                 )
+#             ],
+#             selector=trinton.select_leaves_by_index([0])
+#         ),
+#         voice=score[voice_name]
+#     )
+
 
 # cutaway
 
@@ -765,6 +803,23 @@ trinton.whiteout_empty_staves(
     cutaway="blank",
     # voice_names=[_ for _ in library.all_voice_names if _ != "viola voice"],
     last_segment=True,
+)
+
+# colophon
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (53,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.Markup(
+                r"""\markup { \override #'(font-name . "Bodoni72 Book Italic") { \hspace #70 \right-column { \line { Donaueschingen \hspace #0.75 – \hspace #0.75 Leipzig, DE. } \line { June 2023 \hspace #0.75 – \hspace #0.75 June 2024. } } } }"""
+            ),
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+        tag=abjad.Tag("+SCORE"),
+        direction=abjad.UP,
+    ),
+    voice=score["percussion 2 voice"],
 )
 
 # library.blank_measure_by_hand(

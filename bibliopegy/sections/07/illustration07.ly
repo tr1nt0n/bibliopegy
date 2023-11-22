@@ -16,6 +16,7 @@
     <<
         \context TimeSignatureContext = "Global Context"
         {
+            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (9 14 34 17 18 21 20 20 20 20 20 20)))
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "2\'34\""  }
@@ -266,6 +267,7 @@
                                             - \abjad-solid-line-with-arrow
                                             - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 3 5 \hspace #0.5 } \hspace #0.5 }
                                             - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 }
+                                            - \tweak bound-details.right.padding 1
                                             \startTextSpan
                                         }
                                     }
@@ -326,6 +328,7 @@
                                             - \tweak padding #8
                                             - \abjad-solid-line-with-arrow
                                             - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
+                                            - \tweak bound-details.right.padding 1
                                             \startTextSpan
                                         }
                                     }
@@ -343,6 +346,7 @@
                                         - \tweak padding #8
                                         - \abjad-solid-line-with-arrow
                                         - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 5 5 \hspace #0.5 } \hspace #0.5 }
+                                        - \tweak bound-details.right.padding 1
                                         \startTextSpan
                                         \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 5 4) (ly:make-duration 5 0))
                                         \times 4/5
@@ -357,6 +361,7 @@
                                             - \tweak padding #8
                                             - \abjad-solid-line-with-arrow
                                             - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
+                                            - \tweak bound-details.right.padding 1
                                             \startTextSpan
                                             <aqs af'>32
                                             - \tweak color #"darkmagenta"
@@ -368,6 +373,7 @@
                                             - \tweak padding #8
                                             - \abjad-solid-line-with-arrow
                                             - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 5 5 \hspace #0.5 } \hspace #0.5 }
+                                            - \tweak bound-details.right.padding 1
                                             \startTextSpan
                                             <aqs g'>32
                                             - \tweak color #"darkmagenta"
@@ -379,6 +385,7 @@
                                             - \tweak padding #8
                                             - \abjad-solid-line-with-arrow
                                             - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
+                                            - \tweak bound-details.right.padding 1
                                             \startTextSpan
                                             <aqs a'>16
                                             - \tweak color #"darkmagenta"
@@ -391,6 +398,7 @@
                                             - \tweak padding #8
                                             - \abjad-solid-line-with-arrow
                                             - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 5 5 \hspace #0.5 } \hspace #0.5 }
+                                            - \tweak bound-details.right.padding 1
                                             \startTextSpan
                                         }
                                     }
@@ -412,6 +420,7 @@
                                         - \abjad-solid-line-with-arrow
                                         - \tweak bound-details.left.text \markup \concat { \with-color "darkred" \concat { \upright \fraction 0 5 \hspace #0.5 } \hspace #0.5 }
                                         - \tweak bound-details.right.text \markup \with-color "darkred" \concat { \upright \fraction 2 5 \hspace #0.5 }
+                                        - \tweak bound-details.right.padding 1
                                         \startTextSpan
                                         - \tweak stencil #constante-hairpin
                                         \<

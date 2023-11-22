@@ -292,7 +292,7 @@ library.make_metric_music(
     trinton.linear_attachment_command(
         attachments=[
             abjad.Markup(
-                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "Flute ( do not play first repetition )" }""",
+                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "Flute ( do not play first three repetitions )" }""",
             ),
             trinton.make_custom_dynamic("sfffz mf"),
             abjad.StartHairpin("<"),
@@ -337,7 +337,7 @@ library.make_metric_music(
             16,
         )
     ),
-    evans.RewriteMeterCommand(boundary_depth=-2),
+    # evans.RewriteMeterCommand(boundary_depth=-2),
     trinton.beam_durations(
         divisions=[(4, 8), (4, 8)], beam_rests=False, preprolated=True
     ),
@@ -414,10 +414,10 @@ library.make_metric_music(
         ),
     ),
     trinton.tremolo_command(
-        selector=trinton.select_leaves_by_index([0, -4], grace=False)
+        selector=trinton.select_leaves_by_index([0, -3], grace=False)
     ),
     trinton.glissando_command(
-        selector=trinton.ranged_selector(ranges=[range(10, 16)], nested=True),
+        selector=trinton.ranged_selector(ranges=[range(10, 15)], nested=True),
         zero_padding=True,
         no_ties=True,
     ),
@@ -502,7 +502,7 @@ library.make_metric_music(
     trinton.attachment_command(
         attachments=[
             abjad.Markup(
-                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { \column { \line { "1. Bow Snare Drum on right side of Fishing Line" } \line { "2. Bow Snare Drum on left side of Fishing Line" } \line { "3. Strike Snare Drum on Cymbal" } \line { "4. Strike Timpani on Head" } } }""",
+                r"""\markup \override #'(font-name . "Bodoni72 Book Italic") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #0.01 \box { \column { \line { "1. Bow Snare Drum on right side of Fishing Line" } \line { "2. Bow Snare Drum on left side of Fishing Line" } \line { "3. Strike Snare Drum on Cymbal" } \line { "4. Strike Timpani on Head" } } }""",
             ),
         ],
         selector=trinton.select_leaves_by_index([0]),
@@ -742,6 +742,22 @@ library.make_metric_music(
     voice_name="percussion 2 voice",
     second_range=(1, 8),
     measure_number_range=(1, 2),
+)
+
+# staff spacing
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (17 11 32 29 26 14 38 31 26 27 25)))",
+                site="before",
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["Global Context"],
 )
 
 # post globals

@@ -838,6 +838,22 @@ trinton.make_music(
     voice=score["Global Context"],
 )
 
+# staff spacing
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (6,)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (9 20 31.5 17 20 23 21 21 21 21 21 21 21 21 21 21)))",
+                site="before",
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0]),
+    ),
+    voice=score["Global Context"],
+)
+
 # cutaway
 
 trinton.whiteout_empty_staves(

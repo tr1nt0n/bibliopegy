@@ -1164,6 +1164,22 @@ library.write_timestamps(
     measure_range=(1, 20),
 )
 
+# staff spacing
+
+trinton.make_music(
+    lambda _: trinton.select_target(_, (1, 13)),
+    trinton.attachment_command(
+        attachments=[
+            abjad.LilyPondLiteral(
+                r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (12 29 24 22 29 27 22 22 22 22 22 22 22 22)))",
+                site="before",
+            )
+        ],
+        selector=trinton.select_leaves_by_index([0, -1]),
+    ),
+    voice=score["Global Context"],
+)
+
 # cutaway
 
 trinton.whiteout_empty_staves(

@@ -31,6 +31,7 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "6\'23\""  }
+            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (9 20 31.5 17 20 23 21 21 21 21 21 21 21 21 21 21)))
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "6\'24\""  }
