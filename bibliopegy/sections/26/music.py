@@ -746,12 +746,12 @@ library.write_timestamps(
 library.silence(
     score=score,
     measures=[16],
-    timestamps=[r"3\'47\" - 3\'57\""],
+    timestamps=[r"3\'48\" - 3\'58\""],
 )
 
 library.write_timestamps(
     global_context=score["Global Context"],
-    second_range=(238, 1000),
+    second_range=(239, 1000),
     measure_range=(17, 53),
 )
 

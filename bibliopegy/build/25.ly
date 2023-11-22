@@ -2,7 +2,7 @@
     <<
         \context TimeSignatureContext = "Global Context"
         {
-            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (17 11 32 29 26 14 38 31 26 27 25)))
+            \once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (17 17 26 29 26 14 38 31 26 27 25)))
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 2\'20\" - 3\'32\" " }
@@ -164,75 +164,179 @@
                                     \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 9 8) (ly:make-duration 4 0))
                                     \times 8/9
                                     {
-                                        \staff-line-count 4
                                         \bar ".|:"
+                                        \fancy-gliss
+                                           #'(
+                                              (0 0 0.5 0.5 1 0)
+                                              (1 0 1.5 -0.5 2 0)
+                                              (2 0 2.5 1 3 0)
+                                              (3 0 3.5 -1 4 0)
+                                              (4 0 4.5 1.5 5 0)
+                                              (5 0 5.5 -1.5 6 0)
+                                              (6 0 6.5 2 7 0)
+                                              (7 0 7.5 -2 8 0)
+                                              (8 0 8.5 2.5 9 0)
+                                              (9 0 9.5 -2.5 10 0)
+                                              (10 0 10.5 3 11 0)
+                                              (11 0 11.5 -3 12 0)
+                                              (12 0 12.5 3.5 13 0)
+                                              (13 0 13.5 -3.5 14 0)
+                                              (14 0 14.5 4 15 0)
+                                              (15 0 15.5 -4 16 0)
+                                              (16 0 16.5 4.5 17 0)
+                                              (17 0 17.5 -4.5 18 0)
+                                              (18 0 18.5 5 19 0)
+                                              (19 0 19.5 -5 20 0)
+                                              (20 0 20.5 5.5 21 0)
+                                              (21 0 21.5 -5.5 22 0)
+                                              (22 0 22.5 6 23 0)
+                                              (23 0 23.5 -6 24 0)
+                                              (24 0 24.5 6.5 25 0)
+                                              (25 0 25.5 -6.5 26 0)
+                                              (26 0 26.5 7 27 0)
+                                              (27 0 27.5 -7 28 0)
+                                              (28 0 28.5 7 29 0)
+                                              (29 0 29.5 -7 30 0)
+                                              (30 0 30.5 7 31 0)
+                                              (31 0 31.5 -7 32 0)
+                                              (32 0 32.5 6.5 33 0)
+                                              (33 0 33.5 -6.5 34 0)
+                                              (34 0 34.5 6.5 35 0)
+                                              (35 0 35.5 -6.5 36 0)
+                                              (36 0 36.5 6 37 0)
+                                              (37 0 37.5 -6 38 0)
+                                              (38 0 38.5 6 39 0)
+                                              (39 0 39.5 -6 40 0)
+                                              (40 0 40.5 5.5 41 0)
+                                              (41 0 41.5 -5.5 42 0)
+                                              (42 0 42.5 5.5 43 0)
+                                              (43 0 43.5 -5.5 44 0)
+                                              (44 0 44.5 5 45 0)
+                                              (45 0 45.5 -5 46 0)
+                                              (46 0 46.5 5 47 0)
+                                              (47 0 47.5 -5 48 0)
+                                              (48 0 48.5 4.5 49 0)
+                                              (49 0 49.5 -4.5 50 0)
+                                              (50 0 50.5 4.5 51 0)
+                                              (51 0 51.5 -4.5 52 0)
+                                              (52 0 52.5 4 53 0)
+                                              (53 0 53.5 -4 54 0)
+                                              (54 0 54.5 4 55 0)
+                                              (55 0 55.5 -4 56 0)
+                                              (56 0 56.5 3.5 57 0)
+                                              (57 0 57.5 -3.5 58 0)
+                                              (58 0 58.5 3.5 59 0)
+                                              (59 0 59.5 -3.5 60 0)
+                                              (60 0 60.5 3 61 0)
+                                              (61 0 61.5 -3 62 0)
+                                              (62 0 62.5 3 63 0)
+                                              (63 0 63.5 -3 64 0)
+                                              (64 0 64.5 2.5 65 0)
+                                              (65 0 65.5 -2.5 66 0)
+                                              (66 0 66.5 2.5 67 0)
+                                              (67 0 67.5 -2.5 68 0)
+                                              (68 0 68.5 2 69 0)
+                                              (69 0 69.5 -2 70 0)
+                                              (70 0 70.5 2 71 0)
+                                              (71 0 71.5 -2 72 0)
+                                              (72 0 72.5 1.5 73 0)
+                                              (73 0 73.5 -1.5 74 0)
+                                              (74 0 74.5 1.5 75 0)
+                                              (75 0 75.5 -1.5 76 0)
+                                              (76 0 76.5 1 77 0)
+                                              (77 0 77.5 -1 78 0)
+                                              (78 0 78.5 1 79 0)
+                                              (79 0 79.5 -1 80 0)
+                                              (80 0 80.5 1 81 0)
+                                              (81 0 81.5 -1 82 0)
+                                              (82 0 82.5 0.5 83 0)
+                                              (83 0 83.5 -0.5 84 0)
+                                         )
+                                         #0.5
                                         \once \override Staff.BarLine.glyph-name = ".|:" 
                                         \once \override Staff.BarLine.transparent = ##f
                                         \set Staff.instrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { viola }
                                         \set Staff.shortInstrumentName = \markup \fontsize #4 \override #'(font-name . "Bodoni72 Book Italic") { vla. }
-                                        \clef "varpercussion"
-                                        <g b>32
-                                        \mf
+                                        \clef "altovarC"
+                                        bqf2
                                         - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 on" }
-                                        [
-                                        - \tweak color #(css-color 'indianred)
-                                        - \tweak padding #5.5
-                                        - \abjad-dashed-line-with-hook
-                                        - \tweak bound-details.left.text \markup \concat { \with-color "indianred" { "pont." } \hspace #0.5 }
-                                        - \tweak bound-details.right.padding -1
-                                        \startTextSpanOne
-                                        - \tweak color #darkred
-                                        - \tweak padding #3.5
-                                        - \abjad-dashed-line-with-hook
-                                        - \tweak bound-details.left.text \markup \concat { \with-color "darkred" { "molto flaut." } \hspace #0.5 }
-                                        - \tweak bound-details.right.padding -1
-                                        \startTextSpanTwo
-                                        - \tweak stencil #constante-hairpin
+                                          %! abjad.glissando(7)
+                                        - \abjad-zero-padding-glissando
+                                          %! abjad.glissando(7)
+                                        \glissando
+                                        - \tweak circled-tip ##t
+                                        - \tweak stencil #abjad-flared-hairpin
                                         \<
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
+                                        - \tweak color #(css-color 'darksalmon)
+                                        - \tweak padding #10.5
+                                        - \abjad-solid-line-with-arrow
+                                        - \tweak bound-details.left.text \markup \concat { \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  ( Baoding Ball Glissando )" } \hspace #0.5 }
+                                        - \tweak bound-details.right.padding 1
+                                        \startTextSpanOne
+                                        \once \override Dots.staff-position = #2
+                                          %! abjad.glissando(1)
+                                        \hide NoteHead
+                                          %! abjad.glissando(1)
+                                        \override Accidental.stencil = ##f
+                                          %! abjad.glissando(1)
+                                        \override NoteColumn.glissando-skip = ##t
+                                          %! abjad.glissando(1)
+                                        \override NoteHead.no-ledgers = ##t
+                                        bqf16
+                                            _ #(make-dynamic-script (markup #:whiteout #:italic "sfffz"))
+                                        \stopTextSpanOne
+                                          %! abjad.glissando(7)
+                                        - \abjad-zero-padding-glissando
+                                          %! abjad.glissando(7)
+                                        \glissando
+                                        - \tweak circled-tip ##t
+                                        \>
+                                        - \tweak color #(css-color 'darksalmon)
+                                        - \tweak padding #10.5
+                                        - \abjad-solid-line-with-arrow
+                                        - \tweak bound-details.left.text \markup \concat { \skin-default-notehead-markup \hspace #0.5 }
+                                        - \tweak bound-details.right.text \skin-half-diamond-notehead-markup
+                                        - \tweak bound-details.right.padding 1
+                                        \startTextSpanOne
                                     }
-                                    \tweak TupletNumber.text #(tuplet-number::append-note-wrapper(tuplet-number::non-default-tuplet-fraction-text 9 8) (ly:make-duration 4 0))
-                                    \times 8/9
+                                    \once \override Dots.staff-position = #2
+                                    \once \override Dots.staff-position = #2
+                                      %! abjad.glissando(1)
+                                    \hide NoteHead
+                                      %! abjad.glissando(1)
+                                    \override Accidental.stencil = ##f
+                                      %! abjad.glissando(1)
+                                    \override NoteColumn.glissando-skip = ##t
+                                      %! abjad.glissando(1)
+                                    \override NoteHead.no-ledgers = ##t
+                                    \afterGrace
+                                    bqf2
                                     {
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
-                                        <g b>32
-                                        <d' f'>32
+                                        \once \override Accidental.stencil = ##f
+                                        \once \override Flag.stroke-style = #"grace"
+                                        \once \override NoteHead.no-ledgers = ##t
+                                        \once \override NoteHead.transparent = ##t
+                                        \once \override NoteHead.X-extent = #'(0 . 0)
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                          %! abjad.glissando(6)
+                                        \revert Accidental.stencil
+                                          %! abjad.glissando(6)
+                                        \revert NoteColumn.glissando-skip
+                                          %! abjad.glissando(6)
+                                        \revert NoteHead.no-ledgers
+                                          %! abjad.glissando(6)
+                                        \undo \hide NoteHead
+                                        bqf16
                                         \!
                                         - \markup \with-color \三 \override #'(font-name . "Source Han Serif SC") \override #'(style . "box") \override #'(box-padding . 0.5) \whiteout \fontsize #1 \box { "三 off" }
                                         \stopTextSpanOne
-                                        \stopTextSpanTwo
-                                        ]
                                     }
                                 }
                                 \context Voice = "viola voice time signatures"

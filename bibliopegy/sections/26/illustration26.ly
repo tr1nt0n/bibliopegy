@@ -64,11 +64,8 @@
             \set Score.proportionalNotationDuration = #(ly:make-moment 1 140)
             \time 1/8
             s1 * 1/8
-            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 3\'47\" - 3\'57\" "  }
+            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 { " 3\'48\" - 3\'58\" "  }
             \set Score.proportionalNotationDuration = #(ly:make-moment 1 60)
-            \time 1/8
-            s1 * 1/8
-            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "3\'58\""  }
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "3\'59\""  }
@@ -177,6 +174,9 @@
             \time 1/8
             s1 * 1/8
             - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "4\'34\""  }
+            \time 1/8
+            s1 * 1/8
+            - \markup \override #'(font-name . "Bodoni72 Book Italic") \fontsize #6 \center-column { "4\'35\""  }
             \bar "|."
             \once \override Staff.BarLine.X-extent = #'(0 . 0)
             \once \override Staff.BarLine.bar-extent = #'(-2 . 2)

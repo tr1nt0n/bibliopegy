@@ -153,43 +153,102 @@ library.make_metric_music(
     preprocessor=trinton.fuse_preprocessor((2,)),
 )
 
-# viola voice
+# viola music
 
 library.make_metric_music(
-    evans.RhythmHandler(evans.talea([1], 32, extra_counts=[2])),
-    evans.PitchHandler([[-5, -1], [2, 5]]),
-    library.change_lines(lines=4, clef="varpercussion"),
-    abjad.beam,
+    evans.RhythmHandler(evans.talea([8, 100], 16, extra_counts=[1, 0])),
+    evans.PitchHandler(["bqf"]),
+    library.duration_line(
+        selector=trinton.select_logical_ties_by_index([-1]),
+        viola=True,
+    ),
+    trinton.glissando_command(
+        selector=trinton.ranged_selector(
+            ranges=[
+                range(0, 4)
+            ],
+            nested=True,
+        ),
+        zero_padding=True,
+    ),
     trinton.linear_attachment_command(
         attachments=[
             library._viola_processing_markups["3 on"],
-            abjad.Dynamic("mf"),
-            abjad.StartHairpin("--"),
+            evans.make_fancy_gliss(
+                0.5,
+                1,
+                1.5,
+                2,
+                2.5,
+                3,
+                3.5,
+                4,
+                4.5,
+                5,
+                5.5,
+                6,
+                6.5,
+                7,
+                7,
+                7,
+                6.5,
+                6.5,
+                6,
+                6,
+                5.5,
+                5.5,
+                5,
+                5,
+                4.5,
+                4.5,
+                4,
+                4,
+                3.5,
+                3.5,
+                3,
+                3,
+                2.5,
+                2.5,
+                2,
+                2,
+                1.5,
+                1.5,
+                1,
+                1,
+                1,
+                0.5,
+            ),
+            abjad.Clef("altovarC"),
+            abjad.StartHairpin("o<|"),
+            trinton.make_custom_dynamic("sfffz"),
+            abjad.StartHairpin(">o"),
             abjad.StopHairpin(),
             library._viola_processing_markups["3 off"],
         ],
-        selector=trinton.select_leaves_by_index([0, 0, 0, -1, -1], pitched=True),
+        selector=trinton.select_logical_ties_by_index([0, 0, 0, 0, 1, 1, -1, -1], first=True, pitched=True),
     ),
-    trinton.hooked_spanner_command(
-        string=r"""\markup \with-color "indianred" { "pont." }""",
-        selector=trinton.select_leaves_by_index(
-            [0, -1],
-            pitched=True,
+    trinton.spanner_command(
+        strings=[
+            """\markup \with-color "darksalmon" { \musicglyph "noteheads.s0harmonic" "  ( Baoding Ball Glissando )" }""",
+            "\skin-default-notehead-markup",
+            "\skin-half-diamond-notehead-markup",
+        ],
+        selector=trinton.select_logical_ties_by_index(
+            [
+                0,
+                1,
+                1,
+                -1,
+            ],
+            first=True,
+            pitched=True
         ),
-        padding=5.5,
+        style="solid-line-with-arrow",
+        padding=10.5,
+        right_padding=-1,
         full_string=True,
-        tweaks=[r"- \tweak color #(css-color 'indianred)"],
         command="One",
-    ),
-    trinton.hooked_spanner_command(
-        string=r"""\markup \with-color "darkred" { "molto flaut." }""",
-        selector=trinton.select_leaves_by_index(
-            [0, -1],
-        ),
-        padding=3.5,
-        full_string=True,
-        tweaks=[r"""- \tweak color #darkred"""],
-        command="Two",
+        tweaks=[r"""- \tweak color #(css-color 'darksalmon)"""],
     ),
     trinton.notehead_bracket_command(),
     score=score,
@@ -197,6 +256,49 @@ library.make_metric_music(
     second_range=(1, 8),
     measure_number_range=(1, 2),
 )
+
+# library.make_metric_music(
+#     evans.RhythmHandler(evans.talea([1], 32, extra_counts=[2])),
+#     evans.PitchHandler([[-5, -1], [2, 5]]),
+#     library.change_lines(lines=4, clef="varpercussion"),
+#     abjad.beam,
+#     trinton.linear_attachment_command(
+#         attachments=[
+#             library._viola_processing_markups["3 on"],
+#             abjad.Dynamic("mf"),
+#             abjad.StartHairpin("--"),
+#             abjad.StopHairpin(),
+#             library._viola_processing_markups["3 off"],
+#         ],
+#         selector=trinton.select_leaves_by_index([0, 0, 0, -1, -1], pitched=True),
+#     ),
+#     trinton.hooked_spanner_command(
+#         string=r"""\markup \with-color "indianred" { "pont." }""",
+#         selector=trinton.select_leaves_by_index(
+#             [0, -1],
+#             pitched=True,
+#         ),
+#         padding=5.5,
+#         full_string=True,
+#         tweaks=[r"- \tweak color #(css-color 'indianred)"],
+#         command="One",
+#     ),
+#     trinton.hooked_spanner_command(
+#         string=r"""\markup \with-color "darkred" { "molto flaut." }""",
+#         selector=trinton.select_leaves_by_index(
+#             [0, -1],
+#         ),
+#         padding=3.5,
+#         full_string=True,
+#         tweaks=[r"""- \tweak color #darkred"""],
+#         command="Two",
+#     ),
+#     trinton.notehead_bracket_command(),
+#     score=score,
+#     voice_name="viola voice",
+#     second_range=(1, 8),
+#     measure_number_range=(1, 2),
+# )
 
 # bass clarinet music
 
@@ -751,7 +853,7 @@ trinton.make_music(
     trinton.attachment_command(
         attachments=[
             abjad.LilyPondLiteral(
-                r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (17 11 32 29 26 14 38 31 26 27 25)))",
+                r"\once \override Score.NonMusicalPaperColumn.line-break-system-details = #'((alignment-distances . (17 17 26 29 26 14 38 31 26 27 25)))",
                 site="before",
             )
         ],
