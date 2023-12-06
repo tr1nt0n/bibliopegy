@@ -107,7 +107,7 @@ SynthDef.new(
 		0,
 		\outputBus,
 		0,
-		amp: 0.3,
+		amp: 2,
 		sawFrequencyMultiplier:exprand(7, 13),
 		modulationFrequencyMultiplier:exprand(7, 13),
 		subEnvGate:exprand(2, 10);
@@ -157,7 +157,7 @@ SynthDef.new(
 					damp:0.6,
 
 				),
-				level: 0.5,
+				level: 1,
 				dur: 0.01,
 			),
 			control: trackedSignal,
@@ -392,7 +392,7 @@ SynthDef.new(
 		0,
 		\outputBus,
 		0,
-		amp: 0.15,
+		amp: 1,
 		sawFrequencyMultiplier:exprand(7, 13),
 		modulationFrequencyMultiplier:exprand(7, 13),
 	]);

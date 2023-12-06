@@ -164,9 +164,7 @@ library.make_metric_music(
     ),
     trinton.glissando_command(
         selector=trinton.ranged_selector(
-            ranges=[
-                range(0, 4)
-            ],
+            ranges=[range(0, 4)],
             nested=True,
         ),
         zero_padding=True,
@@ -225,7 +223,9 @@ library.make_metric_music(
             abjad.StopHairpin(),
             library._viola_processing_markups["3 off"],
         ],
-        selector=trinton.select_logical_ties_by_index([0, 0, 0, 0, 1, 1, -1, -1], first=True, pitched=True),
+        selector=trinton.select_logical_ties_by_index(
+            [0, 0, 0, 0, 1, 1, -1, -1], first=True, pitched=True
+        ),
     ),
     trinton.spanner_command(
         strings=[
@@ -241,7 +241,7 @@ library.make_metric_music(
                 -1,
             ],
             first=True,
-            pitched=True
+            pitched=True,
         ),
         style="solid-line-with-arrow",
         padding=10.5,
